@@ -1,0 +1,11 @@
+Thumbs.db
+.DS_Store
+!.gitkeep
+.rbenv-version
+.rvmrc
+_site/
+_theme_packages/*
+_backup
+_old
+wp-content
+_posts
