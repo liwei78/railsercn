@@ -6,4 +6,5 @@ Thumbs.db
 _theme_packages/*
 _backup
 _old
+_site
 wp-content
