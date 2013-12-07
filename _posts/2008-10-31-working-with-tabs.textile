@@ -1,0 +1,17 @@
+---
+layout: post
+title: TextMate中文教程之使用制表符
+post_id: 219
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+如下图所示，你可以在编辑窗口的下面修改制表符的大小或者使用Soft Tabs模式。如果你选择了Soft Tabs类型，那么TextMate会移除目前的制表符，当你保存文档的时候，它会用空格来替代。并且今后编辑同样语言类型文档，也会如此。
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008103101.png"><img class="alignnone size-medium wp-image-250" title="2008103101" src="http://railser.cn/wp-content/uploads/2008/10/2008103101-300x131.png" alt="" width="300" height="131" /></a>
+
+在TextMate里面你大概还会遇到Smart Tab的情况，当你按一个Tab键的时候，会根据目前的缩进级别自动在前面填充相应数量的制表符。当你选取一部分文字的时候，可以使用 Text －> Convert -> Spaces to
+Tabs 或者 Text -> Convert -> Tabs to Spaces功能，如果你没有选择任何文本，则该操作会影响当前文档。

@@ -1,0 +1,48 @@
+---
+layout: post
+title: 1.3.2 生成式编程：在运行中编写代码
+post_id: 199
+categories: ["Advanced Rails", "default", "rails"]
+---
+
+{% include JB/setup %}
+
+---
+
+生成式编程（Generative Programming）——即用代码来编写代码，是一个包含了若干种技术的一种强大的技术。这种技术可以以最简单的方式实现，例如编写一段用于自动完成编程中一些单调乏味的操作的shell脚本。举个例子，假设你想为每个用户生成一个示例项目的测试fixture：
+<pre name="code" class="ruby">
+brad_project:
+  id: 1
+  owner_id: 1
+  billing_status_id: 12
+john_project:
+  id: 2
+  owner_id: 2
+  billing_status_id: 4
+gem
+</pre>
+如果这种语言不支持可脚本化（可编程）的测试fixture，你恐怕不得不手工编写了。当数据持续增加时这将会变得混乱，而且当这些测试fixture和源数据层有着奇怪的依赖关系的时候手工编写几乎变得不可能。
+
+朴素的生成式编程能够让你编写脚本来从源数据生成这些测试fixture。虽然还不够理想，但是比起全部手工编写已经算是个巨大的进步了。但其维护仍然让人头痛，因为你不得不将那个脚本放在编译过程中，而且需要保证源数据发生了变化时测试fixture被重新生成了。
+
+令人欣慰的是在Ruby或Rails中，这种烦恼几乎是不需要的。几乎每个方面的Rails应用的配置都是可脚本化的，这主要归因于使用了内部的特定领域语言（DSL)。在一个内部的DSL中，你能够支配使用Ruby语言的所有特性，而不仅仅是库文件作者决定要提供给你的那些特定接口。
+
+再返回去看前面的例子，ERb将这个过程变得异常简单。我们可以通过使用ERb的<% %>和<%= %>标签在上面用到的YAML文件中插入任意的Ruby代码，包括我们需要的任何逻辑：
+<pre name="code" class="ruby">
+< % User.find_all_by_active(true).each_with_index do |user, i| %>
+< %= user.login %>_project:
+  id: < %= i %>
+  owner_id: < %= user.id %>
+  billing_status_id: < %= user.billing_status.id %>
+< % end %>
+</pre>
+ActiveReacord中对这个功能的实现几乎不能再简单了：
+<pre name="code" class="ruby">
+yaml = YAML::load(erb_render(yaml_string))
+</pre>
+使用了helper方法erb_render:
+<pre name="code" class="ruby">
+def erb_render(fixture_content)
+  ERB.new(fixture_content).result
+end
+</pre>

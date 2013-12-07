@@ -1,0 +1,20 @@
+---
+layout: post
+title: jquery和prototype的代码对比
+post_id: 385
+categories: ["jquery", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+原文：
+
+Remy Sharp has gone through the jQuery and Prototype frameworks, which are probably the two closest to each other, and has done a side by side comparison of the frameworks by showing you how similar things work on both.
+
+The presentation looks into the utility functions, selectors, DOM manipulation, DOM walking, events, Ajax transport, and browser detection.
+
+里克：最近在把jquery应用的两个Rails的项目中，一直在使用jRails和Rails-widgets这两个插件，完成的非常不错，刚才查jquery的oberve的时候看到了这个文档，分享一下。
+
+<div style="width:425px;text-align:left" id="__ss_145849"><object style="margin:0px" height="355" width="425"><param name="movie" value="http://static.slideshare.net/swf/ssplayer2.swf?doc=prototype-jquery-going-from-one-to-the-other-1193346036472971-5"/><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed src="http://static.slideshare.net/swf/ssplayer2.swf?doc=prototype-jquery-going-from-one-to-the-other-1193346036472971-5" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="font-size:11px;font-family:tahoma,arial;height:26px;padding-top:2px;"><a href="http://www.slideshare.net/?src=embed"><img src="http://static.slideshare.net/swf/logo_embd.png" style="border:0px none;margin-bottom:-5px" alt="SlideShare"/></a> | <a href="http://www.slideshare.net/remy.sharp/prototype-jquery-going-from-one-to-the-other" title="View this slideshow on SlideShare">View</a> | <a href="http://www.slideshare.net/upload">Upload your own</a></div></div><img style="visibility:hidden;width:0px;height:0px;" border=0 width=0 height=0 src="http://counters.gigya.com/wildfire/IMP/CXNID=2000002.0NXC/bT*xJmx*PTEyMzU3MzM1OTM5NTMmcHQ9MTIzNTczMzYyMDk2OCZwPTEwMTkxJmQ9Jmc9MiZ*PSZvPWY2NzEyMzlmNmE4MDQ*ZWVhNjQwMDFhYTIxNDRiOWQz.gif" />

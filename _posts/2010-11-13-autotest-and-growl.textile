@@ -1,0 +1,38 @@
+---
+layout: post
+title: Autotest and Growl
+post_id: 533
+categories: ["RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+第一步安裝Growl 
+http://growl.info/index.php 注意要安裝擴展中的 growlnotify。 growlnotify is a command-line tool to post Growl notifications.
+
+第二步設置Growl 
+Open the Growl Preference Panel (System > Growl) and activate "Listen for incoming notifications" and "Allow remote application registration" options on the Network tab. 
+
+第三步安裝相關gem
+1 gem install autotest
+2 gem install ZenTest
+3 gem install autotest-rails-pure
+autotest 和 ZenTest 缺一不可，下面的gem不用安裝，不過這講了 autotest-rails-pure 的功用。
+https://github.com/svoop/autotest-growl
+
+4 gem install notifier  
+https://github.com/fnando/notifier
+
+5 gem install test_notifier
+https://github.com/fnando/test_notifier
+
+第四步配置 ~/.autotest 文件
+添加如下 require "test_notifier/runner/autotest"
+
+附1：如果使用RSpec 2 需要在 spec_helper.rb 文件中添加 require "test_notifier/runner/rspec"
+附2：不要相信什麼autotest和ZenTest裝一個就可以的鬼話，我親身測試，缺一不可。另外即便你使用Rails3，也不需要在Gemfile進行配置了，因為它要操作Growl的，你再怎麼配置文件也沒辦法保證其它開發者和你一樣安裝了Growl並且設置好了它的屬性，所以讓別人玩蛋去吧～
+附3：考慮到看文章的人有可能還是從Rails1.×的時代過來的，那麼加一句，現在執行 autotest 後面不用加那個 . 了
+
+本文參考 http://exviva.posterous.com/running-autotest-with-rails-3

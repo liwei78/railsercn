@@ -1,0 +1,24 @@
+---
+layout: post
+title: TextMate中文教程之剪切，复制和粘贴
+post_id: 201
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+另一项常用的操作是利用 Edit 菜单的剪切，复制和粘贴功能。这些都是其他软件常见的功能，但是TextMate在这些标准方法的基础之上增加了历史剪贴板。让我们做一个简单的例子来加深理解：
+<ul>
+	<li>新建一个 TextMate 文档 (Ctrl+N)</li>
+	<li>输入下面的文字
+Line Three.
+Line One.
+Line Two.</li>
+	<li>你可以通过历史剪贴板来重新安排它们的顺序。移动到文档的第一行(Apple+上)，选择这一行(Shift+Apple+L)，剪切它(Apple+X)。对最后一行进行一样的操作(Apple+下，Shift+Apple+L，Apple+X)。然后再如此操作最后一行(上，Shift+Apple+L，Apple+X)。</li>
+	<li>现在你可以依次粘贴它们。用Apple+V粘贴你历史剪贴板里面的最后一个记录。如果你想粘贴历史剪贴板里面的上一条记录的话需要按Shift+Apple+V，再次按这个组合键你可以粘贴出最后历史剪贴板里面的第一条记录。现在你可以按希望的顺序来排列这些行了。</li>
+</ul>
+如果排序顺序和你想的不一样，别害怕。按Ctrl+Option+Apple+V或者选择Edit -> Paste from Histor, TextMate会打开一个历史剪贴板列表。你可以用方向键来选择条目并按回车选择该条目。或者按ESC退出列表。
+
+注意，粘贴出来的文本的缩进位置是由TextMate根据当前文档而决定的。虽然大多数情况下这个特性可以节省你不少时间，但是可能你偏偏不想这样。希望 Paste Without Re-indent。打开Edit菜单并按下Ctrl键你能看到这个命令。当然你也可以直接使用Ctrl+Apple+V来进行这个操作。如果这个特性让你感到讨厌，你可以在配置中禁用它。

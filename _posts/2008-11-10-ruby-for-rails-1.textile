@@ -1,0 +1,42 @@
+---
+layout: post
+title: ruby for rails 摘录
+post_id: 261
+categories: ["r4r", "rails", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+<pre name="code" class="ruby">
+def all
+  @order = params[:order] || "number"
+  sort_proc = case @order
+    when "author" then lambda {|r| [r.user.name.downcase, r.number]}
+    when "status",
+             "title", then lambda {|r| [r.send(@order).downcase, r.number]}
+    when "number" then lambda {|r| -r.number}
+  end
+  @rcrs = Rcr.find(:all).sort_by &sort_proc
+end
+</pre>
+下面是一个 respond_to? 和 send 方法的例子
+<pre name="code" class="ruby">
+request = gets.chomp
+
+if ticket.respond_to?(request)
+  puts ticket.send(request)
+else
+  puts "No such information available"
+end
+</pre>
+参数的默认值
+<pre name="code" class="ruby">
+def m(a, b=1, *m)
+end
+
+m(1,2,3,4)
+
+a = 1, b = 1, m = [3, 4]
+</pre>

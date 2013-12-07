@@ -1,0 +1,54 @@
+---
+layout: post
+title: Fckeditor on Rails的问题和临时解决办法
+post_id: 356
+categories: ["fckeditor", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+在目前的项目中使用了Fckeditor On Rails插件，没想到碰到很不少问题，网上google一下，发现大家都有这样的问题，有的是这个plugin的问题，有的是fck的问题。为了方便日后对系统的管理，在此笔记一下目前碰到的诸多问题和临时的解决办法。
+
+问题：
+
+1、无法编辑内容，编辑时出现js问题
+
+2、上传图片时无法准确放入指定Image文件夹路径中
+
+3、上传文件时无法得到params[:Type]变量
+
+4、无法使用 fckeditor 的文件上传配置
+
+5、上传中文rar文件时，出现110错误提示
+
+解决：
+
+1、插件似乎没有考虑修改的问题，之前我的asp做的EZAdmin中，简单的传递内容即可，现在看来插件里并没有去处理传进来的value属性，所以在fckeditor.rb中增加了这个方法，使之能够编辑内容。
+
+2、图片可以传递入Image文件夹内，但是结果中没有后面的文件名，具体原因似乎是版本的事情，这个暂时不去对比了，改了fckeditor_controller.rb中的返回值内容，也就是使 <span style="color: #ff0000;">OnUploadCompleted的第二个参数带上了文件名</span>，暂时得以解决。
+
+3、问题同2类似，这时无法得到params[:Type]参数，看了下fck_image.js里，对图片上传设置了type属性为image，<span style="color: #ff0000;">但是文件上传，或者叫Link上传时，没有设置这个属性</span>。所以在fckeditor_controller.rb中，当该属性为空时，设置为File。这个修改<span style="color: #ff0000;">非常危险</span>，但是目前没有更好的方法。
+
+4、在文件上传时，作者自定义了MIME_TYPE数组，来做校验。这个有点。。。。所以暂时将几个类型加上，解决doc,zip,rar等文件上传先。
+
+application/msword
+
+application/x-zip-compressed
+
+application/octet-stream （rar的）
+
+5、当上面都解决完，发现对中文名文件无法上传，哭吧。。。。。。
+
+下面是我修改完的Fckeditor on Rails plugin，希望朋友们多指正问题。谢谢。
+
+说明：plugin版本：0.5.1，Rails版本：2.1.2，两个部分的，不用安装了。
+
+<a href="http://railser.cn/wp-content/uploads/fckeditor051-for-rails212.rar" target="_blank">fckeditor051-for-rails212</a>
+
+<a href="http://railser.cn/wp-content/uploads/javascripts.rar" target="_blank">javascripts</a>
+
+后记：
+
+记得每次修改完插件内容后要重启一下服务

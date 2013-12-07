@@ -1,0 +1,28 @@
+---
+layout: post
+title: TextMate中文教程之在选取文件
+post_id: 98
+categories: ["default"]
+---
+
+{% include JB/setup %}
+
+---
+
+项目中最重要的一点是快速访问项目中的文件。你可以用鼠标打开任何你需要打开的文件。TextMate中，如果你单击的是一个文本文件，单击会打开它。TextMate会根据文件的扩展名或者读取文件的前8KB来判断它是不是一个合法的UTF-8(ASCII)文本。
+
+如果你需要更改TextMate和文件的关联类型，在边栏中选中文件，然后点边栏最下面的动作按钮选择 Treat Files with “ext” Extension as Binary/Text。这样TextMate就会记住这个文件类型的设置。在边栏中双击一个文件，会用默认关联的程序打开它，有可能不是TextMate。比如你在TextMate的边栏中双击了一个pdf文件，会用相关阅读器打开它。
+
+你可以在代码窗口和边栏之间迅速切换，快捷键是Ctrl+Tab。当边栏得到焦点的时候，你可以使用方向键上，下来移动选取，也可以用方向键右来展开一个文件夹或者用方向键左来折叠它们。当你选取了一个想打开的文件，按一下回车键就和单击鼠标一样会打开这个文件。当你选取了文件时，单击空格键就可以给文件改名。
+
+用上面介绍的方式来打开一个文件的确挺简单滴，但是如果你的项目有20个顶级文件夹和7000个文件。当你想这么打开一个文件或许累屁了。下面叫你一个简单滴方法。
+
+加入你知道你要打开的文件的名字，那么选择Navigation中的Go to File按钮(Apple+T)。在打开的对话框中输入文件名，在下方的文件列表中用方向键来选取文件并用回车来打开这个文件。你会发现这个功能比你想的还强大，例如你要打开的文件名是pitches_controller_test.rb，那么你只需要输入pct，下面的文件列表就会自动列出相关的文件(看图)。现在选择这个pitches_controller_test.rb，TextMate会记住你的这次操作。下次你再用这个功能的时候，当你输入pct那么pitches_controller_test.rb会自动列到第一项来。
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102302.gif"><img class="alignnone size-medium wp-image-95" title="2008102302" src="http://railser.cn/wp-content/uploads/2008/10/2008102302-300x221.gif" alt="" width="300" height="221" /></a>
+
+当你打开了7.8个文件咋整呢？就像Firefox能切换标签页一样。TextMate也让你这么干。你可以用Apple+数字键1-9来切换不同的代码窗口。也可以用Option+Apple+方向键左右来切换(看图)。
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102301.gif"><img class="alignnone size-medium wp-image-96" title="2008102301" src="http://railser.cn/wp-content/uploads/2008/10/2008102301-300x175.gif" alt="" width="300" height="175" /></a>
+
+等等，我知道看这个文章的你跟我一样也是一个傻了吧机的程序员。那么还有一个快捷键你能用的上，那就是Option+Apple+方向键上。它会在你项目中的同名（但扩展名不同）的文件之间切换。举个例子，你可以用这个快捷键在项目中的 widget.h 和  widget.c 之间切换。

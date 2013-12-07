@@ -1,0 +1,94 @@
+---
+layout: post
+title: uc实名认证的修改
+post_id: 225
+categories: ["comsenz", "default", "modoer", "php", "uc", "uch"]
+---
+
+{% include JB/setup %}
+
+---
+
+写在前面：jp加入本站后，博客立刻火了起来。我奥运会后一直在做php的开发，而且是专门研究，hack康盛的uch，uc和supesite，给客户做php的站，一直没有做Rails的开发，有点遗憾。不过jp带着我还算没太落后，碰到好的Rails项目肯定还会继续Railser的开发的。
+
+这是一篇笔记，边写边整理代码，比较复杂。贴在这里吧。
+
+uc有个问题，就是在uch打开实名认证时，其他与uc通信的应用，仍旧显示uc里的username字段，而独uch显示认证的名字。为了使整站统一，需要在别的应用里显示uchome_space.name字段的内容。
+
+思路：
+<span style="color: green;">*1、在uc_members中增加name和namestatus字段。*</span>
+<pre name="code" class="sql">ALTER TABLE `uc_members` ADD COLUMN `name` char(20) NOT NULL default '';
+ALTER TABLE `uc_members` ADD COLUMN namestatus tinyint(1) NOT NULL default '0';</pre>
+<span style="color: green;">*2、uch的source/cp_profile.php 82行后，增加同步更新uc实名字段。*</span>
+//同步更新uc主表实名
+<pre class="php" name="code">update_uc_table('uc_members',Array('name'=>$setarr['name'], 'namestatus'=>$setarr['namestatus'], 'uid'=>$_SGLOBAL['supe_uid']));</pre>
+<span style="color: darkgreen;">*3、管理后台 admin/admincp_space.php 批量管理实名时，同步更新uc表*</span>
+75行后：
+//同步更新uc表，单个用户
+<pre class="php" name="code">update_uc_table('uc_members',Array('name'=>$setarr['name'], 'namestatus'=>$setarr['namestatus'], 'uid'=>$uid));</pre>
+需要在 <span style="color: blue;">source/function_common.php</span> 中添加一个方法。和updatetable一样的，取消了table的前缀。
+<pre class="php" name="code">function update_uc_table($tablename, $setsqlarr) {
+global $_SGLOBAL;
+
+$setsql = $comma = '';
+foreach ($setsqlarr as $set_key => $set_value) {
+$setsql .= $comma.'`'.$set_key.'`'.'=\''.$set_value.'\'';
+$comma = ', ';
+}
+$where = $comma = '';
+if(empty($wheresqlarr)) {
+$where = '1';
+} elseif(is_array($wheresqlarr)) {
+foreach ($wheresqlarr as $key => $value) {
+$where .= $comma.'`'.$key.'`'.'=\''.$value.'\'';
+$comma = ' AND ';
+}
+} else {
+$where = $wheresqlarr;
+}
+$_SGLOBAL['db']->query('UPDATE '.$tablename.' SET '.$setsql.' WHERE uid='.$setsqlarr['uid']);
+}</pre>
+//122行后，批量更新
+<pre class="php" name="code">case '1':
+//通过实名认证
+$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET namestatus='1' WHERE uid IN (".simplode($_POST['uids']).") AND name!=''");
+$_SGLOBAL['db']->query("UPDATE uc_members SET `namestatus`='1' WHERE uid IN (".simplode($_POST['uids']).") AND name!=''");
+$url .= 'namestatus=0';
+$createlog = true;
+break;
+case '2':
+//取消实名认证
+$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET namestatus='0' WHERE uid IN (".simplode($_POST['uids']).")");
+$_SGLOBAL['db']->query("UPDATE uc_members SET `namestatus`='0' WHERE uid IN (".simplode($_POST['uids']).")");
+$url .= 'namestatus=1';
+$createlog = true;
+break;
+case '3':
+//清空姓名
+$_SGLOBAL['db']->query("UPDATE ".tname('space')." SET name='',namestatus='0' WHERE uid IN (".simplode($_POST['uids']).")");
+$_SGLOBAL['db']->query("UPDATE uc_members SET `name`='' WHERE uid IN (".simplode($_POST['uids']).")");
+break;</pre>
+*4、在需要的应用中，修改方法其实应该放到uc_client中*，<span style="color: red;">但是我未找到一个很重要的方法究竟在哪定义，就是uc_client/client.php 中的 call_user_func 方法，我需要hack这个方法，来将name和namestatus属性包装进来，但是没找到，高手指点下呗。</span>答：最终，还是在modoer里修改了user class，而且在feed的时候，还要使用实名，就只能这样hack了。不过还是没有明白这个<span style="color: red;">call_user_func方法是怎么调用的。</span>
+所以用了个土办法。这里有个设置问题，当实名未认证时，是否显示该实名。
+<pre class="php" name="code">$tmp = Array();
+$tmp = $db->get_one('SELECT name, namestatus from uc_members where `username`="'.$user->username.'"');
+if($tmp['namestatus']){
+$user->name = $tmp['name'];
+}else{
+$user->name = $tmp['name']."(未认证)";
+}</pre>
+这里还有个顾虑就是，在这个新系统中，是否沿用uch的认证机制，如果需要，这个改动讲很大，还是依附于uc过来的数据处理。
+
+其实完美的方案应该该是完全放到uc_client中，但是我4里的问题我还没解决。目前的只是按照常规的方法hack相关代码解决的。
+
+modoer是开源的点评程序，非常出色，从代码里学到很多知识，不仅是php，可能对今后开发Rails都有帮助。在此感谢作者的工作！！！
+
+广告下自己的新站：
+
+<a href="http://www.51zoon.com" target="_blank">时尚51区</a>
+
+<a href="http://7ent.cn" target="_blank">7#娱乐圈</a>
+
+<a href="http://7news.cn">7#早新闻</a>
+
+对了，我们现在用的新插件是这个，http://code.google.com/p/syntaxhighlighter，非常强

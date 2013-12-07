@@ -1,0 +1,48 @@
+---
+layout: post
+title: 新的Flex框架Mate
+post_id: 49
+categories: ["flex"]
+---
+
+{% include JB/setup %}
+
+---
+
+一、Mate，新的Flex框架
+
+google mail的确是个有好东西，尤其是google快讯，长期以来每天都把最新的资讯按照订阅的关键词发给我，一致每天早上都要花个时间来看看。（当然，最近直接标注为已读）
+
+今天收到的一个内容，讲到了最新的Flex框架 Mate，infoQ的文章（<a href="http://www.infoq.com/cn/news/2008/07/mate-flex-framework-alpha" target="_blank">Flex框架Mate的Alpha版闪亮登场</a>），将资料整理一下，方便阅读。
+
+教程：<a href="http://www.flashmagazine.com/Reviews/detail/mate_event_driven_framework_for_flex/" target="_blank">Mate: Event driven framework for Flex</a>
+
+官网：<a href="http://mate.asfusion.com/">http://mate.asfusion.com</a>
+
+文档：
+<ul>
+	<li><a href="http://mate.asfusion.com/page/documentation/getting-started">Getting Started</a></li>
+	<li><a href="http://mate.asfusion.com/page/documentation/overview">Overview</a></li>
+	<li><a href="http://mate.asfusion.com/page/documentation/tags">Tags</a></li>
+	<li><a href="http://mate.asfusion.com/page/documentation/best-practices">Best Practices</a></li>
+	<li><a href="http://mate.asfusion.com/page/documentation/how-to">How to</a></li>
+	<li><a href="http://mate.asfusion.com/page/documentation/diagrams">Diagrams</a></li>
+	<li><a href="http://mate.asfusion.com/api_docs">API Docs</a></li>
+</ul>
+二、Netbeans的6.5M1
+
+地址：<a href="http://bits.netbeans.org/download/6.5/m1/">http://bits.netbeans.org/download/6.5/m1/</a>
+
+jp说6.5很好，于是今天装了看，的确不错。有2个深色的颜色方案也挺好看。（我以前没用过，故意的）。其他的还得接着用用看来。
+
+三、好消息，明天开始做一个Rails项目了，希望能是一个长久的项目，毕竟跟人说我做的Rails项目都挂了，人家会觉得我比较丧。
+
+四、google快讯可以定制 <a name="baidusnap0"></a><strong style="color: black; background-color: #ffff66;">site:railser.cn* 形式的关键词，这样会很快的告诉我网站的收录情况。自恋吧。
+
+五、<a href="http://advancedrails.com/">http://advancedrails.com</a> 继续找Rails新书和技术博客整理，<a href="../">http://railser.cn</a> 继续做中文的开发笔记。
+
+六、刚才看到，wordpress2.6放出来了
+
+下载：<a href="http://wordpress.org/latest.zip">http://wordpress.org/latest.zip</a>
+
+<a href="http://weblogtoolscollection.com/archives/2008/06/30/what-you-need-to-know-about-wordpress-26/">What You Need To Know About WordPress 2.6 </a>?

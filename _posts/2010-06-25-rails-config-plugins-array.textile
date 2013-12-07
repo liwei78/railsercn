@@ -1,0 +1,17 @@
+---
+layout: post
+title: Rails如何不加载某插件？
+post_id: 459
+categories: ["Advanced Rails"]
+---
+
+{% include JB/setup %}
+
+---
+
+在用paperclip的时候，碰到一个问题：
+
+在windows上用的插件和linux或mac上的不同，但是两个又在同一个版本库里，同步到别的环境时，要区别调用，所以，需要针对linux做一个设置。因为插件很多，不可能一一指定，所以google到了这个。。（PS：书上或许有，可是总不用也不记得了）
+<div id="_mcePaste">config.plugins = [ :all ]</div>
+<div id="_mcePaste">config.plugins -= [ "paperclip-win" ]</div>
+ok，继续写代码去！

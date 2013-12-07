@@ -1,0 +1,72 @@
+---
+layout: post
+title: 在windows和netbeans6.5上，准备Rspce开发
+post_id: 308
+categories: ["RailsNote", "rspec"]
+---
+
+{% include JB/setup %}
+
+---
+
+一、环境
+
+ruby -v
+
+>> ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]
+
+rails -v
+
+>> Rails 2.1.2
+
+二、需要安装的gem和plugin
+
+gem install ZenTest
+
+因为我的Rails是2.1.2，所以在安装plugin时，用了下面的方法：
+<pre>ruby script/plugin install git://github.com/dchelimsky/rspec.git
+ruby script/plugin install git://github.com/dchelimsky/rspec-rails.git
+ruby script/generate rspec</pre>
+另外还有一些辅助的工具，不在此详述
+
+三、出现的问题
+
+1、netbeans加载autotest时候的环境变量
+
+解决：在系统环境中，需要加入home=当前项目的根文件夹，这样nb就能正常启用autotest了
+
+2、restful_authentication的rspec时，出现mysql的Mysql::Error: Incorrect datetime value错误
+
+mysql配置文件my.ini中，注释掉 sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" 一行（我的在87行）
+
+下面添加一行：sql-mode=""
+
+重启mysql
+
+四：参考文章
+
+<a href="http://wiki.netbeans.org/RubyTesting">RubyTesting</a>
+
+<a href="http://guides.rubyonrails.org/creating_plugins.html">The Basics of Creating Rails Plugins，创建Rails插件的基础教程</a>
+
+RSpec的很重要的中文文档：
+<a href="http://www.letrails.cn/archives/20" target="_blank">http://www.letrails.cn/archives/20</a>
+<a href="http://www.letrails.cn/archives/advanced-rspec-tutorials-rspec-scaffold" target="_blank">http://www.letrails.cn/archives/advanced-rspec-tutorials-rspec-scaffold</a>
+<a href="http://www.letrails.cn/archives/11-02-advanced-rspec-tutorials-basics" target="_blank">http://www.letrails.cn/archives/11-02-advanced-rspec-tutorials-basics</a>
+<a href="http://www.letrails.cn/archives/11-07-advanced-rspec-tutorials-mocking" target="_blank">http://www.letrails.cn/archives/11-07-advanced-rspec-tutorials-mocking</a>
+
+《The Rails Way》第18章：Rspec on Rails
+
+<a href="http://dirk.net/2008/01/30/autotest-rails-on-windows/">Autotest Rails on Windows</a>
+
+这里提到的 set home=. 方法，是在cmd环境下可以，集成到netbeans中，还得用上面 三（1） 里的方法。（ps：blogspot又打不开了？）
+
+好了，上面只是一篇准备开发Rspec on Rails 时候的笔记，更多的内容还会以笔记形式更新。
+
+新站广告：一汽家园，一汽的生活圈 <a href="http://www.17jiayuan.com">www.17jiayuan.com</a> ，租房，在线游戏，二手交易，一汽交友圈。
+
+目前状况：正在开发一个Rails项目，没想到和邀请我开发的人想法碰到一起，所以很高兴开发这个项目。项目的主旨是松耦合，高复用。这种程度到了应用的开发也要符合这个要求，这和研究半年多uchome得到的想法很一致。不多说了，等项目上线后，再整理心得吧。
+
+由于个人原因耽误了些进度，在此表示歉意。
+
+<a href="http://drupal.org/project/userpoints">User Points</a>，值得参考。

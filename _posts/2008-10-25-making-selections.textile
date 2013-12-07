@@ -1,0 +1,25 @@
+---
+layout: post
+title: TextMate中文教程之文本选择器
+post_id: 169
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+编辑文本的第一部是选择它，选择一些文本之后你可以通过命令移动它，在搜索其中的代码或者干脆过滤删除掉它。这也是为什么TextMate尽可能简单的让你选择任意数量的文本的原因。
+
+首先俺要告诉你一个好消息，前几章里面讲的移动光标的快捷键在选择文本这里一样可以用哦。注意上文介绍的来自于Emacs的那些快捷键不能跟Shift共用。按住Shift键然后再利用移动光标的快捷键。根据光标位置的不同你就可以选取，扩大所选或者撤销所选的文本。下面举个例子
+<ol>
+	<li>按 Apple+右 把光标移动到行的末尾。</li>
+	<li> 按 Shift+Apple+左 选取从行末尾至行开头的全部文本。</li>
+</ol>
+如果对你来说这一操作需要2步还太麻烦的话。你可以用自定义快捷键或者宏命令来简化。如果可能我会继续翻译那部分。不过那是很遥远很遥远的事啦。还好TextMate内置了这样一条命令，Shift+Apple+L可以选取当前行的文本。另外我个人介绍一个快捷键，Ctrl+W可以选择光标所在的单词。
+
+TextMate有一个唯一的内置选择器Current Scop，快捷键是Ctrl+Option+B。它根据当前文档的语法检查来改变选择范围。你可以使用这个快捷键来选择编程语言特有的元素。例如你可以像下图一样（说实话我很少用这个快捷键）。
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102502.png"><img class="alignnone size-medium wp-image-193" title="2008102502" src="http://railser.cn/wp-content/uploads/2008/10/2008102502-300x124.png" alt="" width="300" height="124" /></a>
+
+你可以在Edit -> Select下面找到全部内置的选择器。花点时间在这里，下次当你选择文本的时候你就知道你该用哪个快捷键了。

@@ -1,0 +1,42 @@
+---
+layout: post
+title: hello, rails3.1 pre 第二部分
+post_id: 605
+categories: ["default", "rails31", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+接着上一篇，问题继续。
+
+rake db:migrate
+
+>> rake aborted!
+
+>> undefined method `task' for #<Rails31test::Application:0x00000100de6a60>
+
+好吧，继续找答案，此处还是省略一些细节，<a href="http://community.engineyard.com/discussions/problems/1391-you-have-already-activated-rake-083-but-your-gemfile-requires-rake-087-consider-using-bundle-exec" target="_blank">直接看这里</a>吧。
+
+>> bundle exec rake db:migrate
+
+问题暂时解决。
+
+至此，projects已经可以看到了，剩下的还在琢磨。
+
+补充一些链接：
+
+CoffeeScript  <a href="http://jashkenas.github.com/coffee-script/" target="_blank">http://jashkenas.github.com/coffee-script/</a>
+
+RVM(Ruby Version Manager)  <a href="https://rvm.beginrescueend.com/" target="_blank">https://rvm.beginrescueend.com/</a>
+
+SASS/SCSS  <a href="http://sass-lang.com/" target="_blank">http://sass-lang.com/</a>
+
+Sprockets  <a href="http://getsprockets.org/" target="_blank">http://getsprockets.org/</a>
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;

@@ -1,0 +1,44 @@
+---
+layout: post
+title: Git：中文教程及资料整理
+post_id: 53
+categories: ["git"]
+---
+
+{% include JB/setup %}
+
+---
+
+
+写在前面：在忙于生计的一段时间里，Rails升级到2.1，并且带来了一个新的工具：git。忽然之间，git成了专心开发的朋友们的话题。我由于不专心，所以没有去更多的关注它，最多知道它是一个新的版本控制工具。
+
+我依旧在用svn和code.google.com，并且把几个asp的网站也放了上去，连一直在研究的comsenz的UCHome也放上去，原因是：我需要知道我几天前改了什么。但是就是这样长期依赖svn，对git还是没有立刻转变过来。（脑袋比较直）。所以从吃完晚饭到现在，我才明白一些git的东西。现在整理一下吧。
+
+1、工具
+
+git自然不必说，但是我是windows系统，所以需要windows的git。可怕的是当我听说git的时候，就被告知git只能在linux下。但是随着时间迅速的推进，这个问题已经是2个月，甚至是更长时间之前的问题了。不要被google和baidu忽悠，他们告诉我的资料明显记载着很久以前的日期。
+
+在windows上使用git，我安装的是 <a href="http://code.google.com/p/msysgit/" target="_self">msysgit</a> ，被它先入为主了。这样在目标文件夹上，多出了Git Gui Here和Git Bash Here两个命令。（这不是具体的使用教程，我想能用到git的朋友也绝非新人了。呵呵。在此只是个人笔记分享一下，绝无说教之意。）
+
+2、教程
+
+baidu一下找到了<a href="http://www.bitsun.com/documents/gittutorcn.htm" target="_self">Git中文教程</a>，不过职业习惯让我看了一下最后，写的“Last updated 27-Mar-2006 15:20:34 UTC ”表明，这篇文章是2年多前的了。而其他的文章多数是爬虫的结果，看着难受。
+
+官网上的教程是最新的，更新日期为2008-7-15
+
+官网：<a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial.html" target="_self">git tutorial(7) Manual Page </a>
+
+对于linux来说，看它的速度远不如自己机器上 man 一下，可惜我是windowsgem。当然bash上git help git 也可以找到帮助手册。不过就两篇教程来说，官网的更加易懂，按照步骤操作一下，也就明白什么是git了。对于git，本人明白后发现自己最大的误解是：git 不是 svn 。
+
+3、资料
+
+官网上的资料比较全啦，不找啦。
+<div class="sectionbody">
+<div class="para">
+
+<a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial-2.html">gittutorial-2(7)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/gitcvs-migration.html">gitcvs-migration(7)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/gitcore-tutorial.html">gitcore-tutorial(7)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/gitglossary.html">gitglossary(7)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html">Everyday git</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">The Git User's Manual</a>
+
+补充几句：那篇虽然是2年前的中文教程，但是内容还是很精要的。一些命令已经改动，读的时候小心。比如 git status。难怪我最开始的时候总是不成功呢。呵呵
+
+</div>
+</div>

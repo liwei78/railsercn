@@ -1,0 +1,66 @@
+---
+layout: post
+title: errors.add_to_base和errors.add
+post_id: 583
+categories: ["RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+我们在页面上进行ajax校验属性的时候，有两种情况会碰到。
+
+一种是，只要出错，就给一个提示。这个比较常见的就是“您填写的用户名或密码不正确”。因为这里可能做了三组判断，先判断用户名是否存在，然后是密码是否为空，三是两者能否检索出一条纪录。如果那个出现为空，就直接返回false，controller也就直接宣布了上面那句话。
+
+第二种比较复杂，就是每个属性都会给一个详细的解释，甚至多个解释，比如邮件格式不正确，邮件不能为空，邮件应该以字母开头等等。因为ajax判断有时候不一定会把model实例传回来，而可能只给一个message，让view去针对该输入进行提示，比如那个经典的输入矿失去焦点时校验。
+
+针对上面两种方法，我经常用到的就是 errors.add_to_base 和 errors.add 方法。这里做以笔记。内容来自rdoc
+<pre lang="ruby">
+def validate!
+    errors.add(:name, "can not be nil") if name == nil
+end
+</pre>
+
+<pre lang="ruby">
+def validate!
+    errors.add_to_base("can not be nil") if name == nil
+end
+</pre>
+
+其实，它们是一样的
+<pre lang="ruby">
+def add_to_base(msg)
+    add(:base, msg)
+end
+</pre>
+
+做以笔记，因为有时候真的会忘记这些小代码。
+
+补充几个方法：
+<pre lang="ruby">
+def Person.human_attribute_name(attr, options = {})
+    attr
+end
+</pre>
+它可以把名称更人性化的输出，比如“first_name” 输出为 "First name"。但是它是一个过时的方法，我们会得到一个提示："ActiveRecord::Errors#generate_message has been deprecated. Please use ActiveRecord::Error.new().to_s."
+
+
+<pre lang="ruby">
+    company = Company.create(:address => '123 First St.')
+    company.errors.on(:name)      # => ["is too short (minimum is 5 characters)", "can't be blank"]
+    company.errors.on(:email)     # => "can't be blank"
+    company.errors.on(:address)   # => nil
+</pre>
+显而易见
+
+<pre lang="ruby">
+def on_base
+    on(:base)
+end
+</pre>
+对上面方法的一个补充。
+
+我喜欢netbeans的一个很重要原因就是查看这些代码的doc很方便，有时候一个简单的方法附近的doc就能读上和体会一阵子。呵呵。
+
+其他实用的方法欢迎各位补充。

@@ -1,0 +1,152 @@
+---
+layout: post
+title: 重读AWDWR笔记
+post_id: 322
+categories: ["AWDWR", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+第12章
+<ul>
+	<li>使用 :through 声明，可以通过间接关联来联系两张表。</li>
+	<li>可以使用 curl 或者 wget 工具来模拟请求xml。</li>
+</ul>
+<pre name="code" class="ruby">
+class Product < ActiveRecord::Base
+  has_many :orders, :through => :line_items
+end
+
+class Order < ActiveRecord::Base
+  has_many :line_itemss
+end
+
+class LineItem < ActiveRecord::Base
+  belongs_to :orders
+  belongs_to :product
+end
+</pre>
+
+<pre name="code" class="ruby">
+curl http://localhost:3000/info/who_bought/1
+</pre>
+
+第11章
+<ul>
+	<li>after_destroy 钩子方法于 delete 同在一个事务中，因此只要该方法里抛出异常，整个事务会回滚。after_destroy 会在 delete 语句执行之后被调用。</li>
+	<li>这里关键概念是，用异常来表示删除用户的过程中出现了错误。这里的异常同时承担两个任务。首先，在事务内部，异常会导致自动回滚；如果在删除用户之后 user 表为空，抛出异常可以撤销删除操作，恢复最后一个用户。</li>
+	<li>其次，异常可以把错误信息带回给控制器。</li>
+</ul>
+<pre name="code" class="ruby">
+# app/model/user.rb
+def after_destroy
+  if User.count.zero?
+    raise "Can't delete last user."
+  end
+end
+
+# app/controllers/login_controller.rb
+def delete_user
+  if request.post?
+    user = User.find(params[:id])
+    begin
+      use.destroy
+      flash[:notice] = "User #{user.name} deleted"
+    rescue Exception => e
+      flash[:notice] = e.message
+    end
+  end
+  redirect_to :action => :list_users
+end
+</pre>
+<ul>
+	<li>before_filter 前置过滤器进行访问控制。</li>
+	<li>利用 session 存储登录前的 uri 做出更有友好的登录系统。</li>
+</ul>
+<pre name="code" class="ruby">
+# app/controllers/application.rb
+private
+
+def authorize
+  unless User.find_by_id(session[:user_id])
+    session[:original_uri] = request.request_uri
+    flash[:notice] = "Please log in."
+    redirect_to :action => :login, :controller => :login
+  end
+end
+
+# app/controllers/login_controller.rb
+before_filter :authorize, :except => :login
+</pre>
+<ul>
+	<li>登录的一个典型做法。</li>
+</ul>
+<pre name="code" class="ruby">
+# app/controllers/login_controller.rb
+def login
+  session[:user_id] = nil
+  if request.post?
+    user = User.authenticate(params[:name], params[:password])
+    if user
+      session[:user_id] = user.id
+      redirect_to :action => :index
+    else
+      flash[:notice] = "Invalid user/password combination"
+    end
+  end
+end
+</pre>
+<ul>
+	<li>看一下完整的 user model。</li>
+</ul>
+<pre name="code" class="ruby">
+# app/models/user.rb
+require "digest/sha1"
+
+class User < ActiveRecord::Base
+  validates_presence_of :name
+  validates_uniqueness_of :name
+
+  attr_accessor :password_confirmation
+  validates_confirmation_of :password
+
+  def validate
+    errors.add_to_base("Missing password") if hashed_password.blank?
+  end
+
+  def self.authenticate(name, password)
+    user = self.find_by_name(name)
+    if user
+      expected_password = encrypted_password(password, user.salt)
+      if user.hashed_password != expected_password
+        user = nil
+      end
+    end
+  end
+
+  # 'password' is a virtual attribute
+  def password
+    @password
+  end
+
+  def password =(pwd)
+    @password = pwd
+    return if pwd.blank?
+    create_new_salt
+    self.hashed_password = User.encrypted_password(self.password, self.salt)
+  end
+
+  private
+
+  def self.encrypted_password(password, salt)
+    string_to_hash = password + "wibble" + salt
+    Digest::SHA1.hexdigest(string_to_hash)
+  end
+
+  def create_new_salt
+    self.salt = self.object_id.to_s + rand.to_s
+  end
+end
+</pre>

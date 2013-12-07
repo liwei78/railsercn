@@ -1,0 +1,26 @@
+---
+layout: post
+title: TextMate的HTML快捷键
+post_id: 334
+categories: ["TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+<ul>
+	<li>选中文字后按 appli ＋ I 是 em</li>
+	<li>选中文字后按 appli ＋ B 是 strong</li>
+	<li>选中一行文字后按 shift ＋ctrl ＋W 是用一对标签包裹它 </li>
+	<li>选中一行文字后按 ctrl ＋ apple＋H 是用 h* 标签包裹它</li>
+	<li>选中文字后按 ctrl ＋ apple＋B 是用块标签包裹它</li>
+	<li>选中多行文字后按 shift ＋ctrl ＋ apple＋W 是用一组标签包裹各行</li>
+	<li>选中多行文字后按 ctrl ＋ apple＋L 是用列表标签包裹各行</li>
+	<li>插入一对标签 ctrl + < </li>
+	<li>插入一个结尾标签 Option ＋ apple + .</li>
+	<li>apple + & 进行URL编码</li>
+	<li>ctrl + H 帮助文件</li>
+	<li>shift + ctrl + V 校验W3C规范</li>
+	<li>option + ESC 自动补完html标签和属性</li>
+</ul>

@@ -1,0 +1,18 @@
+---
+layout: post
+title: paperclip上传后的原图大小
+post_id: 575
+categories: ["Advanced Rails"]
+---
+
+{% include JB/setup %}
+
+---
+
+<div id="_mcePaste">一时想不起来如何拼写了，写在这里作为笔记。</div>
+<div></div>
+<div>has_attached_file :icon,</div>
+<div id="_mcePaste">:styles => <span style="color: #ff0000;">{ :original => "74x74" }</span>, # 将paperclip上传原图做大小限制</div>
+<div id="_mcePaste">:url => "/:class/:attachment/:id/:style_:basename.:extension",</div>
+<div id="_mcePaste">:path => ":rails_root/public/:class/:attachment/:id/:style_:basename.:extension",</div>
+<div id="_mcePaste">:default_url => "/images/sample_icon.png"</div>

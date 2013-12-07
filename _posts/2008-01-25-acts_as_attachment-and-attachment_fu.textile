@@ -1,0 +1,81 @@
+---
+layout: post
+title: acts_as_attachment和attachment_fu插件应用
+post_id: 29
+categories: ["plugins", "rails", "rmagic"]
+---
+
+{% include JB/setup %}
+
+---
+
+写在前面
+
+Rails插件，是学习Rails框架很好的教材。插件可以让你利用Ruby语言的特点，改进Rails框架代码，而不必去编辑它。比如acts_as_paranoid插件就是将Rails默认的Destroy功能进行了删除标记的改进。这里，Rails的Module和Class的学习，Mixin的学习对于理解Rails是相当重要的。
+里克：我觉得想学习Rails插件，先需要看《Ruby for Rails》的第六章（模块和程序组织）和第十三章（Ruby动态特性）。
+
+插件还可以让开发人员发布复用性强的应用，比如各种Acts_as插件。
+
+插件是一种很好的Rails附加产品，通过对插件代码的学习，插件test的学习，可以很快的提升对Rails框架的理解。这对于学习其他框架也是有一定帮助的。
+
+下面将详细的对工作中用到的两个插件进行笔记。
+
+附件管理插件：acts_as_attachment和attachment_fu
+acts_as是一个庞大的插件家族，他们无比丰富的扩展了Rails的功能。acts_as_attachment插件是使一个Model具有插件上传，管理的功能，而不必去为全局建立一个公共的上传管理model[<a href="http://weblog.techno-weenie.net/articles/acts_as_attachment">Intro to Acts As Attachment</a>]。attachment_fu是acts_as_attachment的升级版，作者是<a href="http://techno-weenie.net/">Rick Olson</a>，这个插件可以说在Rails plugins排行中进得了前三位的。
+
+连接：<a href="http://hosting.media72.co.uk/blog/2007/12/09/10-ruby-on-rails-plugins-you-should-be-using/">10 Ruby On Rails Plugins You Should Be Using</a>
+
+attachment_fu提供了全面的测试框架，并且提供了对ImageScience，RMagick，minimagick的支持。
+
+acts_as_attachment的教程介绍
+
+<a href="http://weblog.techno-weenie.net/articles/acts_as_attachment">Intro to Acts As Attachment</a> 一篇里简单的介绍了aaa的使用，按照里面的介绍就可以实现附件的上传了，我就是按照它的介绍实现了<a href="http://4rails.cn">4Rails.cn</a>的头像上传功能。不过这个插件的功能绝没这么简单。
+
+<a href="http://weblog.techno-weenie.net/articles/acts_as_attachment/thumbnailing">Acts As Attachment Thumbnailing</a> 一篇简单介绍了图片缩略图功能，这样就可以对上传的图片进行各种大小的缩略图生成了。
+
+下面的内容是针对attachment_fu的。因为接口上没有做任何调整，只需将acts_as_attachment 改成 has_attachment，上面的教程依旧适用。
+
+几个图片处理库
+
+在attachment_fu的option中，可以声明 :processor ，指定图片处理库，这个包括ImageScience, Rmagick, 和MiniMagick，不指定将为默认安装的。
+
+<a href="http://seattlerb.rubyforge.org/ImageScience.html">ImageScience</a>：实现图片放缩的库，使用前需安装<a href="http://sourceforge.net/projects/freeimage">freeimage</a>和<a href="http://rubyforge.org/projects/rubyinline">rubyinline</a>，RubyInline允许你在ruby代码中直接编写c/c++代码。
+
+<a href="http://rmagick.rubyforge.org/">Rmagick</a>：使用的很多，windows的安装有特定的版本需求，需要下载<a href="http://rubyforge.org/frs/?group_id=12&release_id=17573">rmagick-win32</a>最新版<a href="http://rubyforge.org/frs/download.php/46136/RMagick-2.7.1-ImageMagick-6.4.5-3-Q8.zip"> [2.7.1 binary gem for Ruby 1.8.6]RMagick-2.7.1-ImageMagick-6.4.5-3-Q8.zip(08年12月17日更新)</a>，这个对应的Ruby版本是1.8.6。里面已经放上了必须版本的ImageMagick和RMagick的gem，不用再找了。
+
+<a href="http://rubyforge.org/projects/mini-magick/">MiniMagick</a>：将Rmagick的精简，直接用Ruby包装ImageMagick command line。避免了RMagick的内存问题。
+
+参数介绍
+
+设置参数
+
+图片缩略参数详解
+
+关于Rmagick的内存泄露风险
+
+引自：<a href="http://robbin.javaeye.com/blog/157731" target="_blank">JavaEye网站的RoR性能优化经验谈</a>
+bq. JavaEye也面临着内存泄漏的困扰，这方面困扰主要来自于Rmagic。Rmagick调用ImageMagick的C库来完成图片的操作，从我们的 监测来看，RMagick大多数情况下会缓慢的泄漏内存，在某些特定的图片操作上会急剧的泄漏内存。解决办法就是用mini_magick替代 Rmagick，mini_magick是直接调用ImageMagick的mogrify命令，另起一个进程来操作图片，操作完进程就结束了，绝无后患，由于Linux的fork进程开销不大，因此也不必担心性能问题。
+使用attachment_fu保存远程图片
+
+未完，待续。。
+
+参考资料：
+<a href="http://weblog.techno-weenie.net/articles/acts_as_attachment" target="_blank">acts_as_attachment</a>
+
+<a href="http://weblog.techno-weenie.net/articles/acts_as_attachment/thumbnailing" target="_blank">acts_as_attachment thumbnailing</a>
+
+<a href="http://svn.techno-weenie.net/projects/plugins/attachment_fu/README" target="_blank">attachment_fu README</a>
+
+<a href="http://robbin.javaeye.com/blog/157731" target="_blank">JavaEye网站的RoR性能优化经验谈</a>
+
+<a href="http://clarkware.com/cgi/blosxom/2007/02/24#FileUploadFu" target="_blank">File Upload Fu</a>
+
+<a href="http://blog.vixiom.com/2007/12/28/hacking-attachment_fu-to-work-with-flashflex-uploads-and-crop-square-images/">Hacking attachment_fu to work with Flash/Flex uploads and crop square images</a>
+
+<a href="http://almosteffortless.com/2007/03/25/working-with-attachment_fu/">Working with attachment_fu</a>
+
+<a href="http://blog.chinaunix.net/u/10227/showart.php?id=75141">简单、易于扩展的图像读写库：FreeImage</a>
+
+其他：
+
+<a href="http://www.mysqlperformanceblog.com/">MySQL Performance Blog</a>

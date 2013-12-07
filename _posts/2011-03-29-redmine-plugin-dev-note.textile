@@ -1,0 +1,126 @@
+---
+layout: post
+title: redmine插件开发心得
+post_id: 591
+categories: ["Advanced Rails", "iPhone", "plugin", "redmine"]
+---
+
+{% include JB/setup %}
+
+---
+
+上上周经Q友介绍，接了一个redmine插件开发的小项目。我很感兴趣的是可以借此机会把redmine熟悉一下，所以没太考虑价钱就答应了下来。现在想想，这次开发学到的东西很多，也认识了专业的开发团队，很值得。下面把redmine插件开发的经验笔记一下。
+
+先来截图：
+
+<a href="/wp-content/uploads/snapshot-2011-03-20-11.08.28.png"><img src="/wp-content/uploads/snapshot-2011-03-20-11.08.28-300x193.png" alt="" width="300" height="193" /></a>
+
+地址：<a href="http://www.cocos2d-x.org/projects/cocos2d-x/apps" target="_blank">http://www.cocos2d-x.org/projects/cocos2d-x/apps</a>
+
+简单介绍下
+
+cocos2d-x is a multi-platform, light weight & developer-friendly C++ 2D mobile game engine, open source and released under MIT License. It is a child branch of the famous "cocos2d-iphone" project, and will keep the primary features sync with it.
+
+更多细节请访问 <a href="http://www.cocos2d-x.org/projects/cocos2d-x/wiki" target="_blank">http://www.cocos2d-x.org/projects/cocos2d-x/wiki</a>
+
+好了，说下这个插件实现的功能。
+
+一是管理发布平台，比如iOS，Android，WoPhone，Windows，Other，未来它还会有其他的平台。
+
+二是在这些平台分类里，上传app，比如时下最火的iOS app，android app等。当上传iOS app时，可自动采集该信息。
+
+# 一、让我们开始
+
+插件如何开发呢？下载其他插件的代码来研究是关键的第一步。因为之前对redmine插件开发一无所知，所以下面的笔记有点啰唆。
+
+先看一下官方发布的插件开发文档，<a href="http://www.redmine.org/projects/redmine/wiki/Plugin_Tutorial" target="_blank">http://www.redmine.org/projects/redmine/wiki/Plugin_Tutorial</a>，请大概的了解一下。然后，我们去<a href="http://www.redmine.org/plugins" target="_blank">redmine插件列表</a>，下载两个很有代表性的插件，redmine_polls和redmine_bookmarks，把它们放到 vendor/plugins 里。选择这两个插件的原因是它们都是自主上传，填写内容的。
+
+注意：在最新版本的redmine1.1中，polls会引起个异常。
+
+# 二、如何管理插件
+
+
+<a href="/wp-content/uploads/snapshot-2011-03-29-10.10.25.png"><img src="/wp-content/uploads/snapshot-2011-03-29-10.10.25-300x105.png" alt="" width="300" height="105" /></a>这是插件管理界面，如果你按照上面插件教程开发的话，你会发现缺少了Configure功能。如何加入这个功能，并且它可以做什么？可以完全的参考上面两个插件中的init.rb 和games插件里的写法。
+
+
+{% highlight ruby %}
+  settings :default => {},
+           :partial => 'platforms/manage'
+{% endhighlight %}
+
+
+这两行代码的作用，使得我们可以编辑一个页面，这个页面里，实现了games的platform管理。当然，你也可以在configure里增加apps的管理，丰富管理员功能。
+
+这里要注意的是，权限如何分配了。
+
+# 三、如何分配权限
+
+
+按照文档的描述，我们可以很妥善的分配各个角色的权限。public => true，即可将所指定的action开放给所有人，如果想屏蔽掉未登录的账号访问，:require => :loggedin 即可。如果想对登录账号做区别，就需要针对每个action做以分别了。
+
+权限设置的文档不够全，建议大家多参考别人的代码，和看源代码分析一些用法。
+
+# 四、设置导航菜单
+
+
+在插件的init.rb文件里，需要单独写一遍插件所使用的路由规则，为了是插件地址更没关，我们的做一些代码上的牺牲。
+
+
+{% highlight ruby %}
+ActionController::Routing::Routes.draw do |map|
+  map.connect 'projects/:project_id/apps', :controller => "apps", :action => "index"
+  map.connect 'projects/:project_id/apps/all', :controller => "apps", :action => "all"
+  map.connect 'projects/:project_id/apps/:id', :controller => "apps", :action => "show"
+  map.resources :apps,
+    :member => {:recommend => :post, :delete_pic => :post, :snatching => :get, :doing => :post},
+    :collection => {:all => :get}
+end
+{% endhighlight %}
+
+
+这是games里的设置，只是将三个方法做了前缀处理，这样可以和其他导航链接类似，都是 /projects/text_proj/apps/9 的形式。否则，按照resource的形式，将会是很难看（客户也不会接受的）/apps/9?project_id=text_proj
+
+# 五、开发插件代码
+
+
+这是我们最熟悉的部分了，此处省略一万字节。
+
+# 六、使用js和css
+
+
+这个地方有点麻烦，每次改动都得重启一下服务，因为每次重启才会将js代码和css文件同步到public下，当然我们可以在public下去写，收工前拿回到插件目录下，可是插件用的文件都不大，何况我都是production下开发，改哪个代码都得重启。（development下的执行速度你们是知道的）。
+
+# 七、抓取app store
+
+
+games插件有一个很重要的功能，就是到app store页面去采集app信息。代码在lib下的app_snatcher.rb，功能比较简单，仅做参考吧。
+
+# 八、其他插件和gem
+
+
+出于尝试的目的，我使用了will_paginate插件来实现分页，paperclip来保存app采集时候的icon和screenshot，在采集时使用了两个gem，请编辑你的environment.rb，增加
+
+{% highlight ruby %}
+  config.gem 'hpricot'
+  config.gem 'mechanize'
+{% endhighlight %}
+
+# 九、总结
+
+
+如果你觉得这个代码对你开发redmine插件又帮助，可以在这里下载它：https://github.com/liwei78/redmine-games 。
+
+欢迎和各位交个朋友，我个人的博客：<a href="http://liwei.me" target="_blank">http://liwei.me</a>，目前正在设计新的界面，会把我的介绍，包括工作内容，都整理发布到上面。
+
+# 十：广告一下
+
+
+目前我还运营这另外两个博客，<a href="http://www.echangchun.net" target="_blank">电子长春</a> 和 <a href="http://top360buy.com" target="_blank">京东购物导航 </a>。
+
+前者关注电子商务动态和IT业内新闻，后者为京东商城点评，购物推介点评。
+
+&nbsp;
+
+Update at 2011-6-15
+
+升级了一下，0.0.1到0.0.2，增加了lightbox显示screenshots

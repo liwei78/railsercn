@@ -1,0 +1,21 @@
+---
+layout: post
+title: TextMate中文教程之使用emacs中常用的快捷键
+post_id: 238
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+就像你前面看到的一样TextMate支持一些emacs常见的快捷键。
+<ul>
+	<li>Ctrl+D 删除光标右侧的一个字符</li>
+	<li>Ctrl+T 调换选中文本的顺序，如果没有选择任何文本则对换光标左右字符的位置。并且将光标置于下一个位置</li>
+	<li>Ctrl+K 删除光标到行尾的文字</li>
+	<li>Ctrl+Y 复制出删除的最后一次文本</li>
+	<li>Ctrl+O 不移动光标插入新的一行</li>
+</ul>
+
+当然这些快捷键在Mac系统中的其它应用中也可以使用，比如Mail。

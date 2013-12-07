@@ -1,0 +1,24 @@
+---
+layout: post
+title: TextMate中文教程之在行，符号和书签之间移动
+post_id: 155
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+TextMate提供了快捷键让你明确定位。例如你想跳转到指定的行。利用快捷键Apple+L，然后输入行号再按回车就行。
+
+这个方法是挺好，但是实际应用中很少有人会这么用，因为你不可能一直都知道你要去操作第几行吧。好在几乎所有的文档都有自己的组织形式。拿Ruby代码来说，它们都是在一个function或者method定义里的。TextMate会注意到这些，并且用快捷键辅助你迅速定位。
+
+用鼠标点一下编辑窗口的右下角，那里列出了目前文档的header, class, method, 和 functio。随便选择一个，光标会定义到那一行的开头位置。看图：
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102402.png"><img class="alignnone size-medium wp-image-171" title="2008102402" src="http://railser.cn/wp-content/uploads/2008/10/2008102402-300x140.png" alt="" width="300" height="140" /></a>
+
+但是在实际项目中，我们不会去常常拿鼠标选择这个地方。通常咱哥们都是用快捷键。Shift+Apple+T打开Navigation菜单中的Go to Symbol对话框。你可以用方向键来选择，也可以跟前面介绍的一样，使用缩写字母来选择某一个方法。例如输入s w r会选择save_without_revision( )。
+
+如果这些都不能满足你的需要，你可以自己定义书签。定义书签很简单，你可以用Apple+F2键为当前行定一个书签，或者用鼠标点行号前面那个位置。看下面的图。利用快捷键Option+Apple+B可以显示或者隐藏那个书签栏。如果当前页面你已经定义了几个书签那么可以使用F2或者Shift+F2在书签之间顺序或倒序切换。
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102403.png"><img class="alignnone size-medium wp-image-172" title="2008102403" src="http://railser.cn/wp-content/uploads/2008/10/2008102403-300x110.png" alt="" width="300" height="110" /></a>

@@ -1,0 +1,76 @@
+---
+layout: post
+title: RESTful的Rails开发，讲讲4Rails.cn的开发心得
+post_id: 28
+categories: ["rails", "REST", "ROA"]
+---
+
+{% include JB/setup %}
+
+---
+
+这是一篇笔记。
+
+最近的事情很多很不顺利，不过一切都会过去，并且重新走上 正规的。
+
+前阵子在看《RESTful Web Services》，看得更加迷惑，毕竟是英文书，不太好理解。不过关于REST的理解还是整理了一下。
+
+同时在写一个个人的项目，主要是在开发的过程中保持对编程的感觉（因为没有接到赚钱的项目），还有就是试用新的Rails2.0.2，以及对REST的重新理解。
+
+这个个人的项目是<a href="http://4rails.cn" target="_blank">http://4rails.cn</a>，一个招聘信息发布和简历系统。由于目前是个人练习，所以功能上很主观，并未太考虑实用性。而且在正式美化界面前，它属于全人类。
+
+开发4Rails有几个想法：
+bq.  1、RESTful和ROA
+
+2、Rails2.0.2下的RESTful
+
+3、几个插件的使用
+
+4、实现以前想过但是没做的想法
+
+5、为另一个项目准备
+随便写写：
+h3. 1、RESTful和ROA
+
+
+bq.  I hold that everything in the Resource-Oriented Architecture is also RESTful.
+在<a href="http://baike.baidu.com/view/1077487.htm" target="_blank">这篇文章</a>里面，比较详细的介绍了REST的概念，但是，普遍的来说，很多文章 对REST的描述都是千篇一律的。那么，《RESTful Web Services》中如何来介绍REST的呢？
+
+第四章《The Resource-Oriented Architecture》 中讲到：REST不是一个结构，而是一个标准[criteria]，但是这里并不是在说“REST 结构”。而ROA(Resource-Oriented Architecture)才是一个结构，一个RESTful的结构。
+
+在这里，“Oriented”再次出现在眼里，而它出现最多地方的便是“<a href="http://baike.baidu.com/view/63596.htm">Object Oriented Programming</a>”，计算机教科书里的翻译为“面向对象的程序设计”。那么根据同样的原则，来对ROA理解，可以叫做“面向资源的结构”。
+
+那么Rails2.0.2里面，是如何来实现ROA的呢？
+h3. 2、Rails2.0.2下的RESTful
+
+
+在Rails1.2.x里面就在坚持着RESTful的风格，现在Rails2.0.2更加强调了ROA的结构，特别是在scaffold的生成和routes的设计上。不过，Rails并不是完全的REST，“RESTful”比较合适。而在目前的开发中，更多的是在遵循ROA，来设计“资源”。
+
+在4Rails的这个系统中，资源包括：用户，招聘信息，用户关注的信息，简历，头像。
+
+刚开始对REST感兴趣的时候，经常会想到的问题：“是不是网站的设计都要RESTful”，不。
+
+REST讲究的是ROA的设计，是对网站资源的操作，而很多业务操作，如用户登陆，购买流程，统计结算等等，还是需要传统的设计。RESTful的优点是方便资源的利用。所以，再重新设计一个销售项目的时候，Rails做的是对网站资源和用户资源重新设计，这主要的改进是，对资源的表述更加准确。
+
+比如以前喜欢把用户中心地址设计成"/u/1"，用户的销售商品列表就是"/goods"。
+而现在统一的都是"/users/1"，和"/users/1/goods"，当然，这里面避免了的麻烦还很多。
+
+里克：当然，id的使用并不是REST所提倡的，因为它不够直接，而且当id变化的时候（很容易造成变化，比如新老系统的数据整合的时候），就会造成一些问题。我倒是希望Rails能够用slug来代替id，就像wp的Post Slug，或者给出两个方案，默认用id，slug可选。这会成真吗？
+
+有时候，xxx_id 并不一定代表model关系中的外键关联，它可能是一个判断标准。尤其在REST的view页面的时候。对于需要对其判断权限的访问者，这个id比其他的更重要。
+h3. 3、插件
+
+
+4Rails用到了4个插件：
+
+will_paginate：分页插件，很好用。
+
+resource_feeder和simply_helpful：用来实现RSS订阅。不过被大砍了很多代码，因为是针对1.2.x版本的，在2.0.2上会覆盖掉默认的form_form 方法，所以需要改一下。
+
+acts_as_attachment：头像的上传
+
+acts_as_attachment和attachment_fu两个插件会在下一篇博客里好好整理一下，早就知道这两个插件的大名，而且向人吹嘘说是插件排行榜前三位。不过说实话我还没用过呢。嘿嘿。
+
+参考文章：
+<a href="http://www.ibm.com/developerworks/cn/web/wa-ajaxarch/">Ajax 和 REST，第 1 部分</a>
+<a href="http://www.ibm.com/developerworks/cn/web/wa-ajaxarch2.html">Ajax 和 REST，第 2 部分</a>

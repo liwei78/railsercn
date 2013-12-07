@@ -1,0 +1,24 @@
+---
+layout: post
+title: 有了ultraviolet，可是没有uv，怎么办？
+post_id: 527
+categories: ["Advanced Rails"]
+---
+
+{% include JB/setup %}
+
+---
+
+问题：
+gem 'ultraviolet', '0.10.2'
+bundle install 
+代码highlight的时候，require 'uv' 失败。
+提示：uninitialized constant PadsHelper::Uv
+
+解决办法：gemfile中，改为
+
+gem 'ultraviolet', '0.10.2', :require => "uv"
+
+搞定。
+
+最近在弄一个小项目，为程序员们提供一个简单舒适的代码经验管理工具。demo出来后希望大家支持。

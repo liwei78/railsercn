@@ -1,0 +1,56 @@
+---
+layout: post
+title: 1.2.4 变量查找
+post_id: 162
+categories: ["Advanced Rails", "default"]
+---
+
+{% include JB/setup %}
+
+---
+
+在Ruby中有四种类型的变量，它们是全局变量、类变量、实例变量及局部变量。全局变量作用于全局，局部变量只作用于局部，因此下面的讨论均不涉及它们，因为它们不与Ruby的类系统进行交互。
+_注：还有常量，但是它们不应该被改变。（事实上可以改变，但是Ruby会发出警告。）_
+
+实例变量是与特定对象相关的。实例变量以一个@符号开始：@price既是一个实例变量。因为每个Ruby对象都有一个iv_tbl结构，所以任何一个对象都可以有实例变量。由于一个类也是一个对象，所以一个类亦可以拥有实例变量。下面的代码展示了如何访问一个类实例变量的方法：
+<pre name="code" class="ruby">
+class A
+  @ivar = "Instance variable of A"
+end
+
+A.instance_variable_get(:@ivar) # => "Instance variable of A"
+</pre>
+实例变量总是基于self指针指向的对象来解析的。上面的代码，因为self是在class A … end中定义A的类对象，所以@ivar又属于A的类对象。
+
+但是，类变量则不同。任何一个类的实例都可以访问其类变量（就是以@@开头的变量）。类变量也可以被其类定义自身所引用。虽然一个类变量和实例变量相似，但他们不是一回事：
+<pre name="code" class="ruby">
+class A
+  @var = "Instance variable of A"
+  @@var = "Class variable of A"
+  def A.ivar
+    @var
+  end
+  def A.cvar
+    @@var
+  end
+end
+
+A.ivar # => "Instance variable of A"
+A.cvar # => "Class variable of A"
+</pre>
+在这段代码示例中，@var 与@@var被存储在同一个地方：即A的iv_tbl。然而，他们是不同的变量，这是因为他们具有不同的名字（@符被当作变量名的一部分存储）。Ruby提供了一些方法用于检查被访问的实例变量和类变量，以便保传递中的变量名具有正确的格式：。
+<pre name="code" class="ruby">
+A.instance_variable_get(:@@var)
+# ~> -:17:in `instance_variable_get': `@@var' is not allowed as an instance
+    variable name (NameError)
+</pre>
+类变量的使用有点让人疑惑。因为，它们被共享于整个继承链中，所以在子类中改变一个类变量时其父类的类变量值也被改变。
+<pre name="code" class="ruby">
+>> class A; @@x = 3 end
+=> 3
+>> class B < A; @@x = 4 end
+=> 4
+>> class A; @@x end
+=> 4
+</pre>
+这可能有用，但也可能令人迷惑。通常来说，你需要的会是类实例变量和ActiveSupport提供的可继承类属性（class inheritable attributes）这两者之一，前者独立于继承链，后者以一种受约束定义良好的方式在继承链中进行值传递。

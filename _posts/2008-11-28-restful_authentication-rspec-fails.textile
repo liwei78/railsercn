@@ -1,0 +1,36 @@
+---
+layout: post
+title: 带着restful_authentication运行rspec时，貌似cookies无效的问题
+post_id: 317
+categories: ["RailsNote", "rspec"]
+---
+
+{% include JB/setup %}
+
+---
+
+起因：在未做自己开发rspec的时候，只是调试下安装完 restful_authentication 的rspec和部分test时候，出现了几个错误：
+
+1、
+
+Spec::Mocks::MockExpectationError in 'SessionsController Logging in by cookie fails cookie login with bad cookie'
+fails cookie login with bad cookie(Spec::Rails::Example::ControllerExampleGroup::Subclass_1::Subclass_4) expected :cookies with (any args) once, but received it 0 times
+./spec/controllers/authenticated_system_spec.rb:85:
+
+2、
+
+'SessionsController Logging in by cookie logs in with cookie' FAILED
+expected true, got false
+./spec/controllers/authenticated_system_spec.rb:81:
+
+3、
+
+'AccessControlTestController requesting xml; I am logged in and Login is required succeeds' FAILED
+expected "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<hash>\n  <success>xml</success>\n</hash>\n", got "HTTP Basic: Access denied.\n"
+./spec/controllers/access_control_spec.rb:65:
+
+这是为什么呢？
+
+经过N个小时的思考和google，还是没有发现问题，但是刚才检查 logged_in?.should be_true 一句时，发现我在application_helper.rb里 竟然定义了个同名的方法。就是这个同名方法，搞乱了正常的测试结果。so，改名后，一切都正常了。
+
+经验：1、学习和使用TDD开发还是需要时间的，2、下次应该不会犯了吧。。。。

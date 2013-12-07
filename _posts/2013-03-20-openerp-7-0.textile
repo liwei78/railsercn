@@ -1,0 +1,31 @@
+---
+layout: post
+title: openerp 7.0
+post_id: 797
+categories: ["openerp"]
+---
+
+{% include JB/setup %}
+
+---
+
+写在前面：
+
+最近半年一直在从事openerp的开发工作，这是一个新的挑战，还好十年前学的会计常识有一些帮助，初期的入门阶段已过，接下来就是不断的学习了。
+
+下面是一些文章连接，发在这里是为了索取7.0的开发教程。虽然英文也可阅读，但是就财会经验上看，还是翻译一下的术语更容易理解。
+
+&nbsp;
+
+OpenERP 7.0版本发布: <a href="http://shine-it.net/index.php/topic,5807.msg14435.html#msg14435" target="_blank">http://shine-it.net/index.php/topic,5807.msg14435.html#msg14435</a>
+对不起SAP，我要终结你！--OpenERP 7.0发布之前: <a href="http://www.openerpchina.org/forum.php?mod=viewthread&tid=300" target="_blank">http://www.openerpchina.org/forum.php?mod=viewthread&tid=300</a>
+OpenERP进入中国大学课堂: <a href="http://shine-it.net/index.php/topic,5808.0.html" target="_blank">http://shine-it.net/index.php/topic,5808.0.html</a>
+OpenERP 7.0成倍提高并发处理能力： <a href="http://shine-it.net/index.php/topic,5810.0.html" target="_blank">http://shine-it.net/index.php/topic,5810.0.html</a>
+
+10万雪花银换来的开源ERP经验： <a href="http://shine-it.net/index.php/topic,4422.0.html" target="_blank">http://shine-it.net/index.php/topic,4422.0.html</a>
+排名最前的6款开源ERP软件比较： <a href="http://bbs.erp100.com/thread-254957-1-1.html" target="_blank">http://bbs.erp100.com/thread-254957-1-1.html</a>
+盘点世界排名最前的5款开源ERP软件： <a href="http://shine-it.net/index.php/topic,4425.0.html" target="_blank">http://shine-it.net/index.php/topic,4425.0.html</a>
+OpenERP连获大奖： <a href="http://shine-it.net/index.php/topic,4392.0.html" target="_blank">http://shine-it.net/index.php/topic,4392.0.html</a>
+
+OpenERP——下一代ERP： <a href="http://shine-it.net/index.php/topic,5809.0.html" target="_blank">http://shine-it.net/index.php/topic,5809.0.html</a>
+OpenERP PK SAP： <a href="http://shine-it.net/index.php/topic,4421.0.html" target="_blank">http://shine-it.net/index.php/topic,4421.0.html</a>

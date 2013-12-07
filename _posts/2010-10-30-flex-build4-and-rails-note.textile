@@ -1,0 +1,20 @@
+---
+layout: post
+title: Flex build4 和Rails资源笔记
+post_id: 521
+categories: ["flex", "Flexible Rails"]
+---
+
+{% include JB/setup %}
+
+---
+
+从infoq上看到了flex builder4的介绍。07年知道flex的时候就很关注它，也写了一点在这个博客上。那个时候还是测试版。现在已经发展到了4，并且flex的书越来越多。rails的新书貌似不多了。
+
+在这里下载中文版：http://www.infoq.com/cn/vendorcontent/show.action?vcr=664
+
+安装完看了一下，大概的思路还是懂的，然后写了个小测试，实现从 http://blog-in-rails3.heroku.com/ 获得members和posts数据。（这是一个Rails3的练习作品）
+
+在github上看到了 http://github.com/danielwanja/flexonrails，这里有很多代码实例，看完一个，收益很多。
+
+另外，http://www.manning.com/armstrong/ 有一些实例代码，可做参考。（有点老，书还是08年的，想想真是遥远阿，坎坷的08年。。。）

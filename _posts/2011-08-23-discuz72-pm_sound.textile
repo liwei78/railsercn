@@ -1,0 +1,56 @@
+---
+layout: post
+title: 令人反感的discuz7.2论坛无提示音解决办法
+post_id: 648
+categories: ["discuz", "others", "php"]
+---
+
+{% include JB/setup %}
+
+---
+
+最近的一个网站单子里，需要给客户用discuz7.2实现一个会员功能，dz是大品牌，何况康盛又被腾讯收购，质量应该可靠。所以反复衡量，dz成为首选了。（跟DZ和康盛的系列产品源渊太多了。）
+
+客户提出的问题还算顺利的一一解决，客户最后提出一个要求，要对最新的消息有一个提示。这个实现很简单，给客户讲解了如何设定声音，可是问题来了，我这里怎么都听不到声音，客户那里也是如此。
+
+怎么会这样，开始我以为是我浏览器的问题，但是几个浏览器测试都无声，这个是绝对不应该的。代码是官网下载的discuz7.2 utf8。什么情况？怎么办？
+
+网上查了一下竟然很多人反馈了这个问题，可是没有几个提出解决办法的，有两篇的解决办法尝试了一下，没有解决问题。难道是我的特例？？
+
+外包方式开发最可怕的是耽误进度和过多的向客户解释，为客户选择的产品，如果质量不过关，影响的绝对就是制作方的信誉。
+
+现在问题来了，如何解决。
+
+解决办法：
+
+1、先参考官方提供的一个解决办法，仅做参考，因为它也没解决问题。所以我真不知道官方的维护是干什么吃的。
+
+http://www.discuz.net/forum.php?mod=viewthread&tid=1523437&page=7#pid12811924
+
+2、因为mp3,wav等格式均无效，我让合作的美工把声音文件转成了swf，可以在这里下载。
+
+<a href="http://railser.cn/wp-content/uploads/pm_sound.zip" target="_blank">下载论坛提示音swf格式</a>
+
+3、按照上面那篇提示文章，修改一下对应的文件，引用改成swf，并且简化swf的文件引用，因为那个player已经无用了，直接引用swf声音即可。下面是代码，希望能帮助一些朋友。
+
+templates/default/memcp_profile.htm 499行
+
+$('soundplayerlayer').innerHTML = AC_FL_RunContent('id', 'pmsoundplayer', 'name', 'pmsoundplayer', 'width', '0', 'height', '0', 'src', '{$boardurl}images/sound/pm_'+file+'.swf', 'menu', 'false',  'allowScriptAccess', 'sameDomain', 'swLiveConnect', 'true');							}
+
+templates/default/pm_checknew.htm 可以不改动，因为在我的方案里它已经没用了，如果有尝试的朋友，可以对应替换这段代码
+
+<pre>
+<script type="text/javascript" reload="1">$('pmsound').innerHTML = AC_FL_RunContent('id', 'pmsoundplayer', 'name', 'pmsoundplayer', 'width', '0', 'height', '0', 'src', '{$boardurl}images/sound/pm_$pmsound.swf',  'menu', 'false',  'allowScriptAccess', 'sameDomain', 'swLiveConnect', 'true');</script>
+</pre>
+两段代码的含义是一样的，都是直接引用swf声音文件。
+
+<span style="color: #ff0000;">templates/default/header.htm 在40行位置，增加</span>
+
+<span style="color: #0000ff;"><span id="pmsound"></span></span> <!--{if $prompt}--><script type="text/javascript" reload="1">$('pmsound').innerHTML = AC_FL_RunContent('id', 'pmsoundplayer', 'name', 'pmsoundplayer', 'width', '0', 'height', '0', 'src', '{$boardurl}images/sound/pm_$pmsound.swf',  'menu', 'false',  'allowScriptAccess', 'sameDomain', 'swLiveConnect', 'true');</script><!--{/if}-->
+
+<span style="color: #ff0000;">此段是解决问题的关键，注意蓝色的部分，论坛代码里是缺失这个的，经检查，pm_checknew里的执行结果被插入到id="append_parent"的一个 div中，而且，里面的<span style="color: #0000ff;"><!--{if $s}-->是无效的</span>。</span>
+
+4、到后台更新缓存，重新测试，声音提示成功。
+
+从发现问题到解决问题经历了几天的时间，这里问题解决不了，终究不能卡住不前的。所以选择好的产品，使用正确的方法，实在太关键。康盛将太多的心思用到了一些花哨的功能上，代码质量一直未见提高，产品硬伤内伤依旧，一个画皮一样的产品，只能靠忽悠来支撑了。
+

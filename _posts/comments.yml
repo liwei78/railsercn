@@ -1,0 +1,767 @@
+--- !ruby/object:Comment
+post_id: '25'
+post_title: 加入Railser.cn
+author_name: 李飞雄
+author_email: lfx_cool@yahoo.com.cn
+author_url: ''
+content: 厉害！
+created_at: 2009-07-16 16:52:53.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '25'
+post_title: 加入Railser.cn
+author_name: wealk
+author_email: zhaopeng.rainbow@gmail.com
+author_url: http://www.wealk.com
+content: ! '你好，我们是一个创业团队，想和您一起合作一个移动互联的sns网站。看好您的性格和技术。
+
+  如果您有兴趣的话，联系我的邮箱。'
+created_at: 2010-08-13 22:42:00.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '25'
+post_title: 加入Railser.cn
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: 好的。谢谢。这几天太忙了，今天把博客转移到新服务器，才发现这个邀请。邮件联系。
+created_at: 2010-08-23 11:23:58.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '25'
+post_title: 加入Railser.cn
+author_name: mike
+author_email: mike.gao0611@gmail.com
+author_url: http://mike-gao.javaeye.com/
+content: 没有baidu空间。只有个借用的blog，自己的blog还没搞
+created_at: 2011-01-04 17:55:08.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '42'
+post_title: RJS教程
+author_name: 谷健
+author_email: haoweiren1234@hotmail.com
+author_url: http://www.javaren.net
+content: 您写的第一章的第一个例子有点问题，就是应是
+created_at: 2009-03-08 11:04:43.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '42'
+post_title: RJS教程
+author_name: 小寒
+author_email: hst13624584500@163.com
+author_url: ''
+content: 值得尊敬的IT高手，希望你能大展鸿图
+created_at: 2009-09-27 17:53:13.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '42'
+post_title: RJS教程
+author_name: kukuwuwu
+author_email: kukuwuwu@sina.com
+author_url: ''
+content: 经常看您的网站，刚才看了您个人的介绍，对您有了更多的了解，有些感动，加油！我支持您！
+created_at: 2009-12-09 11:04:05.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '13'
+post_title: Flex与Rails的性感结合
+author_name: Nshen
+author_email: nshen121@gmail.com
+author_url: http://www.nshen.net
+content: ! '可以从这里下载这本书，不用买了：）
+
+  http://www.riabook.cn/en_book/flexible_rails_flex3_on_rails2.htm'
+created_at: 2008-01-15 22:35:42.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '21'
+post_title: 在Flex和Rails上实现发布/订阅的消息通信
+author_name: lg2046
+author_email: lg2046@gmail.com
+author_url: ''
+content: ! '为什么FLASH是在3000端口加载的,而按道理它是不能从66133端口加载数据的.
+
+
+  这个问题你以前没有遇到吗?'
+created_at: 2009-04-11 23:32:13.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '21'
+post_title: 在Flex和Rails上实现发布/订阅的消息通信
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: sorry,请google吧。也欢迎将经验发表在这里
+created_at: 2009-04-12 21:26:37.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '23'
+post_title: 关注:Rails上的Opensocial实现
+author_name: julian
+author_email: julian_wind@163.com
+author_url: ''
+content: 看了你的文章,很有启发性,谢谢你,希望你能给我们更多更好的文章,给我们更大的帮助!
+created_at: 2007-12-27 09:37:22.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '29'
+post_title: acts_as_attachment和attachment_fu插件应用
+author_name: 里克
+author_email: liwei@in.com
+author_url: ''
+content: 非常抱歉，忘了完善这篇文章，发现在百度查 attachment_fu 参数 竟然排在第一篇，哎，稍后补上
+created_at: 2008-12-17 21:19:02.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '33'
+post_title: “Twitterverse Awarded Mashup of the Day”
+author_name: daisy
+author_email: beendaisy@gmail.com
+author_url: ''
+content: 博主,为什么说它是朱德庸式的网站呢?:)
+created_at: 2008-04-21 20:03:18.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '33'
+post_title: “Twitterverse Awarded Mashup of the Day”
+author_name: 里克
+author_email: guxing203@gmail.com
+author_url: http://railser.cn
+content: 因为很有意思啊，就突然想起了朱德庸
+created_at: 2008-04-23 09:44:00.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '43'
+post_title: IM集成开发补充
+author_name: 里克
+author_email: guxing203@gmail.com
+author_url: http://railser.cn
+content: 还有人4K要做一个土豆呢，这是我这比较经典的笑话
+created_at: 2008-04-30 15:05:13.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '43'
+post_title: IM集成开发补充
+author_name: magicgod
+author_email: magicgod@gmail.com
+author_url: ''
+content: 投资两万的实在是太少了吧
+created_at: 2008-04-27 18:04:34.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '46'
+post_title: 我很忙
+author_name: aotianlong
+author_email: aotianlong@gmail.com
+author_url: ''
+content: 2000这么便宜阿？
+created_at: 2008-05-10 10:10:33.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '46'
+post_title: 我很忙
+author_name: hadi
+author_email: hadi_lu@yahoo.com
+author_url: ''
+content: cygwin 可以选择包安装的，常用的加一起就百八十兆，或者用http://code.google.com/p/msysgit/ ，比较难搞的是在
+  cmd 中显示 utf-8，http://www.okisoft.co.jp/esc/utf8-cygwin/
+created_at: 2008-04-28 11:57:47.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '51'
+post_title: SQL Hacks：100个业界最尖端的技巧和工具
+author_name: 里克的自习室 &raquo; Blog Archive &raquo; EZAdmin，一个简易的asp企业站管理后台
+author_email: ''
+author_url: http://railser.cn/index.php/blog/ezadmin
+content: ! '[gem] SQL Hacks：100个业界最尖端的技巧和工具 [gem]'
+created_at: 2008-08-31 07:45:37.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '53'
+post_title: Git：中文教程及资料整理
+author_name: bugx
+author_email: halflifexp@gmail.com
+author_url: ''
+content: ! 'GIT是不错，可以试试国内提供git服务的平台，文档好像少了点，需要自己会用
+
+  http://www.githost.cn'
+created_at: 2008-09-15 12:24:36.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '54'
+post_title: EZAdmin，一个简易的asp企业站管理后台
+author_name: yimeng
+author_email: dongyimeng@gmail.com
+author_url: http://www.china-visa.cc
+content: good
+created_at: 2008-09-19 22:51:20.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '54'
+post_title: EZAdmin，一个简易的asp企业站管理后台
+author_name: 小毛
+author_email: 242676008@qq.com
+author_url: ''
+content: ! '有过弄和你一样东西的想法。不过是PHP的。想在天使文章系统的基础上改。
+
+  收藏了。。碰到要用ASP的就用你的。。'
+created_at: 2009-04-08 15:43:37.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '54'
+post_title: EZAdmin，一个简易的asp企业站管理后台
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: 一定要改成自己的，我那个有问题，都没办法出一个合适所有站的版本。也可能是我没想好，再说asp的东西再也不想弄
+created_at: 2009-04-12 21:26:04.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '56'
+post_title: 1.1 什么是元编程？
+author_name: 贺晋
+author_email: hejin1026@gmail.com
+author_url: ''
+content: 请问你帖的书是什么书，有没下载地址？
+created_at: 2009-05-05 10:37:13.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '56'
+post_title: 1.1 什么是元编程？
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: 好像是一些文章的简要翻译，整理出来的。一个朋友写的，被我拿来帖了。
+created_at: 2009-05-06 10:20:56.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '317'
+post_title: 带着restful_authentication运行rspec时，貌似cookies无效的问题
+author_name: 游客
+author_email: 123@123.com
+author_url: ''
+content: 你得搞清楚 rails 的各个文件目录加载顺序
+created_at: 2008-11-30 08:07:32.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '345'
+post_title: Rails Rdoc笔记：respond_to
+author_name: CFC
+author_email: zusocfc@gmail.com
+author_url: http://zusocfc.pixnet.net/blog
+content: ! '自動加減似乎沒法做到
+
+  只能用:
+
+  increment!, decrement!, update_counter
+
+  來做了'
+created_at: 2009-01-23 21:42:39.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '354'
+post_title: 貌似php父路径问题引发的问题
+author_name: asda
+author_email: adfdffsd@163.com
+author_url: ''
+content: 看了最好一句话，让我不知道你是男的还是女的！……
+created_at: 2009-03-05 16:31:32.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '370'
+post_title: sns网站ui框架概念图
+author_name: shinehao
+author_email: shinehao@126.com
+author_url: ''
+content: 这个是原型，不是概念图吧，概念图是一个滤思路的图形，是在用户调研、需求分析之后，信息架构之前的阶段。
+created_at: 2009-08-19 17:20:06.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '370'
+post_title: sns网站ui框架概念图
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: 谢谢指出
+created_at: 2009-09-17 14:45:39.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '395'
+post_title: sns网站开发经验总结：中国省份城市插件（一）
+author_name: Allen
+author_email: gaoming@acmr.com.cn
+author_url: ''
+content: 您这边现在接SNS的开发吗
+created_at: 2011-05-05 14:04:35.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '395'
+post_title: sns网站开发经验总结：中国省份城市插件（一）
+author_name: 里克
+author_email: hi@liwei.me
+author_url: http://railser.cn
+content: 可以啊
+created_at: 2011-05-19 19:41:07.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '418'
+post_title: 在Rails中使用批量插入和直接运行sql语句
+author_name: bitiliu
+author_email: liu@g.com
+author_url: ''
+content: ! "不用这么麻烦:\n# Create an Array of new objects\n  User.create([{ :first_name
+  =&gt; 'Jamie' }, { :first_name =&gt; 'Jeremy' }])"
+created_at: 2010-10-19 15:27:21.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '422'
+post_title: 生命之光网络工作室网站上线了！
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: 已经安排了一个外教，辅导学员学习英语了。感谢大家的关注
+created_at: 2009-10-10 15:23:25.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '432'
+post_title: 我们最近的很好，也很忙
+author_name: devon
+author_email: devon@copeng.com
+author_url: ''
+content: 加油，祝你们在2010年做得更好
+created_at: 2009-12-08 21:11:53.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '432'
+post_title: 我们最近的很好，也很忙
+author_name: shuguo
+author_email: lishugo@gmail.com
+author_url: http://www.shuguo.org
+content: ! 'Great job.
+
+  通过搜索引擎过来的，看了你的介绍。太佩服了。
+
+  我以前也在长春上学，希望你的工作室越来越好！'
+created_at: 2009-12-18 22:24:49.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '432'
+post_title: 我们最近的很好，也很忙
+author_name: zeroath
+author_email: zshuaibin@gmail.com
+author_url: ''
+content: 看你的博客学到了不少知识。加油～～
+created_at: 2009-12-23 17:22:34.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '432'
+post_title: 我们最近的很好，也很忙
+author_name: 可乐加糖
+author_email: black.angel.liu@gmail.com
+author_url: http://www.qcoke.com
+content: 看样子最近会比较忙..呵呵,小站点是有点烦人.
+created_at: 2010-01-28 15:55:56.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '432'
+post_title: 我们最近的很好，也很忙
+author_name: 董一萌
+author_email: dongyimeng@gmail.com
+author_url: http://www.yunchuanbo.com
+content: 顶啊，兄弟，加油！！！
+created_at: 2010-03-03 13:27:49.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '440'
+post_title: 我开始mac啦！！
+author_name: xuanyan
+author_email: xuanyan1983@gmail.com
+author_url: ''
+content: mini 是内建mic的吧~
+created_at: 2010-05-02 11:33:39.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '440'
+post_title: 我开始mac啦！！
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: 没有。。mac本本是内置的。mini没有
+created_at: 2010-05-02 13:14:08.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '447'
+post_title: mac mini到底有多mini？？
+author_name: 升级09款mac mini笔记 at 里克的自习室 - Rails学习与开发笔记
+author_email: ''
+author_url: http://railser.cn/blog/update-09-mac-mini
+content: ! '[gem] 这还是mini到手时候的得瑟贴。 [gem]'
+created_at: 2012-10-27 12:27:18.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '451'
+post_title: mac使用普通键盘的几个快捷键
+author_name: colder
+author_email: cncolder@gmail.com
+author_url: http://vitarn.com
+content: ! 'command+w   关闭标签
+
+  command+q   退出程序
+
+  使用XCode开发程序的时候好多菜单项连同快捷键一起规定好了的, 所以mac上的软件快捷键比较统一.
+
+
+  control+space   Spotlight
+
+  这个可比win7的搜索强大得多呢. 基本上我打开应用程序都是通过它.
+
+
+  control+command+d   屏幕取词翻译
+
+  不必事先打开字典, 不过这要求你得先往系统内置的字典里多导入几个词典才行.
+
+
+  好玩的快捷键还有很多.'
+created_at: 2010-05-01 18:54:39.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '451'
+post_title: mac使用普通键盘的几个快捷键
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: ! 'http://support.apple.com/kb/HT1343?viewlocale=zh_CN&locale=zh_CN
+
+
+  很全了。。。呼。。'
+created_at: 2010-05-04 19:33:35.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '451'
+post_title: mac使用普通键盘的几个快捷键
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: mac chrome上的快捷键：http://www.google.com/support/chrome/bin/answer.py?hl=zh-CN&answer=95743&ctx=tip
+created_at: 2010-05-06 14:27:49.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '457'
+post_title: 在mac上配制Rails开发环境
+author_name: colder
+author_email: cncolder@gmail.com
+author_url: ''
+content: ! '只有那个最高配的mac mini才是预装server版
+
+  server版的光盘零售也要3999 安装带序列号的那种.
+
+
+  雪豹个人版的话, apache是有的, mysql没有.
+
+
+  还有, 我不喜欢MacPort, 它是个独立于系统的, 不管你系统里已经有多少, 它只管全新安装, 所以安装过程是挺抓狂的.'
+created_at: 2010-05-02 15:52:15.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '457'
+post_title: 在mac上配制Rails开发环境
+author_name: Hozaka
+author_email: hozaka@gmail.com
+author_url: http://hozaka.com/
+content: MacPorts 可以用 Homebrew 来代替，好很多
+created_at: 2010-05-03 21:06:36.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '457'
+post_title: 在mac上配制Rails开发环境
+author_name: fire9
+author_email: fire9@me.com
+author_url: http://lazynotes.net
+content: mac
+created_at: 2010-08-12 23:45:38.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '457'
+post_title: 在mac上配制Rails开发环境
+author_name: fire9
+author_email: fire9@me.com
+author_url: http://lazynotes.net
+content: macosX+TestMate应该算是开发ror的最好环境了。Homebrew的确比MacPorts好太多了。
+created_at: 2010-08-12 23:47:10.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '457'
+post_title: 在mac上配制Rails开发环境
+author_name: 里克
+author_email: hi@liwei.me
+author_url: http://railser.cn
+content: 今天调试出错了，mysql2.7安装不上，换个方法把。http://www.tmtm.org/en/mysql/ruby/ 的配置整好适合当前环境。安装完可以链接mysql，但是gem
+  list没有该gem提示。。。
+created_at: 2011-06-20 08:42:43.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '462'
+post_title: 磁疗产品网站开发，php转到rails上，值吗？
+author_name: rubyu2
+author_email: zhangyaning1985@gmail.com
+author_url: ''
+content: 绝对的，不能戒烟。
+created_at: 2010-07-16 17:29:58.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '464'
+post_title: hash.invert的用法
+author_name: lxyluu
+author_email: lxyluu@126.com
+author_url: ''
+content: ! "model:\n def purchase_status_view\n end\nview:\nuser.contact_status_view
+  \ \n确定方法名字没拼错还是gem."
+created_at: 2010-08-11 17:16:27.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '464'
+post_title: hash.invert的用法
+author_name: 里克
+author_email: liwei@in.com
+author_url: http://railser.cn
+content: 是写错了。还好意思没错，呵呵。
+created_at: 2010-08-23 11:24:37.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '478'
+post_title: 打开新表单，并弹出thickbox提示框
+author_name: 里克
+author_email: liwei@echangchun.net
+author_url: http://railser.cn
+content: ! '哦，参考的这里，经常打不开，所以转过来了。
+
+  http://hobione.wordpress.com/2007/12/28/jquery-thickbox/'
+created_at: 2010-09-27 17:40:23.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '489'
+post_title: Rails 中的try方法
+author_name: javy_liu
+author_email: javy_liu@163.com
+author_url: http://hi.baidu.com/beyond_javy
+content: ! "呵呵，以前一直用 &amp;&amp; 来得到\n如：user &amp;&amp; user.name\ntry 更简单\n不知是否支持以下写法\n如以下模型：\nclass
+  User\n   has_one :profile\nend\n\nuser.try(:profile).try(:nickname)"
+created_at: 2010-10-11 10:11:48.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '489'
+post_title: Rails 中的try方法
+author_name: 里克
+author_email: liwei@echangchun.net
+author_url: http://railser.cn
+content: ! '可以的。我用这段代码试了一下。
+
+
+  &gt;&gt; post = Post.first
+
+  =&gt; #gem.(can''t display the code)
+
+  &gt;&gt; post.comment
+
+  =&gt; nil
+
+  &gt;&gt; post.try(:comment).try(:wahaha)
+
+  =&gt; nil
+
+
+  呵呵。的确很省事。'
+created_at: 2010-10-11 10:35:50.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '489'
+post_title: Rails 中的try方法
+author_name: 里克
+author_email: liwei@echangchun.net
+author_url: http://railser.cn
+content: ! 'http://guides.rubyonrails.org/active_support_core_extensions.html
+
+
+  2.4 try 里介绍了一下'
+created_at: 2010-10-11 10:39:57.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '496'
+post_title: 使用find_each提升批量发送效率
+author_name: javy_liu
+author_email: javy_liu@163.com
+author_url: http://hi.baidu.com/beyond_javy
+content: find_in_batches 这个方法也不错
+created_at: 2010-10-11 10:30:45.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '496'
+post_title: 使用find_each提升批量发送效率
+author_name: 里克
+author_email: hi@liwei.me
+author_url: http://railser.cn
+content: 遗憾的是我的项目还停留在2.1.2，哎。。
+created_at: 2010-10-20 14:59:12.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '561'
+post_title: 糟糕之极的豆瓣电台ui设计
+author_name: '2013'
+author_email: wjp2013@gmail.com
+author_url: ''
+content: ! 'http://blog.rollingcode.org/2010/06/20/fanradio-1/
+
+  祝你风火轮'
+created_at: 2010-12-16 19:41:27.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '561'
+post_title: 糟糕之极的豆瓣电台ui设计
+author_name: '2013'
+author_email: wjp2013@gmail.com
+author_url: ''
+content: ! "当然更可以当作 widget 了 \nhttp://cl.ly/1I0A2H2G2l2q1W1r133t\n\n要学会使用系统功能哦～"
+created_at: 2010-12-16 19:49:32.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '561'
+post_title: 糟糕之极的豆瓣电台ui设计
+author_name: 心吾
+author_email: kkxlkkxllb@gmail.com
+author_url: http://heartme.heroku.com
+content: 哈哈，豆瓣我不怎么玩的，这个设计确实很shit,不过我觉得ui设计真的很有挑战性
+created_at: 2010-12-25 21:08:46.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '561'
+post_title: 糟糕之极的豆瓣电台ui设计
+author_name: 里克
+author_email: hi@liwei.me
+author_url: http://railser.cn
+content: 简单的总结一下我对豆瓣电台UI的观点：1、欧美MHz 按钮是个暂停按钮，这个设计很狗shi。2、A区的类似电压表的图标是换台功能，依旧很狗shi。
+created_at: 2010-12-30 12:42:24.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '561'
+post_title: 糟糕之极的豆瓣电台ui设计
+author_name: 李伟
+author_email: hi@liwei.me
+author_url: http://liwei.me
+content: 我真的无语了，豆瓣电台的换台按钮竟然改成了一个“刷新中”的样子，我一下子真不知道它是干嘛的。。
+created_at: 2011-03-31 11:39:19.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '561'
+post_title: 糟糕之极的豆瓣电台ui设计
+author_name: Sean
+author_email: zfool2@qq.com
+author_url: ''
+content: 很明显那个设UI的是学艺术的而非学设计的。那么隐晦的公共设计是想被炒鱿鱼的艺术表达嘛。
+created_at: 2011-09-26 23:15:03.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '605'
+post_title: hello, rails3.1 pre 第二部分
+author_name: 里克
+author_email: hi@liwei.me
+author_url: http://railser.cn
+content: haml为什么没做为默认的模版引擎呢？？
+created_at: 2011-05-22 15:14:27.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '663'
+post_title: 走铁轨的人
+author_name: 里克
+author_email: hi@liwei.me
+author_url: http://railser.cn
+content: 写的很水，从现在开始，感悟写作，学习文字的力量。
+created_at: 2012-06-04 15:05:40.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '663'
+post_title: 走铁轨的人
+author_name: mobiwolf
+author_email: mobiwolf@sina.com
+author_url: ''
+content: ! '1、找不到代码合作者，2、和美工严重脱节，在没有一个明确的项目经理的情况下，效率很低，3、维护期很难进行功能外包，维护的费用低，而占用的时间长，如果以外包为生，就是无穷尽的修改。
+
+
+  呵呵，不论哪个语言，想找到合适的合作者都挺难的，技术合作rails应该还没有那么难 。啥项目没有明确的项目经理，都很可怕，项目管理的目的是解决除代码之外的所有事情来保证项目推进，一个人既写代码又管理，肯定会有问题。后期维护难，我觉得是架构设计的问题，分离的更彻底一点。
+
+
+  其实任何外包都不好做，如果可以选择，那么不要做外包，想办法做产品。这样才是合适的，如果实在没产品，那么外包也是出路。'
+created_at: 2012-06-10 16:38:27.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '663'
+post_title: 走铁轨的人
+author_name: vincent
+author_email: tongwensong@gmail.com
+author_url: http://www.reai.us
+content: 我觉得应该不是rails的问题吧，我用rails不久，但是觉得部署起来还是很快的，使用也方便，开发也简单。加上ruby的特性，感觉很好。
+created_at: 2012-07-19 10:53:26.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '678'
+post_title: cms系列一：东风夜放花千树
+author_name: mobiwolf
+author_email: mobiwolf@sina.com
+author_url: ''
+content: ! '哈哈，学习了。
+
+
+  不错，锁定企业级的CMS。
+
+
+  期待下一篇文字'
+created_at: 2012-06-10 16:22:05.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '692'
+post_title: cms系列二：塞下秋来风景异
+author_name: mobiwolf
+author_email: mobiwolf@sina.com
+author_url: ''
+content: ! '嗯， 不错哈。
+
+
+  文字很优雅'
+created_at: 2012-06-11 14:30:19.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '722'
+post_title: cms系列四：输赢成败，又争由人算
+author_name: mobiwolf
+author_email: mobiwolf@sina.com
+author_url: ''
+content: 哈哈，拜读！
+created_at: 2012-06-14 20:56:38.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '722'
+post_title: cms系列四：输赢成败，又争由人算
+author_name: cms系列五：一饮东坡醒复醉 at 里克的自习室 - Rails学习与开发笔记
+author_email: ''
+author_url: http://railser.cn/blog/cms-part-v
+content: ! '[gem] cms系列四：输赢成败，又争由人算 [gem]'
+created_at: 2012-06-14 23:45:47.000000000 +08:00
+
+--- !ruby/object:Comment
+post_id: '734'
+post_title: cms系列五：一饮东坡醒复醉
+author_name: mobiwolf
+author_email: mobiwolf@sina.com
+author_url: ''
+content: ! '质量不错，继续加油。
+
+
+  你也可以考虑将CMS开源出来，逐渐的发展社区机会。
+
+
+  让更多的人帮助你来完善，你就可以不断的汲取经验，然后做的更好。
+
+
+  而且框架和业务分离，对你的业务影响也不大。'
+created_at: 2012-06-15 10:10:09.000000000 +08:00
+

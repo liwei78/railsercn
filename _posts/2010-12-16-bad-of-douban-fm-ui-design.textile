@@ -1,0 +1,30 @@
+---
+layout: post
+title: 糟糕之极的豆瓣电台ui设计
+post_id: 561
+categories: ["default"]
+---
+
+{% include JB/setup %}
+
+---
+
+我再也忍受不了豆瓣电台的ui设计了，这是一个极其糟糕的设计和用户体验。我刚才又忘记哪个是暂停功能了。（这是一个新功能，之前只能是无奈的关闭播放功能）
+
+有图有真相：
+
+<a href="http://railser.cn/wp-content/uploads/bad.jpg"><img class="alignleft size-full wp-image-562" title="bad" src="http://railser.cn/wp-content/uploads/bad.jpg" alt="" width="417" height="271" /></a>
+
+A：“换台”，功能。
+
+B：暂停功能。
+
+这种隐藏功能是需要你鼠标放上去看文字提示才会懂的东西，居然还放错了位置。当我想切换电台的时候，会去找一个抽象的图标，还是直接点击“欧美”来换台呢？我的下意识当然告诉我要点最直接的，这难道不正是dont make me think 的事情吗？可是，豆瓣电台的实事不会这样，真有点像和我儿子玩点头不算摇头算的游戏。
+
+之后，B竟然是暂停，然后再点一下，才能恢复。如图：
+
+<a href="http://railser.cn/wp-content/uploads/pause.png"><img class="alignleft size-full wp-image-563" title="pause" src="http://railser.cn/wp-content/uploads/pause.png" alt="" width="415" height="266" /></a>
+
+也就是说：点击“欧美”，可以暂停的狗shi逻辑。
+
+我受不了啦！如果想做的好，就不要给对手留下漏洞，“防守是门艺术”，送上此句。

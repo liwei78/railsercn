@@ -1,0 +1,58 @@
+---
+layout: post
+title: 1.2.5 代码块，方法和过程
+post_id: 164
+categories: ["Advanced Rails", "default"]
+---
+
+{% include JB/setup %}
+
+---
+
+Ruby中的一个强大的特性是有能力将一段代码当作一个对象来处理。这个特性涉及到如下三个类：
+<ul>
+	<li>*Proc*  一个过程（Proc）代表了一个代码块：一段可以在被调用时接收参数并且有返回值的代码。</li>
+	<li>*UnboundMethod*  它类似于一个过程：它代表一个特定类的实例方法（类方法是类对象的实例方法，因此UnboundMethods同样也可以代表类方法）。一个UnboundMethod 能够在其被调用前必须绑定到一个类。</li>
+	<li>*Method*  Method对象是已经通过UnboundMethod#bind方法绑定到一个对象上的UnboundMethod。它也可以通过Object@method方法来得到。</li>
+</ul>
+下面让我们来看看都有哪些途径能够获得Proc和Method对象。我们在例子中使用Fixnum#+方法。我们通常通过二元形式来调用它。
+<pre name="code" class="ruby">
+3 + 5 # => 8
+</pre>
+然而，它也可以被当作Fixnum对象的一个实例方法来调用，就像任意其它实例方法一样：
+<pre name="code" class="ruby">
+3.+(5) # => 8
+</pre>
+我们可以使用Object#method方法来获得一个表示这个实例方法的对象。这个方法将被绑定到方法被调用的那个对象上，在上面的例子中就是3。
+<pre name="code" class="ruby">
+add_3 = 3.method(:+)
+add_3 # => #<Method: Fixnum#+>
+</pre>
+此方法可被转换为一个块，或者可被直接带参数调用：
+<pre name="code" class="ruby">
+add_3.to_proc # => #<Proc:0x00024b08@-:6>
+add_3.call(5) # => 8
+# Method#[] is a handy synonym for Method#call.
+add_3[5] # => 8
+</pre>
+有两种途径获得非绑定方法。可以在类对象上调用instance_method：
+<pre name="code" class="ruby">
+add_unbound = Fixnum.instance_method(:+)
+add_unbound # => #<UnboundMethod: Fixnum#+>
+</pre>
+我们同样可以解绑定一个已经被绑定的对象的方法：
+<pre name="code" class="ruby">
+add_unbound == 3.method(:+).unbind # => true
+add_unbound.bind(3).call(5) # => 8
+</pre>
+也可以绑定UnboundMethod到任何同类的其它对象。
+<pre name="code" class="ruby">
+add_unbound.bind(15)[4] # => 19
+</pre>
+但是，目标绑定对象必须是一个同类的实例，否则会得到一个TypeError错误：
+<pre name="code" class="ruby">
+add_unbound.bind(1.5)[4] # =>
+# ~> -:16:in `bind': bind argument must be an instance of Fixnum (TypeError)
+# ~>     from -:16
+</pre>
+得到这个错误是因为+被定义在了Fixnum类上；因此，获得到的UnboundMethod对象必须绑定到一个Fixnum对象（通过kind_of?方法来检验）。假如+ 方法在Numeric(Fixnum和Float都继承自它)上有定义，前述代码应该返回5.5。

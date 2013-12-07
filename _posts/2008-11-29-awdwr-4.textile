@@ -1,0 +1,28 @@
+---
+layout: post
+title: 重读AWDWR笔记
+post_id: 329
+categories: ["AWDWR", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+*加载路径*
+标准的环境配置回自动将下列目录纳入应用程序的加载路径。
+<ul>
+	<li>test/mocks/environment 由于该目录位于加载路径的第一位，在这里定义的类回自动覆盖真正的实现类，这样你就可以在测试阶段使用这些替代品。</li>
+	<li>app/controllers 目录及其子目录。</li>
+	<li>app/models 和 components 目录下所有以下划线或者小写字母开头的目录。</li>
+	<li>app, app/models, app/controllers, app/helps, app/services, app/apis, components, config, lib 以及 vendor 目录</li>
+	<li>检查 vendor/rails 目录，如果存在就从这里加载 Rails 库。</li>
+</ul>
+*命名约定*
+<ul>
+	<li>变量名全部小写，单词之间以下划线分割。</li>
+	<li>类和模块的名称没有下划线，短语中每个单词的首字母大写。</li>
+	<li>表应该像变量一样，采用小写字母，并且是复数形式。</li>
+	<li>文件名全部小写，以下划线分割。</li>
+	<li>controller 用名词，action 用动词。当你创建了一个 action 的名字是 动词_名词 这样的格式，那么有必要再创建一个新的controller了 。</li>
+</ul>

@@ -1,0 +1,60 @@
+---
+layout: post
+title: 惊艳：adobe’s thermo视频演示
+post_id: 20
+categories: ["adobe", "thermo"]
+---
+
+{% include JB/setup %}
+
+---
+
+<pre>
+第一部分：
+<object height="355" width="425">
+<param name="movie" value="http://www.youtube.com/v/lGdr3dCmxe4&rel=1"></param>
+<param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/lGdr3dCmxe4&rel=1" type="application/x-shockwave-flash" wmode="transparent" height="355" width="425"></embed></object>
+第二部分：
+<object height="355" width="425">
+<param name="movie" value="http://www.youtube.com/v/d9IjZJ0D_bo&rel=1"></param>
+<param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/d9IjZJ0D_bo&rel=1" type="application/x-shockwave-flash" wmode="transparent" height="355" width="425"></embed></object>
+第三部分：
+<object height="355" width="425">
+<param name="movie" value="http://www.youtube.com/v/lsfOe_MCEbg&rel=1"></param>
+<param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/lsfOe_MCEbg&rel=1" type="application/x-shockwave-flash" wmode="transparent" height="355" width="425"></embed></object>
+</pre>
+
+Thermo:创建RIA的工具，可以让你的工艺图(artwork )通过点击鼠标转换成可工作组件(working components)。看完整个介绍，只能说：太帅了。
+
+<a href="http://railser.cn/wp-content/uploads/2007/10/thermomain.png" title="thermo"><img src="http://railser.cn/wp-content/uploads/2007/10/thermomain.png" alt="thermo" /></a>
+上图是时间轴的设计，和flash中做按钮效果很像。用于展示每一张图片。
+
+<a href="http://railser.cn/wp-content/uploads/2007/10/thermoa.png" title="thermoa.png"><img src="http://railser.cn/wp-content/uploads/2007/10/thermoa.png" alt="thermoa.png" /></a>
+上图的出现，立刻赢得了一片掌声。鼠标右键的转换，将原来设计的标签，转成了一个文本输入框。帅！
+
+<a href="http://railser.cn/wp-content/uploads/2007/10/thermob.png" title="thermob.png"><img src="http://railser.cn/wp-content/uploads/2007/10/thermob.png" alt="thermob.png" /></a>
+上图，设计单个展示元素的文字说明
+
+<a href="http://railser.cn/wp-content/uploads/2007/10/thermoc.png" title="thermoc.png"><img src="http://railser.cn/wp-content/uploads/2007/10/thermoc.png" alt="thermoc.png" /></a>
+又是一片掌声，给一个滚动条指定展示内容！
+
+<a href="http://railser.cn/wp-content/uploads/2007/10/thermod.png" title="thermod.png"><img src="http://railser.cn/wp-content/uploads/2007/10/thermod.png" alt="thermod.png" /></a>
+像photoshop一样设计界面。
+
+里克：本文写给一个女人。
+
+相关网站：<a href="http://aralbalkan.com/1050">http://aralbalkan.com/1050</a>
+<pre>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7545275883969710";
+google_ad_width = 336;
+google_ad_height = 280;
+google_ad_format = "336x280_as";
+google_ad_type = "text_image";
+google_ad_channel = "";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</pre>

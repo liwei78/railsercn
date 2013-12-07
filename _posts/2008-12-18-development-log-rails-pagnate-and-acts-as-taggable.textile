@@ -1,0 +1,108 @@
+---
+layout: post
+title: 开发笔记：rails分页和acts_as_taggable插件的应用[重发]
+post_id: 341
+categories: ["acts_as_taggable", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+
+最近一个月在忙于开发项目，所以没有更新博客。不过开发中还是学到不少东西。
+
+对于一个程序员，阅读是相当有帮助的，读别人的博客，读源码，读经验文章 ，即便读别人的开发代码，都是有帮助的。
+
+本次开发的初始，就是在读别人的开发代码，然后一点点找到思路，继续在原有基础上加强功能。由于上一个版本的代码写的相当有水准，所以对自己的开发也提高不少。
+
+本次开发的项目是一个在线视频教学系统。开发中用到了曾经写过的分页代码和一个rails插件：acts_as_taggable。
+
+下面对这两个部分进行总结。
+h3. 一、分页
+
+
+下面的程序在3个项目上使用过。
+models/page.rb
+bq. 
+<pre lang="ruby">class Page
+  attr_accessor :pages #分页连接列表，[]类型
+  attr_accessor :cur #当前页
+end</pre>
+
+helpers/application_helper.rb
+bq. 
+<pre lang="ruby">  def howtopage_links(pagecls=nil) #在页面输出分页连接，pagecls:分页实例
+    if pagecls
+      return pagecls.pages.collect {|t|
+      [if t.to_s == pagecls.cur
+        "<a class="now" href="http://railser.cn/wp-admin/?page=#%7Bt.to_s%7D">"+(t.to_s)+"</a>"
+      else
+        "<a href="http://railser.cn/wp-admin/?page=#%7Bt.to_s%7D">"+(t.to_s)+"</a>"
+      end]
+      }
+    end
+  end</pre>
+
+controllers/application.rb
+bq. 
+<pre lang="ruby">  def howtopage(totalcount=0, per_page=6)
+    cur_page = params[:page] || 1 #直接从页面取得page变量
+    x = (cur_page.to_i - 1) * per_page
+    pagecount = totalcount / per_page
+    if totalcount % per_page != 0
+      pagecount += 1
+    end
+    page = Page.new
+    page.pages = (1..pagecount).collect
+    page.cur = params[:page] || "1"
+    return page, x #page为一个包装的分页类，x为find方法的偏移量
+  end</pre>
+
+在一个notebook_controller.rb中
+bq. 
+<pre lang="ruby">@notes_count = Notebook.count(:conditions=>['user_id = ?', params['user_id']])
+per_page = 6 #每页记录数
+@page, x = howtopage(@notes_count, per_page)
+@notes = Notebook.find(:all, :conditions=>['user_id = ?', params['user_id']],
+ :order=>"id desc", :offset=>x, :limit=>per_page)</pre>
+
+在对应的页面中
+bq. 
+<pre lang="ruby">< %=howtopage_links(@page)%></pre>
+
+这段方法有很多可以改进的地方，但是能用就好。
+不过这个分页绝对算是ruby和rails入门的练习，如果想使用更专业的分页，还是推荐will_paginate插件。可以通过下面的方法安装：
+script/plugin install svn://errtheblog.com/svn/plugins/will_paginate
+介绍页面：<a href="http://errtheblog.com/posts/56-im-paginating-again">http://errtheblog.com/posts/56-im-paginating-again</a>
+
+08年12月19日补充：
+
+这篇博客是去年12月2日写的，一年的时间足够改变世界了。现在这个插件的地址在：http://github.com/mislav/will_paginate/tree/master
+h3. 二、acts_as_taggable
+
+
+虽然标题写的是acts_as_taggable，但是首先要说明，我用的是acts_as_taggable_on_steroids，可以通过下面的方法进行安装：
+ruby script/plugin install
+http://svn.viney.net.nz/things/rails/plugins/acts_as_taggable_on_steroids
+bq. 注意不同之处：
+在<a href="http://www.slashdotdash.net/articles/2006/04/29/acts_as_taggable-per-user-tagging"> acts_as_taggable per user tagging</a>篇提到：also an acts_as_taggable的gem安装和plugin安装结果是不一样的. acts_as_taggable的plugin仅适用与Rails 1.1.
+里克：其实上面写这句话的人是针对不同版本的，仅供参考。
+
+所以，选择哪个tag插件，需要注意下。不同的插件使用的方法是不一样的。DDH的acts_as_taggable<a href="http://taggable.rubyforge.org/">文档</a>是关于那个插件的，它可以通过
+svn co http://dev.rubyonrails.com/svn/rails/plugins/legacy/acts_as_taggable/ acts_as_taggable
+获得。目前看也仅能从这里获得。
+非常详细的适用方法请看<a href="http://agilewebdevelopment.com/plugins/acts_as_taggable_on_steroids">Plugins - Acts As Taggable On Steroids</a>
+h3. 其他Rails插件
+
+
+本部分被转移到 <a href="http://railser.cn/archives/mephistoblog-vender-and-plugins">MephistoBlog使用的插件和第三方代码介绍</a>
+
+参考资料：
+<a href="http://taggable.rubyforge.org/">RDoc</a>
+<a href="http://wiki.rubyonrails.org/rails/pages/Acts+As+Taggable+Plugin">Acts As Taggable Plugin</a>
+<a href="http://wiki.rubyonrails.org/rails/pages/ActsAsTaggablePluginHowto">ActsAsTaggablePluginHowto</a>
+<a href="http://agilewebdevelopment.com/plugins/acts_as_taggable_on_steroids">Plugins - Acts As Taggable On Steroids</a>
+<a href="http://www.slashdotdash.net/articles/2006/04/29/acts_as_taggable-per-user-tagging"> 为每个用户曾加tag功能[acts_as_taggable per user tagging]</a>
+<a href="http://baike.baidu.com/view/15482.htm">ASCII</a>
+<a href="http://rubylib.cn/">Ruby Lib中文站</a>

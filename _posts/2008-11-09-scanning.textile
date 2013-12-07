@@ -1,0 +1,21 @@
+---
+layout: post
+title: TextMate中文教程之扫描
+post_id: 247
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+让我们通过一个例子来了解这个功能。TextMate有完备的发行说明，介绍了不同版本之间的新功能和改变。如果你想了解新特点：
+<ul>
+	<li>选择  Help -> Release Notes，在文字编辑窗口打开一个列表。</li>
+	<li>按 Ctrl ＋S 注意在编辑栏的最下面出现了什么</li>
+	<li>在其中输入 [ n e w ]，注意你每输入一个字符TextMate都会自动帮你匹配搜寻文档中相应的字符</li>
+	<li>按Ctrl＋S 会在文档中搜索下一个相同的单词</li>
+	<li>按Shift＋Ctrl＋S 后退至上一个</li>
+	<li>按回车或者ESC键退出扫描功能</li>
+</ul>
+<a href="http://railser.cn/wp-content/uploads/2008/11/e59bbee78987-2.png"><img class="alignnone size-medium wp-image-296" title="e59bbee78987-2" src="http://railser.cn/wp-content/uploads/2008/11/e59bbee78987-2-300x113.png" alt="" width="300" height="113" /></a>

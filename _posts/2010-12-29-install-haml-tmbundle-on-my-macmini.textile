@@ -1,0 +1,28 @@
+---
+layout: post
+title: 如何安装TextMate的haml.tmbundle
+post_id: 567
+categories: ["TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+网上的文章讲的都是在  ~/Library/"Application Support"/TextMate/Bundles/ 目录下，可我的偏偏不是，难道是。。。？
+
+所以，笔记下我的安装方法：
+
+cd /Applications/TextMate.app/Contents/SharedSupport/Bundles/
+
+安装haml
+
+git clone git://github.com/textmate/ruby-haml.tmbundle.git
+
+安装sass
+
+git clone git://github.com/charlesr/ruby-sass-tmbundle.git "Ruby Sass.tmbundle"
+
+安装scss
+
+git clone git://github.com/kuroir/SCSS.tmbundle.git "SCSS.tmbundle"

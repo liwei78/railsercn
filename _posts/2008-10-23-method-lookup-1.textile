@@ -1,0 +1,161 @@
+---
+layout: post
+title: 1.2.2 方法查找(1)
+post_id: 111
+categories: ["default"]
+---
+
+{% include JB/setup %}
+
+---
+
+Ruby中的方法查找可以让人很困惑，但它却非常有规律。理解复杂情况的最简单方法就是将Ruby在后台创建的数据结构直观化。每个Ruby对象在内存中都有一个域的集合：
+_注：除了立即对象（immediate objects），如Fixnums，symbols，true，false和nil；我们在后面会介绍这些。_
+<ul>
+	<li>*klass* 指向这个对象的类对象的指针。（它是klass而不是class，这是因为后者在Ruby和C++中是保留字；如果叫做class，Ruby将用C编译器而不是用C++编译器编译。这些有意的误拼在Ruby的每个地方都有使用）。</li>
+</ul>
+<ul>
+	<li>*iv_tbl* “实例变量表”，是一个包含了属于此对象实例变量信息的哈希表。</li>
+</ul>
+<ul>
+	<li> *flags* 一个比特组，含有一些状态信息的布尔值，例如对象是否被污染，垃圾收集标记位，以及对象是否被冻结等。</li>
+</ul>
+每个Ruby类或模块不但具有上边的这些域，它们还有另外两个域：
+<ul>
+	<li>*m_tbl* “方法表”,一个包含了类或者模块中的所有实例方法信息的哈希表。</li>
+</ul>
+<ul>
+	<li> *super* 指向此类或者模块的超类的指针。</li>
+</ul>
+这些域在方法查找中扮演重要的角色，理解这些都非常必要。要特别指出的是，你应该密切关注klass与类对象的super指针之间的区别。
+h4. 规则
+
+
+方法查找规则非常简单，但需要知道Ruby数据结构是如何工作的。当一个消息发送到一个对象时，将会有下面的这些步骤依次发生：
+_注：Ruby中通常使用Smalltalk的消息传递术语，当一个方法被调用时，被叫做在发送一个消息，消息接收者是这个消息被发送到的对象。_
+<ol>
+	<li>Ruby 根据接收者的klass 指针指向的对象中搜索m_tbl 中的方法并进行匹配。（klass 指针的目标总是一个类对象）</li>
+	<li>如果没有发现匹配的方法，Ruby将进而根据此类对象的super指针指向的超类m_tbl中继续搜索。</li>
+	<li>Ruby以这种方式处理直到方法被找到或者直到到达了超类链的顶端。</li>
+	<li>如果在此链的所有对象上都未发现有匹配的方法，Ruby在原有方法调用者上调用method_missing 方法。这将重新开始上边的那些处理过程，但这次是查找method_mssing而不是原来的那个方法了。</li>
+</ol>
+这些规则应用的很普遍。所有这些在方法寻找中涉及到的有趣事情（混合，类方法，及自由类）都是因为有了klass和super指针。现在开始将更细致的讨论这个过程。
+h4. 类继承
+
+
+方法寻找过程可能会很让人困惑，所以我们要从简单的开始。下面的代码是Ruby中最简单的类定义：
+<pre name="code" class="ruby">class A
+end</pre>
+这段代码在内存中将生成下面这样的数据结构
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102303.gif"><img src="http://railser.cn/wp-content/uploads/2008/10/2008102303-300x160.gif" alt="" title="2008102303" width="300" height="160" class="alignnone size-medium wp-image-114" /></a>
+上图是单个类的数据结构。双线边的方框表示类对象——它的klass指针指向Class 对象。A的super指针指向的是Object类对象，表示A继承了Object。为了清晰起见，从现在开始我们将在不会引起歧义的地方忽略指向Class，Module及Object的默认klass指针。
+
+其次简单的情况是从一个类进行继承。类的继承简单的遵循了super指针的指向。例如，我们将创建一个继承自类A的类B：
+<pre name="code" class="ruby">class B < A
+end</pre>
+这段代码的最终数据结构如图
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102304.gif"><img src="http://railser.cn/wp-content/uploads/2008/10/2008102304-124x300.gif" alt="" title="2008102304" width="124" height="300" class="alignnone size-medium wp-image-118" /></a>
+super 关键字总是指示出方法查找的链路方向，以下面的代码为例：
+<pre name="code" class="ruby">
+class B
+  def  initialize
+    logger.info “Creating 8 object”
+    super
+  end
+end
+</pre>
+在initialize方法中的super调用将遵循标准的方法查找链，以A#initialize开始。
+h4. 类的实例化
+
+
+现在我们有机会看看方法查找是如何进行的了。首先创建类B的一个实例：
+<pre name="code" class="ruby">
+obj = B.new
+</pre>
+这将创建一个新的对象并且设置其klass指针指向B的类对象（见图）。
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102305.gif"><img src="http://railser.cn/wp-content/uploads/2008/10/2008102305-300x299.gif" alt="" title="2008102305" width="300" height="299" class="alignnone size-medium wp-image-120" /></a>
+在单边方框中的obj表示一个传统意义上（plain-old）的对象实例。需要注意的是图中的每个方框都是一个对象实例。不过双线方框代表的是Class类的实例对象（因此它们的klass指针指向Class对象）。
+
+当发送一个消息到obj时
+<pre name="code" class="ruby">
+obj.to_s
+</pre>
+将遵循下面的这些链路：
+<ol>
+	<li>obj的klass指针将传递到B；在B所拥有的方法（在m_tbl中）中查找匹配的方法。</li>
+	<li>如果在B中没有找到相应的方法，那么将根据B的super指针指向的对象进行搜索，也就是在A中搜索相应的方法。</li>
+	<li>如果在A中仍然没有发现有相应的方法，那么将在A的super指针指向的对象中进行查找，即在Object中进行查找。</li>
+	<li>Object类在其原生代码（rb_any_to_s）中含有to_s方法。它将被调用并且产生一个类似于“#<b:0x1cd3c0>” 的值。rb_any_to_s 方法检查接收者的klass指针以便决定要显示哪个类的名字；因此，虽然被调用的方法存在于Object中但仍然显示为B。</li>
+</ol>
+h4. 模块的引入
+
+
+当我们利用模块进行mixin的时候情况将变得更加复杂。Ruby使用ICLASSes 来处理模块的引入，这是模块的代理。当将一个模块引入到类的时候，一个代表了被引入模块的ICLASS 将被Ruby插到引用此模块的类对象的super链路上。
+
+在下面的模块引入示例中，为了简单起见这里暂时忽略了B的存在。先定义一个模块并将其混入A，这将生成如图1-4的数据结构：
+<pre name="code" class="ruby">
+module Mixin
+  def mixed_method
+    puts "Hello from mixin"
+  end
+end
+class A
+  include Mixin
+end
+</pre>
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102306.gif"><img src="http://railser.cn/wp-content/uploads/2008/10/2008102306-290x300.gif" alt="" title="2008102306" width="290" height="300" class="alignnone size-medium wp-image-122" /></a>
+从这儿开始ICLASS将登堂入室开始发挥起作用。从A指向Object的super链路被一个新的ICLASS阻隔了开来（即图中的虚线方框）。ICLASS是Mixin模块的代理，它包含指向Mixin的iv_tbl（实例变量）和 m_tbl（方法）的指针。
+
+从图上可以很容易的看得出为什么需要代理类；这是因为同样的一个模块可能被任意多个不同的类混合而且这些类可能继承自其它的不同类（这样它们就有了不同的super指针）。将Mixin直接插入到查找链路是不合适的，因为当他被两个拥有不同父类的类混合时其super指针将不得不指向两个不同的物体。
+
+实例化后的A类，其结构如图所示：
+<pre name="code" class="ruby">
+objA = A.new
+</pre>
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102307.gif"><img src="http://railser.cn/wp-content/uploads/2008/10/2008102307-300x202.gif" alt="" title="2008102307" width="300" height="202" class="alignnone size-medium wp-image-123" /></a>
+在objA上调用混合方法mixed_method:
+<pre name="code" class="ruby">
+objA.mixed_method
+#>>Hello from mixin
+</pre>
+将有下面的方法查找过程发生：
+<ol>
+<li>objA的类，即在A专用查找匹配的方法。将不会找到匹配的方法。</li>
+<li>根据A的super指针指向的Mixin的代理ICLASS中进行查找，看看是否有匹配的方法。因为代理的m_tbl与Mixin的m_tbl一模一样，所以mixed_method方法将被查找到并进行调用。</li>
+</ol>
+
+在很多种编程语言中的多重继承都深受菱形难题的困扰，它是指当解析一个对象上的方法调用的时候发现此对象的类拥有一个菱形的继承路径，而这将导致解析过程中出现不二意性，如下图所示。
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102308.gif"><img src="http://railser.cn/wp-content/uploads/2008/10/2008102308-300x280.gif" alt="" title="2008102308" width="300" height="280" class="alignnone size-medium wp-image-129" /></a>
+如图，如果通过类D的一个对象调用定义在类A中的一个方法，而类A中的这个方法被B和C都进行覆盖，这样就产生了歧义，系统不知道到底调用哪个方法了。Ruby是通过线性化引入的顺序来解决这个问题的。当进行方法调用的时候，查找链以线性的方式搜索，当然也包括那些被插入到查找链路中的ICLASS。
+
+首先，Ruby不支持多重继承；然而，多个模块可以被混入到类中或者其他的模块中。因此，A、B、及C必须是模块。可以看出这样就没有歧义发生了，这是因为被选择为调用的方法是最后一个被插入到查找链路的那个：
+<pre name="code" class="ruby">
+module B
+  include A
+  def hello
+    "Hello from B"
+  end
+end
+module C
+  include A
+  def hello
+    "Hello from C"
+  end
+end
+class D
+  include B
+  include C
+end
+D.new.hello # => "Hello from C"
+</pre>
+
+如果将引入的顺序改变一下其输出结果也会相应的改变：
+<pre name="code" class="ruby">
+class D
+  include C
+  include B
+end
+D.new.hello # => "Hello from B"
+</pre>
+在最后的这个示例中，B被最后引入，那么其对象图将与如下图所示的一致（简单起见，指向Object与Class的指针在此被省略了）。
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102309.gif"><img src="http://railser.cn/wp-content/uploads/2008/10/2008102309-300x202.gif" alt="" title="2008102309" width="300" height="202" class="alignnone size-medium wp-image-130" /></a>

@@ -1,0 +1,20 @@
+---
+layout: post
+title: TextMate中文教程之创建项目
+post_id: 90
+categories: ["default"]
+---
+
+{% include JB/setup %}
+
+---
+
+用TextMate创建项目是贼简单的。你可以创建一个空的项目并往里面放你需要的文件。选择File下的New Project (Ctrl+Apple+N)。空白的项目创建之后，有一个很大的提示告诉你如何操作下一步。就像它说的一样，随便把一些文件拖拽到那个边栏里面，他就会成为你项目中的文件并且一直显示在边栏里面了。
+
+你可以用鼠标拖拽的方式操作边栏里面的文件。也可以用边栏下面那个文件夹按钮来创建一个文件夹。按住Apple键并且选择多个文件然后点边栏下面的那个动作菜单里面的Group Selected Files命令，就可以把这些文件搞成一个分组。
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/group-select-files.gif"><img class="alignnone size-medium wp-image-87" title="group-select-files" src="http://railser.cn/wp-content/uploads/2008/10/group-select-files-300x200.gif" alt="" width="300" height="200" /></a>
+
+你可以选择是否显示边栏，快捷键是Ctrl+Option+Apple+D。当你的TextMate窗口靠右侧的时候，边栏会自动出现在左侧，反之亦然。而且它会自动记录你边栏是出现在哪一侧的，下次仍然会出现在那一侧。
+
+最后你可以保存项目了，快捷键是Ctrl+Apple+S

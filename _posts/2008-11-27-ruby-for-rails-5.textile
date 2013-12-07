@@ -1,0 +1,116 @@
+---
+layout: post
+title: ruby for rails 摘录
+post_id: 300
+categories: ["RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+if 关键字
+<pre name="code" class="ruby">
+if condition
+  # code here, executed if condition evaluates to true.
+end
+
+if x > 100 then puts x end
+
+if x > 100; puts x end
+
+if condition
+  # code executed if condition is true.
+else
+  # code executed if conditions is false.
+end
+
+if condition1
+  # code executed if condition1 is true.
+elsif condition2
+  # code executed if condition2 is true.
+elsif condition3
+  # code executed if neither condition1
+  # nor condition2 is true, but condition3 is true.
+end
+
+print "Enter a integer: "
+n = gets.to_i
+if n > 0
+  puts "Your number is positive."
+elsif n < 0
+  puts "Your number is negative."
+else
+  puts "Your number is zero."
+end
+
+puts "Big numbe!" if x > 100
+</pre>
+
+unless
+<pre name="code" class="ruby">
+if not (x == 1)
+if !(x == 1)
+unless x == 1
+</pre>
+
+case 语句以一个表达式开始，然后处理列出得各种可能得匹配。每一个可能的匹配包含在一个 when 表达式中，该表达式由一个或多个可能的匹配和一段代码构成。
+<pre name="code" class="ruby">
+print "Exit the program? (yes or no): "
+answer = gets.chomp
+case answer
+when "yes", "y"
+  puts "Good-bye"
+  exit
+when "no", "n"
+  puts "OK, we'll continue"
+else
+  puts "That's an unknow answer -- assuming you meant 'no'"
+end
+</pre>
+
+用 loop 方法实现无条件循环。loop 方法不带任何参数，但它可以带一个代码块。代码块包含想要循环执行的代码。代码块可以是大括号 {} 或者用关键字 do 和 end 。当然你也可以使用 break 来中断循环。或者使用 next 来跳到下一个循环。
+<pre name="code" class="ruby">
+n = 1
+loop do
+  n = n + 1
+  if unless n == 7
+  break if n > 9
+end
+</pre>
+
+条件循环可以根据 while 和 until 实现。
+<pre name="code" class="ruby">
+n = 1
+while n < 11
+  puts n
+  n = n + 1
+end
+puts "Done!"
+
+n = 1
+begin
+  puts n
+  n = n + 1
+end while n < 11
+puts "Done!"
+
+n = 1
+until n > 10
+  puts n
+  n = n + 1
+end
+
+n = 1
+n = n + 1 until n == 10
+puts "We've reached 10!"
+</pre>
+
+基于值列表的循环
+<pre name="code" class="ruby">
+celsius = [0, 10, 20, 30, 40, 50, 60, 70]
+puts "Celsius\tFahrenheit"
+for c in celsius
+  puts "c\t#{Temperature.c2f(c)}"
+end
+</pre>

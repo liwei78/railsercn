@@ -1,0 +1,65 @@
+---
+layout: post
+title: “Twitterverse Awarded Mashup of the Day”
+post_id: 33
+categories: ["mashup"]
+---
+
+{% include JB/setup %}
+
+---
+
+写在前面：
+
+看标题，包含了本篇的两个意思，一个是要介绍一些网站，一个是要关注Mashup。
+
+对于2.0时代的互联网，时间是很紧迫的，而各种应用，虽然看着很简单，但是很好玩。原因在于，大家还是重视博客了，重视开放api和Mashup了，所以，原来给人做网站的我，被<font color="#ff6600">逼</font>迫的开始<font color="#ff6600">2</font>.0了。
+
+h3. foodbuzz.com
+
+
+<a href="http://railser.cn/archives/sites-twitter-rails-and-mashup/foodbuzzcom/" rel="attachment wp-att-90" title="foodbuzz.com"><img src="http://railser.cn/wp-content/uploads/2008/02/foodbuzz.JPG" alt="foodbuzz.com" border="0" /></a>
+
+foodbuzz.com是一个美食网站，介绍各种食品，餐馆，食谱，还有用户点评功能，加上google地图的使用，使网站比较2.0
+
+不过首先发现这个网站，是因为它是一个Rails网站，在<a href="http://4rails.cn" title="4Rails.cn" target="_blank">4rails.cn</a>上还有它的招聘信息的转载:<a href="http://4rails.cn/jobs/7" target="_blank">Web Developer/Software Engineer (Ruby on Rails)</a>
+
+Link:<a href="http://www.foodbuzz.com/" target="_blank">foodbuzz.com</a>
+h3. mr6.cc
+
+
+<a href="http://mr6.cc/" title="mr6.cc"><img src="http://railser.cn/wp-content/uploads/2008/02/mr6.jpg" alt="mr6.cc" border="0" /></a>
+
+web2.0的核心是传播？从前人们习惯阅读，现在人们习惯分享。
+
+这是一个分享知识的专业网站，从中，“别有用心”的人会发现自己想要的。
+
+Link:<a href="http://mr6.cc/" target="_blank">mr6.cc</a>
+h3. emilychang.com
+
+
+<a href="http://emilychang.com/" title="emilychang"><img src="http://railser.cn/wp-content/uploads/2008/02/chang.jpg" alt="emilychang" border="0" /></a>
+
+又是一个分享个人收藏和资讯的网站，主人一是漂亮，二是专业，网站里可以找到很多新鲜的东西。比如标题提到的那个网站：<a href="http://twitterverse.com">Twitterverse.com </a>。
+bq.  <a href="http://www.twitterverse.com/">Twitterverse</a> is a project by <a href="http://ideacodes.com/">Ideacodes</a>.  While we're fans of <a href="http://twitter.com/">Twitter</a>, we're not officially affiliated with them in any way. We use the data that is made available in Twitter's public timeline. All content is subject to its original copyright as indicated by <a href="http://twitter.com/tos">Twitter's terms of service</a>.
+Link:<a href="http://emilychang.com/" target="_blank">emilychang.com</a>
+h3. zikii.com
+
+
+最后要提的一个网站，名字虽然比ziki多了个i，但是内容完全不一样。这是一个<font color="#ff6600">朱德庸式</font>的网站！
+bq.  没有交易，就没有“商业性”——这是在做工具型网站一定要切记的一条。
+
+怀才就象怀孕,时间长了才能看出来 ^-^
+
+在一个普遍创新水平不高的时候，一个比较认真的抄袭也能产生巨大力量
+
+钱不是问题，问题是没钱
+<a href="http://zikii.com/" title="zikii.com"><img src="http://railser.cn/wp-content/uploads/2008/02/zikii.jpg" alt="zikii.com" border="0" /></a>
+
+另：这是一个Rails网站。
+
+Link:<a href="http://zikii.com/" target="_blank">zikii.com</a>
+
+今天就先到这里吧，给所有来看博客的朋友拜个晚年，祝大家晚年幸福！
+
+里克：2008年2月20日

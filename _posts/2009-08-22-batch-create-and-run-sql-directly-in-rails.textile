@@ -1,0 +1,33 @@
+---
+layout: post
+title: 在Rails中使用批量插入和直接运行sql语句
+post_id: 418
+categories: ["RailsNote", "sql"]
+---
+
+{% include JB/setup %}
+
+---
+
+向所有加星用户发送消息，批量插入的sql
+
+第一步：读取用户id，仅需要id
+uids = User.find(:all, :select=>"users.id")
+
+第二步：生成语句，格式是
+
+INSERT INTO `messages` (`updated_at`, `title`, `body`, `user_id`, `created_at`)
+VALUES('2009-08-20 23:03:04', '来自系统管理员的消息', 'test', 1, '2009-08-20 23:03:04')
+
+values = []
+users.each do |user|
+values << "(NOW(), '来自系统管理员的消息', '#{content}', #{user.user_id}, NOW())"
+end
+
+第三步：执行
+
+ActiveRecord::Base.connection.execute("INSERT INTO `messages` (`updated_at`, `title`, `body`, `user_id`, `created_at`) VALUES #{values.join(',')}")
+
+不过这种写法还是欠妥，如何改进期待大家指点。谢谢
+
+最新作品：<a href="http://www.shiguangzhaoxiang.com" target="_blank">长春时光转机摄影，专业拍摄大型团体合影，集体合影，专业转机旋转360度拍摄</a>

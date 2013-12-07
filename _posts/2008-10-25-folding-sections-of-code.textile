@@ -1,0 +1,22 @@
+---
+layout: post
+title: TextMate中文教程之折叠代码片段
+post_id: 166
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+当你移动光标的时候，折叠代码片段不是必须的技术。但是如果你要在文档中跳过大段不需要的代码，或许他还是有用滴。
+
+当你用TextMate编辑一个它能理解的结构文档的时候，编辑窗口的左侧应该有一个折叠标记栏。使用View -> Gutter -> Foldings确认它已经显示出来。
+
+你可以单击折叠符号来选择展开或者折叠代码。也可以使用F1键来进行这一操作，F1会折叠目前光标所在一行的最接近的可折叠代码。如果你进行了这一操作，TextMate会把该代码片段折叠为一行，后面用省略号结尾。而且编辑窗口左侧的折叠符号也会相应的变化。
+
+如果你需要瞄一眼折叠了哪些代码，只需要把鼠标移动到省略号的位置就可以看到了。如下图。点一下省略号，或者把光标移动到折叠代码的这一行并且按F1，就可以展开代码。
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102501.png"><img class="alignnone size-medium wp-image-189" title="2008102501" src="http://railser.cn/wp-content/uploads/2008/10/2008102501-300x132.png" alt="" width="300" height="132" /></a>
+
+你可以使用View -> Toggle Foldings at Level或者快捷键来完成大部分的折叠和展开功能。根据文档类型，通常建议你用Option+Apple+2或者Option+Apple+3来折叠代码，尤其当你编辑的是Rails Controller的时候，这个快捷键尤其好用。根据文档嵌套层次的不同，你也可以使用其他数字键来配合使用。

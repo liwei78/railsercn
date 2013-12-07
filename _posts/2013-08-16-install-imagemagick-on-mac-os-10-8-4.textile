@@ -1,0 +1,30 @@
+---
+layout: post
+title: 在mac os 10.8.4 上安装 imagemagick
+post_id: 804
+categories: ["imagemagick", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+写在前面：
+
+许久没有用Rails开发项目了，现在回想起来，已经有一年了。好的项目不可期，我们只有耐心的准备着。做程序就像是场耐力赛。
+
+
+我没有想到在10.8.4上安装imagemagick如此的麻烦，因为缺少的 Magick-config 总是无法找到，这个问题在 10.6.2 上是不存在的。当然，在ubuntu和centos上也没遇到过。
+
+在10.6.2上只要安装magick-wand就可以解决，并顺利的安装imagemagick，但是到了10.8.4，就再也找不到合适的magick-wand了。
+
+当然，我已经用了port，我不想让brew再次引起冲突，导致我大范围的重装。那是一场噩梦。
+
+还好，我找到了magick-installer，fork之后修正了一个文件的地址，这次正常的安装成功了。
+
+说起来简单，解决和测试它，竟然用了3个多小时。
+
+地址：https://github.com/liwei78/magick-installer
+
+liwei 2013-8-16
+

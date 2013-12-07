@@ -1,0 +1,36 @@
+---
+layout: post
+title: TextMate中文教程之一次编辑多行
+post_id: 207
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+TextMate允许你一次编辑多行文本。你可以使用这个功能添加新内容或者删除旧内容。这个功能在你操作列表数据的时候尤其方便。让我们仍然用一个例子来熟悉这个用法：
+<ul>
+	<li>创建一个新的TextMate文档，Ctrl+N</li>
+	<li>选择当前工作的语言环境 Ctrl+Option+Shift+H</li>
+	<li>增加一些基础的文档结构，doctype+Tab键然后选择2.增加必须的根节点html然后按Ctrl+< 然后按回车会给你留一些空间输入内容。</li>
+	<li>现在输入header区域，head+Tab键。在title中输入Apple Products。按两次方向键下，按回车给body留出空间。</li>
+	<li>输入body然后按Ctrl+< 然后按回车键。</li>
+	<li>离开head区域，现在创建一个标签元素。按Ctrl+< 然后输入h1 再按Tab键跳到内容区输入 Computers TextMate Runs On: 然后按Apple+回车两次。跳过关闭标签。并留出一些空白区域。</li>
+	<li>同样的办法，创建ul标签。输入下面内容
+Mac mini
+iMac
+Mac Pro
+Macbook
+Macbook Pro
+你需要选择这些内容，然后才能一次给它们添加上标签。首先把你的光标移动到最后Macbook Pro的右边，然后按Shift+Option+左两次来选择这一行，再按Shift+Option+上最后按Shift+Option+左把空格也选上。现在使用最牛B的Ctrl+Shift+Apple+W组合键。</li>
+	<li>使用Ctrl+Option+Apple+P来预览</li>
+</ul>
+接下来我要教你如何给刚刚的列表增加点东西以便识别哪些是台式机哪些是笔记本：
+<ul>
+	<li>按Ctrl+Shift+L选择第一行。按住Shift再按两次方向键下。</li>
+	<li>编辑选择行快捷键是Option+Apple+A</li>
+	<li>按Option+左 两次输入( desktop )</li>
+	<li>同样给后两行增加 ( laptop )</li>
+</ul>
+如同你看到的 Edit Each Line in Selection 允许你一次给多行添加或者删除内容。它和列选择器很像，它通常用来给一堆列内容增加新内容。

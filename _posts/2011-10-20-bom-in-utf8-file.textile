@@ -1,0 +1,34 @@
+---
+layout: post
+title: 一个带BOM的utf-8文件引来的麻烦
+post_id: 653
+categories: ["others", "php"]
+---
+
+{% include JB/setup %}
+
+---
+
+很多朋友应该碰到过这句话吧：“Cannot modify header information - headers already sent bygem(php文件)”。
+
+今天碰到了，起因是用ftp，在windows环境下，使用ftp的编辑功能，在线编辑了一个配置文件。然后就出现了这个提示。
+
+不论是百度还是google，都会给出一堆解决办法，可是，那个最正中要害呢？毕竟我们不是在做学术研究，而且我们碰到的也都是一些常见问题。
+
+好，找到了最关键的一句话：
+
+“如果使用utf-8编码，一定要去掉UTF-8中的BOM，这都是因为utf-8编码文件含有的bom原因，而php4,5都是不支持bom的。去掉bom，可以用Notepad++打开转换一下。”
+
+问题解决了。在此笔记一下。
+
+这里有一篇文章讲了一下原理：<a href="http://blog.sina.com.cn/s/blog_570f6d940100h3vk.html">http://blog.sina.com.cn/s/blog_570f6d940100h3vk.html</a>
+
+简单的说，utf-8不需要BOM，utf-16才需要它。
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;

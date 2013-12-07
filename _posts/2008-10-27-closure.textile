@@ -1,0 +1,40 @@
+---
+layout: post
+title: 闭包
+post_id: 193
+categories: ["Advanced Rails", "default"]
+---
+
+{% include JB/setup %}
+
+---
+
+在代码块或者过程访问定义在其作用范围以外的变量时，就会创建闭包（Closures）。即使包含原始变量的代码块已经超出作用范围了，但那些被其它块和过程引用的变量也会被一直被保留着，直到引用它们的块和过程全部超出作用范围。下面的这个极度简化的例子，虽然确实是没有什么实际的用途，但能够很好的解释上面的情景：
+<pre name="code" class="ruby">
+def get_closure
+  data = [1, 2, 3]
+  lambda { data }
+end
+block = get_closure
+block.call # => [1, 2, 3]
+</pre>
+从get_closure中的匿名方法（即lambda）返回的是定义在其作用范围外的局部变量data。只要块变量一直在作用范围内，它将保存其对data的引用，而且这个data的实例也不会被消除(即使get_closure方法已经返回)。需要注意的是每次get_closure被调用时，data将指向不同的变量(因为它是方法局部变量)：
+<pre name="code" class="ruby">
+block = get_closure
+block2 = get_closure
+block.call.object_id # => 76200
+block2.call.object_id  # => 76170
+</pre>
+闭包的一个典型的例子就是make_closure方法，它返回一个累加方法，当被执行时进行累加并返回累加的当前值。在Ruby中，make_counter 实现代码如下：
+<pre name="code" class="ruby">
+def make_counter(i=0)
+  lambda { i += 1 }
+end
+x = make_counter
+x.call # => 1
+x.call # => 2
+y = make_counter
+y.call # => 1
+y.call # => 2
+</pre>
+lambda方法创建了一个闭包，它覆盖了局部变量i的当前值。该变量不仅可以被访问，其值亦可以被修改。每个闭包获得的是各自不同的变量实例（因为实例化make_counter的时候它们都是局部变量），因此x与y引用了不同的局部变量i的实例，这些实例拥有自己独立的状态。

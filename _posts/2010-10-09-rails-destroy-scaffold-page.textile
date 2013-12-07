@@ -1,0 +1,47 @@
+---
+layout: post
+title: Rails3：rails destroy scaffold Page
+post_id: 512
+categories: ["rails3", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+笔记一下，不常用的destroy命令，和generate相反。有时候写错了一个关键的地方，随手想删掉，就想到它了。比如刚才。。。
+<div id="_mcePaste">liwei$ rails destroy --help</div>
+<div id="_mcePaste">Usage: rails destroy GENERATOR [args] [options]</div>
+<div id="_mcePaste">General options:</div>
+<div id="_mcePaste">-h, [--help]     # Print generator's options and usage</div>
+<div id="_mcePaste">-p, [--pretend]  # Run but do not make any changes</div>
+<div id="_mcePaste">-f, [--force]    # Overwrite files that already exist</div>
+<div id="_mcePaste">-s, [--skip]     # Skip files that already exist</div>
+<div id="_mcePaste">-q, [--quiet]    # Suppress status output</div>
+<div id="_mcePaste">Please choose a generator below.</div>
+<div id="_mcePaste">Rails:</div>
+<div id="_mcePaste">controller</div>
+<div id="_mcePaste">generator</div>
+<div id="_mcePaste">helper</div>
+<div id="_mcePaste">integration_test</div>
+<div id="_mcePaste">mailer</div>
+<div id="_mcePaste">migration</div>
+<div id="_mcePaste">model</div>
+<div id="_mcePaste">observer</div>
+<div id="_mcePaste">performance_test</div>
+<div id="_mcePaste">plugin</div>
+<div id="_mcePaste">resource</div>
+<div id="_mcePaste">scaffold</div>
+<div id="_mcePaste">scaffold_controller</div>
+<div id="_mcePaste">session_migration</div>
+<div id="_mcePaste">stylesheets</div>
+<div id="_mcePaste">liwei$ rails destroy scaffold Page</div>
+<div>gem</div>
+<div></div>
+<div>目前在学习Rails3，haml，scss和一些基础的东西。笔记比较零碎。对了，练习的代码都部署到heroku上了，我发现它真的好强大了。git还是不太熟，加油。</div>
+<div></div>
+<div>地址：<a href="http://blog-in-rails3.heroku.com" target="_blank">blog-in-rails3.heroku.com</a></div>
+<div>git：http://github.com/liwei78/blog</div>
+<div></div>
+<div>欢迎加我的github：http://github.com/liwei78</div>
+<div></div>

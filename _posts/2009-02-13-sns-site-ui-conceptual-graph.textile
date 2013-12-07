@@ -1,0 +1,57 @@
+---
+layout: post
+title: sns网站ui框架概念图
+post_id: 370
+categories: ["RailsNote", "ui"]
+---
+
+{% include JB/setup %}
+
+---
+
+最近太多的sns站点需求摆在脑海里（所以晚上睡不着觉，哎），所以画了一张，给予自己目前项目设计的ui框架，姑且是一个概念图吧。在此简单笔记一下思路：
+
+<a href="http://railser.cn/wp-content/uploads/2009/02/layout.png"><a href="http://railser.cn/wp-content/uploads/2009/02/layout1.png"><img class="alignnone size-full wp-image-378" title="layout1" src="http://railser.cn/wp-content/uploads/2009/02/layout1.png" alt="layout1" width="600" height="400" /></a>
+</a>
+
+1、header，footer：目前的趋势是更加充分利用header的空间，增加隐藏层，通过鼠标实践显示一个列表内容。header，只提供整站大分类导航
+
+2、sider_bar：应用导航。放到左侧，更加重用户的关注度，用户会更多的点击里面的连接。比如uchome把博客（发布），图片（上传）等操作放到这里。下面是游戏的列表。
+
+但是对于所有页面，side_bar并不全都适合，1、影响到内容的展示，占用了200px空间。2、side_bar内容可能不符合该页面主体内容，比如页面为博客展示页面，side_bar内还出现相册，上传图片，圈子，讨论区等等连接，会给人一种杂乱的感觉。
+
+还有可能对seo产生不良影响。
+
+3、main，当side_bar隐藏时，width为100%。为主体内容提供容器。
+
+4、tab和button：二级页面导航功能，资源页面导航功能。比如 活动 分类，tab包含 全部，热门，最新，登陆后显示我的活动。
+
+这样设计，使得在header进入后，tab可起到位置定位，比如当前tab和其他tab可用式样来区分。
+
+<a href="http://railser.cn/wp-content/uploads/2009/02/tabs.jpg"><img class="alignnone size-full wp-image-373" title="tabs" src="http://railser.cn/wp-content/uploads/2009/02/tabs.jpg" alt="tabs" width="276" height="50" /></a>
+
+button强调该分类下的资源重点操作，如“创建一个新活动”，“发表一个新话题”。
+
+这种设计的考虑是，二级分类多数为资源，button体现了吸引用户操作该资源。
+
+ps：这是uchome中的设计，个人非常喜欢。
+
+5、content和content_bar
+
+content为主要内容展示空间，content_bar辅助显示动态，管理按钮，广告等内容。
+
+content_bar可隐藏，内容不固定，根据content来决定内容。
+
+最后，个人总结的uchome ui中的问题
+
+1、css太过复杂，结构不清晰，没有使用layout和theme分离的设计
+
+2、side_bar部分为全局模板，多数页面显得占地方，不过上面的重点连接也是sns站的主要功能，所以需要灵活设计
+
+3、js设计占用了太多页面代码，html浩如烟海啊
+
+4、mtag这个名字让我很摸不着头脑，类型复用程度低，根本无法实现资源的设计和管理。比如，Rails中的topic和photo的多态设计，使得其他资源均可以使用，但uchome中不可以。
+
+5、uchome不是一个技术产品，它是个市场需求下的产品，不能期望太多，但是，无论是php还是Rails去设计一个sns站点，uchome的设计细节非常值得学习。
+
+里克，2009年2与13日情人节前。情人节给老婆买个平底锅去~~

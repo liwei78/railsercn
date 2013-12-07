@@ -1,0 +1,77 @@
+---
+layout: post
+title: ruby for rails 摘录
+post_id: 275
+categories: ["r4r", "rails", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+实例变量使得单个对象可以记忆状态。实例变量的名字以@开头。实例变量仅仅对于它所属的对象来说是可见的。在一个特定类的某一方法中初始化的实例变量，与同一个类的其他方法定义中引用的同名实例变量是同一个。
+<pre name="code" class="ruby">
+class c
+  def inst_var_init(value)
+    puts "Setting an instance variablegem"
+    @ivar = value
+  end
+
+  def inst_var_report
+    puts "Inspection the value of the instance variablegem"
+    puts @ivar
+  end
+end
+</pre>
+
+初始化对象状态
+<pre name="code" class="ruby">
+class c
+  def initialize(venue, date)
+    @venue = venue
+    @date = date
+  end
+
+  def venue
+    @venue
+  end
+
+  def date
+    @date
+  end
+end
+</pre>
+
+=号方法和语法糖衣，Ruby允许定义以等号结束的方法。另外当解释器看到一个裸词后面有等号的时候。它会自动忽略等号前面的空格。从而得到一条单独的消息，例如 price= 。
+<pre name="code" class="ruby">
+class Ticket
+  def price=(amount)
+    @price = amount
+  end
+
+  def price
+    @price
+  end
+end
+</pre>
+
+字符串内建的split方法的示例
+<pre name="code" class="ruby">
+month, day, year = date.split('/')
+</pre>
+
+ActiveRecord自动生成与数据库表的字段名相对应的设置方法。通过 params 方法，ActiveRecord 收集了所有属于 customer 的值， 并将它们成批地传递到新生成的 Customer 对象中。
+<pre name="code" class="ruby">
+customer = Customer.new(params[:customer])
+</pre>
+
+自动生成属性方法，attr_accessor, attr_reader, attr_writer
+
+常量的名字是以一个大写字母开头。可以在类外引用常量，Ticker::VENUES
+<pre name="code" class="ruby">
+class Ticket
+  VENUES = ["Convention Center", "Fairgrounds", "Town Hall"]
+end
+</pre>
+
+每个类有自己的实例方法，可以继承链上面的类的实例方法。定义一个动作，就是给控制器类添加一个实例方法。

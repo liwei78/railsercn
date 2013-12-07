@@ -1,0 +1,20 @@
+---
+layout: post
+title: TextMate中文教程之文本对齐
+post_id: 217
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+你会看到TextMate支持常见得对齐方式，它们在 Text 菜单得子菜单下。Text菜单包含3个有用得方法
+<ul>
+	<li>Ctrl+Q 左对齐段落</li>
+	<li>Ctrl+J 使段落两边对齐</li>
+	<li>Ctrl+Option+Q 把段落合并为一行</li>
+</ul>
+当使用列选择器的时候，这些快捷键可以很方便的调整你的内容。这一过程是很容易的，选择文本内容中的一部分按Ctrl＋Q。如下图
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008103001.png"><img class="alignnone size-medium wp-image-242" title="2008103001" src="http://railser.cn/wp-content/uploads/2008/10/2008103001-300x185.png" alt="" width="300" height="185" /></a>

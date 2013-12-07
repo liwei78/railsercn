@@ -1,0 +1,20 @@
+---
+layout: post
+title: TextMate中文教程之编辑模式
+post_id: 213
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+TextMate支持两种额外的编辑模式，当你输入固定宽度的文本或者ASCII的时候尤其有用。它们是Freehanded Editing和 Overwrite，你可以在 Edit -> Mode 下找到它们。
+
+当你切换 Freehanded Editing 模式（Option+Apple+E）,TextMate允许你使用键盘来移动光标或者用鼠标点击。你可以放到一行的结尾外，或者列的中间。如果你增加新内容，TextMate会在特定区域补充上空白。
+
+在使用列选择器的时候，这个功能通常是激活的，所以你可以把内容区域扩充。如果你希望单击鼠标切换这个模式，那么当你单击的时候请按住Option键。
+
+另一个编辑模式Overwrite Mode (Option+Apple+O)，用来改变目前存在的文本。你很容易就能辨识出现在现在是否激活了这个模式，因为它会让你的光标成为一个下划线。和在两个字符中间插入新字符不同，TextMate的这种编辑模式会用你输入的字符替换当前字符。当你要进行文本替换的时候，这个模式可以很好的避免行内后面的文本窜位。
+
+这些模式会引起自动化操作的异常，如果你看到了一些奇怪的结果请确保已经关闭了这些模式。如果有必要，请每次需要使用这些模式的时候手动开启。

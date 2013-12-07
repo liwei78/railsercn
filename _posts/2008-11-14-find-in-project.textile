@@ -1,0 +1,24 @@
+---
+layout: post
+title: TextMate中文教程之在项目中搜索
+post_id: 269
+categories: ["TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+当你一次需要修改许多文件的时候，你可以选择 Edit -> Find -> Find in Project 快捷键 Shift＋Apple＋F 。虽然看起来略有不同，但是仍然和上一章的搜索对话框基本一样。
+
+在输入搜索的信息之后，按一下回车键会触发搜索过程。TextMate会在整个项目中搜索匹配的文本，并把它们显示在搜索框的下面。你可以点选任意一个匹配记录，TextMate会自动跳转到该文件。
+
+这里最好用的功能应该是替换。你可以使用 Replace All 按钮来替换全部匹配文本。或者你可以手动来一个一个的替换掉。用鼠标在下面显示搜索结果的地方点一条记录，你可以使用Shift或者Apple来选择或者删除多个匹配记录。当你选择了需要替换的记录之后，按一下 Replace Selected 按钮。就会替换掉刚才选择的那些记录。
+<a href="http://railser.cn/wp-content/uploads/2008/11/2008111401.png"><img src="http://railser.cn/wp-content/uploads/2008/11/2008111401-300x165.png" alt="" title="2008111401" width="300" height="165" class="alignnone size-medium wp-image-314" /></a>
+搜索整个项目需要花很多时间。如果你有兴趣可以限制只搜索某些文件。你可以让TextMate创建一个新的临时项目。只包含你感兴趣想搜索的文件。搜索之后再销毁这个临时项目。利用 mate 命令你可以很容易的做到这些。 例如我想创建一个项目，仅包含 lib 和 test 文件夹下面的 ruby 文件,那么你需要在 Terminal 下面输入：
+
+$ find {lib,test} -name '*.rb' -print0 | xargs -0 mate
+
+你也可以用鼠标做一样的事。拖动一些文件或文件夹到Dock，并放于TextMate的图标上。这告诉 TextMate 创建一个新项目并且过滤掉你不希望存在的。
+
+当项目打开的时候，我可以搜索项目然后关闭它。当关闭项目的时候搜索也停止。这可以让我只在需要的时候才搜索并且能提高不少速度。

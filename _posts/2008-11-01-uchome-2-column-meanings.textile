@@ -1,0 +1,22 @@
+---
+layout: post
+title: uchome中的两个字段含义的解释
+post_id: 231
+categories: ["default", "php", "uch"]
+---
+
+{% include JB/setup %}
+
+---
+
+在uchome的spacefield表中，有两个看似明确，实际很别扭的两个字段名，friend和feedfriend。
+
+在处理feed的时候，这两个字段经常会让人搞混乱，一时想不起来意思。
+
+其实friend是表明该空间的好友，这和blog的friend不一样，blog的friend是定义的blog的开放级别。
+
+feedrfriend，基本上和friend是同样内容，但是当设置屏蔽时，会从这个表中去掉被屏蔽的人的id，所以，这个字段保存的是可以查看该空间feed的id。
+
+那么，现在我在做的是增加同组查看功能，比如，设置某一个组只能本组人查看，外组的人无法查看任何消息。这时，就用上了这里的方法。
+
+未完，待续

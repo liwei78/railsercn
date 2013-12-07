@@ -1,0 +1,43 @@
+---
+layout: post
+title: 代码块转换为过程和过程转换为代码块
+post_id: 186
+categories: ["Advanced Rails", "default", "rails"]
+---
+
+{% include JB/setup %}
+
+---
+
+当前的Ruby实现有一点不足：Blocks代码块不总是Procs过程，Procs过程也不总是Blocks代码块。普通的代码块（定义在do…end 或者{}中）必须依附在一个方法调用上，而不能自动成为对象。例如，你不能把代码写成code_block = {puts “abc”}。这就是Kernel#lambda 和Proce.new 的用途：将代码块转换为过程。
+<pre name="code" class="ruby">
+block_1 = lambda { puts "abc" } # => #<Proc:0x00024914@-:20>
+block_2 = Proc.new { puts "abc" } # => #<Proc:0x000246a8@-:21>
+</pre>
+Kernal#lambda与Proc.new之间仅存在着些许区别。由Kernel#lambda 创建的Proc被调用时返回给调用方法的值是在Proc中给定的值；而由Proc.new 创建的Proc被调用的时候，Proc将试图从当前的函数方法中返回，但是，如果不能从方法调用中返回那么它就抛出LocalJumpError错误。下面是一个具体的例子：
+<pre name="code" class="ruby">
+def block_test
+  lambda_proc = lambda { return 3 }
+  proc_new_proc = Proc.new { return 4 }
+  lambda_proc.call # => 3
+  proc_new_proc.call # =>
+  puts "Never reached"
+end
+block_test # => 4
+</pre>
+lambda_proc 中的返回语句从lambda中返回3。相反地，proc_new中的返回语句是从函数方法返回，因此——block_test，其返回的值是4。那个puts 语句将永远不能被执行到，因为proc_new_proc.call 语句首先从block_test返回。
+
+通过将块传给一个方法，也能将其转换为过程，与常规的参数传递有所不同的是需要在其前面加上一个&符：
+<pre name="code" class="ruby">
+def some_function(&b)
+  puts "Block is a #{b} and returns #{b.call}"
+end
+
+some_function { 6 + 3 }
+# >> Block is a #<Proc:0x00025774@-:7> and returns 9
+</pre>
+相反的，可以将前面加了&符的过程传递给一个需要块作参数的方法：
+<pre name="code" class="ruby">
+add_3 = lambda {|x| x+3}
+(1..5).map(&add_3) # => [4, 5, 6, 7, 8]
+</pre>

@@ -1,0 +1,38 @@
+---
+layout: post
+title: Rails中基于属性的动态查询
+post_id: 339
+categories: ["rails", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+这是个很简单的Rails2.1.2的 find 的应用，来自Rdoc ActiveRecord::Base
+
+一、find :first 和find :all
+
+使用 Model.<span style="color: #ff0000;">find</span>_by_user_name ，来简写 Model.find(:first, :conditions=>["user_name=?",user_name])
+
+使用 Model.<span style="color: #ff0000;">find_all</span>_by_user_name ，来简写 Model.find(:all, :conditions=>["user_name=?",user_name])
+
+这里也可以使用and，比如典型的用户名和密码查询：Person.find_by_user_name_and_password(user_name, password)
+
+find也支持带参数的查询，比如Payment.find_all_by_amount(50, :order => "created_on")
+
+二、<span style="font-family: Courier New;">find_or_create_by_和find_or_initialize_</span>
+
+<span style="font-family: Courier New;">find_or_create_by_：当查询的内容不存在时，<span style="color: #0000ff;">创建并保存</span>该记录</span>
+
+<span style="font-family: Courier New;">find_or_initialize_：更上面的相似，只是<span style="color: #0000ff;">创建不保存</span><span style="color: #000000;">该记录，需要自己再次save</span></span>
+
+<span style="font-family: Courier New;">这里也支持参数和代码块，如</span>
+
+User.find_or_create_by_name('Bob', :age => 40) { |u| u.admin = true }
+
+三、find_by_的时候，支持多属性，如
+
+Tag.find_or_create_by_name(:name => "rails", :creator => current_user)
+
+以上文字来自Rails2.1.2的Rdoc文档ActiveRecord::Base

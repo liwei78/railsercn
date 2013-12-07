@@ -1,0 +1,68 @@
+---
+layout: post
+title: ruby for rails 摘录
+post_id: 290
+categories: ["r4r", "rails", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+class, module, def 标志着切换到新的 self， main 是默认的 self 对象用来引用自己的专门术语。self 作为消息默认的接受者，如果消息接受者是 self ，可以省略接受者和圆点。
+
+如果存在同名的方法名和变量，而且你使用裸词标识符，那么变量具有优先权。要强制 Ruby 将标识符当作方法名，你必须使用 self.talk 或者用参数列表为空的 talk() 来调用方法。
+
+有一个场合，即使是发送消息给当前的 self，也必须使用完整的“对象 圆点 消息”记法，那就是在调用写方法的时候。因为 Ruby 总之将序列“裸词＝值”解释为对局部变量的赋值。为了调用当前对象的 venue= 方法，必须显示的给出 self。
+
+private 和 protected 的区别
+私有方法意味着该方法不能使用显式的接收者来调用。Ruby 认为你想要发送消息给当前对象 self。所以仅当 self 是一个可以响应消息的对象时，该消息才有对象接收。那啥时候 self 才会是类的实例呢？当执行类的任何一个实例方法时。所以看如下代码
+<pre name="code" class="ruby">
+class Baker
+  def bake_cake
+    @batter = []
+    pour_flour
+    add_egg
+    return Cake.new
+  end
+
+  def pour_flour
+    @batter.push(Flour.new)
+  end
+
+  def add_egg
+    @batter.push(Egg.new)
+  end
+
+  private :pour_flour, :add_egg
+end
+</pre>
+
+总结，当 add_egg 标记为私有的，就是说Baker的实例对象可以将此消息发送给它自己，但是其它任何对象都不可以给该Baker实例对象发送该消息。Ruby 通过禁止对私有方法使用显示的接收者来获得此私有性。
+
+保护方法的规则是：只要默认对象 self 和你想要调用的方法所属的对象是同一个类的实例，你就可以调用该保护方法。如果某个对象调用其所属的保护方法，而该对象所属的类和self所属的类相同，那么该调用是合法的。
+<pre name="code" class="ruby">
+class C
+  def initialize(n)
+    @n = n
+  end
+
+  def n
+    @n
+  end
+
+  def compare(c)
+    if c.n > n
+      puts "The other object's n is bigger."
+    else
+      puts "The other object's n is the same or smaller"
+    end
+  end
+
+  protected :n
+end
+
+c1 = C.new(100)
+c2 = C.new(201)
+c1.compare(c2)
+</pre>

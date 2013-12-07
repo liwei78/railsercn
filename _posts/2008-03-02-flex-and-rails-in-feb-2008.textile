@@ -1,0 +1,106 @@
+---
+layout: post
+title: 08年2月整理的Flex和Rails消息
+post_id: 35
+categories: ["default"]
+---
+
+{% include JB/setup %}
+
+---
+
+写在前面：
+
+终于忙完了手头的杂事，开始专心的看看Rails文章。看的第一篇竟然是Flex相关的，难道这个博客真的要专门讨论Flex和Rails吗？
+
+之前翻译和整理的三篇文章，<a href="http://railser.cn/archives/publish-subscribe-messaging-with-flex-and-rails" target="_blank">在Flex和Rails上实现发布/订阅的消息通信</a> ，<a href="http://railser.cn/archives/flash-remoting-for-rails-tutorial-chinese" target="_blank">在Rails中使用Flash Remoting中文教程</a> ，<a href="http://railser.cn/archives/flex-on-rails-preview" target="_blank">Flex与Rails的性感结合</a>，晒一下，下面是整个二月份积攒的一些东西，整理发布一下。
+
+我发现儿子越来越好玩了。而且今天给博客换了皮肤，3月份来了，蛮新鲜的。
+
+
+h2. 1、Flex Builder 3 正式发售
+
+
+link:<a href="http://www.adobe.com/products/flex/">http://www.adobe.com/products/flex/</a>
+h2. 2、在Flash Player中运行Ruby代码
+
+
+bq.  08年2月26日InfoWorld.com报道：Adobe的一个研究项目正致力于在Flash Player中运行其他语言的代码。该项目中，像C和C++，Java，Python，Ruby这这样的编程语言都可以编译到ActionScript中。这样可以使这些语言编写的组件，加载一些大型项目中，实现代码的跨应用平台。
+
+比如，目前的FlashPaper就可以读取PDF文档并进行展示。
+
+目前，所有的代码都使用ActiobScript或低一级别的byte code编写，在Flash Player中，所有的都被编译成SWF byte code，它叫做ActionScript byte code。
+link:<a href="http://www.infoworld.com/article/08/02/26/adobe-player_1.html">http://www.infoworld.com/article/08/02/26/adobe-player_1.html</a>
+h2. 3、验证Ruby的正则表达式
+
+
+如果你需要验证一下自己写的Ruby正则是否正确，可以用下面这个网站验证一下。我觉得重要的是这个网站下面的一些提示。
+
+link:<a href="http://www.rubular.com/">http://www.rubular.com/</a>
+h2. 4、新增了两个网站连接
+
+
+都是关于Flex开发的博客，本篇文章写的时候一直在看 <a href="http://blog.vixiom.com/">http://blog.vixiom.com/</a> 和这两个博客。
+
+The Official Flex User Group for Orange County, California.
+
+Link:<a href="http://www.ocflex.com/">http://www.ocflex.com/</a>
+
+Ted On Flex
+
+link:<a href="http://www.onflex.org/">http://www.onflex.org/</a>
+h2. 5、谁在使用Rails工作
+
+
+我注册了，所以目前统计在<a href="http://www.workingwithrails.com/browse/people/country/China">中国有92个Rails开发人员</a>，而且大多都 “Available for hire”。呵呵。我也是
+
+link:<a href="http://www.workingwithrails.com/">http://www.workingwithrails.com/</a>
+h2. 6、Rails Engines
+
+
+引自：<a href="http://blog.uiparty.com/jouy/">全日志博客</a>
+bq.  Rails engines是增强rails自身插件的框架。它让共享controller、helper、models、public、routes和迁移（migrations ）变得更简单。
+
+它使整大块的插件进行功能融入现有应用无任何影响你的现有代码。或者,你可以用Rails engines插件分享最小、最简单的资源；包括通常迁移、javascripts、样式或图片。
+Link:<a href="http://www.rails-engines.org/">http://www.rails-engines.org/</a>
+h2. 7、使你的Rails应用更安全
+
+
+文章描述了几个Rails应用中的安全问题及如何解决，其中的Sql注入的问题在前几天的面试中碰到过。如果有要面试Rails工作的朋友，可以选择浏览一下这篇文章。
+
+Link:<a href="http://manuals.rubyonrails.com/read/book/8">http://manuals.rubyonrails.com/read/book/8</a>
+h2. 8、Substruct：开源的Rails电子商务项目
+
+
+在<a href="http://www.caiwangqin.com/post/256">Caiwangqin's Blog中已经提到了这个项目</a>，而且在 <a href="http://chinaonrails.com/topic/view/967.html">http://chinaonrails.com/topic/view/967.html</a> 中还能看到大家的讨论。
+<pre>
+bq. 
+* 带有博客功能的简易内容管理系统
+    o 在线管理网站
+* 使用 Authorize.net and PayPal (需自有帐户) 结算
+* 商品和订单管理
+    o 在线跟中库存
+    o 可以按分钟查看销售报告
+    o <a href="http://code.google.com/p/substruct/wiki/FulfillmentIntegration">Integrate with fulfillment houses via XML and web services </a>
+* 极好的管理界面
+    o 内容的发布与管理
+    o Create, maintain, void orders（啥？）
+    o 回答浏览者提问</pre>
+Link:<a href="http://code.google.com/p/substruct/">http://code.google.com/p/substruct/</a>
+
+h2. 9、Ruby 1.9
+
+
+
+Yukihiro Matsumoto（松本行弘）主讲，解释各种Ruby版本之间的差别和介绍Ruby1.9的特性。
+
+<pre>
+<object width="425" height="355"><param name="movie" value="http://www.youtube.com/v/oEkJvvGEtB4"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/oEkJvvGEtB4" type="application/x-shockwave-flash" wmode="transparent" width="425" height="355"></embed></object>
+</pre>
+
+参考：<a href="http://column.bokee.com/19333.html">Ruby的哲学——与Yukihiro Matsumoto的对话</a>
+
+ps1：翻译也是一种写作
+ps2：感谢wjp提供的资料，虽然这个家伙死活不加入Railser.cn，不过我还是咒怨他工作顺利。
+
+里克，2008年3月2日

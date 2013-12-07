@@ -1,0 +1,28 @@
+---
+layout: post
+title: RJS教程
+post_id: 42
+categories: ['rjs']
+---
+
+{% include JB/setup %}
+
+---
+
+Railser.cn首发本站一位坚定的<a href="http://www.douban.com/people/1098413/" target="_blank">支持者</a>翻译作品：《RJS教程》
+
+<a href="http://railser.cn/rjs-tutorial/part-1.html" target="_blank">第一部分</a>
+
+介绍RJS，并开始一个简单的例子
+
+<a href="http://railser.cn/rjs-tutorial/part-2.html" target="_blank">第二部分</a>
+
+RJS和Rails
+
+<a href="http://railser.cn/rjs-tutorial/part-3.html" target="_blank">第三部分</a>， <a href="http://railser.cn/rjs-tutorial/part-4.html" target="_blank">第四部分</a>
+
+RJS 实践: The Expense Tracker
+
+<a href="http://railser.cn/rjs-tutorial/part-5.html" target="_blank">第五部分</a>
+
+增强 Expense Tracker

@@ -1,0 +1,50 @@
+---
+layout: post
+title: 在mac上配制Rails开发环境
+post_id: 457
+categories: ["apple mac", "mac", "rails"]
+---
+
+{% include JB/setup %}
+
+---
+
+拿到mac后最重要的就是先把Rails开发环境装好。apple介绍上写的是，mac mini装的是server版本，这样开发环境应该是已经装好的。可我的不是，没有Rails环境，只有ruby 1.8.7。这样也好，体验一下配制开发环境的过程。
+
+1、gem 安装Rails
+
+这个没有问题，默认已经安装了2.2.2，只要再装上需要的几个版本就可以
+
+2、装xcode
+
+问题来了，rake的时候出错，按照ubuntu的经验，估计是缺少编译环境，ubuntu上是装了ruby－dev。
+
+装上xcode，问题解决。（本人绝对新人，欢迎朋友们指教，更多资料大家google吧）
+
+3、装MacPort
+
+这是一个奇怪的感觉，没有apt-get感觉不太习惯，所以装上MacPort，继续装ImageMagick，这个竟然用了一个多小时，具体安装方法参考：<a href="http://rmagick.rubyforge.org/install-osx.html">http://rmagick.rubyforge.org/install-osx.html</a>
+
+4、重点来了，mysql，apache，php环境
+
+其实本想一个个装一下，但是看到了mamp，就试验一下，没想到很容易就搞定了。。
+
+参考： <a href="http://www.mamp.info/en/downloads/index.html">http://www.mamp.info/en/downloads/index.html</a>
+
+可是，问题没结束，gem install mysql的时候出现了问题，因为mysql是俗话讲的集成，免安装过来的，不是默认配制，所以，需要重新编译一下mamp的mysql部分，才能正常gem安装mysql驱动。
+
+重点在：gem install<span style="color: #ff0000;"> -v=2.7</span> mysql -- --with-mysql-config=/Applications/MAMP/Library/bin/mysql_config
+
+注意红色的部分，因为最新的2.8.1会提示“Virtual timer expired”。建议大家不要轻易升级gem，实在要升级，一定本地环境完全模拟一遍，包括各个gem版本，建议用rvm的朋友一定要多留意，rvm很好，一定要早入手熟悉。
+
+具体参考：<a href="http://boonedocks.net/mike/archives/175-MAMP-and-the-Ruby-MySQL-Gem.html">http://boonedocks.net/mike/archives/175-MAMP-and-the-Ruby-MySQL-Gem.html</a>
+
+进行到这里感觉很幸福，发现分享自己的经验原来可以帮人解决那么多问题，也节省时间。这也是我写这个笔记，分享经历的动力。
+
+5、终于到textmate了
+
+macx.cn的软件栏目里有下载，总算见到textmate的样子了，之前netbeans也只是模仿一点点样子而已。
+
+更多的textmate使用见仁见智吧，不多说，目前很痴迷mac，好玩的东西都要用一下。
+
+写到这，环境基本ok了，开始Rails的工作吧。

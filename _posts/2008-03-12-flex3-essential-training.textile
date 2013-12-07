@@ -1,0 +1,16 @@
+---
+layout: post
+title: 《Flex3基础训练》视频系列
+post_id: 40
+categories: ["flex"]
+---
+
+{% include JB/setup %}
+
+---
+
+《Flex3基础训练》视频介绍：
+bq.  Lynda.com 出品的 Adobe Flex 3 基础教程，由 Adobe 公司认证讲师 David Gassner 主讲。
+
+Adobe Flex 3 是用于构建和维护在所有主要浏览器、桌面和操作系统一致地部署极具表现力的 Web 应用程序高效率开放源码框架，开发人员可以使用 Adobe Flex 3 软件来显著促进开发。若要创建引人入胜的跨平台丰富 Internet 应用程序，必须懂得强大的 Flex 3 的应用。在本教程中，讲师 David Gassner 从最基本 Flex 方案及其相关编程语言入手，循序渐进，逐渐深入，带领学员应用 Flex 3 自己动手创作、设计、定制及发布动态网页和桌面部署。
+

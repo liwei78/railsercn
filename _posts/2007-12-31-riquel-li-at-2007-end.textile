@@ -1,0 +1,42 @@
+---
+layout: post
+title: 写在2007的最后一天
+post_id: 26
+categories: ["日记"]
+---
+
+{% include JB/setup %}
+
+---
+
+今天是2007年的最后一天了，出于各种原因我强烈的盼望2008赶快到来。
+
+2008年，Railser.cn将继续关注：
+1、Rails
+2、OpenSocial的Rails实现
+3、Flex框架和Rails框架的开发
+4、Restful Rails开发
+5、Ruby编程
+6、服务器部署，管理
+7、数据库管理
+
+会影响2008的技术：
+1、Flex2
+2、RESTful and ROA
+3、Rails and Ruby
+
+目前正在看的书，08年还要继续看
+《RESTful web services》
+<img src="http://railser.cn/wp-content/uploads/2007/12/9780596529260_cat.gif" alt="RESTful web services" />
+
+《The.Essential.Guide.to.Flex.2.with.ActionScript.3.0》
+<img src="http://railser.cn/wp-content/uploads/2007/12/1590597338.jpg" alt="The.Essential.Guide.to.Flex.2.with.ActionScript.3.0" />
+
+07年的经历：儿子出生，工作的不如意，项目停止，身体垮掉，SOHO生涯
+如果说感谢的话，要感谢在我最困难的时候，听我发牢骚的朋友们，陪我度过难关的朋友们。
+还要感谢我儿子，虽然我经常欺负他，但是他还是让我觉得小孩子是狠可爱的。
+07年太多的不如意和牢骚，不要留给08年。明天将是另一个开始。
+
+08年就要来了，计划有很多，希望08年最后一天写总结的时候，会想到一些成绩。放一首歌吧，Action English上听到的，Travis的《Closer》
+
+里克，2007年12月31日

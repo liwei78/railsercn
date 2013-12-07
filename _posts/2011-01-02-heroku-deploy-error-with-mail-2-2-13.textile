@@ -1,0 +1,28 @@
+---
+layout: post
+title: heroku部署问题，是gem升级导致的这个问题
+post_id: 572
+categories: ["default"]
+---
+
+{% include JB/setup %}
+
+---
+
+/Library/Ruby/Site/1.8/rubygems/remote_fetcher.rb:176:in `fetch_path': timed out (http://rubygems.org/quick/Marshal.4.8/mail-2.2.13.gemspec.rz) (Gem::RemoteFetcher::FetchError)
+
+先把Gemfile.lock中的
+<div id="_mcePaste">mail (2.2.6.1)</div>
+<div id="_mcePaste">改成</div>
+<div>
+<div>mail (2.2.5)</div>
+<div></div>
+<div>然后bundle update 一下 （这是参照 http://stackoverflow.com/questions/4574176/heroku-push-rejected-failed-to-install-gems-via-bundler 的意见）</div>
+<div></div>
+<div>这时mail的一行已经改为</div>
+<div>mail(2.2.13)</div>
+<div></div>
+<div>然后再次部署，搞定。yeah！！</div>
+</div>
+<div></div>
+<div>ps：我的rails是3.0.0，这是一个<a href="http://moreappsweb.heroku.com/" target="_blank">小项目</a>，页面是客户设计的，很漂亮。为了保持磨沙的效果，png比较大，以后再去优化图片吧。</div>

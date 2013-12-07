@@ -1,0 +1,305 @@
+---
+layout: post
+title: 在Rails中使用Flash Remoting中文教程
+post_id: 17
+categories: ["flash", "rails", "remoting"]
+---
+
+{% include JB/setup %}
+
+---
+
+原文：[Flash Remoting for Rails Tutorial](http://blog.vixiom.com/2006/08/23/flash-remoting-for-rails-tutorial/)
+
+里克：1、Flash Remoting从flash player6就开始了，Flex Client是个新家伙。2、Flash Remoting如何翻译？我想翻译为flash远程。
+
+在我们使用Rails的时候，可能会忽视掉另一个开发工具：Flash Remoting。长期的使用xml，可能会改变你的编程习惯。就像作者引用的那句话："If all you have is a hammer everything looks like a nail"。Remoting可以直接向flash传递对象，数组。Remoting使用AMF(Active Message Format)传递byte流，这比使用xml要快很多。
+
+而且在06年8月，<a href="http://www.themidnightcoders.com/">Midnight Coders</a>发布了他们的WebORB插件。
+
+他们的例子是基于Flex2的，这需要客户端安装Flash player9.0，这并不有好，因为Remoting在Flash player6中就已经开始使用了。所以这里我们只拿我们需要的。
+
+如果你之前没有使用过Flash Remoting，请先安装<a href="http://www.adobe.com/products/flashremoting/downloads/components/">Remoting Components</a>。
+
+这里我们制作一个flash的mp3播放器，用rails作为后端服务。<a href="http://blog.vixiom.com/uploads/mp3app.zip">点击这里</a>，你可以下载这个例子的代码。
+
+创建一个应用：mp3app
+bq. 
+<pre lang="ruby">
+> rails mp3app
+> cd mp3app</pre>
+
+安装weborb插件
+bq. 
+<pre lang="ruby">
+> ruby script/plugin install http://themidnightcoders.net:8089/svn/weborb</pre>
+
+创建一个名为‘mp3app_development’的数据库
+bq. 
+<pre lang="ruby">
+CREATE TABLE `tracks` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(50) NOT NULL default '',
+  `artist` varchar(50) NOT NULL default '',
+  `album_art` varchar(50) NOT NULL default '',
+  `filename` varchar(50) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+insert into `tracks` values
+('1','After Midnight','Eric Clapton','clapton.jpg','AfterMidnight.mp3'),
+ ('2','Midnight Train to Georgia','Gladys Knight','gladys.jpg',
+'MidnightTrainToGeorgia.mp3'),
+ ('3','Midnight In A Perfect World','DJ Shadow','shadow.jpg',
+'MidnightInAPerfectWorld.mp3'),
+ ('4','Two Minutes to Midnight','Iron Maiden','maiden.jpg',
+'TwoMinutesToMidnight.mp3');</pre>
+
+创建‘Track’model
+bq. 
+<pre lang="ruby">
+> ruby script/generate model Track</pre>
+
+在‘app/services’目录下创建一个Remoting services服务，文件为：'TrackService.rb'
+bq. 
+<pre lang="ruby">
+require 'weborb/context'
+require 'rbconfig'
+
+class TrackService
+   def getTracks
+     tracks = Track.find(:all)
+   end
+end</pre>
+
+如果你曾经用过<a href="http://amfphp.org/">AMFPHP</a>或者.net下的Remoting，上面的这个服务端可以说是“相当”简单了。但是你可以运行测试一下。
+
+下面进入到我们的Flash。
+对于Flash应用，有几个*框架*可供选择，比如<a href="http://ariaware.com/products/arp/">ARP</a>和 <a href="http://www.iterationtwo.com/open_source_cairngorm.html">Cairngorn</a>。但是在我们这个应用上，他们显得太过强大了。我们可以写一个自己的轻量级的框架。这是一种MVC框架，Model是一个Remoting Class，用来和后台程序沟通(PHP, .NET, 或者 我们的 Rails) ，一个.fla的controller，和一个View class。
+M 和 V 在 C 的控制下进行事件相应与处理，而其他的类来扩展其他的功能。
+
+基本的Remoting是这样：
+bq. 
+<pre lang="actionscript">
+import mx.remoting.Service;
+import mx.services.Log;
+import mx.remoting.PendingCall;;
+import mx.rpc.RelayResponder;
+import mx.rpc.FaultEvent;
+import mx.rpc.ResultEvent;
+import mx.remoting.debug.NetDebug;
+import mx.utils.Delegate;
+
+class com.vixiom.remoting.Remoting
+{
+    private var gatewayURL:String;
+    private var servicePath:String;
+
+    private var svc:Service;
+
+    function dispatchEvent() {};
+    function addEventListener() {};
+    function removeEventListener() {};
+
+    /**
+    * Constructor
+    *
+    *   @param      gURL    gatewayURL
+    *   @param      sp      service path
+    *   @param      u       username
+    *   @param      p       password
+    *
+    */
+    public function Remoting(gURL, sp, u, p)
+    {
+        gatewayURL = gURL;
+        servicePath = sp;
+
+        // initialize as a broadcaster
+        mx.events.EventDispatcher.initialize(this);
+
+        // create a new service
+        svc = new Service (gatewayURL, null, servicePath, null, null);
+
+        // credentials
+        if (u != undefined && p != undefined) {
+            svc.connection.setCredentials(u, p);
+        }
+
+    }
+
+    /**
+    * Global fault event
+    */
+    function handleRemotingError(fault:FaultEvent):Void
+    {
+        mx.remoting.debug.NetDebug.trace({level:"None",
+        message:"Error: " +
+        fault.fault.faultstring });
+    }
+
+    /**
+    * Event dispatcher
+    *
+    *   @param      d       data
+    *   @param      et      eventType
+    *
+    */
+    function dispatch(d, et)
+    {
+        // broadcast message
+        var eventObj:Object={target:this,type:et}
+        eventObj.data = d;
+        dispatchEvent(eventObj);
+    }
+
+}</pre>
+
+基本的View Class是这样：
+bq. 
+<pre lang="actionscript">
+import mx.utils.Delegate;
+
+class com.vixiom.view.View
+{
+    private var target:MovieClip;
+
+    function dispatchEvent() {};
+    function addEventListener() {};
+    function removeEventListener() {};
+
+    /**
+    * Constructor
+    *
+    *   @param  t   target (target timeline: _root || a mc)
+    */
+    public function View (t:MovieClip)
+    {
+        target = t;
+
+        // initialize as a broadcaster
+        mx.events.EventDispatcher.initialize(this);
+    }
+
+    /**
+    * Event dispatcher
+    *
+    *   @param      d       data
+    *   @param      et      eventType
+    *
+    */
+    function dispatch(d, et)
+    {
+        // broadcast message
+        var eventObj:Object={target:this,type:et}
+        eventObj.data = d;
+        dispatchEvent(eventObj);
+    }
+}</pre>
+
+里克：看到这个时候，我看了一下源代码。as文件的存放是按照类似java的形式。所以下面的话就好理解了。我对as的知识为0.
+
+在这个MP3 player中，我用下面的方法扩充一下Remoting class。你可以不必把你的类放到这个packages里面，当然那样做更利于管理。
+<pre lang="actionscript">'var pc:PendingCall = this.svc.getTracks();'</pre>
+一句是再远程调用Rails，这和TrackService.rb 类里面的'getTracks'是一样的。我的类中有一个tracks对象，它直接接收ruby的'tracks = re.result;'。我注释了'this.svc.connection.setCredentials(u, p);'一行，因为它在创建一个安全的远程调用。最后一行'dispatch(tracks, "onGetTracks");' 将数据传递给view。
+bq. 
+<pre lang="actionscript">
+import mx.remoting.*;
+import mx.rpc.*;
+
+class com.vixiom.remoting.RemotingMp3
+extends com.vixiom.remoting.Remoting
+{
+    // tracks holder object
+    private var tracks:Object;
+
+    ////////////////////////////////////////////////////////////////
+    //
+    // Constructor (gatewayURL, servicePath, userid, password)
+    //
+    ////////////////////////////////////////////////////////////////
+
+    public function RemotingMp3 (gURL, sp, u, p)
+    {
+        super(gURL, sp);
+        // this.svc.connection.setCredentials(u, p);
+    }
+
+    ////////////////////////////////////////////////////////////////
+    //
+    // Get tracks with handler (onGetTracks)
+    //
+    ////////////////////////////////////////////////////////////////
+
+    public function getTracks()
+    {
+        trace("// getting tracks")
+        // create a pending call out to rails
+        var pc:PendingCall = this.svc.getTracks();
+        // create a responder to handle the return from rails
+        pc.responder = new RelayResponder(this,
+        "onGetTracks",
+        "handleRemotingError");
+    }
+
+    public function onGetTracks (re:ResultEvent)
+    {
+        if (re != undefined)
+        {
+            trace("// onGetTracks broadcaster - Word!")
+            // put result in recordset
+            tracks = re.result;
+            // trace for testing
+            for (var i = 0; i < tracks.length; i++) {
+                trace(tracks[i].title);
+            }
+            // dispatch event to the view
+            dispatch(tracks, "onGetTracks");
+        }
+    }
+}</pre>
+
+下面是controller的代码，需要注意的是，‘Rmp3’是我扩展的Remoting class的实例。它有两个参数，一个是WebORB geteway url，一个是在app/services中的'TrackService'类。我还没有展示扩展的view class，controller里已经产生了一个‘Vmp3’实例，<u>with the _root of the Flash file as it's parameter (it uses that as a target). </u>。下面四行是view中的按钮方法，最后一行调用远程方法，这是这个app的entry point<u>(as it's pretty useless sans data)</u>。
+bq. 
+<pre lang="actionscript">
+// import remoting, view, and debug
+import mx.remoting.debug.NetDebug;
+import mx.utils.Delegate;
+import com.vixiom.remoting.RemotingMp3;
+import com.vixiom.view.ViewMp3;
+
+// ini debug
+NetDebug.initialize ();
+
+iniApp();
+
+// setup and start
+function iniApp()
+{
+    // create remoting & view objects
+    var Rmp3:RemotingMp3    = new RemotingMp3 (
+    "http://localhost:3000/weborb",
+    "TrackService"); // weborb gateway, ruby class name
+    var Vmp3:ViewMp3        = new ViewMp3 (_root);
+
+    // set up listeners
+    Rmp3.addEventListener ("onGetTracks",
+    Delegate.create (Vmp3, Vmp3.onGetTracks));
+
+    pause_btn.onRelease = Delegate.create(Vmp3, Vmp3.pauseTrack);
+    play_btn.onRelease  = Delegate.create(Vmp3, Vmp3.playTrack);
+    prev_btn.onRelease  = Delegate.create(Vmp3, Vmp3.previousTrack);
+    next_btn.onRelease  = Delegate.create(Vmp3, Vmp3.nextTrack);
+
+    // start the app, get the tracks
+    Rmp3.getTracks();
+}</pre>
+
+下面是扩展的view，相当复杂，而且和rails及Remoting没什么关系，所以看一下它的注释，就能明白它的意思了。里克：我就不贴了，看类名就知道它在哪了。
+bq. 
+<pre lang="actionscript">
+class com.vixiom.view.ViewMp3 extends com.vixiom.view.View</pre>
+
+就是这样了，不过要注意一下<a href="http://www.adobe.com/cfusion/knowledgebase/index.cfm?id=tn_14213">跨域安全问题</a>，尤其是当你的rails应用在一台服务器上，而Flash文件在另一台服务器上的时候。
+
+里克，07年10月23日，Railser.cn

@@ -1,0 +1,42 @@
+---
+layout: post
+title: 我开始mac啦！！
+post_id: 440
+categories: ["default"]
+---
+
+{% include JB/setup %}
+
+---
+
+上周在淘宝的苹果福利社订购了一台mac mini mc238，发货后第二天就到了。兴奋啊。我终于开始mac了！！
+
+<img class="aligncenter size-medium wp-image-443" title="T1HNBsXlxlXXXBc6_b_094607.jpg_310x310" src="http://railser.cn/wp-content/uploads/T1HNBsXlxlXXXBc6_b_094607.jpg_310x310-300x300.jpg" alt="T1HNBsXlxlXXXBc6_b_094607.jpg_310x310" width="300" height="300" />
+
+下面分享一下这次的经历，当作日记，也是分享给大家一些经验吧。
+
+
+
+东西拿到了，第一件事是连接上我的显示器。这里介绍两个事情：一是mac mini和自己的显示器连接，用的是dvi线，二是这个线需要自己买，价格在20元左右。线的样子是
+
+<img class="aligncenter size-medium wp-image-442" title="T2hHJcXXRXXXXXXXXX_!!26761329.jpg_620x10000" src="http://railser.cn/wp-content/uploads/T2hHJcXXRXXXXXXXXX_26761329.jpg_620x10000-300x300.jpg" alt="T2hHJcXXRXXXXXXXXX_!!26761329.jpg_620x10000" width="300" height="300" />
+
+注意的是，我的dvi接头是24＋1针脚的，一定要和显示器对应，还有另一种24＋5的，用途不太一样，具体详细介绍看这里：<a href="http://baike.baidu.com/view/1297324.htm?fr=ala0_1_1">http://baike.baidu.com/view/1297324.htm?fr=ala0_1_1</a>
+
+千万不要因为看错了买来的线不可用。（我就是，别人代给我的，买的时候就没区分是＋1还是＋5的针脚，结果白跑一趟。）
+
+dvi线如果网购的话可以看这里：<a href="http://item.taobao.com/item.htm?id=3812883078">http://item.taobao.com/item.htm?id=3812883078</a>
+
+好了，到这里，连接好，就开始mac的旅程了。
+
+这里想说的是，mac mini很适合上手，加上itouch，可算作是iphone开发的最节省开销了。（下个月买itouch，然后呢，本博就要以mac开发为主啦，会贴一些经验的总结，分享给需要的朋友。）
+
+来，上张图吧，很兴奋，不过遗憾的是不能语音通话，因为没有麦克风，单买的话太贵，usb话筒效果说未必好。
+
+<img class="aligncenter size-medium wp-image-445" title="screen" src="http://railser.cn/wp-content/uploads/screen-300x169.jpg" alt="screen" width="300" height="169" />
+
+因为之前用过ubuntu，所以这次上手不算太陌生，不过好些东西还是不适应，比如快捷键。mac的三个键和win的不一样，需要在系统偏好里调整一下，当然不改也可，那就纯正的mac吧。
+
+下一篇分享下折腾了两天的环境配制。
+
+广告下，工作室目前定位在科技公司上，业务在网站制作和美工设计。我也算是带出来两个学员，一个做程序，一个做网络推广。后面会整理出来，看来Railser.cn该增加人员了。

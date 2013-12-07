@@ -1,0 +1,14 @@
+---
+layout: post
+title: Method Missing
+post_id: 158
+categories: ["Advanced Rails", "default", "rails", "ruby"]
+---
+
+{% include JB/setup %}
+
+---
+
+解决了前几篇所有的疑惑后，理解method_missing就变得非常简单。其准则是：如果整个方法查找过程中，直到到达了Object都以失败而告终，那么将再次执行方法查找，但这次查找的是method_missing方法而不是原来调用的方法。如果method_missing方法被找到，它将被传入原方法的调用参数并调用，原调用的代码块也会被传入method_missing方法。
+
+Object中的缺省method_missing（rb_method_missing）函数将抛出一个异常。

@@ -1,0 +1,18 @@
+---
+layout: post
+title: TextMate中文教程之限制文件夹引用
+post_id: 148
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+当把文件夹引入TextMate项目中的时候，你可以过滤一部分不需要的文件和文件夹。如果你的项目是通过分组来组织项目文件的话，这个功能你就用不了啦，当然你也可以手动来完成。选中你项目边栏中的顶级文件夹，然后点边栏右下角那个 information按钮，看图：
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102320.png"><img class="alignnone size-medium wp-image-160" title="2008102320" src="http://railser.cn/wp-content/uploads/2008/10/2008102320-300x173.png" alt="" width="300" height="173" /></a>
+
+这里有两个地方可以输入正则表达式来过滤，用正则来过滤掉那些你不希望出现在边栏列表里面的文件吧。贼拉方便。你也可以修改TextMate的属性，用快捷键Apple+,打开属性窗口选择文件夹设置。你可以在这里同样用正则来修改其中的内容。它不会影响目前的项目。
+
+何时用这个功能？比如我有一个Rails项目叫做simple。它位于版本控制之下，我可以过滤掉这个项目中的script,log,tmp和doc文件夹。至少我一直都是这么干的。

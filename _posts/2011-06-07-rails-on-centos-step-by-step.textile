@@ -1,0 +1,261 @@
+---
+layout: post
+title: 在CentOS5上部署Rails3应用
+post_id: 609
+categories: ["Advanced Rails", "capistrano", "centos", "linux", "nginx", "passenger", "rails", "RailsNote", "rvm", "ssh", "svn", "whenever"]
+---
+
+{% include JB/setup %}
+
+---
+
+1、安装rvm
+
+安装rvm前，要先安装git。因为rvm的安装教程就是一个git的小脚本。
+
+>>wget http://kernel.org/pub/software/scm/git/git-1.7.5.3.tar.bz2
+
+Oop！这里有个问题，我tar不常用，这里tar xvfz git-gem 是会提出格式错误的，查了一下需要换一个命令：tar -xvjpf git-gem
+
+之后，
+
+make prefix=/usr/local all
+
+make prefix=/usr/local install
+
+看到git 版本后，安装rvm
+
+git --version
+
+剩下的，就是按照 https://rvm.beginrescueend.com/rvm/install/ 的讲解一步步安装吧，最后，阿？为什么
+<pre>type rvm | head -1</pre>
+会提示错误呢？我也被搞糊涂了，按照提示，我重新打开一个终端窗口，这下正常了。所以再看看文档吧。
+
+接着，安装1.8.7
+
+2、安装ruby 1.8.7和gem
+
+rvm install 1.8.7
+
+注：我又将用户切换回了root，而在进行到Load RVM into your shell sessions as a function的时候，我不得不切换回user。
+
+rvm use 1.8.7
+
+显示正常了。
+
+安装gems
+
+http://rubygems.org/pages/download
+
+3、安装rails
+
+gem install rails -v 3.0.7 --no-rdoc --no-ri
+
+如果安装rdoc和ri，我出现了问题，具体的情况未明。
+
+问题又来了，>> rails -v 找不到命令
+
+翻看文章的过程中，有一句话很重要，“gem install rails     # 注意不要加sudo，否则会安到系统的ruby下，而不是rvm的ruby下”
+
+这是在百度里查到的，可是不用root，rvm也没安装成功，还是我最开始忘记使用user，而在安装完rvm后，ruby也用了root权限安装。不知道这里的影响会有什么，总之，我犯了一个错误，版本搭配错误。
+
+应该是 ruby1.9.2搭配rails3.0.7。
+
+好吧，还好有rvm，安装ruby1.9.2，再 gem install rails，竟然没有出现第一次时候的 ri 错误。欣慰吧。
+
+这里还有一些细节，不影响整体即可，现在 rails new testrails 成功创建了一个应用。
+
+4、安装svn
+
+曾经熟悉的svn页面，已经转移到 apache 下，地址在这，http://subversion.apache.org/ ，用户手册在 http://svnbook.red-bean.com/ 。
+
+按照一些文章介绍，安装svn实在太复杂了，突然我想起来yum和apt-get。来试一下。
+
+yum install subversion
+
+成功了。
+
+按照<a href="http://www.hostingrails.com/Subversion-Rails-Implement-Your-Own-Version-Control-System" target="_blank">这个文档</a>，我配置过两次，这里不再详述了，又需要的朋友看一下。
+
+我每次都会参照它ignore的操作。
+
+5、<span style="color: #ff0000;">ssh配置</span>
+
+在我本地重新生成一个key，其实没必要的，我只是出于练习的目的。
+
+>> ssh-keygen -t rsa
+
+在服务器上
+
+>> mkdir .ssh (其实没太大必要了，因为我的key不打算放到这里了)
+
+然后传输这个key上去
+
+>> scp ~/.ssh/id_rsa.pub loginname@hostdomain:.ssh/authorized_keys
+
+这里把key命名为authorized_keys。按照一些教程的说明，综合起来简单笔记一下。
+
+在/etc/ssh/<username>建立文件夹，将authorized_keys mv进来，并给予权限
+
+>> chmod 755 <username>
+
+>> chmod 644 <username>/authorized_keys
+
+编辑/etc/ssh/sshd_config，改写这一行
+
+AuthorizedKeysFile    /etc/ssh/%u/authorized_keys
+
+并取消注释这两行
+
+RSAAuthentication yes
+
+PubkeyAuthentication yes
+
+保存后，
+
+>> /etc/init.d/sshd restart
+
+启动另一个终端，登录时弹出一个窗口提示输入密码，其实就是刚才生成key时候的passphrase。确认后，就不用输入密码直接登录了。
+
+这里有一个调试经验。
+
+>> ssh -v name@domain
+
+会输出交互信息，这里我发现它先校验key，如果不通过，就校验登录密码了。所以，如果上面的任何一个步骤有问题，比如权限不对或者写错字母，这里就会继续提示需要密码。
+
+如果上面的都正确了，这时就不用再次输入密码直接登录了。
+
+感谢<a href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys" target="_blank">这篇文章</a>，让我节省了如此多的时间。感谢分享的精神。
+
+接着需要提高一些安全性了，常见的有
+
+PermitRootLogin no （禁止用root登录，这是默认的，当然有些时候会被其他的开发人员打开，检查一下是必要的）
+
+StrictModes yes （也是默认的）
+
+PasswordAuthentication no （禁用密码登录，加上这个安全性就足够了，当然还有其他，欢迎各位指点。）
+
+&nbsp;
+
+时间过去了一个星期，这期间我在调试一个Rails程序，打算下面部署到服务器上，而不是随便用个railstest应付了事。这里又温习了很多rails得技巧，不过时间好快，一下子就是8天的时间。
+
+好了，我的Rails程序已经基本完成小样了，开始用capistrano设置。
+
+6、Capistrano
+
+这里稍微特殊一些的地方，是我用的svn+ssh（注意顺序，写反了不行）链接服务器并cap命令。这里没有办法证明一件事情，写出来供大家参考，就是私钥设置完，在服务器上也测试一下，比如
+
+svn checkout -q  -r5 svn+ssh://domain.com/test/trunk tmp
+
+这里会要求输入passphrase，或者添加host到know_host，都可能潜在的影响第一次cap的成功。当然，第一次cap失败可能是必然的，关键是下面分享一下我的deploy.rb给大家参考，减少一些查询的时间，当然很多东西还得看过说明才了解，建议看<a href="http://help.github.com/capistrano/" target="_blank">这篇文章</a>，很有帮助。
+
+下面是我的代码
+
+(略过)
+
+在配置svn的时候，会有不同的权限设置，比如网站目录会放到/var/www/中，我觉得这是安全性的问题，超过这个笔记的范围，就不记述了。不过这其间还是看了一些文章，后面做安全调整的时候会用上的。
+
+补充几个命令
+
+cap -H 查看帮助
+
+cap -T 查看任务，-vT查看更多任务
+
+cap -e deploy:cold 查看deploy:cold 的说明
+
+7、apapche，nginx和passenger
+
+因为CentOS上的apache已经安装好了，所以这里只要安装一下passenger就可以了，安装起来竟然无比简单，缺少的lib按照提示yum一下就可以了。
+
+&nbsp;
+
+8、安装sqlite3-ruby的问题
+
+google了一下发现很多人安装这个出现问题，yum install sqlite3-ruby 也不可以，这里很奇怪，yum竟然找不到这个包。
+
+省去一些步骤，直接 yum search sqlite， 发现给出的包有：
+<div>
+<div>
+<div>mono-data-sqlite.i386 : sqlite database connectivity for Mono</div>
+<div>pdns-backend-sqlite.i386 : SQLite backend for pdns</div>
+<div>php-pear-Log.noarch : Abstracted logging facility for PHP</div>
+<div>python-sqlite.i386 : Python bindings for sqlite.</div>
+<div>qt4-sqlite.i386 : SQLite drivers for Qt's SQL classes</div>
+<div>sqlite.i386 : Library that implements an embeddable SQL database engine</div>
+<div>sqlite-devel.i386 : Development tools for the sqlite3 embeddable SQL database engine.</div>
+</div>
+</div>
+原来是包的名称不对，所以
+
+yum install sqlite.i386
+
+提示已经安装
+
+yum install sqlite-devel.i386
+
+安装成功，再次 gem install sqlite3，提示
+
+sqlite3-ruby only supports sqlite3 versions 3.6.16+, please upgrade!
+
+好，可算有了进展。下载 http://www.sqlite.org/download.html 最新版本的sqlite，安装后，再次 gem install sqlite3，成功了！！
+
+回到rails目录，再次 bundle install。胜利完成。
+
+9、rake任务出错，/lib/rake.rb:32: warning: already initialized constant RAKEVERSION
+
+临时的解决办法，bundle exec rake RAILS_ENV=production  db:migrate
+
+这不是最终解决办法，还在找，刚才心急一下给发布了，其实还没写完呢。。
+
+问题发现了，是rake的问题，卸载之后重新安装rake 0.8.7，问题暂时解决。
+
+10、No such file or directory - /tmp/mysql.sock
+
+CentOS的位置和方法，在此备注，ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock
+
+11、invalid packet: sequence number mismatch(3 != 1(expected))
+
+说是ruby-mysql2.9.4的问题，暂时使用2.9.3。但是问题依旧。
+
+gem 'mysql2', '0.2.7' 和gem 'mysql'的区别
+
+最新版本的mysql2，是0.3.2，这是集成进rails3.1的，不适用于rails3.0.7，所以需要指定版本为0.2.7，环境可以为Raisl 3.0.x和mysql 5.x
+
+gem 'ruby-mysql'和gem 'mysql-ruby'的区别：都不用了，直接用 gem 'mysql'
+
+“invalid packet: sequence number mismatch”的问题已经解决，去掉ruby-mysql的gem，直接使用 gem 'mysql'
+
+在我的版本环境里，gem 'mysql2'也不行，我的环境，rvm, ruby1.9.2p180, rails 3.0.7
+
+12、rake 0.9.2和0.8.7，会被同时安装，也会因为0.9.2产生问题，建议删除0.9.2
+
+&nbsp;
+
+13、自动执行rake任务
+
+看了一些介绍，其实总结起来是三个事情
+
+（1）参照系统默认的crontab任务，这方面资料很多
+
+（2）rails的好处是gem和实现方案很多，建议使用 <a href="https://github.com/javan/whenever" target="_blank">whenever</a> 来实现，它会直接提示代码如何写，粘贴到当前用户的crontab里就可以
+
+（3）具体做法，
+
+>> crontab -e   编辑当前用户的cron任务
+
+>>  */30 * * * * /bin/bash -l -c 'cd /home/liwei/wwwroot/appflying.com && RAILS_ENV=production rake autorss:work --silent'
+
+其实这个文件就这一行就可以，我完整的代码是
+
+SHELL=/bin/bash
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/rvm/gems/ruby-1.9.2-p180@global/bin
+
+MAILTO=root
+
+HOME=/home/liwei
+*/30 * * * * /bin/bash -l -c 'cd /home/liwei/wwwroot/appflying.com && RAILS_ENV=production rake autorss:work --silent'
+
+&nbsp;
+
+写在最后：算是大功告成？？其实我没感觉，但是总算把我想写的内容写完了。后面还会有一些笔记。这个笔记到此用了2周时间，留念。

@@ -1,0 +1,30 @@
+---
+layout: post
+title: hash.invert的用法
+post_id: 464
+categories: ["RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+对于多数的model的select列表，我都会用model属性＋方法的形式，做一个列表，然后在form里显示。
+
+很常见的，比如。
+
+<a href="http://railser.cn/wp-content/uploads/1.png"><img class="aligncenter size-full wp-image-468" title="1" src="http://railser.cn/wp-content/uploads/1.png" alt="" width="485" height="74" /></a>
+
+在form里，这样调用
+<p style="text-align: center;"><a href="http://railser.cn/wp-content/uploads/3.png"><img class="aligncenter size-full wp-image-470" title="3" src="http://railser.cn/wp-content/uploads/3.png" alt="" width="445" height="43" /></a>
+
+
+在一些list的地方，也会把这个值作为一个显示
+
+<a href="http://railser.cn/wp-content/uploads/2.png"><img class="aligncenter size-full wp-image-469" title="2" src="http://railser.cn/wp-content/uploads/2.png" alt="" width="485" height="61" /></a>
+
+调用的时候：
+
+<a href="http://railser.cn/wp-content/uploads/4.png"><img class="aligncenter size-full wp-image-471" title="4" src="http://railser.cn/wp-content/uploads/4.png" alt="" width="379" height="20" /></a>
+
+这里，做笔记的目的是告诉自己，invert命令很简洁，之前，呵呵，我会用map的方法把每一个item都处理一遍，写代码的朋友一定知道，那样是很常见的思路，但是很不ruby。

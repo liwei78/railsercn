@@ -1,0 +1,24 @@
+---
+layout: post
+title: 2013第一帖
+post_id: 794
+categories: ["others"]
+---
+
+{% include JB/setup %}
+
+---
+
+最近半年，一直在做OpenERP的全职开发，说是开发，也是用ruby来调用OE的api，还为真正进入到python的开发中。目前要尝试做一些python代码，加油。
+
+这半年一直使用ubuntu开发，sublime text 2.0真是ubuntu上的好东西。
+
+sublime最赞的是右侧的缩略图代替滚动条，找代码真是舒服呀，只是在打开log文件时候，缩略图没什么用了，显得定位也不准。但是对普通代码，少了它真不习惯。
+
+分享个资源帖 http://www.qianduan.net/essential-to-sublime-the-text-2-plugins.html
+
+目前已经不做rails开发，专心往ERP方向上发展了，加油加油。
+
+10年前埋怨会计专业，十年后用它赚钱，生活说是无常，实则是我们没有领悟它的短暂。
+
+liwei，2013年2月28日，2013第一帖

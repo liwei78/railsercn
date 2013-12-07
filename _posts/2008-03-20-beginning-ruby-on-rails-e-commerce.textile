@@ -1,0 +1,69 @@
+---
+layout: post
+title: Rails的中文版新书《Ruby on Rails电子商务实战》
+post_id: 41
+categories: ["book", "rails"]
+---
+
+{% include JB/setup %}
+
+---
+
+写在前面：
+
+那天同事GT我说Rails出了新书，中文版，《Ruby on Rails电子商务实战》 ，并且把英文版迅速发给了我，说：书很好，讲TDD了，你快看，我已经买了。
+
+
+h2. 一、《Beginning Ruby On Rails E-Commerce》
+
+
+
+这本书的英文版是在06年的时候出版的，在书中标注的开发环境，对于现在来说，有一些老。不过对于主流的Rails1.2.6以下版本开发的项目来说，不会产生太大的问题。
+<p style="text-align: center"><img src="http://railser.cn/wp-content/uploads/2008/03/env.jpg" alt="env" />
+
+
+<p style="text-align: center">书中(英文)的开发环境
+
+
+ 不过，随着Rails2.0.2的发布，新的项目自然会用新版本开发。并且一些功能已经改进。比如第七章说到的“Tagging Support”，就会带来版本的困扰，这个我在<a href="http://railser.cn/archives/development-log-rails-pagnate-and-acts-as-taggable" target="_blank">开发笔记：rails分页和acts_as_taggable插件的应用</a>中已经做了个笔记。
+
+这本书是Rails2.0下的牺牲品吗？绝不 ，这本书的价值，在于里面讲到的TDD下的Rails开发。这是这本书的精华，也使它不同于Rails普及书会面临的淘汰问题。
+
+h2. 二、一定要重视TDD开发
+
+
+
+在本书英文版的前言部分，作者提到了本书的目的：
+
+
+bq. 
+本书的阅读群，是使用Rails制作过一个以上项目，并且期望在以后的开发中，通过使用TDD开发来改进代码质量的程序员的。
+
+
+
+这正适合我这样的程序员。最近的经历告诉我，如果想和外国的团队开发项目，或者加入到成熟的项目开发中 ，掌握TDD或者BDD是一项必须技能。这重要的不在乎技巧，而是观念。
+
+记得当初在Django下开发deyeb的第二个版本时，就被迫的拿着测试驱动开发去理解。那个时候根本不明白这是什么意思，而两年后的现在，却十分想认真的再去理解一下书中的精髓。而这本书正好是按照先测试，后开发的“规矩” ，完成一个项目的。这也使得这本书不局限在Rails的具体版本，而教人知识的层次了。
+
+h2. 三、 《Ruby on Rails电子商务实战》
+
+
+
+中文版我还没读到，所以抓来GT(GT就是google talk的意思，好玩)我的<a href="http://www.douban.com/people/1098413/" target="_blank">那个人</a>，写了一下感想，毕竟他已经认真读完前三章了。
+
+
+bq. 
+买了Ruby on Rails电子商务实战。刚入手就迫不及待的翻看起来。这本书和其他的Rails都是一个流派，本着实用为目的，没有多余的废话，上来就直接做应用，而且介绍的技术都是现实中大家肯定会用到的，一些相关的知识点也都给了详细介绍的URL。从第二章开始作者就有意的给读者介绍一些优秀的编码思路，也就是本书的核心TDD测试驱动开发。说实话，这本书的代码，因为是基于Rails1.2之下的，尤其现在已经是Rails2了。所以好多代码已经被废弃了，例如书中常用到的 assert_tag 在rails中已经废弃了。如果你完全按照书上的例子打，肯定过不去，好在译者已经给大家写了注释和修改的方法。所以，虽然本书不是基于rails2来写，但是有了译者的补充和完善，代码仍然不过时。书中介绍的一些技巧和方法，在实战中也肯定让读者少走不少弯路，比如如何给Rails应用增加Textile功能，如何试用Rails的上传插件FileColumn。虽然Rails进过不断的进步，在安全，多语言支持应用程序部署和性能优化上都有了更好的标准和方法。但是本书后在这方面的章节仍然值得一读。
+
+总体来说，读过《敏捷开发2》，和《Ruby for Rails》再来看这本书，会对Rails开发者在实战中有莫大的帮助。
+
+
+
+这是中文译者的博客：<a href="http://activescaffold.com.cn/" target="_blank">activescaffold.com.cn </a>
+
+
+写在后面：
+
+最近又在给人做网站。又看了很多电影，并且在没什么新片看的时候，下载吴宇森的经典片《夺面双雄》 （英文：face/off）看。昨天还温习了一边《虎胆龙威4》，感觉那些程序员死得很窝囊，难道50年才出一个NEO吗？
+
+镐头书要出新版了，《Pro Active Record: Databases with Ruby and Rails》上架了，唉，时间不等人啊。最近觉得资料分享的网站很有意思，比如<a href="http://www.scribd.com/" target="_blank">http://www.scribd.com/</a>这个站点，大家有什么想法吗？

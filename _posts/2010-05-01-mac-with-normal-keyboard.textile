@@ -1,0 +1,38 @@
+---
+layout: post
+title: mac使用普通键盘的几个快捷键
+post_id: 451
+categories: ["apple mac"]
+---
+
+{% include JB/setup %}
+
+---
+
+mac的键盘都是专用的，上面有三个功能键，比windows下常见的ctrl和alt，多处一个中国结的键，呵呵，暂且这么叫吧。就是下图上的几个：
+
+<img class="aligncenter size-full wp-image-453" title="mac short cut key" src="http://railser.cn/wp-content/uploads/mac-short-cut-key.png" alt="mac short cut key" width="306" height="134" />
+
+他们对应的，Option就是alt键，Command就是win键，那个经常在网吧被人扣掉的很讨厌的按键。
+
+当然，在我第一次进入mac时还是头晕，没搞明白键盘的多数按键，尤其是在键盘检测之前。所以，还是先看看偏好设置里的每一个项目吧。
+
+键盘的按键在检测完之后，会出现下面的几个应用了。
+
+win＋alt：切换输入法
+
+win＋tab：切换任务窗口
+
+ctrl＋tab：浏览器内标签切换
+
+win+shift+3：屏幕截图，自动保存到桌面
+
+win+shift+4：指定区域截图，跟qq截图一样。很爽，再也不用依赖qq了。
+
+其实我前几天把ctrl和win键的功能给对换了，比较适合正常的习惯，不过刚才换了回来，希望能更接近真实的mac专用键盘的感觉吧。
+
+<img class="aligncenter size-medium wp-image-454" title="mac keyboard" src="http://railser.cn/wp-content/uploads/mac-keyboard-300x144.png" alt="mac keyboard" width="300" height="144" />
+
+另外，mac上的文件重命名很有意思，竟然是选中后，按enter，也就是会车键。这跟windows完全不一样。
+
+好了。写道这里，继续研究下编程的事情。

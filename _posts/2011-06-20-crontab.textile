@@ -1,0 +1,38 @@
+---
+layout: post
+title: crontab的写法误解
+post_id: 639
+categories: ["crontab", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+crontab的标准写法参照这里，http://www.centos.org/docs/5/html/Deployment_Guide-en-US/ch-autotasks.html
+
+那么，每阁特定小时运行命令如何写呢？
+
+每隔30分钟，运行一次命令，可以写
+
+*/30 * * * * /sbin/do_something
+
+每隔4小时，可以写成
+
+* */4 * * * /sbin/do
+
+吗？不可以，这样会产生很严重的错误，导致我每分钟运行一次命令，直到某种情况下被中止。想到这我真心疼我的mysql和cpu。
+
+这里正确的写法应该是
+
+0 0,4,8,12,16,20 * * * /sbin/do (<a href="https://github.com/javan/whenever" target="_blank">whenever</a> 给出的写法)
+
+或者
+
+0 */4 * * * /sbin/do (我认为可行的写法，不过至今未确认，这个写法可以从保存时开始，每隔4小时执行一次)
+
+两个写法，都要在第一个位置，指定执行开始的分钟数。
+
+请各位指正，我也继续验证一下我的写法。
+
+&nbsp;

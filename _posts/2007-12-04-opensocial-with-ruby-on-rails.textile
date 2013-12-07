@@ -1,0 +1,162 @@
+---
+layout: post
+title: 关注:Rails上的Opensocial实现
+post_id: 23
+categories: ["google", "opensocial", "rails", "REST"]
+---
+
+{% include JB/setup %}
+
+---
+
+
+h3. 什么是OpenSocial
+
+
+OpenSocial是一套API，具体说是由两种类型的API组成。第一种，REST 形式的API是向Social Network或其他遵循 该协议的应用，发送个人资料，好友，活动和persistence components[?]。第二种，Javascript API是以表单的形式实现第一种的REST应用。
+h3. Rails上的OpenSocial
+
+
+本段译自<a href="http://blog.new-bamboo.co.uk/2007/11/7/opensocial-with-ruby-on-rails" target="_blank">Google's OpenSocial with Ruby on Rails</a>
+根据<a href="http://code.google.com/apis/opensocial/">OpenSocial documentation</a>上的显示，目前OpenSocial开放了2中类型资源：people，一个用户的好友，和activities，这些好友的活动/行为。这种结构正好符合rails对集中资源的理解，在一个user Controller中，我们可以狠容易的得到用户的好友和他们的活动。
+OpenSocial的API是按照REST结构设计，但是它并不完全符合Rails的观点，首先，通过URL访问资源的形式并不是Rails的标准形式。其次，它不包含format extension，这意味着你不能直接使用respond_to块。
+但是上面两个问题可以通过在routes文件增加一组路由描述和增加一个自定义的mimetype来解决。
+下面的路由规则是在描述如何在我们的user_controller中对应OpenSocial 中的people资源的。
+bq. 
+<pre lang="ruby">
+# config/environment.rb
+Mime::Type.register "application/x-opensocial", :opensocial
+
+# config/routes.rb
+map.opensocial_person '/feeds/people/:id', :controller => 'users', \
+                            :action => 'show', :format => 'opensocial',\
+                            :conditions => {:method => :get}
+
+map.opensocial_person '/feeds/people/:id', :controller => 'users',\
+                            :action => 'update', :format => 'opensocial', \
+                            :conditions => {:method => :put}
+
+map.opensocial_person '/feeds/people/:id', :controller => 'users', \
+                             :action => 'destroy', :format => 'opensocial', \
+                             :conditions => {:method => :delete}
+
+# app/controllers/users_controller.rb
+
+respond_to do |format|
+  gem
+  format.opensocial
+end</pre>
+
+如果上面的比较麻烦，可以<a href="http://blog.nbwd.co.uk/assets/2007/11/7/opensocial_routing.tar.gz">下载</a>作者发的插件。这样你的route文件可以这样写：
+bq. 
+<pre lang="ruby">
+# config/routes.rb
+map.resources :users do |user|
+  user.resources :activities
+  user.resources :relationships
+end
+
+map.opensocial_people :users do |user|
+  user.opensocial_friends :relationships
+  user.opensocial_activities :activities
+end</pre>
+
+里克：google上看到的是两种资源，一种持久性方案，下面这个单元就介绍了OpenSocial Container
+h3. OpenSocial Container
+
+
+本段整理自<a href="http://www.elctech.com/2007/12/1/opensocial-whats-that" target="_blank">OpenSocial? What's that?</a>
+*OpenSocial Application*
+OpenSocial Application使用XML文档来最终render[一个狠程序化的词，我感觉应该不翻译为好]给用户。这个xml包含了metadata，html，和javascript。下面是Last.fm上的OpenSocial应用。
+<a href="http://www.last.fm/opensocial/myfavouritemusic.xml">http://www.last.fm/opensocial/myfavouritemusic.xml</a>
+<blockquote style="overflow: scroll">
+<pre lang="xml">
+< ?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <moduleprefs title="My Favorite Music">
+    <require feature="opensocial-0.5" />
+    <require feature='setprefs' />
+    <require feature='dynamic-height' />
+  </moduleprefs>
+  <content type="html">
+
+  < ![CDATA[
+
+  <div id="overlord">
+
+    <div id="loading">Loadinggem</div>
+    <div id="updating" style="display:none;">Updatinggem</div>
+    <div id="area"></div>
+
+    <div id="lastfmAccount" class="lastfmAccount">
+        <div id="hadALastfmAccount" style="display:none;" class="strongLinks">
+          p. <a id="haveAccountLink" href="javascript:;" onclick="$('setUsername').toggle();_IG_AdjustIFrameHeight();new Effect.ScrollTo('setUsername');return false;">Have a Last.fm account? Click here.</a>
+
+
+        </div>
+        <form id="setUsername" style="display:none;">
+          <input type="text" id="username" />
+          <input type="submit" value="That's me!" />
+          <span id="cancelChangeUsername">| <a href="javascript:;" class="cancel" id="">cancel</a></span>
+        </form>
+    </div>
+    <div id="placeholder"></div>
+
+
+
+  <style>
+    @import url(http://cdn.last.fm/opensocial/main.5.css);
+    @import url(http://cdn.last.fm/opensocial/canvas.1.css);
+  </style>
+  <script type="text/javascript" src="http://cdn.last.fm/javascript/lib/prototype.js"></script>
+  <script type="text/javascript" src="http://cdn.last.fm/javascript/lib/scriptaculous.js"></script>
+  <script type="text/javascript" src="http://cdn.last.fm/javascript/source/flashplayer_inline.js"></script>
+  <script type="text/javascript" src="http://cdn.last.fm/javascript/11/flashpreview.js"></script>
+
+  <script src="http://cdn.last.fm/opensocial/lfm.2.js"></script>
+
+  ]]>
+  </content>
+
+</module>
+</pre>
+
+*OpenSocial Container*
+OpenSocial Container的设计，是用来给网站提供用户的选择，配置，加强网站的用户应用，尤其在用户属性页面。OpenSocial Container需要能够理解XMl文件格式，并实现OpenSocial Javascript API。
+
+*OpenSocial Container如何工作*
+里克：下面的话还在捉摸
+The OpenSocial Container boils down quite simply to an IFRAME with the text of the <content> element from the application's XML dumped in to the body. One difficulty for building a container is dealing with the security risks of exposing cookies set by the "Host Network" to the Application's content, since the Host is doing the embedding. To ensure privacy and a certain degree of security the Container needs to originate from a different domain name than the Host. By doing this the Host/Container (they are the same entity) trick the browser into protecting the Host cookies from the Container's (and thus the Application's) Javascript.</content>
+
+The Container also makes extensive use of AJAX to request data from the Host/Container. This is how the Application gets access to the profile, friendship, activities, and persistence information.
+*为什么这么做？我们要注意什么？*
+OpenSocial standardizes social networking APIs. That alone is not particularly novel. But this is Google we're talking about here. With that kind of backing and buzz this may stick. As a developer this means that you only need to learn one API to be able to build social applications. One particularly interesting aspect of the OpenSocial API is the persistence layer. Using this portion of the API a developer can, quite easily, create a full featured interactive application which is entirely self contained in a single static XML file. All of the persistence and communication is handled by the Container and the Host. Now that is cool.
+
+If this takes off like is appears to be poised to do, then we could be in for some excitement akin to the growth and fragmentation of the early social networks; except this will be happing above the social network layer. One interesting possible side effect will be a growth in the popularity of niche social networks. OpenSocial appears to lower the castle walls of the established networks. I expect the crossover in data and user-base between networks will skyrocket as once "proprietary" profile data becomes easily moved and shared.
+h3. 下载OpenSocial Container 0.2.0
+
+
+ruby script/plugin install
+http://opensocial.rubyforge.org/svn/plugin/tags/0_2_0/opensocial_container
+h3. 下载OpenSocial Container 0.3.0
+
+
+ruby script/plugin install
+http://opensocial.rubyforge.org/svn/plugin/tags/0_3_0/opensocial_container
+
+注：
+本文将继续整理相关内容，有想法的朋友请留言，万分感谢。
+本文有很多东西第一次接触，有不妥的地方，如果您愿意指出帮助我提高，劳烦留言。我会认真查找您的提示。
+目前正在看OpenSocial Container 0.2/3.0的源码
+林肯公园的歌简直成了我的精神支柱了。
+
+参考资料：
+<a href="http://elctech.com/2007/12/3/opensocial-container-0-2-0">OpenSocial Container
+0.2.0</a>
+<a href="http://elctech.com/2007/12/7/opensocial-container-0-3-0">OpenSocial Container 0.3.0</a>
+<a href="http://www.elctech.com/2007/12/1/opensocial-whats-that">OpenSocial? What's that?</a>
+<a href="http://blog.new-bamboo.co.uk/2007/11/7/opensocial-with-ruby-on-rails">Google's OpenSocial with Ruby on Rails</a>
+<a href="http://code.google.com/apis/opensocial/">OpenSocial</a>
+其他：
+<a href="http://www.railsjitsu.com/installing-and-configuring-nginx-and-mongrel-for-rails">Installing and Configuring Nginx and Mongrel for Rails</a>
+<a href="http://blog.new-bamboo.co.uk/2007/11/20/database-optimization-for-rails-apps">Database Optimization for Rails Apps</a>

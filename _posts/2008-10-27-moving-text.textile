@@ -1,0 +1,24 @@
+---
+layout: post
+title: TextMate中文教程之移动文本
+post_id: 181
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+你可能常常需要把文字移动到不同的地方，Text -> Move Selection为你提供如下功能：
+<ul>
+	<li>Ctrl+Apple+上 向上移动一行（如果没有选择任何文本则移动当前行）</li>
+	<li>Ctrl+Apple+下 向下移动一行（如果没有选择任何文本则移动当前行）</li>
+	<li>Ctrl+Apple+左 移动当前所选文字向左一个字符</li>
+	<li>Ctrl+Apple+右 移动当前所选文字向右一个字符</li>
+</ul>
+TextMate的 Text 菜单也可以让读者很容易的进行文本缩进：
+<ul>
+	<li>Apple+[ 或者 Option + Tab 减少缩进（如果没有选择任何文本则减少当前行的缩进）</li>
+	<li>Apple+] 或者 Option + Shift + Tab 增加缩进（如果没有选择任何文本则增加当前行的缩进）</li>
+	<li>Option+Apple+[ 根据目前编辑文档的语言类型自动格式化缩进</li>
+</ul>

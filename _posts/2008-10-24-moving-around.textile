@@ -1,0 +1,51 @@
+---
+layout: post
+title: TextMate中文教程之移动光标
+post_id: 151
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+当你停止打字的时候，可能是需要操作光标了。发现上一行有一个错字，你有两个选择。要么用鼠标移动过去，要么用键盘移动光标到该错字的位置。你通常用哪个呢？想想，你的右手离开键盘到鼠标的时间再移动回来。每天你要为此多付出多少时间呢？所以用键盘来进行这一操作无疑是个好主意，TextMate也为这一过程提供了很多快捷键。别担心，他们都是很容易记忆的。
+
+这有一些白痴都知道的操作计算机的通用快捷键：
+
+方向键上 - 光标移动到上一行
+方向键下 - 光标移动到下一行
+方向键左 - 光标往左移动一个字符
+方向键右 - 光标往右移动一个字符
+
+如果这些快捷键加上一个Apple键的话，那么它就会移动到一行甚至文档的边界了：
+
+Apple+方向键上 - 光标移动到文档的开头
+Apple+方向键下 - 光标移动到文档的结尾
+Apple+方向键左 - 光标移动到本行的开头
+Apple+方向键右 - 光标移动到本行的结尾
+
+你也可以使用Option键
+
+Option+方向键上 - 光标移动到列的开头
+Option+方向键下 - 光标移动到列的结尾
+Option+方向键左 - 光标移动到当前单词的开头
+Option+方向键右 - 光标移动到当前单词的结尾
+
+这里列的概念你可能搞不清，看一下下图，按Option+方向键下光标会从 “ﬁrst” 移动到 “data”。
+
+<a href="http://railser.cn/wp-content/uploads/2008/10/2008102401.png"><img class="alignnone size-medium wp-image-167" title="2008102401" src="http://railser.cn/wp-content/uploads/2008/10/2008102401-300x101.png" alt="" width="300" height="101" /></a>
+
+如果你是个程序员，可以试试用Ctrl代替Option。他会在 CamelCaseWords 和 snake_case_words 这类的单词之间切换。第一种呢，会依次切换光标到C,C,W。第二种呢会依次切换到s,c,w。
+
+可能你是一个emacs的支持者，没关系TextMate也支持那些你常用的快捷键：
+
+Ctrl+P - 光标移动到上一行
+Ctrl+N - 光标移动到下一行
+Ctrl+B - 光标向左移动一个字符
+Ctrl+F - 光标向右移动一个字符
+Ctrl+A - 光标移动到该行开头
+Ctrl+E - 光标移动到该行结尾
+Ctrl+V -光标移动到文档结尾
+
+这一章介绍滴这些快捷键在mac中的其他程序里面也能用到。比如Mail和Safari，所以好好记住它们吧。有个小提示，最后介绍的这些快捷键有可能跟你使用的TextMate的插件包冲突啊。比如Ctrl+P在Rails这个插件包就是prams[:id]的快捷键了。

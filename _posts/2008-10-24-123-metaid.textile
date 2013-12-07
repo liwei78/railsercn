@@ -1,0 +1,52 @@
+---
+layout: post
+title: 1.2.3 Metaid
+post_id: 160
+categories: ["Advanced Rails", "default"]
+---
+
+{% include JB/setup %}
+
+---
+
+“<a href="http://whytheluckystiff.net/articles/seeingMetaclassesClearly.html" target="_blank">why the lucky stiff</a>”为Ruby元编程创建了一个极小的库，叫做metaid.rb。在任何需要元编程的项目中都可以引进这段非常有用的代码：
+<pre name="code" class="ruby">
+class Object
+  # The hidden singleton lurks behind everyone
+  def metaclass; class < < self; self; end; end
+  def meta_eval &blk; metaclass.instance_eval &blk; end
+  # Adds methods to a metaclass
+  def meta_def name, &blk
+    meta_eval { define_method name, &blk }
+  end
+  # Defines an instance method within a class
+  def class_def name, &blk
+    class_eval { define_method name, &blk }
+  end
+end
+</pre>
+这个库在每个对象（函数调用接收者）上定义了四个方法：
+<ul>
+	<li>metaclass 指向接收者的单例类（self）</li>
+	<li>meta_eval 与单例类的class_eval等价。在接收者的单例类上下文中执行给定代码块。</li>
+	<li>meta_def 在接收者的单例类中创建一个方法。如果接收者是一个类或者模块，那么创建出来的是类方法（即接收者的单例类的实例方法）。</li>
+	<li>class_def 在接收者中创建一个实例方法（接收者必须是类或者模块）。</li>
+</ul>
+Metaid简短的代码却带来了不小的便利。通过使用这些简洁的方式来引用和增强元类，你的代码将变得比到处都放置诸如class << self; self; end等代码更清晰。这些技巧越简洁易懂，你就越可能在自己的代码中恰到好处的使用它们。这个例子展示了如何使用Metaid来检查和简化对单例类的更改：
+</pre><pre name="code" class="ruby">
+class Person
+  def name; "Bob"; end
+  def self.species; "Homo sapiens"; end
+end
+</pre>
+Person类的类方法作为其单例类的实例方法被添加：
+<pre name="code" class="ruby">
+Person.instance_methods(false)             # => ["name"]
+Person.metaclass.instance_methods -
+  Object.metaclass.instance_methods        # => ["species"]
+</pre>
+通过使用Metaid中提供的方法，我们的方法定义可以编写为如下形式：
+<pre name="code" class="ruby">
+Person.class_def(:name) { "Bob" }
+Person.meta_def(:species) { "Homo sapiens" }
+</pre>

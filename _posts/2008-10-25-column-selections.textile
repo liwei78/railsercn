@@ -1,0 +1,25 @@
+---
+layout: post
+title: TextMate中文教程之列选择器
+post_id: 172
+categories: ["default", "TextMate"]
+---
+
+{% include JB/setup %}
+
+---
+
+在传统的选择器基础上，TextMate允许你使用直角选择器或者列选择器。在你拖动鼠标进行选择的时候，可以按住Option键，这样就启用了直角选择器。也可以使用 Edit -> Change to Column Selection或者Option切换是否使用列选择器。
+
+下面的例子告诉你如何快速的产生一个名字列表：
+<ol>
+	<li>创建一个新的TextMate文档 File -> New 快捷键Apple+N</li>
+	<li>输入一些 ﬁrst names，每一个单独占一行。 Jim,Marsha, James, Dana, Andrew。</li>
+	<li>Apple+上 移动光标到文档的开头</li>
+	<li>Shift+Option+下 选取到列结尾的全部文档。这个快捷键看起来好像没有选取整个列文档，但是由于你的倒数第二行有一个换行符。事实上列选择器已经扩展到最后一行的开头了。下一步会让这一切更清晰。</li>
+	<li>按Option打开列选择器，仔细看你所有选取的列前面都有一列细线，大概1像素，这回知道了吧上一步已经选取了整个列。</li>
+	<li>输入 last name 例如 Gray，随后跟一个逗号和空格。你会发现刚才选取的所有行同时都增加了。</li>
+</ol>
+移动光标到新的一行，离开列选择器模式。
+
+令人惊讶的，当使用软包围行的时候列选择器会起冲突。和其它的编辑器不同，TextMate支持打开列选择器View -> Soft Wrap (Option+Apple+W)。然而，列选择器不会把包含的内容当作新行。勾选上View -> Gutter -> Soft Wrap Indicators 之后你可以通过编辑器窗口左边的原点看到哪一行被包含了。 （这一段翻译的不好，我自己也迷糊回头好好研究一下这个用法会修改）。

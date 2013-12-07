@@ -1,0 +1,66 @@
+---
+layout: post
+title: 升级09款mac mini笔记
+post_id: 776
+categories: ["apple mac", "mini"]
+---
+
+{% include JB/setup %}
+
+---
+
+今天凌晨，苹果发布了多款新的mac产品，最让我心动的是iMac，当然，还有价格又再降的mac mini。手里工作用的mac mini是09年款的，至今还在用着2G内存。因为最近工作经常要开虚拟机，所以我决定升级我的mini到8G。
+
+网上有一篇帖子，讲述了如何给09年mini拆机。可是文章不是针对更换内存讲的，而且细节的部分还是不太到位，所以，来吧，我自己贴图讲解。
+
+<a href="http://railser.cn/blog/mac-mini%E5%88%B0%E5%BA%95%E6%9C%89%E5%A4%9Amini%EF%BC%9F%EF%BC%9F" target="_blank">这还是mini到手时候的得瑟贴</a>。
+
+首先，先拆开它的盖子。其实拆开它并没有网贴写的那么复杂，我是按照下图的方式打开它的。
+
+<a href="http://railser.cn/wp-content/uploads/P241012_19.12.jpg"><img title="S" src="http://railser.cn/wp-content/uploads/P241012_19.12-300x225.jpg" alt="" width="300" height="225" /></a><a href="http://railser.cn/wp-content/uploads/P241012_19.12.jpg">
+</a>
+
+我是从耳机的插孔上方，用小刀一点点撬开一个缝隙，然后，用咖啡勺，撬开的。
+
+<a href="http://railser.cn/wp-content/uploads/P241012_19.11_01.jpg"><img title="S" src="http://railser.cn/wp-content/uploads/P241012_19.11_01-300x225.jpg" alt="" width="300" height="225" /></a><a href="http://railser.cn/wp-content/uploads/P241012_19.11_01.jpg">
+</a>
+
+撬开一些后，只需要垂直上下的撬动，就可以把其他几个边带开，不用逐个边去撬。
+
+<a href="http://railser.cn/wp-content/uploads/P241012_19.11.jpg"><img title="S" src="http://railser.cn/wp-content/uploads/P241012_19.11-300x225.jpg" alt="" width="300" height="225" /></a><a href="http://railser.cn/wp-content/uploads/P241012_19.11.jpg">
+</a>
+
+所以，不要觉得里面暗扣很多，会很难撬。这个过程我还是很顺利的。里克自习室railser.cn。
+
+<a href="http://railser.cn/wp-content/uploads/P241012_17.51_01.jpg"><img title="S" src="http://railser.cn/wp-content/uploads/P241012_17.51_01-300x225.jpg" alt="" width="300" height="225" /></a><a href="http://railser.cn/wp-content/uploads/P241012_17.51_01.jpg">
+</a>
+
+打开后的第一个难点，是如何找到内存的位置。网上文章讲的，是需要拆掉6个螺丝，拿下来光驱，再拆开下面的底座。其实，不要拆掉光驱。换内存，只需要把四个角的螺丝去掉，拿下底座即可。
+
+在掀起光驱和下面的框架（里面有硬盘）前，需要去掉3个天线，上边两个还是好去掉的，下边这个，按照我的手势，把底下的暗扣夹一下，就可以顺利取下了，千万别用蛮力。
+
+<a href="http://railser.cn/wp-content/uploads/P241012_19.05.jpg"><img title="S" src="http://railser.cn/wp-content/uploads/P241012_19.05-300x225.jpg" alt="" width="300" height="225" /></a><a href="http://railser.cn/wp-content/uploads/P241012_19.05.jpg">
+</a>
+
+下图是取下来的光驱，硬盘和风扇，他们是一个主体。
+
+<a href="http://railser.cn/wp-content/uploads/P241012_17.55_02.jpg"><img title="S" src="http://railser.cn/wp-content/uploads/P241012_17.55_02-300x225.jpg" alt="" width="300" height="225" /></a>
+
+下面是另一部分主体，左下角就是内存。换掉它吧。里克自习室railser.cn。
+
+<a href="http://railser.cn/wp-content/uploads/P241012_17.55.jpg"><img title="S" src="http://railser.cn/wp-content/uploads/P241012_17.55-300x225.jpg" alt="" width="300" height="225" /></a>
+
+这里有1个地方要注意，就是三个天线的连接点很容易掉，每次要检查一下，不要松动。另外，内存也要插牢。
+
+主板上只有一个插槽，很容易和主体分开，如果觉得哪里卡住了，千万别用蛮力。里面只有四角的螺丝固定主体，整体就像一个拼接好的玩具，空间很紧密。
+
+<a href="http://railser.cn/wp-content/uploads/P241012_17.55_01.jpg"><img title="S" src="http://railser.cn/wp-content/uploads/P241012_17.55_01-300x225.jpg" alt="" width="300" height="225" /></a><a href="http://railser.cn/wp-content/uploads/P241012_17.55_01.jpg">
+</a>
+
+到这里，重新开机测试，没问题，可以把盖子再装回去了。
+
+讲讲最近的工作。8月底找了一份全职开发的工作，有Rails的部分，目前主要做OpenERP的维护和开发，用python和postgresql。希望大家多交流吧。
+
+转载的时候请保留里克自习室的字样，谢谢观赏。
+
+&nbsp;

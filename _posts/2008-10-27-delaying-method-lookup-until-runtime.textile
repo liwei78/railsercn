@@ -1,0 +1,30 @@
+---
+layout: post
+title: 1.3.1 运行时方法延迟查找
+post_id: 195
+categories: ["Advanced Rails", "default"]
+---
+
+{% include JB/setup %}
+
+---
+
+我们常常想创建一个能够随着运行时的数据变换其方法的接口。Rails中这方面最突出的一个例子就是ActiveRecord的属性存取方法。ActiveRecord对象的方法调用（例如person.name）在运行时将被转换成属性存取。在类方法级别，ActiveRecord提供了极大的灵活性：Person.find_all_by_user_id_and_active(42,true)被转换成相应的SQL查询，如果被查询的属性不存在那么就会抛出一个标准的NoMethodError错误。
+
+其背后的秘密是Ruby的method_missing方法。当对象上的一个不存在的方法被调用的时候，Ruby在抛出NoMethodError前首先检查此对象的类是否存在method_missing方法。method_missing的的第一个参数是被调用方法的名称；剩下的那些参数对应那些传递到被调用方法的参数。任何传递到方法的块也会被传递到method_missing方法。因此，一个完整方法的轮廓如下：
+<pre name="code" class="ruby">
+def method_missing(method_id, *args, &block)
+gem
+end
+</pre>
+使用method_missing有下面的几个缺点：
+<ul>
+	<li>在方法查找时它要比普通的方法慢。简单的测试表明用method_missing来调用方法的时间要比用常规方式进行调用多耗费两到三倍的时间。</li>
+	<li>因为被调用的那些方法根本不实际存在，所以他们只有在方法查找整个过程的最后一步才能被截取到，也就是说它们不会像常规的方法那样被生成文档或者内省。</li>
+	<li>因为所有的动态方法都必须通过method_missing方法，所以当一个方法含有各种各样代码，而这些代码又需要动态添加方法时其方法体将变得异常庞大。</li>
+	<li>使用method_missing将限制其与API后续版本的兼容性。一旦依赖method_missing生成的那些未定义的方法来完成特定的操作后，在API的后续版本中引入的那些新方法也许会使你的用户失望。</li>
+</ul>
+
+ActiveRecord中提供的generate_read_methods 特性是一个弥补这些缺失很好的替代方案。ActiveRecord 不是等待method_missing来截取方法调用而是自己实现了属性的设置和读取方法，这样它们就可以通过常规方法的分派来被调用了。
+
+总的来说这是个强大的方法，Ruby的动态本性使得那些方法在其被第一次调用时，用其更优化的版本来替代其本身成为可能。它也被用于要求迅速响应的Rails路由；我们将在本章的后续部分看到它的影子。

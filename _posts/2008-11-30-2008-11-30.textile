@@ -1,0 +1,19 @@
+---
+layout: post
+title: 随便写写
+post_id: 331
+categories: ["others"]
+---
+
+{% include JB/setup %}
+
+---
+
+刚才看了gmail里发来的<a href="http://www.infoq.com/cn/news/2008/11/Database-Martin-Fowler" target="_blank">一篇文章</a>，引用一句话
+
+
+bq. 
+应用开发者都应该思考到底哪种选择才是最符合其需要的
+
+
+08年11月即将过去了

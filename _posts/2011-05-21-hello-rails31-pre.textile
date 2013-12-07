@@ -1,0 +1,49 @@
+---
+layout: post
+title: Hello, Rails3.1 pre
+post_id: 601
+categories: ["default", "rails31", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+Rails3.1面世了，赶紧尝鲜吧。可是，第一个问题就出现了，更新失败。此处略过一堆字，直接笔记：安装rvm吧。
+
+https://rvm.beginrescueend.com/rvm/install/
+
+rvm简直是多版本ruby开发环境下的救世主。补充一下笔记：
+
+在安装完rvm后，rails new rails31test 新建了一个测试项目，一切正常，可是bundle的时候出错，就连 gem list都出错。查了一下，原来我们要重新安装gem，也要重新装rails。
+
+ps：各位是不是会觉得，我刚才安装了阿，为什么又要装一次？你是不是也看这个视频了？http://railscasts.com/episodes/265-rails-3-1-overview
+
+一切都没错，只是rvm 1.9.2@railspre --create 是新建了一个gemsets，（此语法为简写）。这样我们还得安装一下bundler
+
+rails31test liwei$ gem install bundler
+
+rails31test liwei$ bundle
+
+rails31test liwei$ rails g scaffold project name:string
+
+
+/Users/apple/.rvm/gems/ruby-1.9.2-p180/gems/actionpack-3.1.0.beta1/lib/sprockets/railtie.rb:37:in `block (2 levels) in <class:Railtie>': undefined method `context' for #<Sprockets::Environment:0x0000010312c420> (NoMethodError)
+
+查到这个问题的解决办法：https://github.com/rails/rails/issues/453
+
+在Gemfile里写：
+
+gem 'sprockets', '2.0.0.beta.2'
+
+原因：beta.2 is required by rails 3.1.0beta1
+
+<span style="color: #ff0000;">注意：安装的时候，使用的是 gem 'sprockets', '2.0.0.beta.5'，所以还要 bundle update sprockets 降回到beta.2</span>
+
+再次
+
+rails31test liwei$ rails g scaffold project name:string
+
+成功
+
+未完待续吧

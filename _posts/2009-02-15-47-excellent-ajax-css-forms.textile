@@ -1,0 +1,16 @@
+---
+layout: post
+title: 47个漂亮的ajax+css表单
+post_id: 375
+categories: ["ajax", "RailsNote"]
+---
+
+{% include JB/setup %}
+
+---
+
+http://www.noupe.com/css/47-excellent-ajax-css-forms.html
+
+正在处理Rails的表单，发现的这个，不错，分享下。
+
+另：第一次使用wp的快速发布，挺好

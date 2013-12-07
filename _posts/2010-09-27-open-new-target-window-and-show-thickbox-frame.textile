@@ -1,0 +1,20 @@
+---
+layout: post
+title: 打开新表单，并弹出thickbox提示框
+post_id: 478
+categories: ["jquery", "RailsNote", "thickbox"]
+---
+
+{% include JB/setup %}
+
+---
+
+在处理支付的时候，需要新打开支付页面完成流程，同时要在原页面提示后续处理链接。
+
+这里用thickbox来显示，但是直接点击按钮打开thickbox后，无法弹出新窗口的，所以在提交按钮上加入了
+
+<pre>
+onclick="tb_show('请选择下一步操作', '<%= process_payment_path(:oid=>@oid) %>', '');"
+</pre>
+
+一个解决办法，有更好请大家指点。

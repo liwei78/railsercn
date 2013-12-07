@@ -1,0 +1,17 @@
+---
+layout: post
+title: TextMate中文教程之用快捷键创建项目
+post_id: 100
+categories: ["default"]
+---
+
+{% include JB/setup %}
+
+---
+
+手动拖入文件和文件夹到TextMate项目中只是创建项目的一种方式，也是我最不常用的。有一个常用的办法是，把TextMate放到你的Dock上，确认TextMate处于运行中(看看你的Dock的TextMate图标下面有没有一个圆珠)。现在你可以把文件和文件夹拽到TextMate的图标上，它就会自动创建一个项目了，不过别忘了保存这个项目。不然你就白忙乎了。
+
+在Terminal中创建TextMate项目是俺最喜欢的形式。你可以在mate命令后跟随多个文件名，文件夹或者一个shell命令。它会自动创建一个包含这些文件的TextMate项目。样例代码如下：
+<pre class="ruby">mate . # a project of the current directory
+mate a.txt b.txt # a project of two files
+mate *.csv # a project of CSV files in the current directory</pre>

@@ -1,0 +1,63 @@
+---
+layout: post
+title: sns网站开发经验总结：中国省份城市插件（一）
+post_id: 395
+categories: ["plugin", "RailsNote", "sns"]
+---
+
+{% include JB/setup %}
+
+---
+
+写在前面：
+
+经过三个多月的共同努力，sns项目终于完成上线了。感谢众位合作兄弟的持续支持和热情投入。项目走过了开发，完善，再开发，再完善的过程。下面逐步将开发中的经验和大家分享。期待和大家共同交流，提高水平。谢谢！
+
+今天首先介绍一个优秀的插件，city_helper。
+
+代码：<a href="http://github.com/yzhang/city_helper/tree/master" target="_blank">http://github.com/yzhang/city_helper/tree/master</a>
+
+网站：<a href="http://www.letrails.cn/archives/city-helper-a-plugin-provide-state-and-city-select" target="_blank">http://www.letrails.cn/archives/city-helper-a-plugin-provide-state-and-city-select</a>
+
+功能：实现国内省份，城市的联动选择。
+
+特点：这个省份城市联动选择功能，是sns网站必备的功能之一。我们不用反复的造轮子啦，感谢作者的分享。
+
+修正：插件中有一点点小错误，已经在作者博客留言。使用的朋友会发现的。
+
+1、CITIES，keys中广西应为广东
+2、海南的城市没有加，我添加了两个 ‘海南’ => [’海口’, ‘三亚’],
+
+还有一个太合适的设置，一是 state_and_city_select 方法初始化时，省份为北京，城市为所有城市，其中包括北京。研究了一下方法，将city_choices改为
+
+def city_choices
+"北京"
+end
+
+并且增加 了famous_select 方法，将几个重点城市放置其中，方便选择。
+
+当然应用要根据需求定制，这个插件非常优秀的实现了联动选择，稍加修改，即可实现客户的需求。感谢开源，感谢作者。感谢众多辛苦工作，热心奉献的程序员们。
+
+update:2009-6-3
+
+又修正了一下，编辑所在地时，会列出所有城市的问题。
+
+<a href="http://railser.cn/wp-content/uploads/2009/05/city_helper.rb">city_helper</a>
+
+右键另存一下这个文件吧。修改的部分比较下就能看到了。
+
+update:2009-6-30
+
+补充一下页面上的引用。改插件在创建新纪录时，完全没问题。但是当加入到“我的资料”这样的版块，需要修改时，会出现城市列表中，包含全部城市。这里并没有初始化已有选择。下面做了一些改动。
+
+在页面调用上，如下：
+
+<pre>
+<%= state_and_city_select :user_detail, :province, :city, {:state=>{:include_blank => true}, :city=>{:include_blank => true}} %>
+
+<script type="text/javascript">
+
+  init_city_select('<%= @user_detail.province %>','<%= @user_detail.city %>');
+
+</script>
+</pre>
