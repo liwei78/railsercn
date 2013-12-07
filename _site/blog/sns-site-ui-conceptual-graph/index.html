@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>sns网站ui框架概念图 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="sns网站ui框架概念图" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">sns网站ui框架概念图</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>最近太多的sns站点需求摆在脑海里（所以晚上睡不着觉，哎），所以画了一张，给予自己目前项目设计的ui框架，姑且是一个概念图吧。在此简单笔记一下思路：</p>
+<p><a href="http://railser.cn/wp-content/uploads/2009/02/layout.png"><a href="http://railser.cn/wp-content/uploads/2009/02/layout1.png"><img class="alignnone size-full wp-image-378" title="layout1" src="http://railser.cn/wp-content/uploads/2009/02/layout1.png" alt="layout1" width="600" height="400" /></a><br />
+</a></p>
+<p>1、header，footer：目前的趋势是更加充分利用header的空间，增加隐藏层，通过鼠标实践显示一个列表内容。header，只提供整站大分类导航</p>
+<p>2、sider_bar：应用导航。放到左侧，更加重用户的关注度，用户会更多的点击里面的连接。比如uchome把博客（发布），图片（上传）等操作放到这里。下面是游戏的列表。</p>
+<p>但是对于所有页面，side_bar并不全都适合，1、影响到内容的展示，占用了200px空间。2、side_bar内容可能不符合该页面主体内容，比如页面为博客展示页面，side_bar内还出现相册，上传图片，圈子，讨论区等等连接，会给人一种杂乱的感觉。</p>
+<p>还有可能对seo产生不良影响。</p>
+<p>3、main，当side_bar隐藏时，width为100%。为主体内容提供容器。</p>
+<p>4、tab和button：二级页面导航功能，资源页面导航功能。比如 活动 分类，tab包含 全部，热门，最新，登陆后显示我的活动。</p>
+<p>这样设计，使得在header进入后，tab可起到位置定位，比如当前tab和其他tab可用式样来区分。</p>
+<p><a href="http://railser.cn/wp-content/uploads/2009/02/tabs.jpg"><img class="alignnone size-full wp-image-373" title="tabs" src="http://railser.cn/wp-content/uploads/2009/02/tabs.jpg" alt="tabs" width="276" height="50" /></a></p>
+<p>button强调该分类下的资源重点操作，如“创建一个新活动”，“发表一个新话题”。</p>
+<p>这种设计的考虑是，二级分类多数为资源，button体现了吸引用户操作该资源。</p>
+<p>ps：这是uchome中的设计，个人非常喜欢。</p>
+<p>5、content和content_bar</p>
+<p>content为主要内容展示空间，content_bar辅助显示动态，管理按钮，广告等内容。</p>
+<p>content_bar可隐藏，内容不固定，根据content来决定内容。</p>
+<p>最后，个人总结的uchome ui中的问题</p>
+<p>1、css太过复杂，结构不清晰，没有使用layout和theme分离的设计</p>
+<p>2、side_bar部分为全局模板，多数页面显得占地方，不过上面的重点连接也是sns站的主要功能，所以需要灵活设计</p>
+<p>3、js设计占用了太多页面代码，html浩如烟海啊</p>
+<p>4、mtag这个名字让我很摸不着头脑，类型复用程度低，根本无法实现资源的设计和管理。比如，Rails中的topic和photo的多态设计，使得其他资源均可以使用，但uchome中不可以。</p>
+<p>5、uchome不是一个技术产品，它是个市场需求下的产品，不能期望太多，但是，无论是php还是Rails去设计一个sns站点，uchome的设计细节非常值得学习。</p>
+<p>里克，2009年2与13日情人节前。情人节给老婆买个平底锅去~~</p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2009-02-13T00:00:00+08:00" datetime="2009-02-13T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>February</abbr></span>
+							<span class="day">13</span>
+							<span class="year">2009</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#railsnote-ref">
+    		railsnote <span>38</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#ui-ref">
+    		ui <span>2</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/sns-ui-design-blog" title="View sns ui 设计要看的两篇文章">&laquo; sns ui 设计要看的两篇文章</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/47-excellent-ajax-css-forms" title="View 47个漂亮的ajax+css表单">47个漂亮的ajax+css表单 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

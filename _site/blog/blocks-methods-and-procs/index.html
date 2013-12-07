@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>1.2.5 代码块，方法和过程 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="1.2.5 代码块，方法和过程" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">1.2.5 代码块，方法和过程</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>Ruby中的一个强大的特性是有能力将一段代码当作一个对象来处理。这个特性涉及到如下三个类：<br />
+<ul><br />
+	<li><strong>Proc</strong>  一个过程（Proc）代表了一个代码块：一段可以在被调用时接收参数并且有返回值的代码。</li><br />
+	<li><strong>UnboundMethod</strong>  它类似于一个过程：它代表一个特定类的实例方法（类方法是类对象的实例方法，因此UnboundMethods同样也可以代表类方法）。一个UnboundMethod 能够在其被调用前必须绑定到一个类。</li><br />
+	<li><strong>Method</strong>  Method对象是已经通过UnboundMethod#bind方法绑定到一个对象上的UnboundMethod。它也可以通过Object@method方法来得到。</li></p>
+</ul>
+<p>下面让我们来看看都有哪些途径能够获得Proc和Method对象。我们在例子中使用Fixnum#<ins>方法。我们通常通过二元形式来调用它。<br />
+<pre name="code" class="ruby"><br />
+3 + 5 # =&gt; 8<br />
+</pre><br />
+然而，它也可以被当作Fixnum对象的一个实例方法来调用，就像任意其它实例方法一样：<br />
+<pre name="code" class="ruby"><br />
+3.</ins>(5) # =&gt; 8<br />
+</pre><br />
+我们可以使用Object#method方法来获得一个表示这个实例方法的对象。这个方法将被绑定到方法被调用的那个对象上，在上面的例子中就是3。<br />
+<pre name="code" class="ruby"><br />
+add_3 = 3.method(:<ins>)<br />
+add_3 # =&gt; #&lt;Method: Fixnum#</ins>&gt;<br />
+</pre><br />
+此方法可被转换为一个块，或者可被直接带参数调用：<br />
+<pre name="code" class="ruby"><br />
+add_3.to_proc # =&gt; #&lt;Proc:0&#215;00024b08@-:6&gt;<br />
+add_3.call(5) # =&gt; 8</p>
+<ol>
+	<li>Method#[] is a handy synonym for Method#call.<br />
+add_3<sup class="footnote" id="fnr5"><a href="#fn5">5</a></sup> # =&gt; 8<br />
+</pre><br />
+有两种途径获得非绑定方法。可以在类对象上调用instance_method：<br />
+<pre name="code" class="ruby"><br />
+add_unbound = Fixnum.instance_method(:<ins>)<br />
+add_unbound # =&gt; #&lt;UnboundMethod: Fixnum#</ins>&gt;<br />
+</pre><br />
+我们同样可以解绑定一个已经被绑定的对象的方法：<br />
+<pre name="code" class="ruby"><br />
+add_unbound == 3.method(:+).unbind # =&gt; true<br />
+add_unbound.bind(3).call(5) # =&gt; 8<br />
+</pre><br />
+也可以绑定UnboundMethod到任何同类的其它对象。<br />
+<pre name="code" class="ruby"><br />
+add_unbound.bind(15)<sup class="footnote" id="fnr4"><a href="#fn4">4</a></sup> # =&gt; 19<br />
+</pre><br />
+但是，目标绑定对象必须是一个同类的实例，否则会得到一个TypeError错误：<br />
+<pre name="code" class="ruby"><br />
+add_unbound.bind(1.5)<sup class="footnote" id="fnr4"><a href="#fn4">4</a></sup> # =&gt;</li>
+	<li>~&gt; -:16:in `bind&#8217;: bind argument must be an instance of Fixnum (TypeError)</li>
+	<li>~&gt;     from -:16<br />
+</pre><br />
+得到这个错误是因为+被定义在了Fixnum类上；因此，获得到的UnboundMethod对象必须绑定到一个Fixnum对象（通过kind_of?方法来检验）。假如+ 方法在Numeric(Fixnum和Float都继承自它)上有定义，前述代码应该返回5.5。</li>
+</ol>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2008-10-24T00:00:00+08:00" datetime="2008-10-24T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>October</abbr></span>
+							<span class="day">24</span>
+							<span class="year">2008</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#advanced rails-ref">
+    		advanced rails <span>14</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#default-ref">
+    		default <span>54</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/123-metaid" title="View 1.2.3 Metaid">&laquo; 1.2.3 Metaid</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/method-missing" title="View Method Missing">Method Missing &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

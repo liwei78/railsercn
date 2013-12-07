@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>1.3.3 Continuations - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="1.3.3 Continuations" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">1.3.3 Continuations</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>Continuations 是一种非常强大的控制流机制。一个 Continuation 代表了调用栈和词法变量的特定状态。它是 Ruby 代码执行过程中特定点的一个快照。不幸的是，在 Ruby1.8 的实现中 Continuations 是如此的慢以至于对于许多的应用来说根本无法使用。在即将到来的 Ruby1.9 虚拟机中情况可能会有所改善，但最好不要期望在使用了 Ruby1.8 的 Continuation 的情况下能够获得好的性能。尽管如此，Continuations 仍然是非常有用的概念，基于 Continuations 的 web 框架提供了 Rails 的一些有趣的选择，因此在这里我们会对它们做一下考察。</p>
+<p>Continuations之所以非常强大有下面几个原因：<br />
+<ul><br />
+	<li>Continuations其实就是一些对象；它们可以被传递在函数之间。</li><br />
+	<li>可以从任何位置调用Continuations。只要持有对Continuation的引用，就可以对其进行调用。</li><br />
+	<li>Continuations是可重入的。可以使用Continuations从一个函数多次返回。</li></p>
+</ul>
+<p>Continuations常常被描述为“结构化的GOTO“。因此，它们应该像任何类型的GOTO概念一样被谨慎的对待。在应用代码中不应该出现或者应该极少出现Continuations；它们通常应该被封装在库文件中。我不这么说是因为我认为开发人员应该被与它们隔离开来。</p>
+<p>Continuations是如此普遍的一个概念，以至于通常来说在其之上建立抽象比直接使用它更合理。程序员在构建应用软件的时候应考虑使用”外部迭代（external iterator）“或者”协同程序（coroutine）“（两个都是在Continuations之上的抽象）而不是”continuation“。</p>
+<p>SeaSide是一个基于Continuations的Smalltalk Web应用框架。Continuations 在SeaSide 中用于管理会话状态。每个用户的会话都对应一个服务器端的Continuation。当一个请求到达的时候Continuation将被调用而且更多的代码被执行。其结果是整个的事务能够被编写为单独的一段代码流，即使它们跨越了多个HTTP请求。这种能力是由于Smalltalk的Continuation能够被序列化；它们可以被写到一个数据库或者文件系统，然后被取出和反序列化，并在请求中重新调用。Ruby的Continuation不能被序列化。在Ruby中，Continuation只能被装载到内存中而不能被转换为一个字节流。</p>
+<p>Borges(http://borges.rubyforge.org/)是直接移植到Ruby的Seaside 2实现。SeaSide与Borges的最根本的区别就是Borges必须将所有当前的Continuations保存在内存中，因为它们不能被序列化。这个巨大的限制很不幸地阻止了Borges在任何规模的Web应用中被成功使用。只要Continuation在任何一种Ruby实现中被支持，这个限制就可以被克服了。</p>
+<p>Continuation的能力可以通过下面的Borges示例代码来见证，它用于渲染在线商店的一系列条目：<br />
+<pre name="code" class="ruby"><br />
+class SushiNet::StoreItemList &lt; Borges::Component<br />
+  def choose(item)<br />
+    call SushiNet::StoreItemView.new(item)<br />
+  end</p>
+def initialize(items)
+@batcher = Borges::BatchedList.new items, 8
+end
+def render_content_on&#174;
+r.list_do @batcher.batch do |item|
+r.anchor item.title do choose item end
+end
+r.render @batcher
+end
+<p>end # class SushiNet::StoreItemList<br />
+</pre><br />
+Action的功能render_content_on方法中完成，使用了BatchedList（一个分页器）来渲染一组分页的产品链接。有趣的地方在于anchor方法的调用，它存储了choose方法，当相应的链接被点击时调用。</p>
+<p>但是，关于Continuations在Web编程中有多大的用处仍然存在着很大争议，HTTP被设计为无状态的协议，使用Continuations来实现Web事务与无状态的想法正好相反。所有的Continuations都被存在服务器端，这需要占用额外的内存和硬盘空间。需要粘性会话（sticky session）来将一个用户始终导向同一台服务器。因此，如果一台服务器当机，它的所有会话都会丢失。最流行的基于Seaside的应用DabbleDB（http://dabbledb.com）事实上很少使用Continuations。</p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2008-11-27T00:00:00+08:00" datetime="2008-11-27T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>November</abbr></span>
+							<span class="day">27</span>
+							<span class="year">2008</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#advanced rails-ref">
+    		advanced rails <span>14</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/ruby-for-rails-4" title="View ruby for rails 摘录">&laquo; ruby for rails 摘录</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/ruby-for-rails-5" title="View ruby for rails 摘录">ruby for rails 摘录 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>acts_as_attachment和attachment_fu插件应用 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="acts_as_attachment和attachment_fu插件应用" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">acts_as_attachment和attachment_fu插件应用</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>写在前面</p>
+<p>Rails插件，是学习Rails框架很好的教材。插件可以让你利用Ruby语言的特点，改进Rails框架代码，而不必去编辑它。比如acts_as_paranoid插件就是将Rails默认的Destroy功能进行了删除标记的改进。这里，Rails的Module和Class的学习，Mixin的学习对于理解Rails是相当重要的。<br />
+里克：我觉得想学习Rails插件，先需要看《Ruby for Rails》的第六章（模块和程序组织）和第十三章（Ruby动态特性）。</p>
+<p>插件还可以让开发人员发布复用性强的应用，比如各种Acts_as插件。</p>
+<p>插件是一种很好的Rails附加产品，通过对插件代码的学习，插件test的学习，可以很快的提升对Rails框架的理解。这对于学习其他框架也是有一定帮助的。</p>
+<p>下面将详细的对工作中用到的两个插件进行笔记。</p>
+<p>附件管理插件：acts_as_attachment和attachment_fu<br />
+acts_as是一个庞大的插件家族，他们无比丰富的扩展了Rails的功能。acts_as_attachment插件是使一个Model具有插件上传，管理的功能，而不必去为全局建立一个公共的上传管理model[<a href="http://weblog.techno-weenie.net/articles/acts_as_attachment">Intro to Acts As Attachment</a>]。attachment_fu是acts_as_attachment的升级版，作者是<a href="http://techno-weenie.net/">Rick Olson</a>，这个插件可以说在Rails plugins排行中进得了前三位的。</p>
+<p>连接：<a href="http://hosting.media72.co.uk/blog/2007/12/09/10-ruby-on-rails-plugins-you-should-be-using/">10 Ruby On Rails Plugins You Should Be Using</a></p>
+<p>attachment_fu提供了全面的测试框架，并且提供了对ImageScience，RMagick，minimagick的支持。</p>
+<p>acts_as_attachment的教程介绍</p>
+<p><a href="http://weblog.techno-weenie.net/articles/acts_as_attachment">Intro to Acts As Attachment</a> 一篇里简单的介绍了aaa的使用，按照里面的介绍就可以实现附件的上传了，我就是按照它的介绍实现了<a href="http://4rails.cn">4Rails.cn</a>的头像上传功能。不过这个插件的功能绝没这么简单。</p>
+<p><a href="http://weblog.techno-weenie.net/articles/acts_as_attachment/thumbnailing">Acts As Attachment Thumbnailing</a> 一篇简单介绍了图片缩略图功能，这样就可以对上传的图片进行各种大小的缩略图生成了。</p>
+<p>下面的内容是针对attachment_fu的。因为接口上没有做任何调整，只需将acts_as_attachment 改成 has_attachment，上面的教程依旧适用。</p>
+<p>几个图片处理库</p>
+<p>在attachment_fu的option中，可以声明 :processor ，指定图片处理库，这个包括ImageScience, Rmagick, 和MiniMagick，不指定将为默认安装的。</p>
+<p><a href="http://seattlerb.rubyforge.org/ImageScience.html">ImageScience</a>：实现图片放缩的库，使用前需安装<a href="http://sourceforge.net/projects/freeimage">freeimage</a>和<a href="http://rubyforge.org/projects/rubyinline">rubyinline</a>，RubyInline允许你在ruby代码中直接编写c/c++代码。</p>
+<p><a href="http://rmagick.rubyforge.org/">Rmagick</a>：使用的很多，windows的安装有特定的版本需求，需要下载<a href="http://rubyforge.org/frs/?group_id=12&release_id=17573">rmagick-win32</a>最新版<a href="http://rubyforge.org/frs/download.php/46136/RMagick-2.7.1-ImageMagick-6.4.5-3-Q8.zip"> [2.7.1 binary gem for Ruby 1.8.6]RMagick-2.7.1-ImageMagick-6.4.5-3-Q8.zip(08年12月17日更新)</a>，这个对应的Ruby版本是1.8.6。里面已经放上了必须版本的ImageMagick和RMagick的gem，不用再找了。</p>
+<p><a href="http://rubyforge.org/projects/mini-magick/">MiniMagick</a>：将Rmagick的精简，直接用Ruby包装ImageMagick command line。避免了RMagick的内存问题。</p>
+<p>参数介绍</p>
+<p>设置参数</p>
+<p>图片缩略参数详解</p>
+<p>关于Rmagick的内存泄露风险</p>
+<p>引自：<a href="http://robbin.javaeye.com/blog/157731" target="_blank">JavaEye网站的RoR性能优化经验谈</a><br />
+bq. JavaEye也面临着内存泄漏的困扰，这方面困扰主要来自于Rmagic。Rmagick调用ImageMagick的C库来完成图片的操作，从我们的 监测来看，RMagick大多数情况下会缓慢的泄漏内存，在某些特定的图片操作上会急剧的泄漏内存。解决办法就是用mini_magick替代 Rmagick，mini_magick是直接调用ImageMagick的mogrify命令，另起一个进程来操作图片，操作完进程就结束了，绝无后患，由于Linux的fork进程开销不大，因此也不必担心性能问题。<br />
+使用attachment_fu保存远程图片</p>
+<p>未完，待续。。</p>
+<p>参考资料：<br />
+<a href="http://weblog.techno-weenie.net/articles/acts_as_attachment" target="_blank">acts_as_attachment</a></p>
+<p><a href="http://weblog.techno-weenie.net/articles/acts_as_attachment/thumbnailing" target="_blank">acts_as_attachment thumbnailing</a></p>
+<p><a href="http://svn.techno-weenie.net/projects/plugins/attachment_fu/README" target="_blank">attachment_fu <span class="caps">README</span></a></p>
+<p><a href="http://robbin.javaeye.com/blog/157731" target="_blank">JavaEye网站的RoR性能优化经验谈</a></p>
+<p><a href="http://clarkware.com/cgi/blosxom/2007/02/24#FileUploadFu" target="_blank">File Upload Fu</a></p>
+<p><a href="http://blog.vixiom.com/2007/12/28/hacking-attachment_fu-to-work-with-flashflex-uploads-and-crop-square-images/">Hacking attachment_fu to work with Flash/Flex uploads and crop square images</a></p>
+<p><a href="http://almosteffortless.com/2007/03/25/working-with-attachment_fu/">Working with attachment_fu</a></p>
+<p><a href="http://blog.chinaunix.net/u/10227/showart.php?id=75141">简单、易于扩展的图像读写库：FreeImage</a></p>
+<p>其他：</p>
+<p><a href="http://www.mysqlperformanceblog.com/">MySQL Performance Blog</a></p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2008-01-25T00:00:00+08:00" datetime="2008-01-25T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>January</abbr></span>
+							<span class="day">25</span>
+							<span class="year">2008</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#plugins-ref">
+    		plugins <span>2</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#rails-ref">
+    		rails <span>20</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#rmagic-ref">
+    		rmagic <span>1</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/rails-on-rest-and-4rails-cn" title="View RESTful的Rails开发，讲讲4Rails.cn的开发心得">&laquo; RESTful的Rails开发，讲讲4Rails.cn的开发心得</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/sites-twitter-rails-and-mashup" title="View “Twitterverse Awarded Mashup of the Day”">“Twitterverse Awarded Mashup of the Day” &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

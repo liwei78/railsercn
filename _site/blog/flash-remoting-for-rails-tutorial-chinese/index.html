@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>在Rails中使用Flash Remoting中文教程 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="在Rails中使用Flash Remoting中文教程" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">在Rails中使用Flash Remoting中文教程</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>原文：[Flash Remoting for Rails Tutorial](http://blog.vixiom.com/2006/08/23/flash-remoting-for-rails-tutorial/)</p>
+<p>里克：1、Flash Remoting从flash player6就开始了，Flex Client是个新家伙。2、Flash Remoting如何翻译？我想翻译为flash远程。</p>
+<p>在我们使用Rails的时候，可能会忽视掉另一个开发工具：Flash Remoting。长期的使用xml，可能会改变你的编程习惯。就像作者引用的那句话：&quot;If all you have is a hammer everything looks like a nail&quot;。Remoting可以直接向flash传递对象，数组。Remoting使用AMF(Active Message Format)传递byte流，这比使用xml要快很多。</p>
+<p>而且在06年8月，<a href="http://www.themidnightcoders.com/">Midnight Coders</a>发布了他们的WebORB插件。</p>
+<p>他们的例子是基于Flex2的，这需要客户端安装Flash player9.0，这并不有好，因为Remoting在Flash player6中就已经开始使用了。所以这里我们只拿我们需要的。</p>
+<p>如果你之前没有使用过Flash Remoting，请先安装<a href="http://www.adobe.com/products/flashremoting/downloads/components/">Remoting Components</a>。</p>
+<p>这里我们制作一个flash的mp3播放器，用rails作为后端服务。<a href="http://blog.vixiom.com/uploads/mp3app.zip">点击这里</a>，你可以下载这个例子的代码。</p>
+<p>创建一个应用：mp3app<br />
+bq. <br />
+<pre lang="ruby"><br />
+&gt; rails mp3app<br />
+&gt; cd mp3app</pre></p>
+<p>安装weborb插件<br />
+bq. <br />
+<pre lang="ruby"><br />
+&gt; ruby script/plugin install http://themidnightcoders.net:8089/svn/weborb</pre></p>
+<p>创建一个名为‘mp3app_development’的数据库<br />
+bq. <br />
+<pre lang="ruby"><br />
+<span class="caps">CREATE</span> <span class="caps">TABLE</span> `tracks` (<br />
+  `id` int(11) <span class="caps">NOT</span> <span class="caps">NULL</span> auto_increment,<br />
+  `title` varchar(50) <span class="caps">NOT</span> <span class="caps">NULL</span> default &#8216;&#8217;,<br />
+  `artist` varchar(50) <span class="caps">NOT</span> <span class="caps">NULL</span> default &#8217;&#8217;,<br />
+  `album_art` varchar(50) <span class="caps">NOT</span> <span class="caps">NULL</span> default &#8216;&#8217;,<br />
+  `filename` varchar(50) <span class="caps">NOT</span> <span class="caps">NULL</span> default &#8217;&#8217;,<br />
+  <span class="caps">PRIMARY</span> <span class="caps">KEY</span>  (`id`)<br />
+) <span class="caps">ENGINE</span>=MyISAM <span class="caps">DEFAULT</span> <span class="caps">CHARSET</span>=latin1;</p>
+<p>insert into `tracks` values<br />
+(&#8216;1&#8217;,&#8216;After Midnight&#8217;,&#8216;Eric Clapton&#8217;,&#8216;clapton.jpg&#8217;,&#8216;AfterMidnight.mp3&#8217;),<br />
+ (&#8216;2&#8217;,&#8216;Midnight Train to Georgia&#8217;,&#8216;Gladys Knight&#8217;,&#8216;gladys.jpg&#8217;,<br />
+&#8216;MidnightTrainToGeorgia.mp3&#8217;),<br />
+ (&#8216;3&#8217;,&#8216;Midnight In A Perfect World&#8217;,&#8216;DJ Shadow&#8217;,&#8216;shadow.jpg&#8217;,<br />
+&#8216;MidnightInAPerfectWorld.mp3&#8217;),<br />
+ (&#8216;4&#8217;,&#8216;Two Minutes to Midnight&#8217;,&#8216;Iron Maiden&#8217;,&#8216;maiden.jpg&#8217;,<br />
+&#8216;TwoMinutesToMidnight.mp3&#8217;);</pre></p>
+<p>创建‘Track’model<br />
+bq. <br />
+<pre lang="ruby"><br />
+&gt; ruby script/generate model Track</pre></p>
+<p>在‘app/services’目录下创建一个Remoting services服务，文件为：&#8217;TrackService.rb&#8217;<br />
+bq. <br />
+<pre lang="ruby"><br />
+require &#8216;weborb/context&#8217;<br />
+require &#8216;rbconfig&#8217;</p>
+<p>class TrackService<br />
+   def getTracks<br />
+     tracks = Track.find(:all)<br />
+   end<br />
+end</pre></p>
+<p>如果你曾经用过<a href="http://amfphp.org/"><span class="caps">AMFPHP</span></a>或者.net下的Remoting，上面的这个服务端可以说是“相当”简单了。但是你可以运行测试一下。</p>
+<p>下面进入到我们的Flash。<br />
+对于Flash应用，有几个*框架*可供选择，比如<a href="http://ariaware.com/products/arp/"><span class="caps">ARP</span></a>和 <a href="http://www.iterationtwo.com/open_source_cairngorm.html">Cairngorn</a>。但是在我们这个应用上，他们显得太过强大了。我们可以写一个自己的轻量级的框架。这是一种MVC框架，Model是一个Remoting Class，用来和后台程序沟通(<span class="caps">PHP</span>, .<span class="caps">NET</span>, 或者 我们的 Rails) ，一个.fla的controller，和一个View class。<br />
+M 和 V 在 C 的控制下进行事件相应与处理，而其他的类来扩展其他的功能。</p>
+<p>基本的Remoting是这样：<br />
+bq. <br />
+<pre lang="actionscript"><br />
+import mx.remoting.Service;<br />
+import mx.services.Log;<br />
+import mx.remoting.PendingCall;;<br />
+import mx.rpc.RelayResponder;<br />
+import mx.rpc.FaultEvent;<br />
+import mx.rpc.ResultEvent;<br />
+import mx.remoting.debug.NetDebug;<br />
+import mx.utils.Delegate;</p>
+<p>class com.vixiom.remoting.Remoting<br />
+{<br />
+    private var gatewayURL:String;<br />
+    private var servicePath:String;</p>
+private var svc:Service;
+function dispatchEvent() {};
+function addEventListener() {};
+function removeEventListener() {};
+/**
+<ul>
+	<li>Constructor<br />
+    *</li>
+	<li>@param      gURL    gatewayURL</li>
+	<li>@param      sp      service path</li>
+	<li>@param      u       username</li>
+	<li>@param      p       password<br />
+    *<br />
+    */<br />
+    public function Remoting(gURL, sp, u, p)<br />
+    {<br />
+        gatewayURL = gURL;<br />
+        servicePath = sp;</li>
+</ul>
+// initialize as a broadcaster
+mx.events.EventDispatcher.initialize(this);
+// create a new service
+svc = new Service (gatewayURL, null, servicePath, null, null);
+// credentials
+if (u != undefined &amp;&amp; p != undefined) {
+svc.connection.setCredentials(u, p);
+}
+}
+/**
+<ul>
+	<li>Global fault event<br />
+    */<br />
+    function handleRemotingError(fault:FaultEvent):Void<br />
+    {<br />
+        mx.remoting.debug.NetDebug.trace({level:&#8220;None&#8221;,<br />
+        message:&quot;Error: &quot; +<br />
+        fault.fault.faultstring });<br />
+    }</li>
+</ul>
+/**
+<ul>
+	<li>Event dispatcher<br />
+    *</li>
+	<li>@param      d       data</li>
+	<li>@param      et      eventType<br />
+    *<br />
+    */<br />
+    function dispatch(d, et)<br />
+    {<br />
+        // broadcast message<br />
+        var eventObj:Object={target:this,type:et}<br />
+        eventObj.data = d;<br />
+        dispatchEvent(eventObj);<br />
+    }</li>
+</ul>
+<p>}</pre></p>
+<p>基本的View Class是这样：<br />
+bq. <br />
+<pre lang="actionscript"><br />
+import mx.utils.Delegate;</p>
+<p>class com.vixiom.view.View<br />
+{<br />
+    private var target:MovieClip;</p>
+function dispatchEvent() {};
+function addEventListener() {};
+function removeEventListener() {};
+/**
+<ul>
+	<li>Constructor<br />
+    *</li>
+	<li>@param  t   target (target timeline: _root || a mc)<br />
+    */<br />
+    public function View (t:MovieClip)<br />
+    {<br />
+        target = t;</li>
+</ul>
+// initialize as a broadcaster
+mx.events.EventDispatcher.initialize(this);
+}
+/**
+<ul>
+	<li>Event dispatcher<br />
+    *</li>
+	<li>@param      d       data</li>
+	<li>@param      et      eventType<br />
+    *<br />
+    */<br />
+    function dispatch(d, et)<br />
+    {<br />
+        // broadcast message<br />
+        var eventObj:Object={target:this,type:et}<br />
+        eventObj.data = d;<br />
+        dispatchEvent(eventObj);<br />
+    }<br />
+}</pre></li>
+</ul>
+<p>里克：看到这个时候，我看了一下源代码。as文件的存放是按照类似java的形式。所以下面的话就好理解了。我对as的知识为0.</p>
+<p>在这个MP3 player中，我用下面的方法扩充一下Remoting class。你可以不必把你的类放到这个packages里面，当然那样做更利于管理。<br />
+<pre lang="actionscript">&#8216;var pc:PendingCall = this.svc.getTracks();&#8217;</pre><br />
+一句是再远程调用Rails，这和TrackService.rb 类里面的&#8217;getTracks&#8217;是一样的。我的类中有一个tracks对象，它直接接收ruby的&#8217;tracks = re.result;&#8217;。我注释了&#8217;this.svc.connection.setCredentials(u, p);&#8217;一行，因为它在创建一个安全的远程调用。最后一行&#8217;dispatch(tracks, &#8220;onGetTracks&#8221;);&#8217; 将数据传递给view。<br />
+bq. <br />
+<pre lang="actionscript"><br />
+import mx.remoting.<strong>;<br />
+import mx.rpc.</strong>;</p>
+<p>class com.vixiom.remoting.RemotingMp3<br />
+extends com.vixiom.remoting.Remoting<br />
+{<br />
+    // tracks holder object<br />
+    private var tracks:Object;</p>
+////////////////////////////////////////////////////////////////
+//
+// Constructor (gatewayURL, servicePath, userid, password)
+//
+////////////////////////////////////////////////////////////////
+public function RemotingMp3 (gURL, sp, u, p)
+{
+super(gURL, sp);
+// this.svc.connection.setCredentials(u, p);
+}
+////////////////////////////////////////////////////////////////
+//
+// Get tracks with handler (onGetTracks)
+//
+////////////////////////////////////////////////////////////////
+public function getTracks()
+{
+trace(&#8220;// getting tracks&#8221;)
+// create a pending call out to rails
+var pc:PendingCall = this.svc.getTracks();
+// create a responder to handle the return from rails
+pc.responder = new RelayResponder(this,
+&#8220;onGetTracks&#8221;,
+&#8220;handleRemotingError&#8221;);
+}
+public function onGetTracks (re:ResultEvent)
+{
+if (re != undefined)
+{
+trace(&#8220;// onGetTracks broadcaster &#8211; Word!&#8221;)
+// put result in recordset
+tracks = re.result;
+// trace for testing
+for (var i = 0; i &lt; tracks.length; i++) {
+trace(tracks[i].title);
+}
+// dispatch event to the view
+dispatch(tracks, &#8220;onGetTracks&#8221;);
+}
+}
+<p>}</pre></p>
+<p>下面是controller的代码，需要注意的是，‘Rmp3’是我扩展的Remoting class的实例。它有两个参数，一个是WebORB geteway url，一个是在app/services中的&#8217;TrackService&#8217;类。我还没有展示扩展的view class，controller里已经产生了一个‘Vmp3’实例，<u>with the _root of the Flash file as it&#8217;s parameter (it uses that as a target). </u>。下面四行是view中的按钮方法，最后一行调用远程方法，这是这个app的entry point<u>(as it&#8217;s pretty useless sans data)</u>。<br />
+bq. <br />
+<pre lang="actionscript"><br />
+// import remoting, view, and debug<br />
+import mx.remoting.debug.NetDebug;<br />
+import mx.utils.Delegate;<br />
+import com.vixiom.remoting.RemotingMp3;<br />
+import com.vixiom.view.ViewMp3;</p>
+<p>// ini debug<br />
+NetDebug.initialize ();</p>
+<p>iniApp();</p>
+<p>// setup and start<br />
+function iniApp()<br />
+{<br />
+    // create remoting &amp; view objects<br />
+    var Rmp3:RemotingMp3    = new RemotingMp3 (<br />
+    &#8220;http://localhost:3000/weborb&#8221;,<br />
+    &#8220;TrackService&#8221;); // weborb gateway, ruby class name<br />
+    var Vmp3:ViewMp3        = new ViewMp3 (_root);</p>
+// set up listeners
+Rmp3.addEventListener (&#8220;onGetTracks&#8221;,
+Delegate.create (Vmp3, Vmp3.onGetTracks));
+pause_btn.onRelease = Delegate.create(Vmp3, Vmp3.pauseTrack);
+play_btn.onRelease  = Delegate.create(Vmp3, Vmp3.playTrack);
+prev_btn.onRelease  = Delegate.create(Vmp3, Vmp3.previousTrack);
+next_btn.onRelease  = Delegate.create(Vmp3, Vmp3.nextTrack);
+// start the app, get the tracks
+Rmp3.getTracks();
+<p>}</pre></p>
+<p>下面是扩展的view，相当复杂，而且和rails及Remoting没什么关系，所以看一下它的注释，就能明白它的意思了。里克：我就不贴了，看类名就知道它在哪了。<br />
+bq. <br />
+<pre lang="actionscript"><br />
+class com.vixiom.view.ViewMp3 extends com.vixiom.view.View</pre></p>
+<p>就是这样了，不过要注意一下<a href="http://www.adobe.com/cfusion/knowledgebase/index.cfm?id=tn_14213">跨域安全问题</a>，尤其是当你的rails应用在一台服务器上，而Flash文件在另一台服务器上的时候。</p>
+<p>里克，07年10月23日，Railser.cn</p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2007-10-22T00:00:00+08:00" datetime="2007-10-22T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>October</abbr></span>
+							<span class="day">22</span>
+							<span class="year">2007</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#flash-ref">
+    		flash <span>2</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#rails-ref">
+    		rails <span>20</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#remoting-ref">
+    		remoting <span>1</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/railsercn-return-now" title="View Railser.cn重新开通了。">&laquo; Railser.cn重新开通了。</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/rails-validation-make-sure-your-user-passwords-are-strong" title="View 用Rails校验使你的密码更“坚固”">用Rails校验使你的密码更“坚固” &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

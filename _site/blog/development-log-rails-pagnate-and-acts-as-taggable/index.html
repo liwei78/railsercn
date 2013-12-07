@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>开发笔记：rails分页和acts_as_taggable插件的应用[重发] - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="开发笔记：rails分页和acts_as_taggable插件的应用[重发]" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">开发笔记：rails分页和acts_as_taggable插件的应用[重发]</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>最近一个月在忙于开发项目，所以没有更新博客。不过开发中还是学到不少东西。</p>
+<p>对于一个程序员，阅读是相当有帮助的，读别人的博客，读源码，读经验文章 ，即便读别人的开发代码，都是有帮助的。</p>
+<p>本次开发的初始，就是在读别人的开发代码，然后一点点找到思路，继续在原有基础上加强功能。由于上一个版本的代码写的相当有水准，所以对自己的开发也提高不少。</p>
+<p>本次开发的项目是一个在线视频教学系统。开发中用到了曾经写过的分页代码和一个rails插件：acts_as_taggable。</p>
+<p>下面对这两个部分进行总结。<br />
+h3. 一、分页</p>
+<p>下面的程序在3个项目上使用过。<br />
+models/page.rb<br />
+bq. <br />
+<pre lang="ruby">class Page<br />
+  attr_accessor :pages #分页连接列表，[]类型<br />
+  attr_accessor :cur #当前页<br />
+end</pre></p>
+<p>helpers/application_helper.rb<br />
+bq. <br />
+<pre lang="ruby">  def howtopage_links(pagecls=nil) #在页面输出分页连接，pagecls:分页实例<br />
+    if pagecls<br />
+      return pagecls.pages.collect {|t|<br />
+      [if t.to_s == pagecls.cur<br />
+        &#8220;&#8221;now&quot; href=&#8220;http://railser.cn/wp-admin/?page=#%7Bt.to_s%7D&#8221;&gt;&quot;+(t.to_s)<ins>&#8220;</a>&#8221;<br />
+      else<br />
+        &#8220;&#8221;http://railser.cn/wp-admin/?page=#%7Bt.to_s%7D&quot;&gt;&quot;</ins>(t.to_s)+&quot;</a>&quot;<br />
+      end]<br />
+      }<br />
+    end<br />
+  end</pre></p>
+<p>controllers/application.rb<br />
+bq. <br />
+<pre lang="ruby">  def howtopage(totalcount=0, per_page=6)<br />
+    cur_page = params[:page] || 1 #直接从页面取得page变量<br />
+    x = (cur_page.to_i &#8211; 1) * per_page<br />
+    pagecount = totalcount / per_page<br />
+    if totalcount % per_page != 0<br />
+      pagecount += 1<br />
+    end<br />
+    page = Page.new<br />
+    page.pages = (1..pagecount).collect<br />
+    page.cur = params[:page] || &#8220;1&#8221;<br />
+    return page, x #page为一个包装的分页类，x为find方法的偏移量<br />
+  end</pre></p>
+<p>在一个notebook_controller.rb中<br />
+bq. <br />
+<pre lang="ruby"><code>notes_count = Notebook.count(:conditions=&gt;['user_id = ?', params['user_id']])
+per_page = 6 #每页记录数
+@page, x = howtopage(</code>notes_count, per_page)<br />
+@notes = Notebook.find(:all, :conditions=&gt;[&#8216;user_id = ?&#8217;, params[&#8216;user_id&#8217;]],<br />
+ :order=&gt;&quot;id desc&quot;, :offset=&gt;x, :limit=&gt;per_page)</pre></p>
+<p>在对应的页面中<br />
+bq. <br />
+<pre lang="ruby">&lt; %=howtopage_links(@page)%&gt;</pre></p>
+<p>这段方法有很多可以改进的地方，但是能用就好。<br />
+不过这个分页绝对算是ruby和rails入门的练习，如果想使用更专业的分页，还是推荐will_paginate插件。可以通过下面的方法安装：<br />
+script/plugin install svn://errtheblog.com/svn/plugins/will_paginate<br />
+介绍页面：<a href="http://errtheblog.com/posts/56-im-paginating-again">http://errtheblog.com/posts/56-im-paginating-again</a></p>
+<p>08年12月19日补充：</p>
+<p>这篇博客是去年12月2日写的，一年的时间足够改变世界了。现在这个插件的地址在：http://github.com/mislav/will_paginate/tree/master<br />
+h3. 二、acts_as_taggable</p>
+<p>虽然标题写的是acts_as_taggable，但是首先要说明，我用的是acts_as_taggable_on_steroids，可以通过下面的方法进行安装：<br />
+ruby script/plugin install<br />
+http://svn.viney.net.nz/things/rails/plugins/acts_as_taggable_on_steroids<br />
+bq. 注意不同之处：<br />
+在<a href="http://www.slashdotdash.net/articles/2006/04/29/acts_as_taggable-per-user-tagging"> acts_as_taggable per user tagging</a>篇提到：also an acts_as_taggable的gem安装和plugin安装结果是不一样的. acts_as_taggable的plugin仅适用与Rails 1.1.<br />
+里克：其实上面写这句话的人是针对不同版本的，仅供参考。</p>
+<p>所以，选择哪个tag插件，需要注意下。不同的插件使用的方法是不一样的。DDH的acts_as_taggable<a href="http://taggable.rubyforge.org/">文档</a>是关于那个插件的，它可以通过<br />
+svn co http://dev.rubyonrails.com/svn/rails/plugins/legacy/acts_as_taggable/ acts_as_taggable<br />
+获得。目前看也仅能从这里获得。<br />
+非常详细的适用方法请看<a href="http://agilewebdevelopment.com/plugins/acts_as_taggable_on_steroids">Plugins &#8211; Acts As Taggable On Steroids</a><br />
+h3. 其他Rails插件</p>
+<p>本部分被转移到 <a href="http://railser.cn/archives/mephistoblog-vender-and-plugins">MephistoBlog使用的插件和第三方代码介绍</a></p>
+<p>参考资料：<br />
+<a href="http://taggable.rubyforge.org/">RDoc</a><br />
+<a href="http://wiki.rubyonrails.org/rails/pages/Acts+As+Taggable+Plugin">Acts As Taggable Plugin</a><br />
+<a href="http://wiki.rubyonrails.org/rails/pages/ActsAsTaggablePluginHowto">ActsAsTaggablePluginHowto</a><br />
+<a href="http://agilewebdevelopment.com/plugins/acts_as_taggable_on_steroids">Plugins &#8211; Acts As Taggable On Steroids</a><br />
+<a href="http://www.slashdotdash.net/articles/2006/04/29/acts_as_taggable-per-user-tagging"> 为每个用户曾加tag功能[acts_as_taggable per user tagging]</a><br />
+<a href="http://baike.baidu.com/view/15482.htm"><span class="caps">ASCII</span></a><br />
+<a href="http://rubylib.cn/">Ruby Lib中文站</a></p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2008-12-18T00:00:00+08:00" datetime="2008-12-18T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>December</abbr></span>
+							<span class="day">18</span>
+							<span class="year">2008</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#acts_as_taggable-ref">
+    		acts_as_taggable <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#railsnote-ref">
+    		railsnote <span>38</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/dynamic-attribute-based-finders" title="View Rails中基于属性的动态查询">&laquo; Rails中基于属性的动态查询</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/rails-rdoc-respond_to" title="View Rails Rdoc笔记：respond_to">Rails Rdoc笔记：respond_to &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

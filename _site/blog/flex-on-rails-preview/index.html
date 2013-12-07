@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Flex与Rails的性感结合 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="Flex与Rails的性感结合" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">Flex与Rails的性感结合</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>前面写过一个简单的<a href="http://hi.baidu.com/%D0%C7203/blog/item/70e4c918dc468cb74bedbc5a.html" target="_blank">博文</a>，介绍了一下flex与rails结合的进展。今天看到另一个好消息，《Flexible Rails：Flex 3 on Rails 2》一书将要问世了。作者：Peter Armstrong。目前网上已经可以<a href="http://manning.com/armstrong/" target="_blank">买到PDF版本</a>。</p>
+<p><a href="http://railser.cn/wp-content/uploads/2007/10/armstrong_cover150.jpg" title="Flexible Rails"><img src="http://railser.cn/wp-content/uploads/2007/10/armstrong_cover150.jpg" alt="Flexible Rails" /></a></p>
+<p>只要看看这本书的目录部分，喜欢flex和rails的朋友就会感到兴奋：</p>
+<p>1. Why are we here? Where are we going?<br />
+2. Hello World<br />
+3. Getting started<br />
+4. Creating the Main Flex UI<br />
+5. Expanding the Rails code<br />
+6. Flex on Rails<br />
+7. Validation<br />
+8. Refactoring to RESTful Rails development<br />
+9. Refactoring to Cairngorm<br />
+10. Holding State on the client properly<br />
+11. Finishing the application<br />
+12. Rails on <span class="caps">AIR</span> (Adobe Integrated Runtime)</p>
+<p>Appendix A. How to use Subversion with Flex and Rails<br />
+Appendix B. Handwaving at omitted topics</p>
+<p><a href="http://www.flexiblerails.com/files/FlexibleRailsPreview.pdf" target="_blank">下载本书试读pdf</a>    <a href="http://www.flexiblerails.com/code-samples" target="_blank">下载本书源代码</a></p>
+<p>很想趁着人民币升值的时候买一本仔细看看，不过在花钱之前，我们还是可以看看其他网站的一些关于flex和rails的介绍。<br />
+h3. WebORB for Ruby on Rails</p>
+<p><a href="http://railser.cn/wp-content/uploads/2007/10/blue_rails.jpg" title="weborb"><img src="http://railser.cn/wp-content/uploads/2007/10/blue_rails.jpg" alt="weborb" /></a></p>
+<p>WebORB是连接远程flash/flex客户端和Ruby on Rails应用的服务器端技术。WebORB可以以插件形式安装在任何Rails应用中，以提供Ruby类进行远程服务。WebORB提供完整的adobe AMF0和AMF3通信协议支持远程flash和flex客户端。</p>
+<p>Rails安装WebORB插件，flex客户端如同请求Data Services server一样访问该插件（当前版本仅支持RPC子系统），远程flash应用连接WebORB和连接flash远程入口方法也是一样的。该插件接收和处理来自flex或者flash客户端的远程请求，然后调用部署在rails应用中的ruby类。</p>
+<p><a href="http://railser.cn/wp-content/uploads/2007/10/585f43f466aa85e47709d774jpg.gif"><img src="http://railser.cn/wp-content/uploads/2007/10/585f43f466aa85e47709d774jpg.gif" /></a></p>
+<p>下一篇博文会对教程进行笔记。<br />
+h3. 不过有一个疑惑，什么是AMF3？</p>
+<p>Flash 5开始就可以以XML或者“变量/值”配对输出格式向服务器传送数据。虽然这些数据能通过Flash编译器自动解析或者通过开发人员自行编写的代码手动解析, 但解析的速度慢。因为在解析过程中，XML需要按节点逐层处理数据。而且使用XML和“变量/值”配对格式处理的数据类型只能是字符型，数字也不例外。而 Flash Remoting却能处理复杂数据类型, 比如对象、结构、数组，甚至可以是数据集，配合DataGrid组件可以很方便地显示数据。</p>
+<p>为了处理复杂数据类型，采用一种独有的方式使Flash与应用服务器间可以来回传送数据势在必行。于是AMF应运而生。AMF是Adobe独家开发出来的通信协议，它采用二进制压缩，序列化、反序列化、传输数据，从而为Flash 播放器与Flash Remoting网关通信提供了一种轻量级的、高效能的通信方式。如下图所示。<br />
+<a href="http://railser.cn/wp-content/uploads/2007/10/0941010.gif" title="amf"><img src="http://railser.cn/wp-content/uploads/2007/10/0941010.gif" alt="amf" /></a><br />
+AMF最大的特色在于可直接将Flash内置对象，例如Object, Array, Date, XML，传回服务器端，并且在服务器端自动进行解析成适当的对象，这就减轻了开发人员繁复工作，同时也更省了开发时间。由于AMF采用二进制编码，这种方式可以高度压缩数据，因此非常适合用来传递大量的资料。数据量越大，Flash Remoting的传输效能就越高，远远超过Web Service。至于XML, LoadVars和loadVariables() ，它们使用纯文本的传输方式，效能就更不能与Flash Remoting相提并论了。</p>
+<p>注意：Flash Remoting需要浏览器支持Binary POST，Flash 播放器在Netscape 6.&#215;.环境下运行Flash Remoting会不起作用（Flash Remoting调用没有效果也不返回错误）， Netscape 7已经纠正了这个bug 。对于早期Safari和Chimera版的苹果机也有这个问题。</p>
+<p>同样是轻量级数据交换协议，同样是通过调用远程服务，同样是基于标准的HTTP和HTTPS协议， Flash Remoting为什么选择了使用AMF而放弃了SOAP与Flash 播放器通信呢? 有如下原因：</p>
+<p>1. SOAP将数据处理成XML格式，相对于二进制的AFM太冗长了；<br />
+2. AMF能更有效序列化数据；因为AMF的初衷只是为了支持Flash ActionScript的数据类型，而SOAP却致力于提供更广泛的用途；<br />
+3. AMF支持Flash 播放器 6只需要浏览器增加4 KB左右（压缩后）的大小，而SOAP就大多了；<br />
+4. <span class="caps">SOAP</span> 的一些头部文件请求在Flash 播放器 6不支持。那Flash 播放器 6为什么能访问基于SOAP的Web服务呢？原来Flash Remoting网关将SOAP请求在服务器端与转换成AFM格式，然后利用AFM与Flash 播放器通信。另外，AMF包中包含onResult事件（比如说response事件）和onStatus事件（比如说error事件），这些事件对象在 Flash中可以直接使用。</p>
+<p>AMF从Flash MX时代的AMF0发展到现在的AMF3。AMF3用作Flash Playe 9的ActionScript 3.0的默认序列化格式，而AMF0则用作旧版的ActionScript 1.0和2.0的序列化格式。在网络传输数据方面，AMF3比AMF0更有效率。AMF3能将int和uint对象作为整数（integer）传输，并且能序列化 ActionScript 3.0才支持的数据类型, 比如ByteArray，XML和Iexternalizable。[里克：摘自网上，作者不详]<br />
+h3. Ruby <span class="caps">AMF</span></p>
+<p>参考网站最后是网站地址<br />
+RubyAMF是开源的flash远程应用网关/方法(英文:gateway)。其RubyamfLite是独立的应用服务，可不依赖rails。RubyamfRails为rails插件，可以对rails controller的flash远程调用进行REST形式的AMF response。</p>
+<p>Railser.cn，07年10月20日编辑</p>
+<p>参考网站：</p>
+<p><a href="http://www.flexiblerails.com/" target="_blank">Flexible Rails</a></p>
+<p><a href="http://flexonrails.net/" target="_blank">flexonrails.net</a></p>
+<p><a href="http://www.themidnightcoders.com/weborb/rubyonrails/index.htm" target="_blank">WebORB for Ruby on Rails </a></p>
+<p><a href="http://osflash.org/documentation/amf3" target="_blank">AMF3 Specification</a></p>
+<p><a href="http://www.rubyamf.org/" target="_blank">Ruby <span class="caps">AMF</span></a></p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2007-10-19T00:00:00+08:00" datetime="2007-10-19T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>October</abbr></span>
+							<span class="day">19</span>
+							<span class="year">2007</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#amf-ref">
+    		amf <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#flash-ref">
+    		flash <span>2</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#flex-ref">
+    		flex <span>5</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#rails-ref">
+    		rails <span>20</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#weborb-ref">
+    		weborb <span>1</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/railsercn-return-now" title="View Railser.cn重新开通了。">Railser.cn重新开通了。 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

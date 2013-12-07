@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>IM集成开发补充 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="IM集成开发补充" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">IM集成开发补充</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>写在前面：</p>
+<p>这《<a href="http://railser.cn/archives/im-integration" target="_blank">IM集成开发</a>》那篇博客，主要是翻译了rubyfleebie.com里面的两篇文章，以及对一些资料的整理。不过在IM集成开发上，还有一篇补充需要整理一下。<a href="http://www.rubyfleebie.com/im-integration-with-xmpp4r-2-mistakes-to-avoid/" target="_blank">原文</a>的标题叫“使用XMPP4R进行IM集成开发时需要避免的两个错误”。</p>
+<p>错误一：在Rails下运行XMPP4R</p>
+<p>作者提到，不要将XMPP4R放到你的vender目录中，不要指望在你的Rails项目中也运行着XMPP服务。因为web服务是无状态的，在一个请求结束后，web服务会和客户端断开。而XMPP服务的原理不是这样，所以你应该建立一个独立的项目，比如叫做listener，来完成XMPP的工作。</p>
+<p>不过要注意不要犯下面的错误。</p>
+<p>错误二：在listener中写入商业逻辑</p>
+<p>Rails才是你真正的核心，而这个listener的工作只需要很简单：</p>
+<p>1、接受input</p>
+<p>2、将消息发给Rails应用</p>
+<p>3、将Rails应用的相应结果返回给IM客户端</p>
+<p>以上是作者的总结，供大家参考。</p>
+<p>下面的文章是关于如何建立一个Jabber服务器的</p>
+<p><a href="http://www.linuxsir.org/main/?q=node/156" target="_blank">简单架设Jabber 局域网即时通讯服务器</a></p>
+<p>这篇讲的很全面，不过是linux下的，个人感觉练习的话windows下的很简单。</p>
+<p><a href="http://blog.deadbeaf.org/twitterhack/twitterbot-by-ruby/" target="_blank">TwitterBot by Ruby</a></p>
+<p>如何使用Ruby来实现Twitter的机器人</p>
+<p><a href="http://dominiek.com/articles/2008/2/15/how-to-build-a-twitter-agent" target="_blank">How to Build a Twitter Agent</a></p>
+<p>如何搭建Twitter代理</p>
+<p>不过，我更加关心的是如何实现QQ的IM集成，遗憾的是个人尝试了下并为成功，如果谁有具体的实现方法，请与我联系。下面是我整理的资料，能力有限，所以贴在这里，供大家交流吧。</p>
+<p><a href="http://www.trydone.com/posts/list/50.page" target="_blank">QQTransport for wildfire (让QQ也能在Jabber上使用)   </a></p>
+<p><a href="http://618119.com/archives/2008/01/04/60.html" target="_blank">为OpenFire和Spark增加QQTransport–Openfire篇(二)</a></p>
+<p>这篇文章的作者说，他是在LumaQQ的基础上加工的，不过能力有限，对java环境也基本忘光光，虽然按照他的指引，我还是没有成功，不过还是感谢他的工作，让我知道了如何入手。</p>
+<p>讲一下外包开发的想法。</p>
+<p>一定是要有预付的，之前会讨论网站的详细功能，一定要有成文的功能说明。预付，意味着我们开始正式的开发，这个会包括网站开发文档，代码实现，在正式交付前，需要结清余下的款项。更具体的还需要另定。比如上线后的维护，服务器的扩充，人员的培训等等。在尾款结清前，我们有权保留部分代码。不过作为项目的制作者，我们更乐于参与上线后的维护工作，以增长经验。</p>
+<p>期望每一次都是快乐的合作。</p>
+<p>不过，对于项目想法不成熟的，我们并不想指出谁对谁错，我们只看成熟的开发文档。我们期望自己的作品在各个方面是优秀的。</p>
+<p>不过：</p>
+<p>1、用4000块就像做土豆网的免谈</p>
+<p>2、当程序员为“饭店跑堂”的免谈</p>
+<p>3、当程序员为“免费搓澡”的免谈</p>
+<p>4、大型门户网站或行业门户网站投资少于2万的免谈</p>
+<p>5、要求用asp制作大型门户网站或行业门户网站的免谈</p>
+<p>6、非Rails项目，而且又不能用php已有cms系统完成的，谢谢，我们不接。</p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2008-03-26T00:00:00+08:00" datetime="2008-03-26T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>March</abbr></span>
+							<span class="day">26</span>
+							<span class="year">2008</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#xmpp4r-ref">
+    		xmpp4r <span>2</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/tutorial-rjs" title="View RJS教程">&laquo; RJS教程</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/2008-5-12-wenchuan" title="View 2008年5月12日下午2点28分，汶川地震">2008年5月12日下午2点28分，汶川地震 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

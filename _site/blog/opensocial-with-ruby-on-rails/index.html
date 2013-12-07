@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>关注:Rails上的Opensocial实现 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="关注:Rails上的Opensocial实现" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">关注:Rails上的Opensocial实现</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<h3 style="vertical-align:middle;">什么是OpenSocial</h3>
+<p>OpenSocial是一套API，具体说是由两种类型的API组成。第一种，REST 形式的API是向Social Network或其他遵循 该协议的应用，发送个人资料，好友，活动和persistence components[?]。第二种，Javascript API是以表单的形式实现第一种的REST应用。<br />
+h3. Rails上的OpenSocial</p>
+<p>本段译自<a href="http://blog.new-bamboo.co.uk/2007/11/7/opensocial-with-ruby-on-rails" target="_blank">Google&#8217;s OpenSocial with Ruby on Rails</a><br />
+根据<a href="http://code.google.com/apis/opensocial/">OpenSocial documentation</a>上的显示，目前OpenSocial开放了2中类型资源：people，一个用户的好友，和activities，这些好友的活动/行为。这种结构正好符合rails对集中资源的理解，在一个user Controller中，我们可以狠容易的得到用户的好友和他们的活动。<br />
+OpenSocial的API是按照REST结构设计，但是它并不完全符合Rails的观点，首先，通过URL访问资源的形式并不是Rails的标准形式。其次，它不包含format extension，这意味着你不能直接使用respond_to块。<br />
+但是上面两个问题可以通过在routes文件增加一组路由描述和增加一个自定义的mimetype来解决。<br />
+下面的路由规则是在描述如何在我们的user_controller中对应OpenSocial 中的people资源的。<br />
+bq. <br />
+<pre lang="ruby"></p>
+<ol>
+	<li>config/environment.rb<br />
+Mime::Type.register &#8220;application/x-opensocial&#8221;, :opensocial</li>
+</ol>
+<ol>
+	<li>config/routes.rb<br />
+map.opensocial_person &#8216;/feeds/people/:id&#8217;, :controller =&gt; &#8216;users&#8217;, \<br />
+                            :action =&gt; &#8216;show&#8217;, :format =&gt; &#8216;opensocial&#8217;,\<br />
+                            :conditions =&gt; {:method =&gt; :get}</li>
+</ol>
+<p>map.opensocial_person &#8216;/feeds/people/:id&#8217;, :controller =&gt; &#8216;users&#8217;,\<br />
+                            :action =&gt; &#8216;update&#8217;, :format =&gt; &#8216;opensocial&#8217;, \<br />
+                            :conditions =&gt; {:method =&gt; :put}</p>
+<p>map.opensocial_person &#8216;/feeds/people/:id&#8217;, :controller =&gt; &#8216;users&#8217;, \<br />
+                             :action =&gt; &#8216;destroy&#8217;, :format =&gt; &#8216;opensocial&#8217;, \<br />
+                             :conditions =&gt; {:method =&gt; :delete}</p>
+<ol>
+	<li>app/controllers/users_controller.rb</li>
+</ol>
+<p>respond_to do |format|<br />
+  gem<br />
+  format.opensocial<br />
+end</pre></p>
+<p>如果上面的比较麻烦，可以<a href="http://blog.nbwd.co.uk/assets/2007/11/7/opensocial_routing.tar.gz">下载</a>作者发的插件。这样你的route文件可以这样写：<br />
+bq. <br />
+<pre lang="ruby"></p>
+<ol>
+	<li>config/routes.rb<br />
+map.resources :users do |user|<br />
+  user.resources :activities<br />
+  user.resources :relationships<br />
+end</li>
+</ol>
+<p>map.opensocial_people :users do |user|<br />
+  user.opensocial_friends :relationships<br />
+  user.opensocial_activities :activities<br />
+end</pre></p>
+<p>里克：google上看到的是两种资源，一种持久性方案，下面这个单元就介绍了OpenSocial Container<br />
+h3. OpenSocial Container</p>
+<p>本段整理自<a href="http://www.elctech.com/2007/12/1/opensocial-whats-that" target="_blank">OpenSocial? What&#8217;s that?</a><br />
+<strong>OpenSocial Application</strong><br />
+OpenSocial Application使用XML文档来最终render[一个狠程序化的词，我感觉应该不翻译为好]给用户。这个xml包含了metadata，html，和javascript。下面是Last.fm上的OpenSocial应用。<br />
+<a href="http://www.last.fm/opensocial/myfavouritemusic.xml">http://www.last.fm/opensocial/myfavouritemusic.xml</a><br />
+<blockquote style="overflow: scroll"><br />
+<pre lang="xml"><br />
+&lt; ?xml version=&#8220;1.0&#8221; encoding=&#8220;<span class="caps">UTF</span>-8&#8221;?&gt;<br />
+<module><br />
+  <moduleprefs title="My Favorite Music"><br />
+    <require feature="opensocial-0.5" /><br />
+    <require feature='setprefs' /><br />
+    <require feature='dynamic-height' /></p>
+</moduleprefs>
+<content type="html">
+&lt; ![<span class="caps">CDATA</span>[
+<div id="overlord">
+    <div id="loading">Loadinggem</div>
+    <div id="updating" style="display:none;">Updatinggem</div>
+    <div id="area"></div>
+<div id="lastfmAccount" class="lastfmAccount">
+<div id="hadALastfmAccount" style="display:none;" class="strongLinks">
+p. <a id="haveAccountLink" href="javascript:;" onclick="$('setUsername').toggle();_IG_AdjustIFrameHeight();new Effect.ScrollTo('setUsername');return false;">Have a Last.fm account? Click here.</a>
+</div>
+<form id="setUsername" style="display:none;">
+<input type="text" id="username" />
+<input type="submit" value="That's me!" />
+<span id="cancelChangeUsername">| <a href="javascript:;" class="cancel" id="">cancel</a></span>
+</form>
+</div>
+    <div id="placeholder"></div>
+<style>
+@import url(http://cdn.last.fm/opensocial/main.5.css);
+@import url(http://cdn.last.fm/opensocial/canvas.1.css);
+</style>
+<script type="text/javascript" src="http://cdn.last.fm/javascript/lib/prototype.js"></script>
+<script type="text/javascript" src="http://cdn.last.fm/javascript/lib/scriptaculous.js"></script>
+<script type="text/javascript" src="http://cdn.last.fm/javascript/source/flashplayer_inline.js"></script>
+<script type="text/javascript" src="http://cdn.last.fm/javascript/11/flashpreview.js"></script>
+<script src="http://cdn.last.fm/opensocial/lfm.2.js"></script>
+]]&gt;
+</content>
+</module>
+<p></pre></p>
+<p><strong>OpenSocial Container</strong><br />
+OpenSocial Container的设计，是用来给网站提供用户的选择，配置，加强网站的用户应用，尤其在用户属性页面。OpenSocial Container需要能够理解XMl文件格式，并实现OpenSocial Javascript API。</p>
+<p><strong>OpenSocial Container如何工作</strong><br />
+里克：下面的话还在捉摸<br />
+The OpenSocial Container boils down quite simply to an <span class="caps">IFRAME</span> with the text of the <content> element from the application&#8217;s <span class="caps">XML</span> dumped in to the body. One difficulty for building a container is dealing with the security risks of exposing cookies set by the &#8220;Host Network&#8221; to the Application&#8217;s content, since the Host is doing the embedding. To ensure privacy and a certain degree of security the Container needs to originate from a different domain name than the Host. By doing this the Host/Container (they are the same entity) trick the browser into protecting the Host cookies from the Container&#8217;s (and thus the Application&#8217;s) Javascript.</content></p>
+<p>The Container also makes extensive use of <span class="caps">AJAX</span> to request data from the Host/Container. This is how the Application gets access to the profile, friendship, activities, and persistence information.<br />
+<strong>为什么这么做？我们要注意什么？</strong><br />
+OpenSocial standardizes social networking APIs. That alone is not particularly novel. But this is Google we&#8217;re talking about here. With that kind of backing and buzz this may stick. As a developer this means that you only need to learn one <span class="caps">API</span> to be able to build social applications. One particularly interesting aspect of the OpenSocial <span class="caps">API</span> is the persistence layer. Using this portion of the <span class="caps">API</span> a developer can, quite easily, create a full featured interactive application which is entirely self contained in a single static <span class="caps">XML</span> file. All of the persistence and communication is handled by the Container and the Host. Now that is cool.</p>
+<p>If this takes off like is appears to be poised to do, then we could be in for some excitement akin to the growth and fragmentation of the early social networks; except this will be happing above the social network layer. One interesting possible side effect will be a growth in the popularity of niche social networks. OpenSocial appears to lower the castle walls of the established networks. I expect the crossover in data and user-base between networks will skyrocket as once &#8220;proprietary&#8221; profile data becomes easily moved and shared.<br />
+h3. 下载OpenSocial Container 0.2.0</p>
+<p>ruby script/plugin install<br />
+http://opensocial.rubyforge.org/svn/plugin/tags/0_2_0/opensocial_container<br />
+h3. 下载OpenSocial Container 0.3.0</p>
+<p>ruby script/plugin install<br />
+http://opensocial.rubyforge.org/svn/plugin/tags/0_3_0/opensocial_container</p>
+<p>注：<br />
+本文将继续整理相关内容，有想法的朋友请留言，万分感谢。<br />
+本文有很多东西第一次接触，有不妥的地方，如果您愿意指出帮助我提高，劳烦留言。我会认真查找您的提示。<br />
+目前正在看OpenSocial Container 0.2/3.0的源码<br />
+林肯公园的歌简直成了我的精神支柱了。</p>
+<p>参考资料：<br />
+<a href="http://elctech.com/2007/12/3/opensocial-container-0-2-0">OpenSocial Container<br />
+0.2.0</a><br />
+<a href="http://elctech.com/2007/12/7/opensocial-container-0-3-0">OpenSocial Container 0.3.0</a><br />
+<a href="http://www.elctech.com/2007/12/1/opensocial-whats-that">OpenSocial? What&#8217;s that?</a><br />
+<a href="http://blog.new-bamboo.co.uk/2007/11/7/opensocial-with-ruby-on-rails">Google&#8217;s OpenSocial with Ruby on Rails</a><br />
+<a href="http://code.google.com/apis/opensocial/">OpenSocial</a><br />
+其他：<br />
+<a href="http://www.railsjitsu.com/installing-and-configuring-nginx-and-mongrel-for-rails">Installing and Configuring Nginx and Mongrel for Rails</a><br />
+<a href="http://blog.new-bamboo.co.uk/2007/11/20/database-optimization-for-rails-apps">Database Optimization for Rails Apps</a></p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2007-12-04T00:00:00+08:00" datetime="2007-12-04T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>December</abbr></span>
+							<span class="day">04</span>
+							<span class="year">2007</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#google-ref">
+    		google <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#opensocial-ref">
+    		opensocial <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#rails-ref">
+    		rails <span>20</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#rest-ref">
+    		rest <span>2</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/publish-subscribe-messaging-with-flex-and-rails" title="View 在Flex和Rails上实现发布/订阅的消息通信">&laquo; 在Flex和Rails上实现发布/订阅的消息通信</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/mephistoblog-vender-and-plugins" title="View MephistoBlog使用的插件和第三方代码介绍">MephistoBlog使用的插件和第三方代码介绍 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

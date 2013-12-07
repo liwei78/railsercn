@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>在mac上配制Rails开发环境 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="在mac上配制Rails开发环境" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">在mac上配制Rails开发环境</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>拿到mac后最重要的就是先把Rails开发环境装好。apple介绍上写的是，mac mini装的是server版本，这样开发环境应该是已经装好的。可我的不是，没有Rails环境，只有ruby 1.8.7。这样也好，体验一下配制开发环境的过程。</p>
+<p>1、gem 安装Rails</p>
+<p>这个没有问题，默认已经安装了2.2.2，只要再装上需要的几个版本就可以</p>
+<p>2、装xcode</p>
+<p>问题来了，rake的时候出错，按照ubuntu的经验，估计是缺少编译环境，ubuntu上是装了ruby－dev。</p>
+<p>装上xcode，问题解决。（本人绝对新人，欢迎朋友们指教，更多资料大家google吧）</p>
+<p>3、装MacPort</p>
+<p>这是一个奇怪的感觉，没有apt-get感觉不太习惯，所以装上MacPort，继续装ImageMagick，这个竟然用了一个多小时，具体安装方法参考：<a href="http://rmagick.rubyforge.org/install-osx.html">http://rmagick.rubyforge.org/install-osx.html</a></p>
+<p>4、重点来了，mysql，apache，php环境</p>
+<p>其实本想一个个装一下，但是看到了mamp，就试验一下，没想到很容易就搞定了。。</p>
+<p>参考： <a href="http://www.mamp.info/en/downloads/index.html">http://www.mamp.info/en/downloads/index.html</a></p>
+<p>可是，问题没结束，gem install mysql的时候出现了问题，因为mysql是俗话讲的集成，免安装过来的，不是默认配制，所以，需要重新编译一下mamp的mysql部分，才能正常gem安装mysql驱动。</p>
+<p>重点在：gem install<span style="color: #ff0000;"> <del>v=2.7</span> mysql -</del> &#8212;with-mysql-config=/Applications/<span class="caps">MAMP</span>/Library/bin/mysql_config</p>
+<p>注意红色的部分，因为最新的2.8.1会提示“Virtual timer expired”。建议大家不要轻易升级gem，实在要升级，一定本地环境完全模拟一遍，包括各个gem版本，建议用rvm的朋友一定要多留意，rvm很好，一定要早入手熟悉。</p>
+<p>具体参考：<a href="http://boonedocks.net/mike/archives/175-MAMP-and-the-Ruby-MySQL-Gem.html">http://boonedocks.net/mike/archives/175-<span class="caps">MAMP</span>-and-the-Ruby-MySQL-Gem.html</a></p>
+<p>进行到这里感觉很幸福，发现分享自己的经验原来可以帮人解决那么多问题，也节省时间。这也是我写这个笔记，分享经历的动力。</p>
+<p>5、终于到textmate了</p>
+<p>macx.cn的软件栏目里有下载，总算见到textmate的样子了，之前netbeans也只是模仿一点点样子而已。</p>
+<p>更多的textmate使用见仁见智吧，不多说，目前很痴迷mac，好玩的东西都要用一下。</p>
+<p>写到这，环境基本ok了，开始Rails的工作吧。</p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2010-05-02T00:00:00+08:00" datetime="2010-05-02T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>May</abbr></span>
+							<span class="day">02</span>
+							<span class="year">2010</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#apple mac-ref">
+    		apple mac <span>3</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#mac-ref">
+    		mac <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#rails-ref">
+    		rails <span>20</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/mac-with-normal-keyboard" title="View mac使用普通键盘的几个快捷键">&laquo; mac使用普通键盘的几个快捷键</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/rails-config-plugins-array" title="View Rails如何不加载某插件？">Rails如何不加载某插件？ &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

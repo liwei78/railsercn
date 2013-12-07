@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>1.2.4 变量查找 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="1.2.4 变量查找" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">1.2.4 变量查找</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>在Ruby中有四种类型的变量，它们是全局变量、类变量、实例变量及局部变量。全局变量作用于全局，局部变量只作用于局部，因此下面的讨论均不涉及它们，因为它们不与Ruby的类系统进行交互。<br />
+<em>注：还有常量，但是它们不应该被改变。（事实上可以改变，但是Ruby会发出警告。）</em></p>
+<p>实例变量是与特定对象相关的。实例变量以一个@符号开始：@price既是一个实例变量。因为每个Ruby对象都有一个iv_tbl结构，所以任何一个对象都可以有实例变量。由于一个类也是一个对象，所以一个类亦可以拥有实例变量。下面的代码展示了如何访问一个类实例变量的方法：<br />
+<pre name="code" class="ruby"><br />
+class A<br />
+  @ivar = &#8220;Instance variable of A&#8221;<br />
+end</p>
+<p>A.instance_variable_get(:<code>ivar) # =&gt; "Instance variable of A"
+&lt;/pre&gt;
+实例变量总是基于self指针指向的对象来解析的。上面的代码，因为self是在class A … end中定义A的类对象，所以</code>ivar又属于A的类对象。</p>
+<p>但是，类变量则不同。任何一个类的实例都可以访问其类变量（就是以@@开头的变量）。类变量也可以被其类定义自身所引用。虽然一个类变量和实例变量相似，但他们不是一回事：<br />
+<pre name="code" class="ruby"><br />
+class A<br />
+  <code>var = "Instance variable of A"
+  @</code>var = &#8220;Class variable of A&#8221;<br />
+  def A.ivar<br />
+    <code>var
+  end
+  def A.cvar
+    @</code>var<br />
+  end<br />
+end</p>
+<p>A.ivar # =&gt; &#8220;Instance variable of A&#8221;<br />
+A.cvar # =&gt; &#8220;Class variable of A&#8221;<br />
+</pre><br />
+在这段代码示例中，@var 与@@var被存储在同一个地方：即A的iv_tbl。然而，他们是不同的变量，这是因为他们具有不同的名字（@符被当作变量名的一部分存储）。Ruby提供了一些方法用于检查被访问的实例变量和类变量，以便保传递中的变量名具有正确的格式：。<br />
+<pre name="code" class="ruby"><br />
+A.instance_variable_get(:@@var)</p>
+<ol>
+	<li>~&gt; -:17:in `instance_variable_get&#8217;: `<code>@var' is not allowed as an instance
+    variable name (NameError)
+&lt;/pre&gt;
+类变量的使用有点让人疑惑。因为，它们被共享于整个继承链中，所以在子类中改变一个类变量时其父类的类变量值也被改变。
+&lt;pre name="code" class="ruby"&gt;
+&gt;&gt; class A; @</code>x = 3 end<br />
+=&gt; 3<br />
+&gt;&gt; class B &lt; A; <code>@x = 4 end
+=&gt; 4
+&gt;&gt; class A; @</code>x end<br />
+=&gt; 4<br />
+</pre><br />
+这可能有用，但也可能令人迷惑。通常来说，你需要的会是类实例变量和ActiveSupport提供的可继承类属性（class inheritable attributes）这两者之一，前者独立于继承链，后者以一种受约束定义良好的方式在继承链中进行值传递。</li>
+</ol>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2008-10-24T00:00:00+08:00" datetime="2008-10-24T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>October</abbr></span>
+							<span class="day">24</span>
+							<span class="year">2008</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#advanced rails-ref">
+    		advanced rails <span>14</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#default-ref">
+    		default <span>54</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/moving-to-a-line-symbol-or-bookmark" title="View TextMate中文教程之在行，符号和书签之间移动">&laquo; TextMate中文教程之在行，符号和书签之间移动</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/column-selections" title="View TextMate中文教程之列选择器">TextMate中文教程之列选择器 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

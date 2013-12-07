@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>sns网站开发经验总结：中国省份城市插件（一） - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="sns网站开发经验总结：中国省份城市插件（一）" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">sns网站开发经验总结：中国省份城市插件（一）</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>写在前面：</p>
+<p>经过三个多月的共同努力，sns项目终于完成上线了。感谢众位合作兄弟的持续支持和热情投入。项目走过了开发，完善，再开发，再完善的过程。下面逐步将开发中的经验和大家分享。期待和大家共同交流，提高水平。谢谢！</p>
+<p>今天首先介绍一个优秀的插件，city_helper。</p>
+<p>代码：<a href="http://github.com/yzhang/city_helper/tree/master" target="_blank">http://github.com/yzhang/city_helper/tree/master</a></p>
+<p>网站：<a href="http://www.letrails.cn/archives/city-helper-a-plugin-provide-state-and-city-select" target="_blank">http://www.letrails.cn/archives/city-helper-a-plugin-provide-state-and-city-select</a></p>
+<p>功能：实现国内省份，城市的联动选择。</p>
+<p>特点：这个省份城市联动选择功能，是sns网站必备的功能之一。我们不用反复的造轮子啦，感谢作者的分享。</p>
+<p>修正：插件中有一点点小错误，已经在作者博客留言。使用的朋友会发现的。</p>
+<p>1、CITIES，keys中广西应为广东<br />
+2、海南的城市没有加，我添加了两个 ‘海南’ =&gt; [’海口’, ‘三亚’],</p>
+<p>还有一个太合适的设置，一是 state_and_city_select 方法初始化时，省份为北京，城市为所有城市，其中包括北京。研究了一下方法，将city_choices改为</p>
+<p>def city_choices<br />
+&#8220;北京&#8221;<br />
+end</p>
+<p>并且增加 了famous_select 方法，将几个重点城市放置其中，方便选择。</p>
+<p>当然应用要根据需求定制，这个插件非常优秀的实现了联动选择，稍加修改，即可实现客户的需求。感谢开源，感谢作者。感谢众多辛苦工作，热心奉献的程序员们。</p>
+<p>update:2009-6-3</p>
+<p>又修正了一下，编辑所在地时，会列出所有城市的问题。</p>
+<p><a href="http://railser.cn/wp-content/uploads/2009/05/city_helper.rb">city_helper</a></p>
+<p>右键另存一下这个文件吧。修改的部分比较下就能看到了。</p>
+<p>update:2009-6-30</p>
+<p>补充一下页面上的引用。改插件在创建新纪录时，完全没问题。但是当加入到“我的资料”这样的版块，需要修改时，会出现城市列表中，包含全部城市。这里并没有初始化已有选择。下面做了一些改动。</p>
+<p>在页面调用上，如下：</p>
+<pre>
+&lt;%= state_and_city_select :user_detail, :province, :city, {:state=&gt;{:include_blank =&gt; true}, :city=&gt;{:include_blank =&gt; true}} %&gt;
+
+&lt;script type="text/javascript"&gt;
+
+  init_city_select('&lt;%= @user_detail.province %&gt;','&lt;%= @user_detail.city %&gt;');
+
+&lt;/script&gt;
+</pre>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2009-05-03T00:00:00+08:00" datetime="2009-05-03T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>May</abbr></span>
+							<span class="day">03</span>
+							<span class="year">2009</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#plugin-ref">
+    		plugin <span>2</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#railsnote-ref">
+    		railsnote <span>38</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#sns-ref">
+    		sns <span>1</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/prototype-and-jquery-a-code-comparison" title="View jquery和prototype的代码对比">&laquo; jquery和prototype的代码对比</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/2009-8-10" title="View sns网站设计感想">sns网站设计感想 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

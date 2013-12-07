@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Rack, 我忽视你了 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="Rack, 我忽视你了" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">Rack, 我忽视你了</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					
+<h1 id="rack">什么是Rack</h1>
+
+<p>Rack provides a minimal, modular and adaptable interface for developing web applications in Ruby. By wrapping HTTP requests and responses in the simplest way possible, it unifies and distills the API for web servers, web frameworks, and software in between (the so-called middleware) into a single method call.</p>
+
+<p>大意：Rack是个api，这个api会调用一个方法，它是call()。</p>
+
+<h1 id="rack_application">什么是Rack Application？</h1>
+
+<p>A Rack application is an Ruby object (not a class) that responds to call. It takes exactly one argument, the environment and returns an Array of exactly three values: The status, the headers, and the body.</p>
+
+<p>大意：Rack App需要提供一个方法，它就是call()。</p>
+
+<h1 id="rackweb_server">一个误解：Rack不是web server</h1>
+
+<ol>
+<li>一个浏览器请求</li>
+
+<li>web server 将请求交给了Rack</li>
+
+<li>Rack告诉了app</li>
+
+<li>app想了想，告诉Rack我的返回结果是什么</li>
+
+<li>Rack告诉web server 它要的结果</li>
+
+<li>web server 告诉浏览器一个可解析的结果</li>
+</ol>
+
+<h1 id="racksprockets">Rack为我做了什么？让Sprockets代表大伙发个言。</h1>
+
+<p><a href="https://github.com/sstephenson/sprockets">看看Sprockets</a></p>
+
+<p>之前我对Sprockets的概念完全被Rails给代替了，那么注意下面标注的文字，原来只是Rails替我做了额外的事情，我没有察觉。</p>
+
+<p>You’ll need an instance of the Sprockets::Environment class to access and serve assets from your application. Under Rails 3.1 and later, <code>YourApp::Application.assets is a preconfigured Sprockets::Environment instance</code>. For Rack-based applications, create an instance in config.ru.</p>
+
+<p>那么，我如果自己单独使用Sprockets呢？</p>
+
+<p>If you are using Sprockets with a Rack application, you will need to mount the environment yourself. A good way to do this is with the map method in config.ru:</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s1'>&#39;sprockets&#39;</span>
+<span class='n'>map</span> <span class='s1'>&#39;/assets&#39;</span> <span class='k'>do</span>
+  <span class='n'>environment</span> <span class='o'>=</span> <span class='ss'>Sprockets</span><span class='p'>:</span><span class='ss'>:Environment</span><span class='o'>.</span><span class='n'>new</span>
+  <span class='n'>environment</span><span class='o'>.</span><span class='n'>append_path</span> <span class='s1'>&#39;app/assets/javascripts&#39;</span>
+  <span class='n'>environment</span><span class='o'>.</span><span class='n'>append_path</span> <span class='s1'>&#39;app/assets/stylesheets&#39;</span>
+  <span class='n'>run</span> <span class='n'>environment</span>
+<span class='k'>end</span>
+
+<span class='n'>map</span> <span class='s1'>&#39;/&#39;</span> <span class='k'>do</span>
+  <span class='n'>run</span> <span class='no'>YourRackApp</span>
+<span class='k'>end</span>
+</code></pre></div>
+<p>Sprockets 可以支持SCSS/SASS，LESS，CoffeeScript，甚至.scss.erb。</p>
+
+<h1 id="rack_2">我能用Rack做什么？</h1>
+
+<p>注意那个不起眼的config.ru，我可以用它来写一个自己的Ruby框架。当然啦，这个框架现在什么也不做。</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># config.ru</span>
+<span class='nb'>require</span> <span class='o'>::</span><span class='no'>File</span><span class='o'>.</span><span class='n'>expand_path</span><span class='p'>(</span><span class='s1'>&#39;../my_app.rb&#39;</span><span class='p'>,</span>  <span class='bp'>__FILE__</span><span class='p'>)</span> <span class='c1'># 这句话copy自Rails，吼吼</span>
+<span class='n'>run</span> <span class='ss'>MyApp</span><span class='p'>:</span><span class='ss'>:Application</span>
+</code></pre></div><div class='highlight'><pre><code class='ruby'><span class='c1'># my_app.rb</span>
+<span class='k'>module</span> <span class='nn'>MyApp</span>
+  <span class='k'>class</span> <span class='nc'>Application</span>
+    <span class='k'>def</span> <span class='nc'>self</span><span class='o'>.</span><span class='nf'>call</span><span class='p'>(</span><span class='n'>env</span><span class='p'>)</span>
+      <span class='o'>[</span><span class='mi'>200</span><span class='p'>,</span> <span class='p'>{</span><span class='s2'>&quot;Content-Type&quot;</span> <span class='o'>=&gt;</span> <span class='s2'>&quot;text/html&quot;</span><span class='p'>},</span> <span class='o'>[</span><span class='s2'>&quot;&lt;h1&gt;It&#39;s My App&lt;/h1&gt;&quot;</span><span class='p'>,</span> <span class='s1'>&#39;&lt;p&gt;Yeah!!!&lt;/p&gt;&#39;</span><span class='o'>]]</span>
+    <span class='k'>end</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre></div>
+<blockquote>
+<p>rackup -s WEBrick -p 1212</p>
+</blockquote>
+
+<p>如果你看过<a href="https://github.com/JuanitoFatas/Guides/blob/master/guides/edge-translation/rails-on-rack-zh_CN.md">这篇文章</a>，那么你会发现，我们熟知的Rails启动方式，还可以这样完成：</p>
+<div class='highlight'><pre><code class='ruby'><span class='c1'># Rails.root/config.ru</span>
+<span class='nb'>require</span> <span class='o'>::</span><span class='no'>File</span><span class='o'>.</span><span class='n'>expand_path</span><span class='p'>(</span><span class='s1'>&#39;../config/environment&#39;</span><span class='p'>,</span> <span class='bp'>__FILE__</span><span class='p'>)</span>
+
+<span class='n'>use</span> <span class='ss'>Rack</span><span class='p'>:</span><span class='ss'>:Debugger</span>
+<span class='n'>use</span> <span class='ss'>Rack</span><span class='p'>:</span><span class='ss'>:ContentLength</span>
+<span class='n'>run</span> <span class='no'>Rails</span><span class='o'>.</span><span class='n'>application</span>
+</code></pre></div>
+<h1 id="sinatra">试试sinatra</h1>
+
+<p>写这篇文章的缘由，是在开发一个功能时，想到它可以包装成一个gem，而后有看了<a href="http://guides.rubyonrails.org/v3.2.13/engines.html">Rails Guides: Getting Started with Engines</a>，<a href="http://guides.ruby-china.org/engines.html">中文在这里</a>，这之后有了对Rails进行解构的想法，而后，便是更加清楚的意识到Rack的存在了。</p>
+
+<p>那么，sinatra，和其他同类型的Rack-based app（非Rails），都是我们可以尝试的选择。</p>
+
+<h1 id="rails">继续对Rails解构，我们还会发现什么？</h1>
+
+<p>当我们<code>rake middleware</code>的时候，我们可以看到Rails加载了哪些middleware，这些不是写在Gemfile里的，但是他们可以来自gem。这就有点奇怪的感觉了，不是么？</p>
+
+<p>如果我们选择sinatra，选择一些自己要使用的gem，再挑选一些middleware，我们就可以搭建一个app了。比如，一个管理jekyll的app blog。</p>
+
+<h1 id="">写在后面</h1>
+
+<p>这篇短文的意图，是想通过Rails的解构，对Rack和其他Rack-based App有一个清楚的了解，当我们选择功能方案的时候，会从另外一些角度，选择我们合适的实现途径。Rails给我们的贡献，就像Prem在RubyConf上讲到的，我们可以看看，把Rails的哪些东西可以放到我们的项目里。</p>
+
+<p>这篇博文是两次完成的，因为期间要参加RubyConfChina，所以在之前把半成品放了出去，听听大家的意见。回来后发现了一些新的资源，一并补充进来。再次感谢提出意见的ruby-china.org的小伙伴们。</p>
+
+<h1 id="_2">参考资料</h1>
+
+<p><a href="http://guides.rubyonrails.org/v3.2.13/rails_on_rack.html">http://guides.rubyonrails.org/v3.2.13/rails_on_rack.html</a></p>
+
+<p><a href="http://m.onkey.org/ruby-on-rack-1-hello-rack">Ruby on Rack #1 - Hello Rack!</a></p>
+
+<p><a href="http://m.onkey.org/ruby-on-rack-2-the-builder">Ruby on Rack #2 - The Builder</a></p>
+
+<p><a href="http://m.onkey.org/2008/11/10/rails-meets-sinatra">Rails meets Sinatra</a></p>
+
+<p><a href="http://m.onkey.org/rails-meets-sinatra-2-mix-n-match">Rails meets Sinatra #2 - Mix n’ Match</a></p>
+
+<p><a href="http://gauravchande.com/post/58760237018/what-is-rack-in-ruby-rails">What is ‘Rack’ in Ruby/Rails?</a></p>
+
+<p><a href="http://rack.rubyforge.org/doc/">Rack Doc</a></p>
+
+<p><a href="http://www.sinatrarb.com/">sinatra</a></p>
+
+<p><a href="https://github.com/JuanitoFatas/Guides/blob/master/guides/edge-translation/rails-on-rack-zh_CN.md">Rails on Rack</a></p>
+
+<p><a href="http://railser.cn/blog/rails-and-merb/">(转载)Rails 與 Merb 合併背後的故事</a></p>
+
+<p>里克，2013年10月29日</p>
+
+<p>转载请注明出处：里克的自习室 Railser.cn</p>
+
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2013-10-23T00:00:00+08:00" datetime="2013-10-23T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>October</abbr></span>
+							<span class="day">23</span>
+							<span class="year">2013</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#rails-ref">
+    		rails <span>20</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/tags.html#rack-ref">rack <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#sinatra-ref">sinatra <span>1</span></a></li>
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/write-from-jekyll" title="View Jekyll，和它的generateors">&laquo; Jekyll，和它的generateors</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/rails-and-merb" title="View (转载)Rails 與 Merb 合併背後的故事">(转载)Rails 與 Merb 合併背後的故事 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>TextMate中文教程之在选取文件 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="TextMate中文教程之在选取文件" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">TextMate中文教程之在选取文件</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>项目中最重要的一点是快速访问项目中的文件。你可以用鼠标打开任何你需要打开的文件。TextMate中，如果你单击的是一个文本文件，单击会打开它。TextMate会根据文件的扩展名或者读取文件的前8KB来判断它是不是一个合法的UTF-8(<span class="caps">ASCII</span>)文本。</p>
+<p>如果你需要更改TextMate和文件的关联类型，在边栏中选中文件，然后点边栏最下面的动作按钮选择 Treat Files with “ext” Extension as Binary/Text。这样TextMate就会记住这个文件类型的设置。在边栏中双击一个文件，会用默认关联的程序打开它，有可能不是TextMate。比如你在TextMate的边栏中双击了一个pdf文件，会用相关阅读器打开它。</p>
+<p>你可以在代码窗口和边栏之间迅速切换，快捷键是Ctrl+Tab。当边栏得到焦点的时候，你可以使用方向键上，下来移动选取，也可以用方向键右来展开一个文件夹或者用方向键左来折叠它们。当你选取了一个想打开的文件，按一下回车键就和单击鼠标一样会打开这个文件。当你选取了文件时，单击空格键就可以给文件改名。</p>
+<p>用上面介绍的方式来打开一个文件的确挺简单滴，但是如果你的项目有20个顶级文件夹和7000个文件。当你想这么打开一个文件或许累屁了。下面叫你一个简单滴方法。</p>
+<p>加入你知道你要打开的文件的名字，那么选择Navigation中的Go to File按钮(Apple+T)。在打开的对话框中输入文件名，在下方的文件列表中用方向键来选取文件并用回车来打开这个文件。你会发现这个功能比你想的还强大，例如你要打开的文件名是pitches_controller_test.rb，那么你只需要输入pct，下面的文件列表就会自动列出相关的文件(看图)。现在选择这个pitches_controller_test.rb，TextMate会记住你的这次操作。下次你再用这个功能的时候，当你输入pct那么pitches_controller_test.rb会自动列到第一项来。</p>
+<p><a href="http://railser.cn/wp-content/uploads/2008/10/2008102302.gif"><img class="alignnone size-medium wp-image-95" title="2008102302" src="http://railser.cn/wp-content/uploads/2008/10/2008102302-300x221.gif" alt="" width="300" height="221" /></a></p>
+<p>当你打开了7.8个文件咋整呢？就像Firefox能切换标签页一样。TextMate也让你这么干。你可以用Apple+数字键1-9来切换不同的代码窗口。也可以用Option+Apple+方向键左右来切换(看图)。</p>
+<p><a href="http://railser.cn/wp-content/uploads/2008/10/2008102301.gif"><img class="alignnone size-medium wp-image-96" title="2008102301" src="http://railser.cn/wp-content/uploads/2008/10/2008102301-300x175.gif" alt="" width="300" height="175" /></a></p>
+<p>等等，我知道看这个文章的你跟我一样也是一个傻了吧机的程序员。那么还有一个快捷键你能用的上，那就是Option+Apple+方向键上。它会在你项目中的同名（但扩展名不同）的文件之间切换。举个例子，你可以用这个快捷键在项目中的 widget.h 和  widget.c 之间切换。</p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2008-10-23T00:00:00+08:00" datetime="2008-10-23T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>October</abbr></span>
+							<span class="day">23</span>
+							<span class="year">2008</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#default-ref">
+    		default <span>54</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/method-lookup-2" title="View 1.2.2 方法查找(2)">&laquo; 1.2.2 方法查找(2)</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/shortcuts-for-creating-projects" title="View TextMate中文教程之用快捷键创建项目">TextMate中文教程之用快捷键创建项目 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+

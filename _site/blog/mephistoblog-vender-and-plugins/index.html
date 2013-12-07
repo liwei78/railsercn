@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>MephistoBlog使用的插件和第三方代码介绍 - 里克的自习室</title>
+	<meta name="author" content="里克">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="MephistoBlog使用的插件和第三方代码介绍" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+	<meta name="baidu-tc-cerfication" content="7d8794da5447e30a9af4858fb3dd8030" />
+</head>
+<body>
+
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">里克的自习室</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-post">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">MephistoBlog使用的插件和第三方代码介绍</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
+
+			<div class="bd">
+				<div class="entry-content">
+					<hr />
+<p>本篇是在 <a href="http://railser.cn/archives/development-log-rails-pagnate-and-acts-as-taggable">开发笔记：rails分页和acts_as_taggable插件的应用</a> 一文的后半部分基础上再整理的。内容上是连贯的。</p>
+<p>在 Rails开发中，会用到很多有帮助的插件，<a href="http://alexyoung.org/articles/show/40/a_taxonomy_of_rails_plugins">A taxonomy of Rails plugins</a>【<a href="http://www.javaeye.com/topic/113929">中文翻译</a>】 里讲到了如何制作插件，并引用了acts_as_taggable的例子进行讲解。</p>
+<p><a href="http://www.juixe.com/techknow/index.php/2006/07/05/top-11-rails-plugins/">Top 11 Rails Plugins</a> 里面更是讲了很多有帮助的插件。不过我更想细看一下<a href="http://www.mephistoblog.com/">mephisto-0.7.3</a>里面的插件。<br />
+h3. MephistoBlog用了哪些插件</p>
+<p>看图：<br />
+<img src="http://railser.cn/wp-content/uploads/2007/12/vender.jpg" alt="vender" /></p>
+<p><img src="http://railser.cn/wp-content/uploads/2007/12/plugins.jpg" alt="plugins" /></p>
+<p>说话：<br />
+<strong>vender中：</strong><br />
+BlueCloth：<a href="http://www.deveiate.org/projects/BlueCloth">BlueCloth</a>是一个Markdown的Ruby实现，一个提供给网页文字撰写者将文本转成HTML的工具。Markdown令你可以写出容易阅读、容易撰写的文本格式，然后将它转换成结构化的XHTML（或者HTML）。</p>
+<p>RedCloth：<a href="http://code.whytheluckystiff.net/redcloth/">RedCloth</a>是一个令你可以在Ruby中使用Textile的模块。Textile是一个文本格式，一个非常简单的文本格式。可以将一个可读的文本转成HTML。</p>
+<p>RubyPants：是Ruby实现的“smart-quotes library SmartyPants”。RubyPants使用不同的APIs，它兼容上面两个的APIs，将ASCII的标点转换成 “smart” typographic punctuation <span class="caps">HTML</span> entities。参考：<a href="http://chneukirchen.org/blog/static/projects/rubypants.html">RubyPants</a></p>
+<p>RubyZip：rubyzip是一个ruby读写zip文件的类库。<a href="http://rubyzip.sourceforge.net/"><span class="caps">RDOC</span></a></p>
+<p>TZInfo：<a href="http://tzinfo.rubyforge.org/">TZInfo</a>是一个标准tz数据库提供不同时区的daylight savings的Ruby类库。</p>
+<p><strong>plugins中：</strong></p>
+<p>a_gems：小巧的Ruby Gem管理工具，它在启动时会自动的将gem/lib的路径加载到$LOAD_PATH 中。<br />
+它不用介绍，就几行代码。<br />
+bq. <br />
+<pre lang="ruby"><br />
+standard_dirs = [&#8216;rails&#8217;, &#8216;plugins&#8217;]<br />
+gems          = Dir[File.join(RAILS_ROOT, &#8220;vendor/**&#8221;)]<br />
+if gems.any?<br />
+  gems.each do |dir|<br />
+    next if standard_dirs.include?(File.basename(dir))<br />
+    lib = File.join(dir, &#8216;lib&#8217;)<br />
+    $LOAD_PATH.unshift(lib) if File.directory?(lib)<br />
+  end<br />
+end</pre></p>
+<p><a href="http://technoweenie.stikipad.com/plugins/show/Acts+as+Attachment">acts_as_attachment</a>：保存附件文件到数据库或文件系统的插件。</p>
+<p><a href="http://ar-paranoid.rubyforge.org/">acts_as_paranoid</a>：重写当前model的一些基础方法。当执行destroy时，设置deleted_at为当前时间。里克：意思是说它并不真正删除数据，只是加上了一个删除日期，证明该记录被删除了。它可以使你重新看到已删除的记录。对数据要求高的应用很有帮助。</p>
+<p><a href="http://ar-versioned.rubyforge.org/">acts_as_versioned</a>：对一个ActiveRecord  module 进行简单的版本标注。可实现值的回滚操作。因为它为每一个create出来的记录都做了版本记录。</p>
+<p><a href="http://weblog.techno-weenie.net/projects/dialog">dialog_helper</a>：一个简单的脚本，对浏览器的弹出窗口进行“装修”。</p>
+<p>filtered_column：README里啥也没写！！看文件里面，是在做格式化文本，可能是在对BlueCloth和RedCloth的一个功能进行改进。代码很多，有用过的朋友请留言。</p>
+<p>filtered_column_code_macro：增强ruby代码的高亮显示，使用了<a href="http://coderay.rubychan.de/">CodeRay</a>库，Ruby写的做语法高亮显示的库。</p>
+<p>filtered_column_flickr_macro：flickr转换，文本编辑的加强功能。（Author::Scott Raymond）</p>
+<p>labeled_form_helper：为表单元素增加label标签。readme里有示例。</p>
+<p><a href="http://wiki.rubyonrails.org/rails/pages/Liquid+Plugin">Liquid</a>：一个模板引擎。特点：可以编辑应用的外观，而且不会被执行危险代码。直接从数据库渲染模板。里克：看上去有点像django的模板语言。</p>
+<p>mephisto_converters：博客搬家程序，将<a href="http://www.textpattern.com/">Textpattern</a>，<a href="http://typo3.com/">Typo</a>和<a href="http://wordpress.org/">Wordpress</a>转换成mephistoblog。</p>
+<p><a href="http://mocha.rubyforge.org/">mocha</a>：Rails的一个测试套件，可以模拟和替换代码中的方法和实例，比如，你可以替换掉ActiveRecord重的实例方法，而避免在单元测试的环节操作数据库。毕竟操作数据库还是慢一些的。</p>
+<p><a href="http://weblog.techno-weenie.net/2006/10/14/simply_bdd-update">simply_bdd</a>：可以在创建测试用例的时候使用上下文和代码块。</p>
+<p><a href="http://matthewman.net/2006/09/04/new-rails-feature-simply_helpful/">simply_helpful</a>：新增的一些helper。加强功能。 <a href="http://www.juixe.com/techknow/index.php/2007/04/03/simply-helpful-rails-plugin/">Simply Helpful Rails Plugin</a>里介绍的比较详细，不过一些功能已经放到2.0里面了，对于老版本，尤其是博客里提到的1.2.2的应用，可以考虑安装的。</p>
+<p><a href="http://weblog.techno-weenie.net/2006/9/3/white-listing-plugin-for-rails">white_list</a>：一个html安全增强工具，可以过滤掉一些hack代码，是html更安全。</p>
+<p>ergem<br />
+到这里，mephisto blog的第三方代码和插件都写完了。</p>
+<p>广告一下：狂喜欢的 <a href="http://www.footballmanager.net/">Football Manager 2008</a> 已经发了。狂好玩。我的曼城还在煎熬中，不过上个赛季最后一场比赛，客场对阿森纳，竟然无比顽强的2：1获胜。挤掉了曼联排名第四。哇哈哈哈！</p>
+<p><img src="http://railser.cn/wp-content/uploads/2007/12/679.png" alt="man city" /></p>
+<p>参考资料：<br />
+<a href="http://www.mephistoblog.com/">MephistoBlog</a><br />
+<a href="http://rubylib.cn/">Ruby Lib中文站</a><br />
+<a href="http://baike.baidu.com/view/15482.htm"><span class="caps">ASCII</span></a><br />
+<a href="http://lgn21st.javaeye.com/blog/135502">用mocha测试rails，mock HTTPResponse</a></p>
+					<div class="meta">
+						<p class="date-publish">
+							Published: 
+							<date class="date-pub" title="2007-12-18T00:00:00+08:00" datetime="2007-12-18T00:00:00+08:00" pubdate>
+							<span class="month"><abbr>December</abbr></span>
+							<span class="day">18</span>
+							<span class="year">2007</span>
+							</date>
+						</p>
+						<ul class="list-category list-linear">
+							<li class="list-head">category: </li>
+							
+							
+
+
+  
+     
+    	<li><a href="/categories.html#blog-ref">
+    		blog <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#mephisto-ref">
+    		mephisto <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#plugins-ref">
+    		plugins <span>2</span>
+    	</a></li>
+    
+  
+
+
+						</ul>
+						<ul class="list-tag list-linear">
+							<li class="list-head">tags: </li>
+							
+							
+
+
+  
+    
+  
+
+
+
+						</ul>
+					</div><!-- meta -->
+				</div><!-- entry-content -->
+				<div class="misc-content">
+					<div class="social">
+						<ul class="list-linear">
+							<!-- <li><div class="twitter-tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="liwei78" data-lang="en">Tweet</a></div></li>
+							<li><div class="twitter-follow"><a href="https://twitter.com/liwei78" class="twitter-follow-button" data-show-count="false" data-lang="en"></a></div></li> -->
+						</ul>
+					</div>
+					<div class="comment">
+						<p>我更喜欢用邮件交流，只言片语也行，请发送到 <a href="mailto:hi@liwei.me">hi@liwei.me</a></p>
+					
+					</div>
+				</div><!-- misc-content -->
+			</div><!-- bd -->
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<nav class="pagination">
+						<ul>
+							
+							<li class="prev"><a class="internal" rel="prev"  href="/blog/opensocial-with-ruby-on-rails" title="View 关注:Rails上的Opensocial实现">&laquo; 关注:Rails上的Opensocial实现</a></li>
+							
+							
+							<li class="pipe"> | </li>
+							
+							
+							<li class="next"><a class="internal" rel="next"  href="/blog/riquel-li-at-2007-end" title="View 写在2007的最后一天">写在2007的最后一天 &raquo;</a></li>
+							
+						</ul>
+					</nav>
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
+
+
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>about</h4>
+					<ul>
+						<li class="contact"><address><span class="author fn n"><a href="/me.html">里克</a></span> - Rails Soho Developer, Blog Writer, focus on OpenERP recently.</address></li>
+						<li class="github"><a href="mailto:hi@liwei.me">hi@liwei.me</a></li>
+						<li class="github"><a href="http://github.com/liwei78" rel="me">github.com/liwei78</a></li>
+						<li class="twitter"><a href="http://ruby-china.org/liwei78" rel="me">ruby-china.org/liwei78</a></li>
+						<li class="rss"><a href="http://railser.cn">http://railser.cn</a></li>
+						<li class="rss">QQ: 5175486</li>
+						<li class="rss">skype: railsercn</li>
+						<li class="rss">Resume: <a href="/resume.html">中文简历</a> <a href="/resume-en.html">English</a></li>
+					</ul>
+					<p>微信：里克的自习室</p>
+					<p><img src="/assets/themes/the-program/skin/weixin.jpg" /></p>
+				</div><!-- misc -->
+				<div>
+					Read <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll Quick Start</a>
+ 				</div>
+				<p class="licence">
+					Theme: the-program based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br>
+					Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>.
+					<br>
+					Host on Github Pages.
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
+  
+  
+</body>
+</html>
+
