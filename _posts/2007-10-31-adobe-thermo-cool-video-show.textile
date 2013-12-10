@@ -5,8 +5,6 @@ post_id: 20
 categories: ["adobe", "thermo"]
 ---
 
-snapshot
-
 <pre>
 第一部分：
 <object height="355" width="425">

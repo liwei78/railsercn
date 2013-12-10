@@ -307,7 +307,7 @@ html {
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.428571429;
+  line-height: 1.625em;
   color: #333333;
   background-color: #ffffff;
 }
@@ -550,27 +550,27 @@ h6 .small {
 
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 30px;
 }
 
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 24px;
 }
 
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 12px;
 }
 
 h5,
 .h5 {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 h6,
@@ -743,7 +743,7 @@ samp {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 }
 
-code {
+/*code {
   padding: 2px 4px;
   font-size: 90%;
   color: #c7254e;
@@ -774,7 +774,7 @@ pre code {
   background-color: transparent;
   border-radius: 0;
 }
-
+*/
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll;

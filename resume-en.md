@@ -1,6 +1,7 @@
 ---
 layout: page
-title: "Resume"
+title: "My Resume"
+tagline: "About My Educational background, Job and Project Experience."
 description: ""
 group: navigation
 ---

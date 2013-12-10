@@ -39,7 +39,7 @@ You'll need an instance of the Sprockets::Environment class to access and serve 
 
 If you are using Sprockets with a Rack application, you will need to mount the environment yourself. A good way to do this is with the map method in config.ru:
 
-{% highlight ruby %}
+```ruby
 require 'sprockets'
 map '/assets' do
   environment = Sprockets::Environment.new
@@ -51,7 +51,7 @@ end
 map '/' do
   run YourRackApp
 end
-{% endhighlight %}
+```
 
 Sprockets 可以支持SCSS/SASS，LESS，CoffeeScript，甚至.scss.erb。
 
@@ -59,13 +59,13 @@ Sprockets 可以支持SCSS/SASS，LESS，CoffeeScript，甚至.scss.erb。
 
 注意那个不起眼的config.ru，我可以用它来写一个自己的Ruby框架。当然啦，这个框架现在什么也不做。
 
-{% highlight ruby %}
+```ruby
 # config.ru
 require ::File.expand_path('../my_app.rb',  __FILE__) # 这句话copy自Rails，吼吼
 run MyApp::Application
-{% endhighlight %}
+```
 
-{% highlight ruby %}
+```ruby
 # my_app.rb
 module MyApp
   class Application
@@ -74,20 +74,20 @@ module MyApp
     end
   end
 end
-{% endhighlight %}
+```
 
 > rackup -s WEBrick -p 1212
 
 如果你看过[这篇文章](https://github.com/JuanitoFatas/Guides/blob/master/guides/edge-translation/rails-on-rack-zh_CN.md)，那么你会发现，我们熟知的Rails启动方式，还可以这样完成：
 
-{% highlight ruby %}
+```ruby
 # Rails.root/config.ru
 require ::File.expand_path('../config/environment', __FILE__)
 
 use Rack::Debugger
 use Rack::ContentLength
 run Rails.application
-{% endhighlight %}
+```
 
 # 试试sinatra
 

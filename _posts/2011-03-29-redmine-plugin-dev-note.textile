@@ -5,8 +5,6 @@ post_id: 591
 categories: ["Advanced Rails", "iPhone", "plugin", "redmine"]
 ---
 
-snapshot
-
 上上周经Q友介绍，接了一个redmine插件开发的小项目。我很感兴趣的是可以借此机会把redmine熟悉一下，所以没太考虑价钱就答应了下来。现在想想，这次开发学到的东西很多，也认识了专业的开发团队，很值得。下面把redmine插件开发的经验笔记一下。
 
 先来截图：
@@ -41,10 +39,10 @@ cocos2d-x is a multi-platform, light weight & developer-friendly C++ 2D mobile g
 <a href="/wp-content/uploads/snapshot-2011-03-29-10.10.25.png"><img src="/wp-content/uploads/snapshot-2011-03-29-10.10.25-300x105.png" alt="" width="300" height="105" /></a>这是插件管理界面，如果你按照上面插件教程开发的话，你会发现缺少了Configure功能。如何加入这个功能，并且它可以做什么？可以完全的参考上面两个插件中的init.rb 和games插件里的写法。
 
 
-{% highlight ruby %}
+```ruby
   settings :default => {},
            :partial => 'platforms/manage'
-{% endhighlight %}
+```
 
 
 这两行代码的作用，使得我们可以编辑一个页面，这个页面里，实现了games的platform管理。当然，你也可以在configure里增加apps的管理，丰富管理员功能。
@@ -64,7 +62,7 @@ cocos2d-x is a multi-platform, light weight & developer-friendly C++ 2D mobile g
 在插件的init.rb文件里，需要单独写一遍插件所使用的路由规则，为了是插件地址更没关，我们的做一些代码上的牺牲。
 
 
-{% highlight ruby %}
+```ruby
 ActionController::Routing::Routes.draw do |map|
   map.connect 'projects/:project_id/apps', :controller => "apps", :action => "index"
   map.connect 'projects/:project_id/apps/all', :controller => "apps", :action => "all"
@@ -73,7 +71,7 @@ ActionController::Routing::Routes.draw do |map|
     :member => {:recommend => :post, :delete_pic => :post, :snatching => :get, :doing => :post},
     :collection => {:all => :get}
 end
-{% endhighlight %}
+```
 
 
 这是games里的设置，只是将三个方法做了前缀处理，这样可以和其他导航链接类似，都是 /projects/text_proj/apps/9 的形式。否则，按照resource的形式，将会是很难看（客户也不会接受的）/apps/9?project_id=text_proj
@@ -98,10 +96,10 @@ games插件有一个很重要的功能，就是到app store页面去采集app信
 
 出于尝试的目的，我使用了will_paginate插件来实现分页，paperclip来保存app采集时候的icon和screenshot，在采集时使用了两个gem，请编辑你的environment.rb，增加
 
-{% highlight ruby %}
+```ruby
   config.gem 'hpricot'
   config.gem 'mechanize'
-{% endhighlight %}
+```
 
 # 九、总结
 

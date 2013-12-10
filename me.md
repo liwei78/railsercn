@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "谁是里克"
+tagline: "朋友说，真实一点，才真诚。"
 description: "er.....自我介绍"
 group: navigation
 ---

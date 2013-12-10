@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "我的简历"
+tagline: "我的教育经历，职业及项目经历。"
 description: ""
 group: navigation
 ---
