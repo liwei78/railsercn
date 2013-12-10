@@ -5,9 +5,7 @@ post_id: 20
 categories: ["adobe", "thermo"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 <pre>
 第一部分：

@@ -5,9 +5,7 @@ post_id: 591
 categories: ["Advanced Rails", "iPhone", "plugin", "redmine"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 上上周经Q友介绍，接了一个redmine插件开发的小项目。我很感兴趣的是可以借此机会把redmine熟悉一下，所以没太考虑价钱就答应了下来。现在想想，这次开发学到的东西很多，也认识了专业的开发团队，很值得。下面把redmine插件开发的经验笔记一下。
 

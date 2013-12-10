@@ -5,9 +5,7 @@ post_id: 169
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 编辑文本的第一部是选择它，选择一些文本之后你可以通过命令移动它，在搜索其中的代码或者干脆过滤删除掉它。这也是为什么TextMate尽可能简单的让你选择任意数量的文本的原因。
 

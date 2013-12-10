@@ -5,9 +5,7 @@ post_id: 155
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 TextMate提供了快捷键让你明确定位。例如你想跳转到指定的行。利用快捷键Apple+L，然后输入行号再按回车就行。
 

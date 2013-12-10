@@ -5,9 +5,7 @@ post_id: 794
 categories: ["others"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 最近半年，一直在做OpenERP的全职开发，说是开发，也是用ruby来调用OE的api，还为真正进入到python的开发中。目前要尝试做一些python代码，加油。
 

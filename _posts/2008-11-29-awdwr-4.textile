@@ -5,9 +5,7 @@ post_id: 329
 categories: ["AWDWR", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 *加载路径*
 标准的环境配置回自动将下列目录纳入应用程序的加载路径。

@@ -5,9 +5,7 @@ post_id: 47
 categories: ["default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 h1{color: 'black'}. 2008年5月12日下午2点28分
 

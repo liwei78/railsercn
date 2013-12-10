@@ -5,9 +5,7 @@ post_id: 17
 categories: ["flash", "rails", "remoting"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 原文：[Flash Remoting for Rails Tutorial](http://blog.vixiom.com/2006/08/23/flash-remoting-for-rails-tutorial/)
 

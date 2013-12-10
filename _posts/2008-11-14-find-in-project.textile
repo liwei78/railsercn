@@ -5,9 +5,7 @@ post_id: 269
 categories: ["TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 当你一次需要修改许多文件的时候，你可以选择 Edit -> Find -> Find in Project 快捷键 Shift＋Apple＋F 。虽然看起来略有不同，但是仍然和上一章的搜索对话框基本一样。
 

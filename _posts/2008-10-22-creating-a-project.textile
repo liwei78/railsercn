@@ -5,9 +5,7 @@ post_id: 90
 categories: ["default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 用TextMate创建项目是贼简单的。你可以创建一个空的项目并往里面放你需要的文件。选择File下的New Project (Ctrl+Apple+N)。空白的项目创建之后，有一个很大的提示告诉你如何操作下一步。就像它说的一样，随便把一些文件拖拽到那个边栏里面，他就会成为你项目中的文件并且一直显示在边栏里面了。
 

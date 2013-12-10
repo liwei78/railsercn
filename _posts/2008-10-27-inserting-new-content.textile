@@ -5,9 +5,7 @@ post_id: 176
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 TextMate有两个功能在你输入文档的时候会给你提供很大的帮助。当然它们也很常见，单词补完和符号自动配对。
 

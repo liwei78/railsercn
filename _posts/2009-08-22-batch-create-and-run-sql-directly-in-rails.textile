@@ -5,9 +5,7 @@ post_id: 418
 categories: ["RailsNote", "sql"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 向所有加星用户发送消息，批量插入的sql
 

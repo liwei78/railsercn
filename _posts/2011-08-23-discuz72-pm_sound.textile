@@ -5,9 +5,7 @@ post_id: 648
 categories: ["discuz", "others", "php"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 最近的一个网站单子里，需要给客户用discuz7.2实现一个会员功能，dz是大品牌，何况康盛又被腾讯收购，质量应该可靠。所以反复衡量，dz成为首选了。（跟DZ和康盛的系列产品源渊太多了。）
 

@@ -5,7 +5,6 @@ description: "一直被我忽视的Rack，它到底是什么？"
 category: "Rails"
 tags: ['rack', 'sinatra']
 ---
-{% include JB/setup %}
 
 # 什么是Rack
 

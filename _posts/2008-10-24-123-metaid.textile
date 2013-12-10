@@ -5,9 +5,7 @@ post_id: 160
 categories: ["Advanced Rails", "default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 “<a href="http://whytheluckystiff.net/articles/seeingMetaclassesClearly.html" target="_blank">why the lucky stiff</a>”为Ruby元编程创建了一个极小的库，叫做metaid.rb。在任何需要元编程的项目中都可以引进这段非常有用的代码：
 <pre name="code" class="ruby">

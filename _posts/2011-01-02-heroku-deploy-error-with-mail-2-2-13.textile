@@ -5,9 +5,7 @@ post_id: 572
 categories: ["default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 /Library/Ruby/Site/1.8/rubygems/remote_fetcher.rb:176:in `fetch_path': timed out (http://rubygems.org/quick/Marshal.4.8/mail-2.2.13.gemspec.rz) (Gem::RemoteFetcher::FetchError)
 

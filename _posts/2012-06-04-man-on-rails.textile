@@ -5,9 +5,7 @@ post_id: 663
 categories: ["others"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 Part I
 

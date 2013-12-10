@@ -5,9 +5,7 @@ post_id: 130
 categories: ["default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 h4. 单例类
 

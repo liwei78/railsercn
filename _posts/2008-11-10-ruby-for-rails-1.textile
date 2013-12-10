@@ -5,9 +5,7 @@ post_id: 261
 categories: ["r4r", "rails", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 <pre name="code" class="ruby">
 def all

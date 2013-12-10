@@ -5,9 +5,7 @@ post_id: 601
 categories: ["default", "rails31", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 Rails3.1面世了，赶紧尝鲜吧。可是，第一个问题就出现了，更新失败。此处略过一堆字，直接笔记：安装rvm吧。
 

@@ -5,9 +5,7 @@ post_id: 272
 categories: ["RailsNote", "ucenter"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面：我忘了我je的密码了，就贴到自己博客吧。
 

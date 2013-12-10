@@ -5,9 +5,7 @@ post_id: 583
 categories: ["RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 我们在页面上进行ajax校验属性的时候，有两种情况会碰到。
 

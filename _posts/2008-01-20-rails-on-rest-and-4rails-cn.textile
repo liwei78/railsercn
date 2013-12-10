@@ -5,9 +5,7 @@ post_id: 28
 categories: ["rails", "REST", "ROA"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 这是一篇笔记。
 

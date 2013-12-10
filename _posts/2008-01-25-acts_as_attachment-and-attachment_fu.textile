@@ -5,9 +5,7 @@ post_id: 29
 categories: ["plugins", "rails", "rmagic"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面
 

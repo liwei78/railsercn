@@ -5,9 +5,7 @@ post_id: 776
 categories: ["apple mac", "mini"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 今天凌晨，苹果发布了多款新的mac产品，最让我心动的是iMac，当然，还有价格又再降的mac mini。手里工作用的mac mini是09年款的，至今还在用着2G内存。因为最近工作经常要开虚拟机，所以我决定升级我的mini到8G。
 

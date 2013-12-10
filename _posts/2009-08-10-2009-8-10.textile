@@ -5,9 +5,7 @@ post_id: 414
 categories: ["others", "sbs"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 下午还要继续开发目前服务的某sns网站。为了活跃一下思维，写点感想之类东西。
 

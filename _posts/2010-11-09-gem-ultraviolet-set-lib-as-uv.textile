@@ -5,9 +5,7 @@ post_id: 527
 categories: ["Advanced Rails"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 问题：
 gem 'ultraviolet', '0.10.2'

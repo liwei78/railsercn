@@ -5,9 +5,7 @@ post_id: 26
 categories: ["日记"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 今天是2007年的最后一天了，出于各种原因我强烈的盼望2008赶快到来。
 

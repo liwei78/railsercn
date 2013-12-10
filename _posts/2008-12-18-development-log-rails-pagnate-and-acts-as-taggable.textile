@@ -5,9 +5,7 @@ post_id: 341
 categories: ["acts_as_taggable", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 
 最近一个月在忙于开发项目，所以没有更新博客。不过开发中还是学到不少东西。

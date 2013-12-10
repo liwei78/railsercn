@@ -5,9 +5,7 @@ post_id: 40
 categories: ["flex"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 《Flex3基础训练》视频介绍：
 bq.  Lynda.com 出品的 Adobe Flex 3 基础教程，由 Adobe 公司认证讲师 David Gassner 主讲。

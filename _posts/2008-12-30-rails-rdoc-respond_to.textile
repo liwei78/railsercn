@@ -5,9 +5,7 @@ post_id: 345
 categories: ["RailsNote", "rdoc"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 首先祝所有的朋友09年工作学习顺利。祝<a href="http://liyuang.com" target="_blank">李猪猪小朋友</a>即将到来的幼儿园生活开心。
 

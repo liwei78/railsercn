@@ -5,9 +5,7 @@ post_id: 605
 categories: ["default", "rails31", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 接着上一篇，问题继续。
 

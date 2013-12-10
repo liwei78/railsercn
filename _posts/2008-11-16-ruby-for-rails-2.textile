@@ -5,9 +5,7 @@ post_id: 275
 categories: ["r4r", "rails", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 实例变量使得单个对象可以记忆状态。实例变量的名字以@开头。实例变量仅仅对于它所属的对象来说是可见的。在一个特定类的某一方法中初始化的实例变量，与同一个类的其他方法定义中引用的同名实例变量是同一个。
 <pre name="code" class="ruby">

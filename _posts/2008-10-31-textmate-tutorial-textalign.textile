@@ -5,9 +5,7 @@ post_id: 217
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 你会看到TextMate支持常见得对齐方式，它们在 Text 菜单得子菜单下。Text菜单包含3个有用得方法
 <ul>

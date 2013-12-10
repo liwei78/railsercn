@@ -5,9 +5,7 @@ post_id: 577
 categories: ["app", "default", "haml", "ipad", "iphone", "sass"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 2011，我有个惊奇的开始，我的iTouch有一天突然可以上网了，原因不明。紧接着几天，接触了一个开发项目，是做一个APP介绍的网站。可以用Rails。这一点实在让我暗地里欢喜：可算有得发挥了。接着，《让子弹飞》上映，那就让APP也跟着飞一会吧。
 

@@ -5,9 +5,7 @@ post_id: 41
 categories: ["book", "rails"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面：
 

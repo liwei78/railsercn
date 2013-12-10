@@ -5,9 +5,7 @@ post_id: 317
 categories: ["RailsNote", "rspec"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 起因：在未做自己开发rspec的时候，只是调试下安装完 restful_authentication 的rspec和部分test时候，出现了几个错误：
 

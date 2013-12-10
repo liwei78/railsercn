@@ -5,9 +5,7 @@ post_id: 12
 categories: ["日记"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 
 需要用些时间将以前的文章整理一下。

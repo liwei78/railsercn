@@ -5,9 +5,7 @@ post_id: 245
 categories: ["default", "jquery"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 最近的开发，都和Rails无关，但是两次用到了jquery。上次做完一个项目后，买了2本js的书，打算好好学下jquery和js，可惜看了前几章就又没时间专心看了。这两次也是借着一点点了解，解决了2个jquery的应用。不忙的时候，一定要认真复习一遍。
 

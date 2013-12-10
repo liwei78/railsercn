@@ -5,9 +5,7 @@ post_id: 464
 categories: ["RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 对于多数的model的select列表，我都会用model属性＋方法的形式，做一个列表，然后在form里显示。
 

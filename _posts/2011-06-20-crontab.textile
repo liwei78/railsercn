@@ -5,9 +5,7 @@ post_id: 639
 categories: ["crontab", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 crontab的标准写法参照这里，http://www.centos.org/docs/5/html/Deployment_Guide-en-US/ch-autotasks.html
 

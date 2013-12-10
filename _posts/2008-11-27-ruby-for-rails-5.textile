@@ -5,9 +5,7 @@ post_id: 300
 categories: ["RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 if 关键字
 <pre name="code" class="ruby">

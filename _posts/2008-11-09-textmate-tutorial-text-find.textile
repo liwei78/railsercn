@@ -5,9 +5,7 @@ post_id: 252
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 你可以通过Edit -> Find -> Find或者按Ctrl＋F调出搜索功能。当你没有选择正则表达式功能的时候，这个对话框和其它Mac的应用程序使用方法一样。
 

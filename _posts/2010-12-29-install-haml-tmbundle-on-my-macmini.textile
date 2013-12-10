@@ -5,9 +5,7 @@ post_id: 567
 categories: ["TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 网上的文章讲的都是在  ~/Library/"Application Support"/TextMate/Bundles/ 目录下，可我的偏偏不是，难道是。。。？
 

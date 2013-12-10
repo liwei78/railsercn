@@ -5,9 +5,7 @@ post_id: 186
 categories: ["Advanced Rails", "default", "rails"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 当前的Ruby实现有一点不足：Blocks代码块不总是Procs过程，Procs过程也不总是Blocks代码块。普通的代码块（定义在do…end 或者{}中）必须依附在一个方法调用上，而不能自动成为对象。例如，你不能把代码写成code_block = {puts “abc”}。这就是Kernel#lambda 和Proce.new 的用途：将代码块转换为过程。
 <pre name="code" class="ruby">

@@ -5,9 +5,7 @@ post_id: 225
 categories: ["comsenz", "default", "modoer", "php", "uc", "uch"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面：jp加入本站后，博客立刻火了起来。我奥运会后一直在做php的开发，而且是专门研究，hack康盛的uch，uc和supesite，给客户做php的站，一直没有做Rails的开发，有点遗憾。不过jp带着我还算没太落后，碰到好的Rails项目肯定还会继续Railser的开发的。
 

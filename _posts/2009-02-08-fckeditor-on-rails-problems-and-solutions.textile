@@ -5,9 +5,7 @@ post_id: 356
 categories: ["fckeditor", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 在目前的项目中使用了Fckeditor On Rails插件，没想到碰到很不少问题，网上google一下，发现大家都有这样的问题，有的是这个plugin的问题，有的是fck的问题。为了方便日后对系统的管理，在此笔记一下目前碰到的诸多问题和临时的解决办法。
 

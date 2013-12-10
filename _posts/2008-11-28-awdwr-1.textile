@@ -5,9 +5,7 @@ post_id: 304
 categories: ["AWDWR", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 感恩节放假，抓紧时间重读一下AWDWR把一些知识点记录如下。
 第6章

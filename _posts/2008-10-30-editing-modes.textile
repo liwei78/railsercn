@@ -5,9 +5,7 @@ post_id: 213
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 TextMate支持两种额外的编辑模式，当你输入固定宽度的文本或者ASCII的时候尤其有用。它们是Freehanded Editing和 Overwrite，你可以在 Edit -> Mode 下找到它们。
 

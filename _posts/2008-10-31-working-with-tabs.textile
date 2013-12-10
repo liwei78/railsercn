@@ -5,9 +5,7 @@ post_id: 219
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 如下图所示，你可以在编辑窗口的下面修改制表符的大小或者使用Soft Tabs模式。如果你选择了Soft Tabs类型，那么TextMate会移除目前的制表符，当你保存文档的时候，它会用空格来替代。并且今后编辑同样语言类型文档，也会如此。
 

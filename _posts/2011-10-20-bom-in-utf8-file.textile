@@ -5,9 +5,7 @@ post_id: 653
 categories: ["others", "php"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 很多朋友应该碰到过这句话吧：“Cannot modify header information - headers already sent bygem(php文件)”。
 

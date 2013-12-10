@@ -5,9 +5,7 @@ post_id: 804
 categories: ["imagemagick", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面：
 

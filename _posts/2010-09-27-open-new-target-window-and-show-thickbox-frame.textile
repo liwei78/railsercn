@@ -5,9 +5,7 @@ post_id: 478
 categories: ["jquery", "RailsNote", "thickbox"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 在处理支付的时候，需要新打开支付页面完成流程，同时要在原页面提示后续处理链接。
 

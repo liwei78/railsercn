@@ -5,9 +5,7 @@ post_id: 201
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 另一项常用的操作是利用 Edit 菜单的剪切，复制和粘贴功能。这些都是其他软件常见的功能，但是TextMate在这些标准方法的基础之上增加了历史剪贴板。让我们做一个简单的例子来加深理解：
 <ul>

@@ -5,8 +5,6 @@ post_id: 347
 categories: ["attachment_fu", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 请参考<a href="http://howtomatic.com/category/programming/14-ruby-on-rails-multi-file-uploads-with-attachment-fu" target="_self">这篇文章</a>。

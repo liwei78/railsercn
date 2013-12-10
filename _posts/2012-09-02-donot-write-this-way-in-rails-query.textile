@@ -5,9 +5,7 @@ post_id: 765
 categories: ["mysql", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 周末2天，升级客户程序的代码。这次升级要解决性能问题，因为项目用了很久，工作日期间mysql的cpu消耗率一直很高，log里已经出现miss cache 的提示。这次要彻底查出问题。
 

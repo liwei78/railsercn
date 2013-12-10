@@ -5,9 +5,7 @@ post_id: 362
 categories: ["RailsNote", "ui"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 声明：本文转载自<a href="http://www.5gme.com/space-84-do-blog-id-8867.html">http://www.5gme.com/space-84-do-blog-id-8867.html</a>
 <div id="blog_article" class="article">

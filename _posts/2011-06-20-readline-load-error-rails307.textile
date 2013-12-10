@@ -5,9 +5,7 @@ post_id: 636
 categories: ["RailsNote", "readline"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 服务器总算都调试完了，今天打算看一下一个app的具体信息，发现 rails c提示错误。
 

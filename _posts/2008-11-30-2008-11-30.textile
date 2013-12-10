@@ -5,9 +5,7 @@ post_id: 331
 categories: ["others"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 刚才看了gmail里发来的<a href="http://www.infoq.com/cn/news/2008/11/Database-Martin-Fowler" target="_blank">一篇文章</a>，引用一句话
 

@@ -5,9 +5,7 @@ post_id: 231
 categories: ["default", "php", "uch"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 在uchome的spacefield表中，有两个看似明确，实际很别扭的两个字段名，friend和feedfriend。
 

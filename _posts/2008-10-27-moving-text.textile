@@ -5,9 +5,7 @@ post_id: 181
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 你可能常常需要把文字移动到不同的地方，Text -> Move Selection为你提供如下功能：
 <ul>

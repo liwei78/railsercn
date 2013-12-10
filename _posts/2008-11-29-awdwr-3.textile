@@ -5,9 +5,7 @@ post_id: 327
 categories: ["AWDWR", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 第9章
 <ul>

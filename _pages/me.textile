@@ -5,7 +5,6 @@ description: ""
 post_id: 11
 categories: []
 ---
-{% include JB/setup %}
 
 个人简历 & 开发经验：
 

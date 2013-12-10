@@ -5,9 +5,7 @@ post_id: 385
 categories: ["jquery", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 原文：
 

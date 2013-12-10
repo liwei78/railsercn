@@ -5,9 +5,7 @@ post_id: 734
 categories: ["cms", "default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面：
 

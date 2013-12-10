@@ -5,9 +5,7 @@ post_id: 43
 categories: ["xmpp4r"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面：
 

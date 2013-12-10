@@ -5,9 +5,7 @@ post_id: 86
 categories: ["default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 站在更高的角度看可以发现元编程对实现DRY（Don’t Repeat Yourself）原则很有帮助，该原则也被称作“一次且仅仅一次（Once and Only Once）”，DRY原则主张在系统中要表达的一则特定信息只需要出现一次就足够了。重复往往是没必要的，特别是诸如Ruby这样的动态语言。就像函数化抽象可以使我们得以避免重复编写相同或者相似的代码一样，元编程使得我们可以避免重复那些在整个应用中多次出现的概念。
 

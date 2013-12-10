@@ -5,9 +5,7 @@ post_id: 247
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 让我们通过一个例子来了解这个功能。TextMate有完备的发行说明，介绍了不同版本之间的新功能和改变。如果你想了解新特点：
 <ul>

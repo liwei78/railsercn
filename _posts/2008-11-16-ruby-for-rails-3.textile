@@ -5,9 +5,7 @@ post_id: 282
 categories: ["r4r", "rails", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 模块没有实例，模块被混含在类中。这样类的实例可以调用定义在模块中的实例方法。混含操作由 include 语句实现。require 或 load 时，加载的内容放在引号里。但是使用 include 时，不使用引号。
 <pre name="code" class="ruby">

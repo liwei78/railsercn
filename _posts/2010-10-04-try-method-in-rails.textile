@@ -5,9 +5,7 @@ post_id: 489
 categories: ["RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 在Rails2.3 等后续版本中可使用try方法，避免 nil 对象调用方法。
 

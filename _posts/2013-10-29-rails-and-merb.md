@@ -5,7 +5,6 @@ description: ""
 category: "转载"
 tags: ['merb']
 ---
-{% include JB/setup %}
 
 
 原文来自Blog.XDite.net，可惜打不开了，这里保存一下，顺便表达一下对这个女生的敬意！！！！看到本人我真的不知道这个胖胖的像我初中同桌的女生就是XDite，我前几天还在仔细读她的文章，学习markdown呢。

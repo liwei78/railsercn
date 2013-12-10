@@ -5,9 +5,7 @@ post_id: 789
 categories: ["others"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 地址：<a href="http://mya.vpshosting.com.hk/aff.php?aff=083" target="_blank">http://www.vpshosting.com.hk</a>
 

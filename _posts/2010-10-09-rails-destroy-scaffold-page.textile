@@ -5,9 +5,7 @@ post_id: 512
 categories: ["rails3", "RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 笔记一下，不常用的destroy命令，和generate相反。有时候写错了一个关键的地方，随手想删掉，就想到它了。比如刚才。。。
 <div id="_mcePaste">liwei$ rails destroy --help</div>

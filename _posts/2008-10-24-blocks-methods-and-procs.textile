@@ -5,9 +5,7 @@ post_id: 164
 categories: ["Advanced Rails", "default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 Ruby中的一个强大的特性是有能力将一段代码当作一个对象来处理。这个特性涉及到如下三个类：
 <ul>

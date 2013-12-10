@@ -5,9 +5,7 @@ post_id: 308
 categories: ["RailsNote", "rspec"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 一、环境
 

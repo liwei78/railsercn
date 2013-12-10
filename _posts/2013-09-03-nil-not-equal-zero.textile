@@ -5,9 +5,7 @@ post_id: 825
 categories: ["RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 小提示：
 

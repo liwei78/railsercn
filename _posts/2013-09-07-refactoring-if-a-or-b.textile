@@ -1,12 +1,7 @@
 ---
 layout: post
 title: if a|| b 的重构
-post_id: 828
 categories: ["default", "重构"]
----
-
-{% include JB/setup %}
-
 ---
 
 当遇到 if a || b 的时候，我们要先看一下，a 和 b 到底是不是可以用区间来覆盖。

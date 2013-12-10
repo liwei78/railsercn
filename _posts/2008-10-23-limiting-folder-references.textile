@@ -5,9 +5,7 @@ post_id: 148
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 当把文件夹引入TextMate项目中的时候，你可以过滤一部分不需要的文件和文件夹。如果你的项目是通过分组来组织项目文件的话，这个功能你就用不了啦，当然你也可以手动来完成。选中你项目边栏中的顶级文件夹，然后点边栏右下角那个 information按钮，看图：
 

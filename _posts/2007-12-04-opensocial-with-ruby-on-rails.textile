@@ -5,9 +5,7 @@ post_id: 23
 categories: ["google", "opensocial", "rails", "REST"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 
 h3. 什么是OpenSocial

@@ -5,9 +5,7 @@ post_id: 38
 categories: ["jabber", "twitter", "xmpp", "xmpp4r"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面 ：
 

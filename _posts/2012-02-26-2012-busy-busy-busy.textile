@@ -5,9 +5,7 @@ post_id: 661
 categories: ["others"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 最近问我干嘛呢，我的回答都会是：忙。
 

@@ -5,9 +5,7 @@ post_id: 195
 categories: ["Advanced Rails", "default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 我们常常想创建一个能够随着运行时的数据变换其方法的接口。Rails中这方面最突出的一个例子就是ActiveRecord的属性存取方法。ActiveRecord对象的方法调用（例如person.name）在运行时将被转换成属性存取。在类方法级别，ActiveRecord提供了极大的灵活性：Person.find_all_by_user_id_and_active(42,true)被转换成相应的SQL查询，如果被查询的属性不存在那么就会抛出一个标准的NoMethodError错误。
 

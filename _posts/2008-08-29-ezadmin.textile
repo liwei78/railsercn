@@ -5,9 +5,7 @@ post_id: 54
 categories: ["EZAdmin"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 置顶：
 

@@ -5,9 +5,7 @@ post_id: 440
 categories: ["default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 上周在淘宝的苹果福利社订购了一台mac mini mc238，发货后第二天就到了。兴奋啊。我终于开始mac了！！
 

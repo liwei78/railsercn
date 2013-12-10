@@ -5,9 +5,7 @@ post_id: 533
 categories: ["RailsNote"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 第一步安裝Growl 
 http://growl.info/index.php 注意要安裝擴展中的 growlnotify。 growlnotify is a command-line tool to post Growl notifications.

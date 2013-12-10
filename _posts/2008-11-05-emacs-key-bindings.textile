@@ -5,9 +5,7 @@ post_id: 238
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 就像你前面看到的一样TextMate支持一些emacs常见的快捷键。
 <ul>

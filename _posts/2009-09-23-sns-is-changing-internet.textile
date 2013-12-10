@@ -5,9 +5,7 @@ post_id: 419
 categories: ["book", "default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 <a href="http://union.dangdang.com/transfer/transfer.aspx?from=P-272054&backurl=http://product.dangdang.com/product.aspx?product_id=20680931"><img class="alignnone" title="正在爆发的互联网革命" src="http://img31.dangdang.com/29/3/20680931-1_b.jpg" alt="" width="200" height="200" /></a>
 

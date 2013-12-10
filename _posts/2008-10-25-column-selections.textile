@@ -5,9 +5,7 @@ post_id: 172
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 在传统的选择器基础上，TextMate允许你使用直角选择器或者列选择器。在你拖动鼠标进行选择的时候，可以按住Option键，这样就启用了直角选择器。也可以使用 Edit -> Change to Column Selection或者Option切换是否使用列选择器。
 

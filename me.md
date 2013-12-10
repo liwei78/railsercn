@@ -4,7 +4,6 @@ title: "谁是里克"
 description: "er.....自我介绍"
 group: navigation
 ---
-{% include JB/setup %}
 
 # 一点点介绍
 

@@ -5,9 +5,7 @@ post_id: 42
 categories: ['rjs']
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 Railser.cn首发本站一位坚定的<a href="http://www.douban.com/people/1098413/" target="_blank">支持者</a>翻译作品：《RJS教程》
 

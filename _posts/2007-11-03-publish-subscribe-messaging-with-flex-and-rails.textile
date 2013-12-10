@@ -6,9 +6,7 @@ categories: ["Flex", "Rails"]
 tags: ['ActiveMessaging', "ActiveMQ", "STOMP"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 原文：<a href="http://flexonrails.net/?p=83">Publish\Subscribe Messaging with Flex and Rails using Apache ActiveMQ, ActiveMessaging, and STOMP</a>
 

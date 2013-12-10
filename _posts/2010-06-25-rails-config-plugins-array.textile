@@ -5,9 +5,7 @@ post_id: 459
 categories: ["Advanced Rails"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 在用paperclip的时候，碰到一个问题：
 

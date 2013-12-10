@@ -5,9 +5,7 @@ post_id: 49
 categories: ["flex"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 一、Mate，新的Flex框架
 

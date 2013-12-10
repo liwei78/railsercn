@@ -5,9 +5,7 @@ post_id: 395
 categories: ["plugin", "RailsNote", "sns"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面：
 

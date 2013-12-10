@@ -5,9 +5,7 @@ post_id: 162
 categories: ["Advanced Rails", "default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 在Ruby中有四种类型的变量，它们是全局变量、类变量、实例变量及局部变量。全局变量作用于全局，局部变量只作用于局部，因此下面的讨论均不涉及它们，因为它们不与Ruby的类系统进行交互。
 _注：还有常量，但是它们不应该被改变。（事实上可以改变，但是Ruby会发出警告。）_

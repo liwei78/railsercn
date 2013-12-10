@@ -5,9 +5,7 @@ post_id: 575
 categories: ["Advanced Rails"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 <div id="_mcePaste">一时想不起来如何拼写了，写在这里作为笔记。</div>
 <div></div>

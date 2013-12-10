@@ -5,9 +5,7 @@ post_id: 207
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 TextMate允许你一次编辑多行文本。你可以使用这个功能添加新内容或者删除旧内容。这个功能在你操作列表数据的时候尤其方便。让我们仍然用一个例子来熟悉这个用法：
 <ul>

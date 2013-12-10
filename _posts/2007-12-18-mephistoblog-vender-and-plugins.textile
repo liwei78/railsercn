@@ -5,9 +5,7 @@ post_id: 24
 categories: ["blog", "mephisto", "plugins"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 
 本篇是在 <a href="http://railser.cn/archives/development-log-rails-pagnate-and-acts-as-taggable">开发笔记：rails分页和acts_as_taggable插件的应用</a> 一文的后半部分基础上再整理的。内容上是连贯的。

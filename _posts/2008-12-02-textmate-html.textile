@@ -5,9 +5,7 @@ post_id: 334
 categories: ["TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 <ul>
 	<li>选中文字后按 appli ＋ I 是 em</li>

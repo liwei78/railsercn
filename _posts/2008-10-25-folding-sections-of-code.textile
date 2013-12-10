@@ -5,9 +5,7 @@ post_id: 166
 categories: ["default", "TextMate"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 当你移动光标的时候，折叠代码片段不是必须的技术。但是如果你要在文档中跳过大段不需要的代码，或许他还是有用滴。
 

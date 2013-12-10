@@ -5,9 +5,7 @@ post_id: 706
 categories: ["cms", "default"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 写在前面：
 <a href="http://baike.baidu.com/view/2134.htm" target="_blank">柳永的百科</a>里，讲了很多故事，有兴趣的朋友可以一看，“奉旨填词”一段，不知是真是假。

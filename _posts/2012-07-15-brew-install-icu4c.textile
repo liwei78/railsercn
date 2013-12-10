@@ -5,9 +5,7 @@ post_id: 753
 categories: ["icu4c", "others"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 网站无法连接，所以无法安装，解决办法是：
 

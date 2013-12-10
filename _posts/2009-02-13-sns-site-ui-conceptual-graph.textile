@@ -5,9 +5,7 @@ post_id: 370
 categories: ["RailsNote", "ui"]
 ---
 
-{% include JB/setup %}
-
----
+snapshot
 
 最近太多的sns站点需求摆在脑海里（所以晚上睡不着觉，哎），所以画了一张，给予自己目前项目设计的ui框架，姑且是一个概念图吧。在此简单笔记一下思路：
 
