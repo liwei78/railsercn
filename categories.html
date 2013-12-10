@@ -1,0 +1,47 @@
+---
+layout: page
+title: "分类"
+tagline: "分类由之前的wp导出的，还在清理中。"
+group: navigation
+---
+<div class="blog-post">
+
+  {% assign categories_list = site.categories %}
+
+  {% if categories_list.first[0] == null %}
+    {% for category in categories_list %} 
+      <a href="/categories.html#{{ category }}-ref">
+        {{ category | join: "/" }} <small>{{ site.categories[category].size }}</small>
+      </a>
+    {% endfor %}
+  {% else %}
+    {% for category in categories_list %} 
+      <a href="/categories.html#{{ category[0] }}-ref">
+        {{ category[0] | join: "/" }} <small>{{ category[1].size }}</small>
+      </a>
+    {% endfor %}
+  {% endif %}
+  
+  {% assign categories_list = nil %}
+
+  {% for category in site.categories %} 
+    <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
+    <ul>
+      {% assign pages_list = category[1] %}  
+      {% for node in pages_list %}
+        {% if node.title != null %}
+          {% if group == null or group == node.group %}
+            {% if page.url == node.url %}
+            <li class="active"><a href="{{ BASE_PATH }}{{node.url}}" class="active">{{node.title}}</a></li>
+            {% else %}
+            <li><a href="{{ BASE_PATH }}{{node.url}}">{{node.title}}</a></li>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% assign pages_list = nil %}
+      {% assign group = nil %}
+    </ul>
+  {% endfor %}
+
+</div>

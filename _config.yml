@@ -23,4 +23,20 @@ author :
   weixin_pic: '/assets/themes/the-program/skin/weixin.jpg'
 
 
+links:
+  - title: 首页
+    url: /
+  - title: 谁是里克
+    url: /me.html
+  - title: 分类
+    url: /categories.html
+  - title: Tags
+    url: /tags.html
+  - title: 我的简历
+    url: /resume.html
+  - title: My Resume
+    url: /resume-en.html
+  - title: 搜索
+    url: "https://www.google.com.hk/#hl=zh-CN&q=site:railser.cn+Rails"
+
 
