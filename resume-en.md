@@ -2,6 +2,7 @@
 layout: page
 title: "Resume"
 description: ""
+group: navigation
 ---
 
 # Educational background

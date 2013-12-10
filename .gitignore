@@ -4,6 +4,6 @@ Thumbs.db
 .rbenv-version
 .rvmrc
 _theme_packages/*
-_backup/*
+_trash/*
 _site
 _draft

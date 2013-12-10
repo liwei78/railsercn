@@ -1,7 +1,8 @@
 ---
 layout: page
-title: "Resume"
+title: "我的简历"
 description: ""
+group: navigation
 ---
 
 

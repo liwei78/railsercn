@@ -1,0 +1,98 @@
+<div class="col-sm-3">
+          <h5 class="font-semibold">About me</h5>
+          <div class="line line-dashed"></div>
+          <div class="m-b-lg">
+            <span class="pull-left thumb-sm avatar m-r-sm m-t-xs">
+              <img src="/images/avatar.png" class="img-circle">
+            </span>
+            <p class="clear text-sm">
+              
+            </p>
+          </div>
+          
+          <ul class="list-unstyled m-b-lg">
+            <li>
+                <p>hi，我是里克，这是我的博客，它已经有7年的历史了，这里记录了工作中的点点滴滴，也让我认识了很多的朋友。这次用jekyll对它做了改版，希望能把之前的内容做以整理，给自己一个新的感觉。</p>
+                <div class="line"></div>
+            </li>
+            <li>
+                <p>2007年2月，我开始从事Rails开发工作，就有了自习室这个博客。</p>
+                <div class="line"></div>
+            </li>
+            <li>
+                <p>2007年7月，我开始了soho开发生活，</p>
+                <small class="block text-muted"><i class="fa fa-clock-o"></i> update 2013-12-10</small>
+                <div class="line"></div>
+            </li>
+          </ul>
+          <h5 class="font-semibold">Categories</h5>
+          <div class="line line-dashed"></div>
+          <ul class="list-unstyled">
+            {% for cate in site.categories.CATEGORY %}
+            <li>
+              <a href="#" class="dk">
+                <span class="badge pull-right">{{ site.categories[cate].size }}</span>
+                {{ cate }}
+              </a>
+            </li>
+            <li class="line"></li>
+            {% endfor %}
+            <li>
+              <a href="#">
+                <span class="badge pull-right">30</span>
+                Life style
+              </a>
+            </li>
+            <li class="line"></li>
+            <li>
+              <a href="#">
+                <span class="badge pull-right">9</span>
+                Food
+              </a>
+            </li>
+            <li class="line"></li>
+            <li>
+              <a href="#">
+                <span class="badge pull-right">4</span>
+                Travel world
+              </a>
+            </li>
+            <li class="line"></li>
+          </ul>
+          <div class="tags m-b-lg">
+            <a href="#" class="label bg-success">Bootstrap</a> <a href="#" class="label bg-success">Application</a> <a href="#" class="label bg-success">Apple</a> <a href="#" class="label bg-success">Less</a> <a href="#" class="label bg-success">Theme</a> <a href="#" class="label bg-success">Wordpress</a>
+          </div>
+          <h5 class="font-semibold">Recent Posts</h5>
+          <div class="line line-dashed"></div>
+          <div>
+            <article class="media">
+              <a class="pull-left thumb thumb-wrapper m-t-xs">
+                <img src="/images/thumb_1.png">
+              </a>
+              <div class="media-body">                        
+                <a href="#" class="font-semibold">Bootstrap 3: What you need to know</a>
+                <div class="text-xs block m-t-xs"><a href="#">Travel</a> 2 minutes ago</div>
+              </div>
+            </article>
+            <div class="line"></div>
+            <article class="media m-t-none">
+              <a class="pull-left thumb thumb-wrapper m-t-xs">
+                <img src="/images/thumb_2.png">
+              </a>
+              <div class="media-body">                        
+                <a href="#" class="font-semibold">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a>
+                <div class="text-xs block m-t-xs"><a href="#">Design</a> 2 hours ago</div>
+              </div>
+            </article>
+            <div class="line"></div>
+            <article class="media m-t-none">
+              <a class="pull-left thumb thumb-wrapper m-t-xs">
+                <img src="/images/thumb_3.png">
+              </a>
+              <div class="media-body">                        
+                <a href="#" class="font-semibold">Sed diam nonummy nibh euismod tincidunt ut laoreet</a>
+                <div class="text-xs block m-t-xs"><a href="#">MFC</a> 1 week ago</div>
+              </div>
+            </article>
+          </div>
+        </div>
