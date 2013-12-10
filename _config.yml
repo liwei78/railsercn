@@ -5,7 +5,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", '
 pygments: true
 markdown: redcarpet
 
-paginate: 16 # pagination based on number of posts
+paginate: 10 # pagination based on number of posts
 # paginate_path: "page:num"
 
 title : 里克的自习室

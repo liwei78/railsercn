@@ -2,7 +2,7 @@
 layout: post
 title: "Rack, 我忽视你了"
 description: "一直被我忽视的Rack，它到底是什么？"
-category: "Rails"
+category: "Ruby"
 tags: ['rack', 'sinatra']
 ---
 

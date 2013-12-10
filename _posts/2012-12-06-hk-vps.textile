@@ -1,11 +1,8 @@
 ---
 layout: post
 title: 我一直在用的香港云主机，推荐给大家
-post_id: 789
-categories: ["others"]
+categories: vpn
 ---
-
-snapshot
 
 地址：<a href="http://mya.vpshosting.com.hk/aff.php?aff=083" target="_blank">http://www.vpshosting.com.hk</a>
 

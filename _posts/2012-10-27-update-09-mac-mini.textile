@@ -1,8 +1,7 @@
 ---
 layout: post
 title: 升级09款mac mini笔记
-post_id: 776
-categories: ["apple mac", "mini"]
+categories: mac
 ---
 
 snapshot

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: openerp 7.0
-post_id: 797
 categories: ["openerp"]
 ---
 

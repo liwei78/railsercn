@@ -1,11 +1,8 @@
 ---
 layout: post
 title: 在mac os 10.8.4 上安装 imagemagick
-post_id: 804
-categories: ["imagemagick", "RailsNote"]
+tags: ImageMagick
 ---
-
-snapshot
 
 写在前面：
 
