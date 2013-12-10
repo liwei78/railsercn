@@ -25,44 +25,34 @@
         <div class="line"></div>
     </li>
   </ul>
+<!-- 
   <h5 class="font-semibold">Categories</h5>
   <div class="line line-dashed"></div>
   <ul class="list-unstyled">
-    {% for cate in site.categories.CATEGORY %}
-    <li>
-      <a href="#" class="dk">
-        <span class="badge pull-right">{{ site.categories[cate].size }}</span>
-        {{ cate }}
-      </a>
-    </li>
-    <li class="line"></li>
-    {% endfor %}
-    <li>
-      <a href="#">
-        <span class="badge pull-right">30</span>
-        Life style
-      </a>
-    </li>
-    <li class="line"></li>
-    <li>
-      <a href="#">
-        <span class="badge pull-right">9</span>
-        Food
-      </a>
-    </li>
-    <li class="line"></li>
-    <li>
-      <a href="#">
-        <span class="badge pull-right">4</span>
-        Travel world
-      </a>
-    </li>
-    <li class="line"></li>
+    {% assign categories_list = site.categories %}
+      {% if categories_list.first[0] == null %}
+      {% for category in categories_list %} 
+        <li>
+          <a href="">{{ category | join: "/" }} <span>{{ site.categories[category].size }}</span></a>
+        </li>
+        <li class="line"></li>
+      {% endfor %}
+    {% else %}
+      {% for category in categories_list %} 
+        <li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+          {{ category[0] | join: "/" }} <span>{{ category[1].size }}</span>
+        </a></li>
+        <li class="line"></li>
+      {% endfor %}
+    {% endif %}
+    
   </ul>
+
   <div class="tags m-b-lg">
     <a href="#" class="label bg-success">Bootstrap</a> <a href="#" class="label bg-success">Application</a> <a href="#" class="label bg-success">Apple</a> <a href="#" class="label bg-success">Less</a> <a href="#" class="label bg-success">Theme</a> <a href="#" class="label bg-success">Wordpress</a>
   </div>
-  <h5 class="font-semibold">Recent Posts</h5>
+
+  <h5 class="font-semibold">推荐一下</h5>
   <div class="line line-dashed"></div>
   <div>
     <article class="media">
@@ -94,5 +84,5 @@
         <div class="text-xs block m-t-xs"><a href="#">MFC</a> 1 week ago</div>
       </div>
     </article>
-  </div>
+  </div> -->
 </div>
