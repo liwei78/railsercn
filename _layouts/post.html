@@ -6,11 +6,16 @@ layout: default
   <div class="container m-t-lg m-b-lg">
     <div class="row">
       <div class="col-sm-9">
-        <h1>{{ page.title }}</h1>
+        <h1>
+          {{ page.title }}
+        </h1>
         
         <div class="text-muted">
           <i class="fa fa-user icon-muted"></i> by <a href="/me.html" class="m-r-sm">{{ site.author.name }}</a>
           <i class="fa fa-clock-o icon-muted"></i> {{ page.date | date_to_long_string }}
+          {% if page.recommend %}
+          <label class="label bg-info m-l-xs pull-right">我的推荐</label>
+          {% endif %}
         </div>
         <div class="line line-lg"></div>
         {{ content }}

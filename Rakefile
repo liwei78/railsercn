@@ -1,6 +1,14 @@
 require "rubygems"
 require 'rake'
 
+SOURCE = "."
+CONFIG = {
+  'version' => "0.3.0",
+  'layouts' => File.join(SOURCE, "_layouts"),
+  'posts' => File.join(SOURCE, "_posts"),
+  'post_ext' => "md",
+}
+
 # Usage: rake post title="A Title" [date="2012-02-09"] [tags=[tag1,tag2]] [category="category"]
 desc "Begin a new post in #{CONFIG['posts']}"
 task :post do
@@ -29,7 +37,6 @@ task :post do
     post.puts "category: \"#{category.gsub(/-/,' ')}\""
     post.puts "tags: #{tags}"
     post.puts "---"
-    post.puts "{% include JB/setup %}"
   end
 end # task :post
 

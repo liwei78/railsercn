@@ -8,6 +8,9 @@ tagline: "这是工作中的点滴记录，有分享，才有回报。"
   {% for post in paginator.posts %}
     <div class="post-item">
       <div class="caption wrapper-lg">
+        {% if post.recommend %}
+          <label class="label bg-info m-l-xs pull-right">我的推荐</label>
+          {% endif %}
         <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
         <div class="post-sum">
           <p>{{ post.description }}</p>
