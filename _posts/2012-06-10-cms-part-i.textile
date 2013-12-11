@@ -1,11 +1,8 @@
 ---
 layout: post
 title: cms系列一：东风夜放花千树
-post_id: 678
-categories: ["cms", "default"]
+categories: ["cms"]
 ---
-
-snapshot
 
 写在前面：
 

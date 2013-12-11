@@ -1,11 +1,8 @@
 ---
 layout: post
 title: cms系列五：一饮东坡醒复醉
-post_id: 734
-categories: ["cms", "default"]
+categories: ["cms"]
 ---
-
-snapshot
 
 写在前面：
 

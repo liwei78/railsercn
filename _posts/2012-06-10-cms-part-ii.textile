@@ -1,11 +1,8 @@
 ---
 layout: post
 title: cms系列二：塞下秋来风景异
-post_id: 692
-categories: ["cms", "default"]
+categories: ["cms"]
 ---
-
-snapshot
 
 写在前面：
 

@@ -1,11 +1,8 @@
 ---
 layout: post
 title: readline load error的解决办法
-post_id: 636
-categories: ["RailsNote", "readline"]
+tags: "readline"
 ---
-
-snapshot
 
 服务器总算都调试完了，今天打算看一下一个app的具体信息，发现 rails c提示错误。
 
@@ -17,6 +14,7 @@ snapshot
 
 具体：
 
+```ruby
 >> which ruby
 
 /usr/local/rvm/rubies/ruby-1.9.2-p180/bin/ruby
@@ -28,6 +26,7 @@ snapshot
 >> make
 
 >> make install
+```
 
 再次rails c，解决问题了。
 

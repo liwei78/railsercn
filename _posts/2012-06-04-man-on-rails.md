@@ -1,13 +1,11 @@
 ---
 layout: post
 title: 走铁轨的人
-post_id: 663
-categories: ["others"]
+categories: ["日记"]
 ---
 
-snapshot
 
-Part I
+# Part I
 
 这是一份2012年上半年的总结。
 
@@ -17,7 +15,7 @@ Part I
 
 可是，这么一个目标明确的项目，为什么会失败呢。
 
-Part II
+# Part II
 
 Rails的开发貌似进入到一个淘汰期，3.0后的Rails，部署上是一个大难题，开发上面临更多的选择障碍。当然，一切一切，取决于经验。经过半年的折磨，笔记写了好多，最终还是会碰到各种编译问题，典型的是版本问题，部署问题。
 
@@ -25,7 +23,7 @@ Rails的开发貌似进入到一个淘汰期，3.0后的Rails，部署上是一�
 
 <a href="http://railser.cn/wp-content/uploads/01200000007181115881009551065.jpg"><img class="aligncenter size-full wp-image-668" title="01200000007181115881009551065" src="http://railser.cn/wp-content/uploads/01200000007181115881009551065.jpg" alt="" width="430" height="281" /></a>
 
-Part III
+# Part III
 
 好吧，整理思路，重新开始。
 
@@ -33,15 +31,16 @@ Part III
 
 而Rails呢？
 
-Part IV
+# Part IV
 
 Rails已经不再适合做外包开发，这个想法有几点理由，1、找不到代码合作者，2、和美工严重脱节，在没有一个明确的项目经理的情况下，效率很低，3、维护期很难进行功能外包，维护的费用低，而占用的时间长，如果以外包为生，就是无穷尽的修改。
 
 当然，我讲的仅限于我自己，一个人的Rails开发者。
-<p style="text-align: center;"><a href="http://railser.cn/wp-content/uploads/1282236489274.jpg"><img class="aligncenter  wp-image-669" title="1282236489274" src="http://railser.cn/wp-content/uploads/1282236489274.jpg" alt="" width="300" height="361" /></a>
+
+<a href="http://railser.cn/wp-content/uploads/1282236489274.jpg"><img src="http://railser.cn/wp-content/uploads/1282236489274.jpg" alt="" width="300" height="361" /></a>
 
 
-Part V
+# Part V
 
 下一步，该怎么继续自己的Rails开发之路呢？
 
@@ -51,4 +50,3 @@ Part V
 
 ok，Let's move.
 
-&nbsp;

@@ -1,11 +1,8 @@
 ---
 layout: post
 title: 无法安装icu4c的解决办法。
-post_id: 753
-categories: ["icu4c", "others"]
+tags: ["icu4c"]
 ---
-
-snapshot
 
 网站无法连接，所以无法安装，解决办法是：
 
@@ -27,6 +24,3 @@ snapshot
 
 写错了，纠正下。按照提示，下载的是一个压缩包，里面有说明文件和源代码。解压后进入里面的source，在make && make install，才能完成安装。
 
-&nbsp;
-
-&nbsp;
