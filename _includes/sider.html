@@ -31,10 +31,23 @@
   <div>
     <img src="/images/weixin.jpg" />
   </div>
+  <div class="line line-dashed"></div>
 
-<!--   <div class="tags m-b-lg">
-    <a href="#" class="label bg-success">Bootstrap</a> <a href="#" class="label bg-success">Application</a> <a href="#" class="label bg-success">Apple</a> <a href="#" class="label bg-success">Less</a> <a href="#" class="label bg-success">Theme</a> <a href="#" class="label bg-success">Wordpress</a>
-  </div> -->
+  <h5 class="font-semibold">Tags</h5>
+  <div class="line line-dashed"></div>
+  <div class="tags m-b-lg">
+    {% assign tags_list = site.tags %}  
+    {% if tags_list.first[0] == null %}
+      {% for tag in tags_list %} 
+        <a href="/tags.html#{{ tag }}-ref" class="label bg-info">{{ tag }} <span class="badge">{{ site.tags[tag].size }}</span></a>
+      {% endfor %}
+    {% else %}
+      {% for tag in tags_list %} 
+        <a href="/tags.html#{{ tag[0] }}-ref" class="label bg-success">{{ tag[0] }} <span class="badge">{{ tag[1].size }}</span></a>
+      {% endfor %}
+    {% endif %}
+    {% assign tags_list = nil %}
+  </div>
 
 <!--
   <h5 class="font-semibold">推荐一下</h5>
