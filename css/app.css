@@ -3226,3 +3226,7 @@ fieldset[disabled] .btn-gplus.active {
     display: inherit !important;
   }
 }
+.post a {
+  color: #65bd77;
+  text-decoration: underline;
+}

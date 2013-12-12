@@ -5,7 +5,7 @@ layout: default
 <section id="content">
   <div class="container m-t-lg m-b-lg">
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-9 post">
         <h1>
           {{ page.title }}
         </h1>
@@ -13,6 +13,21 @@ layout: default
         <div class="text-muted">
           <i class="fa fa-user icon-muted"></i> by <a href="/me.html" class="m-r-sm">{{ site.author.name }}</a>
           <i class="fa fa-clock-o icon-muted"></i> {{ page.date | date_to_long_string }}
+          
+          <i class="fa fa-tags"></i>
+          {% assign tags_list = page.tags %}
+          {% for tag in tags_list %} 
+            <a href="/tags.html#{{ tag }}-ref" class="m-r-sm">{{ tag }}</a>
+          {% endfor %}
+
+          <i class="fa fa-folder"></i>
+          {% assign categories_list = page.categories %}
+          {% for category in categories_list %} 
+          <a href="/categories.html#{{ category }}-ref" class="">
+            {{ category | join: "/" }}
+          </a>
+        {% endfor %}
+
           {% if page.recommend %}
           <label class="label bg-info m-l-xs pull-right">我的推荐</label>
           {% endif %}

@@ -8,20 +8,7 @@ group: navigation
 
   <div class="tags">
   {% assign categories_list = site.categories %}
-  {% if categories_list.first[0] == null %}
-    {% for category in categories_list %} 
-      <a href="/categories.html#{{ category }}-ref" class="label bg-info">
-        {{ category | join: "/" }} <span class="badge">{{ site.categories[category].size }}</span>
-      </a>
-    {% endfor %}
-  {% else %}
-    {% for category in categories_list %} 
-      <a href="/categories.html#{{ category[0] }}-ref" class="label bg-info">
-        {{ category[0] | join: "/" }} <span class="badge">{{ category[1].size }}</span>
-      </a>
-    {% endfor %}
-  {% endif %}
-  {% assign categories_list = nil %}
+  {% include categories_list.html %}
   </div>
 
   {% for category in site.categories %} 

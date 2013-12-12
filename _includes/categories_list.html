@@ -1,0 +1,6 @@
+{% for category in categories_list %} 
+  <a href="/categories.html#{{ category[0] }}-ref" class="label bg-info">
+    {{ category[0] | join: "/" }} <span class="badge">{{ category[1].size }}</span>
+  </a>
+{% endfor %}
+{% assign categories_list = nil %}
