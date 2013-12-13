@@ -40,3 +40,5 @@ links:
     url: "https://www.google.com.hk/#hl=zh-CN&q=site:railser.cn+Rails"
 
 
+production_url: http://railser.cn
+assets_url: http://railser.cn

@@ -5,18 +5,20 @@
   <title>{{ page.title }} - {{ site.title }}</title>
   <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-  <link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="/css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="/css/font.css" type="text/css" cache="false" />
-  <link rel="stylesheet" href="/css/landing.css" type="text/css" cache="false" />
-  <link rel="stylesheet" href="/css/app.css" type="text/css" />
-  <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.assets_url }}/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.assets_url }}/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.assets_url }}/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.assets_url }}/css/font.css" type="text/css" cache="false" />
+  <link rel="stylesheet" href="{{ site.assets_url }}/css/landing.css" type="text/css" cache="false" />
+  <link rel="stylesheet" href="{{ site.assets_url }}/css/app.css" type="text/css" />
+  <link rel="stylesheet" href="{{ site.assets_url }}/css/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
-    <script src="js/ie/html5shiv.js" cache="false"></script>
-    <script src="js/ie/respond.min.js" cache="false"></script>
-    <script src="js/ie/excanvas.js" cache="false"></script>
+    <script src="{{ site.assets_url }}/js/ie/html5shiv.js" cache="false"></script>
+    <script src="{{ site.assets_url }}/js/ie/respond.min.js" cache="false"></script>
+    <script src="{{ site.assets_url }}/js/ie/excanvas.js" cache="false"></script>
   <![endif]-->
+  <link href="{{ site.production_url }}/rss.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+  <link href="{{ site.production_url }}/atom.xml" rel="alternate" type="application/atom+xml" title="ATOM" />
 </head>
 <body>
     
@@ -45,17 +47,16 @@
   {{ content }}
   
   {% include footer.html %}  
-  <script src="/js/jquery.min.js"></script>
+  <script src="{{ site.assets_url }}/js/jquery.min.js"></script>
   <!-- Bootstrap -->
-  <script src="/js/bootstrap.js"></script>
+  <script src="{{ site.assets_url }}/js/bootstrap.js"></script>
   <!-- App -->
-  <script src="/js/app.js"></script>
-  <script src="/js/app.plugin.js"></script>
-  <script src="/js/slimscroll/jquery.slimscroll.min.js"></script>
-  
-  <script src="/js/appear/jquery.appear.js" cache="false"></script>
-  <script src="/js/scroll/smoothscroll.js" cache="false"></script>
-  <script src="/js/landing.js" cache="false"></script>
+  <script src="{{ site.assets_url }}/js/app.js"></script>
+  <script src="{{ site.assets_url }}/js/app.plugin.js"></script>
+  <script src="{{ site.assets_url }}/js/slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="{{ site.assets_url }}/js/appear/jquery.appear.js" cache="false"></script>
+  <script src="{{ site.assets_url }}/js/scroll/smoothscroll.js" cache="false"></script>
+  <script src="{{ site.assets_url }}/js/landing.js" cache="false"></script>
 
 </body>
 </html>
