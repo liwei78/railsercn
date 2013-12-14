@@ -12,24 +12,27 @@ layout: default
         
         <div class="text-muted">
           <i class="fa fa-user icon-muted"></i> by <a href="/me.html" class="m-r-sm">{{ site.author.name }}</a>
-          <i class="fa fa-clock-o icon-muted"></i> {{ page.date | date_to_long_string }}
+
+          <i class="fa fa-clock-o icon-muted"></i> {{ page.date | date_to_long_string }} 
           
-          <i class="fa fa-tags"></i>
           {% assign tags_list = page.tags %}
-          {% for tag in tags_list %} 
-            <a href="/tags.html#{{ tag }}-ref" class="m-r-sm">{{ tag }}</a>
+          {% if tags_list %}
+            {% for tag in tags_list %} 
+              <i class="fa fa-tags"></i>
+              <a href="/tags.html#{{ tag }}-ref" class="m-r-sm">{{ tag }}</a>
+            {% endfor %}
+          {% endif %}
+
+          {% assign categories_list = page.categories %}
+          {% for category in categories_list %}
+            <i class="fa fa-folder"></i>
+            <a href="/categories.html#{{ category }}-ref" class="">
+              {{ category | join: "/" }}
+            </a>
           {% endfor %}
 
-          <i class="fa fa-folder"></i>
-          {% assign categories_list = page.categories %}
-          {% for category in categories_list %} 
-          <a href="/categories.html#{{ category }}-ref" class="">
-            {{ category | join: "/" }}
-          </a>
-        {% endfor %}
-
           {% if page.recommend %}
-          <label class="label bg-info m-l-xs pull-right">我的推荐</label>
+            <label class="label bg-info m-l-xs pull-right">我的推荐</label>
           {% endif %}
         </div>
         <div class="line line-lg"></div>
