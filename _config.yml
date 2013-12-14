@@ -9,6 +9,8 @@ paginate: 10 # pagination based on number of posts
 # paginate_path: "page:num"
 
 title : 里克的自习室
+description: "Ruby和Rails的开发笔记，里克的翻译及原创作品。"
+keywords: "Ruby,Rails,soho,develop,笔记,经验,翻译,原创"
 blog_url: http://railser.cn
 author :
   name : 里克
@@ -20,7 +22,6 @@ author :
   rubychina : liwei78
   qq : '5175486'
   skype : railsercn
-  weixin_pic: '/assets/themes/the-program/skin/weixin.jpg'
 
 
 links:

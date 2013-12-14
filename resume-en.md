@@ -70,4 +70,9 @@ Skype: {{ site.author.skype }}
 
 Blog：{{ site.blog_url }}
 
+Github：[https://github.com/{{ site.author.github }}](https://github.com/{{ site.author.github }})
+
+Ruby China：[http://ruby-china.org/{{ site.author.rubychina }}](http://ruby-china.org/{{ site.author.rubychina }})
+
+
 *translated by google*
