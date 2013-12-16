@@ -13,7 +13,7 @@ layout: default
         <div class="text-muted">
           <i class="fa fa-user icon-muted"></i> by <a href="/me.html" class="m-r-sm">{{ site.author.name }}</a>
 
-          <i class="fa fa-clock-o icon-muted"></i> {{ page.date | date_to_long_string }} 
+          <i class="fa fa-clock-o icon-muted"></i> {{ page.date | date: "%Y年%m月%d日" }} 
           
           {% assign tags_list = page.tags %}
           {% if tags_list %}
