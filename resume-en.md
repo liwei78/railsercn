@@ -6,73 +6,114 @@ description: ""
 group: navigation
 ---
 
-# Educational background
+# Personal Information
 
-2000-2004 Changchun University of Professional Accounting
+* Name: Li Wei (Rique Li)
 
+* Github：[https://github.com/{{ site.author.github }}](https://github.com/{{ site.author.github }})
 
-# Project experience: 
-
-
-* 06 July to July 2007, engaged in social search engine development. (Closed) 
-
-* 09 February to 2011, engaged Huawei SNS community development. (Has been transformed into SaaS) 
-
-* 2011 to 2012, independently operated studio. 
-
-* 2012 September to 2013 June, engaged in OpenERP project development. (Python project) 
-
-* 2012 from June to October, engaged in online sales Rails project development, formal resignation in November. 
+* Ruby China：[http://ruby-china.org/{{ site.author.rubychina }}](http://ruby-china.org/{{ site.author.rubychina }})
 
 
-# Personal Development Development direction: 
+# Personal capacity
 
-* Ruby development 
+### Team aspect
 
-* Rails Development 
+* Independent or collaborative development projects
 
-* the technology blog writing, article translation 
+* Case analysis, technical explanations, problem analysis and document finishing
 
-* literature 
+* Project presentations, customer guidance
+
+### Coding capacity
+
+* Familiar with Ruby, Rails Development
+
+* Familiar with common gem
+
+* Learn python development
+
+* Learn java development foundation
+
+### Front-end capabilities
+
+* Familiar with HTML / CSS / SCSS
+
+* Familiar with JQuery / CoffeeScript
+
+### Server Backend
+
+* Familiar with server management
+
+* Familiar environment to build Rails
+
+* Understand cloud platforms
+
+### Communication skills
+
+* Skilled reading in English
+
+* Proficiency in English conversation ability
+
+### Agile Development
+
+* Familiar with TDD, BDD
+
+* Familiar with Rspec, cucumber, capybara
+
+* Familiar with pair programming
+
+* Be familiar with agile development tools, redmine, basecamp.
+
+### Writing
+
+* Good technical issues research , document finishing and difficult analysis
+
+* Good technical articles written
+
+* Good English translation
+
+# Work Experience
+
+* May 2005 to May 2006 , opened in Changchun Forward Technology Limited.
+
+* July 2006 to July 2007 , engaged in social search engine development .
+
+* February 2009 to early 2011 , engaged in Baicao network of community development , has been transformed into Baicao Technology SaaS.
+
+* 2011-2012 , independently operated studio.
+
+* September 2012 to June 2013 , full-time in an American technology company engaged in `OpenERP` project , responsible for data synchronization and functional development .
+
+* June 2013 to October 2013 , transferred to the company Rails development department , engaged in a online sales project development . Officially leave in November.
 
 
-# Job expectations: 
+# Education
 
-* engaged in Ruby / Rails related development 
+* 2000 to 2004, Changchun University of Professional Accounting.
 
-* Agile, Pair Programming can be 
-
-* Test-First, TDD, BDD, there are well documented, there is good communication environment 
-
-* Ordered development, do not rush, reasonable overtime 
-
-* support for open source projects and personal code works 
+* November 2004 to March 2005, java training.
 
 
-# Other: 
+# Job expectations
 
-* good English reading and speaking 
+* Remote Work
 
-* English writing skills need to be strengthened 
+* Ruby / Rails Development
 
-* like the study of a topic and organize related documents, and explain the technical content of the document writing. 
+* OpenERP development
 
-* field development in the short term, for the Hong Kong and Taiwan, the short-term work, please inform in advance.
+* team atmosphere
 
-
-# Contact:
-
-Name：Li Wei（Rique Li）
-
-Email：{{ site.author.email }}
-
-Skype: {{ site.author.skype }}
-
-Blog：{{ site.blog_url }}
-
-Github：[https://github.com/{{ site.author.github }}](https://github.com/{{ site.author.github }})
-
-Ruby China：[http://ruby-china.org/{{ site.author.rubychina }}](http://ruby-china.org/{{ site.author.rubychina }})
+* short-term fieldwork
 
 
-*translated by google*
+# Contact
+
+email: {{ site.author.email }}
+
+skype: {{ site.author.skype }}
+
+Blog: {{ site.blog_url }}
+
+

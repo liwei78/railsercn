@@ -42,17 +42,9 @@ group: navigation
 
 # Hire Me ?
 
-* Rails soho dev
+* [我的简历](resume.html)
 
-* 支持我的开源项目
-
-* 支持我的写作题目
-
-* Rails
-
-* 测试 && 重构
-
-* ERP
+* [English Resume](resume-en.html)
 
 # Never do that
 
@@ -66,5 +58,9 @@ group: navigation
 
 * 成就感
 
+![](/uploads/me.png)
 
-update at 2013-10-29
+拍摄于2013年，北京，RubyConfChina 2013
+
+
+update at 2013-12-19
