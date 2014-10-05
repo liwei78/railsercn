@@ -85,7 +85,9 @@ group: navigation
 
 * September 2012 to June 2013 , full-time in an American technology company engaged in `OpenERP` project , responsible for data synchronization and functional development .
 
-* June 2013 to October 2013 , transferred to the company Rails development department , engaged in a online sales project development . Officially leave in November.
+* June 2013 to October 2013 , transferred to the company Rails development team , engaged in a online sales project development . Officially leave in November.
+
+* March 2014, back to AboveGem Rails development team.
 
 
 # Education
