@@ -1,4 +1,4 @@
-permalink: /blog/:title 
+permalink: /blog/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", 'lib', 'spec', 'tool']
 
@@ -21,7 +21,7 @@ author :
   feedburner : liwei78
   rubychina : liwei78
   qq : '5175486'
-  skype : railsercn
+  skype : guxing203
 
 
 links:

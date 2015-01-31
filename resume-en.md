@@ -8,16 +8,34 @@ group: navigation
 
 # Personal Information
 
-* Name: Li Wei (Rique Li)
+* Name: Wei LI (Rique Li)
 
 * Github：[https://github.com/{{ site.author.github }}](https://github.com/{{ site.author.github }})
 
 * Ruby China：[http://ruby-china.org/{{ site.author.rubychina }}](http://ruby-china.org/{{ site.author.rubychina }})
 
+* LinkedIn：[http://cn.linkedin.com/in/liwei1978/](http://cn.linkedin.com/in/liwei1978/)
+
+# Work Experience
+
+* May 2005 to May 2006 , opened in Changchun Forward Technology Limited.
+
+* July 2006 to July 2007 , engaged in social search engine development .
+
+* February 2009 to early 2011 , engaged in Baicao network of community development , has been transformed into Baicao Technology SaaS.
+
+* 2011-2012 , independently operated studio.
+
+* September 2012 to June 2013 , full-time in an American technology company engaged in `OpenERP` project , responsible for data synchronization and functional development .
+
+* June 2013 to October 2013 , transferred to the company Rails development team , engaged in a online sales project development . Officially leave in November.
+
+* March 2014 to January 2015, back to Rails development team.
+
 
 # Personal capacity
 
-### Team aspect
+### Team
 
 * Independent or collaborative development projects
 
@@ -25,7 +43,7 @@ group: navigation
 
 * Project presentations, customer guidance
 
-### Coding capacity
+### Coding
 
 * Familiar with Ruby, Rails Development
 
@@ -35,7 +53,7 @@ group: navigation
 
 * Learn java development foundation
 
-### Front-end capabilities
+### Front-end
 
 * Familiar with HTML / CSS / SCSS
 
@@ -72,22 +90,6 @@ group: navigation
 * Good technical articles written
 
 * Good English translation
-
-# Work Experience
-
-* May 2005 to May 2006 , opened in Changchun Forward Technology Limited.
-
-* July 2006 to July 2007 , engaged in social search engine development .
-
-* February 2009 to early 2011 , engaged in Baicao network of community development , has been transformed into Baicao Technology SaaS.
-
-* 2011-2012 , independently operated studio.
-
-* September 2012 to June 2013 , full-time in an American technology company engaged in `OpenERP` project , responsible for data synchronization and functional development .
-
-* June 2013 to October 2013 , transferred to the company Rails development team , engaged in a online sales project development . Officially leave in November.
-
-* March 2014, back to AboveGem Rails development team.
 
 
 # Education
