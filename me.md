@@ -13,7 +13,8 @@ group: navigation
 # 一点点照片
 
 2015年，春节，和我儿子
-![](./uploads/shenzhen.jpg)
+
+![](./uploads/haha.jpg)
 
 2014年8月，深圳，世界之窗
 
