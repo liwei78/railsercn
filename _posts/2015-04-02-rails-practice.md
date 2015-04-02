@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "2015，追逐成绩"
-description: ""
+description: "今年对自己的要求是，拿出成绩。"
 category: ""
 tags: [book]
 ---
@@ -17,5 +17,3 @@ tags: [book]
 地址：[http://rails-practice.com](http://rails-practice.com)
 
 希望这本书，可以帮助刚刚接触 Rails 的朋友们。
-
-![](https://sm3lir.cloudimage.io/s/cdn/x/https://www.gitbook.com/cover/book/liwei78/rails-practice.jpg?build=1427921159005&v=6.11.7)
