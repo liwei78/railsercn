@@ -31,12 +31,6 @@ links:
     url: /categories.html
   - title: Tags
     url: /tags.html
-  - title: 我的简历
-    url: /resume.html
-  - title: My Resume
-    url: /resume-en.html
-  - title: 搜索
-    url: "https://www.google.com.hk/#hl=zh-CN&q=site:railser.cn+Rails"
 
 
 production_url: http://railser.cn
