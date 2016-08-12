@@ -4,32 +4,31 @@ title: 在Flex和Rails上实现发布/订阅的消息通信
 post_id: 21
 categories: ["Flex", "Rails"]
 tags: ['ActiveMessaging', "ActiveMQ", "STOMP"]
+author: 里克
 ---
-
-snapshot
 
 原文：<a href="http://flexonrails.net/?p=83">Publish\Subscribe Messaging with Flex and Rails using Apache ActiveMQ, ActiveMessaging, and STOMP</a>
 
 这是一篇综合性应用很强的文章，介绍如何在<a href="http://rubyonrails.org/">Rails</a>和<a href="http://labs.adobe.com/technologies/flex/">flex</a>的基础上，使用<a href="http://activemq.apache.org/">ActiveMQ</a>，Rails上的<a href="http://code.google.com/p/activemessaging/wiki/ActiveMessaging">ActiveMessaging</a>插件，和<a href="http://stomp.codehaus.org/">STOMP</a>协议，创建一个发布/订阅的通信模式。这里使用了一个例子来讲解，flex客户端/终端(consumer)接受Rails服务端发送的消息(messages)。
 
 里克：其实这就是用Rails和flex来实现java上的JMS。java上的东西好久没有看过了。所以在继续学习下面的东西，最好还是看看《<a href="http://blog.csdn.net/lifaming15/archive/2007/08/22/1754926.aspx">JMS简介</a>》吧。
-bq.  JMS(Java Message Service)是访问企业消息系统的标准API,它便于消息系
+  JMS(Java Message Service)是访问企业消息系统的标准API,它便于消息系
 统中的Java应用程序进行消息交换,并且通过提供标准的产生、发送、接收消息的接口简化企业应用的开发。
 下面介绍一下本文要使用的各种技术：
 h3. <a href="http://activemq.apache.org/">Apache ActiveMQ</a>
 
 
-bq.  Apache ActiveMQ受欢迎的，强大的通信代理[Message Broker]。
+Apache ActiveMQ受欢迎的，强大的通信代理[Message Broker]。
 它快速，支持多种语言的客户端和协议，拥有许多高级特性，并完全支持JMS 1.1 和 J2EE 1.4。
 Apache ActiveMQ 在Apache 2.0 License下发布。
 h3. <a href="http://code.google.com/p/activemessaging/wiki/ActiveMessaging">ActiveMessaging</a>
 
 
-bq.  ActiveMessaging将Rails带入到消息驱动开发[Messaging]中。消息驱动，或叫事件驱动结构[event-driven architecture]，广泛的应用于企业级集成。这下面的框架包括java的JMS，产品包括ActiveMQ，Tibco，IBM MQSeries等。
+ActiveMessaging将Rails带入到消息驱动开发[Messaging]中。消息驱动，或叫事件驱动结构[event-driven architecture]，广泛的应用于企业级集成。这下面的框架包括java的JMS，产品包括ActiveMQ，Tibco，IBM MQSeries等。
 h3. <a href="http://stomp.codehaus.org/">STOMP</a>
 
 
-bq.  ActiveMessaging支持Stomp协议。这是一个通过无线连接，使用TCP/IP，实现文本型消息流式传输的协议标准。其设计理念要求尽可能将协议简化，以求无论利用哪种语言开发客户端或服务端，都能相当轻松（比如Ruby Stomp客户端代码，连带注释和空行，总行数仅约400）。因此，它几乎可以集成任何系统。[摘自《Rails ActiveMessaging入门》]
+ActiveMessaging支持Stomp协议。这是一个通过无线连接，使用TCP/IP，实现文本型消息流式传输的协议标准。其设计理念要求尽可能将协议简化，以求无论利用哪种语言开发客户端或服务端，都能相当轻松（比如Ruby Stomp客户端代码，连带注释和空行，总行数仅约400）。因此，它几乎可以集成任何系统。[摘自《Rails ActiveMessaging入门》]
 h3. 需要
 
 
@@ -53,9 +52,10 @@ h3. 需要
 里克：创建一个叫sales_report的应用，具体的创建可以参照源码，或者按照自己的喜好啦。
 
 主要的是：
-bq.  script/generate model sale
+  script/generate model sale
 001_create_sales.rb的代码：
-bq. 
+
+
 <pre lang="ruby">
   def self.up
     create_table :sales do |t|
@@ -63,12 +63,13 @@ bq.
       t.column :product, :string
       t.column :quantity, :integer
     end
-  end</pre>
+  end
+</pre>
 
 创建一个controller
-bq.  script/generate controller sales index
+  script/generate controller sales index
 sales_controller.rb代码
-bq. 
+
 <pre lang="ruby">
 class SalesController < ApplicationController
   scaffold :sale
@@ -101,15 +102,16 @@ development:
    port: 61613
    reliable: false</pre>
 打开config/messaging.rb 文件
-bq. 
+
 <pre lang="ruby">
 ActiveMessaging::Gateway.define do |s|
   s.destination :sale_queue, '/queue/Sale'
-end</pre>
+end
+</pre>
 
 下面我们对sale model 创建一个<a href="http://api.rubyonrails.org/classes/ActiveRecord/Observer.html">Observer</a>。
 $ script/generate observer sale
-bq. 
+
 <pre lang="ruby">
 require 'activemessaging/processor'
 class SaleObserver < ActiveRecord::Observer
@@ -137,7 +139,7 @@ h3. flex应用和STOMP AS3客户端
 使flex和ActiveMQ 通信，需要使用STOMP 协议，这有篇文章：<a href="http://docs.codehaus.org/display/STOMP/Flash">ActionScript 3 STOMP client</a>，这里我们需要做的是用flex通过STOMP连接上ActiveMQ，并能解释[consume]rails发布的xml文件。
 
 这是重要的一段代码：
-bq. 
+
 <pre lang="actionscript">
 private var sales : ArrayCollection = new ArrayCollection();
 
@@ -202,7 +204,7 @@ http://localhost:3000/sales/new
 当一个销售记录保存到数据库后，SaleObserver 发布这个消息，ActiveMQ 将这个发布给flex应用。
 
 当把你的init()方法改成下面的样子的时候
-bq. 
+
 <pre lang="ruby">
 private function init () : void
 {
@@ -217,12 +219,13 @@ private function init () : void
 	stomp.addEventListener(MessageEvent.MESSAGE, handleMessages);
 	stomp.addEventListener(ReceiptEvent.RECIEPT, handleReceipts);
 	stomp.addEventListener(STOMPErrorEvent.ERROR, handleErrors);
-}</pre>
+}
+</pre>
 
 当连接的时候增加一个clientID和在订阅的时候增加一个subscriptionName，我们创建了一个永久的订阅者[durable subscriber]。
 好了，可以再次运行看一下效果了。
 
-本文中文翻译：里克，guxing203 at gmail dot com，http://railser.cn
+本文中文翻译：里克
 
 参考资料：
 <a href="http://blog.csdn.net/pengrg166/archive/2006/12/31/1471435.aspx">Apache Geronimo 的 JMS 实现：ActiveMQ  </a>

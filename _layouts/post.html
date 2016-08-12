@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 <section id="content">
   <div class="container m-t-lg m-b-lg">
     <div class="row">
@@ -9,15 +8,15 @@ layout: default
         <h1>
           {{ page.title }}
         </h1>
-        
-        <div class="text-muted">
-          <i class="fa fa-user icon-muted"></i> by <a href="/me.html" class="m-r-sm">{{ site.author.name }}</a>
 
-          <i class="fa fa-clock-o icon-muted"></i> {{ page.date | date: "%Y年%m月%d日" }} 
-          
+        <div class="text-muted">
+          <i class="fa fa-user icon-muted"></i> by <a href="/me.html" class="m-r-sm">{{ page.author }}</a>
+
+          <i class="fa fa-clock-o icon-muted"></i> {{ page.date | date: "%Y年%m月%d日" }}
+
           {% assign tags_list = page.tags %}
           {% if tags_list %}
-            {% for tag in tags_list %} 
+            {% for tag in tags_list %}
               <i class="fa fa-tags"></i>
               <a href="/tags.html#{{ tag }}-ref" class="m-r-sm">{{ tag }}</a>
             {% endfor %}

@@ -3,9 +3,8 @@ layout: post
 title: Railser.cn重新开通了。
 post_id: 12
 categories: ["日记"]
+author: 里克
 ---
-
-snapshot
 
 
 需要用些时间将以前的文章整理一下。
@@ -16,7 +15,6 @@ snapshot
 
 像姚明说的那样：“少说话，多做事。”
 
-&nbsp;
 
 update 2013-9-2
 

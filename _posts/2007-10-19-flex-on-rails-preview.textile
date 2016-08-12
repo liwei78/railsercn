@@ -3,6 +3,7 @@ layout: post
 title: Flex与Rails的性感结合
 post_id: 13
 categories: ["amf", "flash", "flex", "rails", "weborb"]
+author: 里克
 ---
 
 前面写过一个简单的<a href="http://hi.baidu.com/%D0%C7203/blog/item/70e4c918dc468cb74bedbc5a.html" target="_blank">博文</a>，介绍了一下flex与rails结合的进展。今天看到另一个好消息，《Flexible Rails：Flex 3 on Rails 2》一书将要问世了。作者：Peter Armstrong。目前网上已经可以<a href="http://manning.com/armstrong/" target="_blank">买到PDF版本</a>。

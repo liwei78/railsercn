@@ -6,7 +6,7 @@
   <meta name="description" content="{{ site.description }}" />
   <meta name="keywords" content="{{ site.keywords }}" />
   <meta name="author" content="{{ site.author.name }}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <link rel="stylesheet" href="{{ site.assets_url }}/css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="{{ site.assets_url }}/css/animate.css" type="text/css" />
   <link rel="stylesheet" href="{{ site.assets_url }}/css/font-awesome.min.css" type="text/css" />
@@ -24,42 +24,36 @@
   <meta name="baidu-site-verification" content="cNbuAnGnxi" />
 </head>
 <body>
-    
-  <!-- header -->
-  <header id="header" class="navbar navbar-fixed-top bg-white box-shadow b-b b-light"  data-spy="affix" data-offset-top="1">
-    <div class="container">
-      <div class="navbar-header">        
-        <a href="/" class="navbar-brand"><img src="/images/logo.png" class="m-r-sm"><span class="text-muted">{{ site.title }}</span></a>
-        <button class="btn btn-link visible-xs" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-          <i class="fa fa-bars"></i>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          {% for link in site.links %}
-            <li>
-              <a href="{{ link.url }}">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+<header id="header" class="navbar navbar-fixed-top bg-white box-shadow b-b b-light"  data-spy="affix" data-offset-top="1">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand"><img src="/images/logo.png" class="m-r-sm"><span class="text-muted">{{ site.title }}</span></a>
+      <button class="btn btn-link visible-xs" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
     </div>
-  </header>
-  <!-- / header -->
-  
-  {{ content }}
-  
-  {% include footer.html %}  
-  <script src="{{ site.assets_url }}/js/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="{{ site.assets_url }}/js/bootstrap.js"></script>
-  <!-- App -->
-  <script src="{{ site.assets_url }}/js/app.js"></script>
-  <script src="{{ site.assets_url }}/js/app.plugin.js"></script>
-  <script src="{{ site.assets_url }}/js/slimscroll/jquery.slimscroll.min.js"></script>
-  <script src="{{ site.assets_url }}/js/appear/jquery.appear.js" cache="false"></script>
-  <script src="{{ site.assets_url }}/js/scroll/smoothscroll.js" cache="false"></script>
-  <script src="{{ site.assets_url }}/js/landing.js" cache="false"></script>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {% for link in site.links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</header>
 
+{{ content }}
+
+{% include footer.html %}
+<script src="{{ site.assets_url }}/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="{{ site.assets_url }}/js/bootstrap.js"></script>
+<!-- App -->
+<script src="{{ site.assets_url }}/js/app.js"></script>
+<script src="{{ site.assets_url }}/js/app.plugin.js"></script>
+<script src="{{ site.assets_url }}/js/appear/jquery.appear.js" cache="false"></script>
+<script src="{{ site.assets_url }}/js/landing.js" cache="false"></script>
 </body>
 </html>

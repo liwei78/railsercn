@@ -3,8 +3,8 @@ layout: page
 title: "Ruby & Rails的技术博客"
 tagline: "工作中的点滴记录，有分享，有回报。"
 ---
-<div class="blog-post">                   
-  
+<div class="blog-post">
+
   {% for post in paginator.posts %}
     <div class="post-item">
       <div class="caption wrapper-lg">
@@ -17,7 +17,7 @@ tagline: "工作中的点滴记录，有分享，有回报。"
         </div>
         <div class="line line-lg"></div>
         <div class="text-muted">
-          <i class="fa fa-user icon-muted"></i> by <a href="/me.html" class="m-r-sm">{{ site.author.name }}</a>
+          <i class="fa fa-user icon-muted"></i> by <a href="/me.html" class="m-r-sm">{{ post.author }}</a>
           <i class="fa fa-clock-o icon-muted"></i> {{ post.date | date: "%Y年%m月%d日" }}
         </div>
       </div>

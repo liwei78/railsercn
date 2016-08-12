@@ -3,6 +3,7 @@ layout: post
 title: 惊艳：adobe’s thermo视频演示
 post_id: 20
 categories: ["adobe", "thermo"]
+author: 里克
 ---
 
 <pre>
@@ -37,20 +38,4 @@ Thermo:创建RIA的工具，可以让你的工艺图(artwork )通过点击鼠标
 <a href="http://railser.cn/wp-content/uploads/2007/10/thermod.png" title="thermod.png"><img src="http://railser.cn/wp-content/uploads/2007/10/thermod.png" alt="thermod.png" /></a>
 像photoshop一样设计界面。
 
-里克：本文写给一个女人。
-
 相关网站：<a href="http://aralbalkan.com/1050">http://aralbalkan.com/1050</a>
-<pre>
-<script type="text/javascript"><!--
-google_ad_client = "pub-7545275883969710";
-google_ad_width = 336;
-google_ad_height = 280;
-google_ad_format = "336x280_as";
-google_ad_type = "text_image";
-google_ad_channel = "";
-//-->
-</script>
-<script type="text/javascript"
-  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-</pre>
