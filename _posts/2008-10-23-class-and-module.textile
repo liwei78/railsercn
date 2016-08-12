@@ -2,10 +2,9 @@
 layout: post
 title: 1.2.1 类和模块
 post_id: 108
-categories: ["default"]
+categories: ["ruby"]
+author: wjp
 ---
-
-snapshot
 
 类（class）和模块（module）是Ruby面向对象编程的基础。类主要负责封装及分离事物。模块则用于mixin——将一系列功能打包添加到类上为该类增加新行为，可以代替多重继承。模块也可用来将类分隔到不同的命名空间中。
 

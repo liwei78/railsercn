@@ -3,9 +3,8 @@ layout: post
 title: MephistoBlog使用的插件和第三方代码介绍
 post_id: 24
 categories: ["blog", "mephisto", "plugins"]
+author: 里克
 ---
-
-snapshot
 
 
 本篇是在 <a href="http://railser.cn/archives/development-log-rails-pagnate-and-acts-as-taggable">开发笔记：rails分页和acts_as_taggable插件的应用</a> 一文的后半部分基础上再整理的。内容上是连贯的。
@@ -17,6 +16,7 @@ h3. MephistoBlog用了哪些插件
 
 
 看图：
+
 <img src="http://railser.cn/wp-content/uploads/2007/12/vender.jpg" alt="vender" />
 
 <img src="http://railser.cn/wp-content/uploads/2007/12/plugins.jpg" alt="plugins" />
@@ -37,7 +37,7 @@ TZInfo：<a href="http://tzinfo.rubyforge.org/">TZInfo</a>是一个标准tz数�
 
 a_gems：小巧的Ruby Gem管理工具，它在启动时会自动的将gem/lib的路径加载到$LOAD_PATH 中。
 它不用介绍，就几行代码。
-bq. 
+bq.
 <pre lang="ruby">
 standard_dirs = ['rails', 'plugins']
 gems          = Dir[File.join(RAILS_ROOT, "vendor/**")]

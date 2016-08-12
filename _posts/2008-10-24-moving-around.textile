@@ -2,7 +2,8 @@
 layout: post
 title: TextMate中文教程之移动光标
 post_id: 151
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: wjp
 ---
 
 snapshot

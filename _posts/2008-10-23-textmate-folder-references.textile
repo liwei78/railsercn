@@ -2,10 +2,9 @@
 layout: post
 title: TextMate中文教程之项目的文件夹引用
 post_id: 143
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: wjp
 ---
-
-snapshot
 
 TextMate 支持两种项目。前面那章创建的是第一种项目，不管文件在硬盘上存在哪里只把它拖入到TextMate的边栏就可以。另外一种是保存文件系统。当你创建的项目文件在同一个文件夹里面，就创建了第二种项目。
 

@@ -3,13 +3,10 @@ layout: post
 title: acts_as_attachment和attachment_fu插件应用
 post_id: 29
 categories: ["plugins", "rails", "rmagic"]
+author: 里克
 ---
 
-snapshot
-
-写在前面
-
-Rails插件，是学习Rails框架很好的教材。插件可以让你利用Ruby语言的特点，改进Rails框架代码，而不必去编辑它。比如acts_as_paranoid插件就是将Rails默认的Destroy功能进行了删除标记的改进。这里，Rails的Module和Class的学习，Mixin的学习对于理解Rails是相当重要的。
+写在前面: Rails插件，是学习Rails框架很好的教材。插件可以让你利用Ruby语言的特点，改进Rails框架代码，而不必去编辑它。比如acts_as_paranoid插件就是将Rails默认的Destroy功能进行了删除标记的改进。这里，Rails的Module和Class的学习，Mixin的学习对于理解Rails是相当重要的。
 里克：我觉得想学习Rails插件，先需要看《Ruby for Rails》的第六章（模块和程序组织）和第十三章（Ruby动态特性）。
 
 插件还可以让开发人员发布复用性强的应用，比如各种Acts_as插件。

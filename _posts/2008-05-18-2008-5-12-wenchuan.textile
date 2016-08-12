@@ -3,13 +3,10 @@ layout: post
 title: 2008年5月12日下午2点28分，汶川地震
 post_id: 47
 categories: ["default"]
+author: 里克
 ---
 
-snapshot
-
-h1{color: 'black'}. 2008年5月12日下午2点28分
-
-h2{color: 'black'}. 汶川
+2008年5月12日下午2点28分，汶川
 
 
 一、博客又换服务器了

@@ -2,10 +2,9 @@
 layout: post
 title: 1.2.2 方法查找(1)
 post_id: 111
-categories: ["default"]
+categories: ["ruby"]
+author: wjp
 ---
-
-snapshot
 
 Ruby中的方法查找可以让人很困惑，但它却非常有规律。理解复杂情况的最简单方法就是将Ruby在后台创建的数据结构直观化。每个Ruby对象在内存中都有一个域的集合：
 _注：除了立即对象（immediate objects），如Fixnums，symbols，true，false和nil；我们在后面会介绍这些。_

@@ -3,6 +3,7 @@ layout: post
 title: 写在2007的最后一天
 post_id: 26
 categories: ["日记"]
+author: 里克
 ---
 
 snapshot

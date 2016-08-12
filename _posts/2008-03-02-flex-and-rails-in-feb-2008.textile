@@ -3,9 +3,8 @@ layout: post
 title: 08年2月整理的Flex和Rails消息
 post_id: 35
 categories: ["default"]
+author: 里克
 ---
-
-snapshot
 
 写在前面：
 
@@ -72,7 +71,7 @@ h2. 8、Substruct：开源的Rails电子商务项目
 
 在<a href="http://www.caiwangqin.com/post/256">Caiwangqin's Blog中已经提到了这个项目</a>，而且在 <a href="http://chinaonrails.com/topic/view/967.html">http://chinaonrails.com/topic/view/967.html</a> 中还能看到大家的讨论。
 <pre>
-bq. 
+bq.
 * 带有博客功能的简易内容管理系统
     o 在线管理网站
 * 使用 Authorize.net and PayPal (需自有帐户) 结算
@@ -90,11 +89,8 @@ h2. 9、Ruby 1.9
 
 
 
-Yukihiro Matsumoto（松本行弘）主讲，解释各种Ruby版本之间的差别和介绍Ruby1.9的特性。
+Yukihiro Matsumoto（松本行弘）主讲，解释各种Ruby版本之间的差别和介绍Ruby1.9的特性。http://www.youtube.com/v/oEkJvvGEtB4
 
-<pre>
-<object width="425" height="355"><param name="movie" value="http://www.youtube.com/v/oEkJvvGEtB4"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/oEkJvvGEtB4" type="application/x-shockwave-flash" wmode="transparent" width="425" height="355"></embed></object>
-</pre>
 
 参考：<a href="http://column.bokee.com/19333.html">Ruby的哲学——与Yukihiro Matsumoto的对话</a>
 

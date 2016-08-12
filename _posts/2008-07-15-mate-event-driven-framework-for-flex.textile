@@ -3,9 +3,8 @@ layout: post
 title: 新的Flex框架Mate
 post_id: 49
 categories: ["flex"]
+author: 里克
 ---
-
-snapshot
 
 一、Mate，新的Flex框架
 

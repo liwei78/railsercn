@@ -3,9 +3,8 @@ layout: post
 title: RESTful的Rails开发，讲讲4Rails.cn的开发心得
 post_id: 28
 categories: ["rails", "REST", "ROA"]
+author: 里克
 ---
-
-snapshot
 
 这是一篇笔记。
 

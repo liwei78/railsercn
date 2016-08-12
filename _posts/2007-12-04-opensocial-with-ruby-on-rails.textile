@@ -3,10 +3,8 @@ layout: post
 title: 关注:Rails上的Opensocial实现
 post_id: 23
 categories: ["google", "opensocial", "rails", "REST"]
+author: 里克
 ---
-
-snapshot
-
 
 h3. 什么是OpenSocial
 
@@ -20,7 +18,7 @@ h3. Rails上的OpenSocial
 OpenSocial的API是按照REST结构设计，但是它并不完全符合Rails的观点，首先，通过URL访问资源的形式并不是Rails的标准形式。其次，它不包含format extension，这意味着你不能直接使用respond_to块。
 但是上面两个问题可以通过在routes文件增加一组路由描述和增加一个自定义的mimetype来解决。
 下面的路由规则是在描述如何在我们的user_controller中对应OpenSocial 中的people资源的。
-bq. 
+bq.
 <pre lang="ruby">
 # config/environment.rb
 Mime::Type.register "application/x-opensocial", :opensocial
@@ -46,7 +44,7 @@ respond_to do |format|
 end</pre>
 
 如果上面的比较麻烦，可以<a href="http://blog.nbwd.co.uk/assets/2007/11/7/opensocial_routing.tar.gz">下载</a>作者发的插件。这样你的route文件可以这样写：
-bq. 
+bq.
 <pre lang="ruby">
 # config/routes.rb
 map.resources :users do |user|

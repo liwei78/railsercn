@@ -2,7 +2,8 @@
 layout: post
 title: 1.2.5 代码块，方法和过程
 post_id: 164
-categories: ["Advanced Rails", "default"]
+categories: ["ruby"]
+author: wjp
 ---
 
 snapshot

@@ -3,9 +3,8 @@ layout: post
 title: Rails的中文版新书《Ruby on Rails电子商务实战》
 post_id: 41
 categories: ["book", "rails"]
+author: 里克
 ---
-
-snapshot
 
 写在前面：
 
@@ -17,24 +16,23 @@ h2. 一、《Beginning Ruby On Rails E-Commerce》
 
 
 这本书的英文版是在06年的时候出版的，在书中标注的开发环境，对于现在来说，有一些老。不过对于主流的Rails1.2.6以下版本开发的项目来说，不会产生太大的问题。
-<p style="text-align: center"><img src="http://railser.cn/wp-content/uploads/2008/03/env.jpg" alt="env" />
+
+<img src="http://railser.cn/wp-content/uploads/2008/03/env.jpg" alt="env" />
+
+书中(英文)的开发环境
 
 
-<p style="text-align: center">书中(英文)的开发环境
-
-
- 不过，随着Rails2.0.2的发布，新的项目自然会用新版本开发。并且一些功能已经改进。比如第七章说到的“Tagging Support”，就会带来版本的困扰，这个我在<a href="http://railser.cn/archives/development-log-rails-pagnate-and-acts-as-taggable" target="_blank">开发笔记：rails分页和acts_as_taggable插件的应用</a>中已经做了个笔记。
+不过，随着Rails2.0.2的发布，新的项目自然会用新版本开发。并且一些功能已经改进。比如第七章说到的“Tagging Support”，就会带来版本的困扰，这个我在<a href="http://railser.cn/archives/development-log-rails-pagnate-and-acts-as-taggable" target="_blank">开发笔记：rails分页和acts_as_taggable插件的应用</a>中已经做了个笔记。
 
 这本书是Rails2.0下的牺牲品吗？绝不 ，这本书的价值，在于里面讲到的TDD下的Rails开发。这是这本书的精华，也使它不同于Rails普及书会面临的淘汰问题。
 
 h2. 二、一定要重视TDD开发
 
 
-
 在本书英文版的前言部分，作者提到了本书的目的：
 
 
-bq. 
+bq.
 本书的阅读群，是使用Rails制作过一个以上项目，并且期望在以后的开发中，通过使用TDD开发来改进代码质量的程序员的。
 
 
@@ -50,7 +48,7 @@ h2. 三、 《Ruby on Rails电子商务实战》
 中文版我还没读到，所以抓来GT(GT就是google talk的意思，好玩)我的<a href="http://www.douban.com/people/1098413/" target="_blank">那个人</a>，写了一下感想，毕竟他已经认真读完前三章了。
 
 
-bq. 
+bq.
 买了Ruby on Rails电子商务实战。刚入手就迫不及待的翻看起来。这本书和其他的Rails都是一个流派，本着实用为目的，没有多余的废话，上来就直接做应用，而且介绍的技术都是现实中大家肯定会用到的，一些相关的知识点也都给了详细介绍的URL。从第二章开始作者就有意的给读者介绍一些优秀的编码思路，也就是本书的核心TDD测试驱动开发。说实话，这本书的代码，因为是基于Rails1.2之下的，尤其现在已经是Rails2了。所以好多代码已经被废弃了，例如书中常用到的 assert_tag 在rails中已经废弃了。如果你完全按照书上的例子打，肯定过不去，好在译者已经给大家写了注释和修改的方法。所以，虽然本书不是基于rails2来写，但是有了译者的补充和完善，代码仍然不过时。书中介绍的一些技巧和方法，在实战中也肯定让读者少走不少弯路，比如如何给Rails应用增加Textile功能，如何试用Rails的上传插件FileColumn。虽然Rails进过不断的进步，在安全，多语言支持应用程序部署和性能优化上都有了更好的标准和方法。但是本书后在这方面的章节仍然值得一读。
 
 总体来说，读过《敏捷开发2》，和《Ruby for Rails》再来看这本书，会对Rails开发者在实战中有莫大的帮助。

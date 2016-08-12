@@ -3,6 +3,7 @@ layout: post
 title: EZAdmin，一个简易的asp企业站管理后台
 post_id: 54
 categories: ["EZAdmin"]
+author: 里克
 ---
 
 snapshot

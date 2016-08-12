@@ -3,15 +3,14 @@ layout: post
 title: “Twitterverse Awarded Mashup of the Day”
 post_id: 33
 categories: ["mashup"]
+author: 里克
 ---
-
-snapshot
 
 写在前面：
 
 看标题，包含了本篇的两个意思，一个是要介绍一些网站，一个是要关注Mashup。
 
-对于2.0时代的互联网，时间是很紧迫的，而各种应用，虽然看着很简单，但是很好玩。原因在于，大家还是重视博客了，重视开放api和Mashup了，所以，原来给人做网站的我，被<font color="#ff6600">逼</font>迫的开始<font color="#ff6600">2</font>.0了。
+对于2.0时代的互联网，时间是很紧迫的，而各种应用，虽然看着很简单，但是很好玩。原因在于，大家还是重视博客了，重视开放api和Mashup了，所以，原来给人做网站的我，被逼迫的开始2.0了。
 
 h3. foodbuzz.com
 

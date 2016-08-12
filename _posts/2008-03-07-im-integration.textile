@@ -3,9 +3,8 @@ layout: post
 title: IM的集成开发
 post_id: 38
 categories: ["jabber", "twitter", "xmpp", "xmpp4r"]
+author: 里克
 ---
-
-snapshot
 
 写在前面 ：
 

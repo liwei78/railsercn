@@ -2,10 +2,9 @@
 layout: post
 title: TextMate中文教程之在选取文件
 post_id: 98
-categories: ["default"]
+categories: ["TextMate"]
+author: wjp
 ---
-
-snapshot
 
 项目中最重要的一点是快速访问项目中的文件。你可以用鼠标打开任何你需要打开的文件。TextMate中，如果你单击的是一个文本文件，单击会打开它。TextMate会根据文件的扩展名或者读取文件的前8KB来判断它是不是一个合法的UTF-8(ASCII)文本。
 

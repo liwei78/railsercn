@@ -3,9 +3,8 @@ layout: post
 title: Git：中文教程及资料整理
 post_id: 53
 categories: ["git"]
+author: 里克
 ---
-
-snapshot
 
 
 写在前面：在忙于生计的一段时间里，Rails升级到2.1，并且带来了一个新的工具：git。忽然之间，git成了专心开发的朋友们的话题。我由于不专心，所以没有去更多的关注它，最多知道它是一个新的版本控制工具。
@@ -31,12 +30,14 @@ baidu一下找到了<a href="http://www.bitsun.com/documents/gittutorcn.htm" tar
 3、资料
 
 官网上的资料比较全啦，不找啦。
-<div class="sectionbody">
-<div class="para">
 
-<a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial-2.html">gittutorial-2(7)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/gitcvs-migration.html">gitcvs-migration(7)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/gitcore-tutorial.html">gitcore-tutorial(7)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/gitglossary.html">gitglossary(7)</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html">Everyday git</a>, <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">The Git User's Manual</a>
+<a href="http://www.kernel.org/pub/software/scm/git/docs/gittutorial-2.html">gittutorial-2(7)</a>
+<a href="http://www.kernel.org/pub/software/scm/git/docs/gitcvs-migration.html">gitcvs-migration(7)</a>
+<a href="http://www.kernel.org/pub/software/scm/git/docs/gitcore-tutorial.html">gitcore-tutorial(7)</a>
+<a href="http://www.kernel.org/pub/software/scm/git/docs/gitglossary.html">gitglossary(7)</a>
+<a href="http://www.kernel.org/pub/software/scm/git/docs/everyday.html">Everyday git</a>
+<a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">The Git User's Manual</a>
 
-补充几句：那篇虽然是2年前的中文教程，但是内容还是很精要的。一些命令已经改动，读的时候小心。比如 git status。难怪我最开始的时候总是不成功呢。呵呵
+补充几句：那篇虽然是2年前的中文教程，但是内容还是很精要的。一些命令已经改动，读的时候小心。比如 git status。难怪我最开始的时候总是不成功呢。
 
-</div>
-</div>
+呵呵
