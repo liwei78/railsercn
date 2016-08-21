@@ -2,10 +2,9 @@
 layout: post
 title: ruby for rails 摘录
 post_id: 290
-categories: ["r4r", "rails", "RailsNote"]
+categories: ["rails"]
+author: wjp
 ---
-
-snapshot
 
 class, module, def 标志着切换到新的 self， main 是默认的 self 对象用来引用自己的专门术语。self 作为消息默认的接受者，如果消息接受者是 self ，可以省略接受者和圆点。
 

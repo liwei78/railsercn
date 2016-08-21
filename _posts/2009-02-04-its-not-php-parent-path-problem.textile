@@ -2,10 +2,9 @@
 layout: post
 title: 貌似php父路径问题引发的问题
 post_id: 354
-categories: ["apache", "php", "RailsNote"]
+categories: ["php"]
+author: 里克
 ---
-
-snapshot
 
 问题出现了：
 

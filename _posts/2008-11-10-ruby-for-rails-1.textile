@@ -2,7 +2,8 @@
 layout: post
 title: ruby for rails 摘录
 post_id: 261
-categories: ["r4r", "rails", "RailsNote"]
+categories: ["rails"]
+author: wjp
 ---
 
 snapshot

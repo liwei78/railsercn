@@ -3,6 +3,7 @@ layout: post
 title: TextMate中文教程之在项目中搜索
 post_id: 269
 categories: ["TextMate"]
+author: wjp
 ---
 
 snapshot

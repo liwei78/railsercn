@@ -2,7 +2,8 @@
 layout: post
 title: TextMate中文教程之剪切，复制和粘贴
 post_id: 201
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: wjp
 ---
 
 snapshot

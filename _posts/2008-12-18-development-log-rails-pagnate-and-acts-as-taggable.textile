@@ -2,11 +2,9 @@
 layout: post
 title: 开发笔记：rails分页和acts_as_taggable插件的应用[重发]
 post_id: 341
-categories: ["acts_as_taggable", "RailsNote"]
+categories: ["acts_as_taggable", "rails"]
+author: 里克
 ---
-
-snapshot
-
 
 最近一个月在忙于开发项目，所以没有更新博客。不过开发中还是学到不少东西。
 
@@ -22,14 +20,14 @@ h3. 一、分页
 
 下面的程序在3个项目上使用过。
 models/page.rb
-bq. 
+bq.
 <pre lang="ruby">class Page
   attr_accessor :pages #分页连接列表，[]类型
   attr_accessor :cur #当前页
 end</pre>
 
 helpers/application_helper.rb
-bq. 
+bq.
 <pre lang="ruby">  def howtopage_links(pagecls=nil) #在页面输出分页连接，pagecls:分页实例
     if pagecls
       return pagecls.pages.collect {|t|
@@ -43,7 +41,7 @@ bq.
   end</pre>
 
 controllers/application.rb
-bq. 
+bq.
 <pre lang="ruby">  def howtopage(totalcount=0, per_page=6)
     cur_page = params[:page] || 1 #直接从页面取得page变量
     x = (cur_page.to_i - 1) * per_page
@@ -58,7 +56,7 @@ bq.
   end</pre>
 
 在一个notebook_controller.rb中
-bq. 
+bq.
 <pre lang="ruby">@notes_count = Notebook.count(:conditions=>['user_id = ?', params['user_id']])
 per_page = 6 #每页记录数
 @page, x = howtopage(@notes_count, per_page)
@@ -66,7 +64,7 @@ per_page = 6 #每页记录数
  :order=>"id desc", :offset=>x, :limit=>per_page)</pre>
 
 在对应的页面中
-bq. 
+bq.
 <pre lang="ruby">< %=howtopage_links(@page)%></pre>
 
 这段方法有很多可以改进的地方，但是能用就好。

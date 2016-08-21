@@ -2,10 +2,9 @@
 layout: post
 title: 闭包
 post_id: 193
-categories: ["Advanced Rails", "default"]
+categories: ["ruby"]
+author: wjp
 ---
-
-snapshot
 
 在代码块或者过程访问定义在其作用范围以外的变量时，就会创建闭包（Closures）。即使包含原始变量的代码块已经超出作用范围了，但那些被其它块和过程引用的变量也会被一直被保留着，直到引用它们的块和过程全部超出作用范围。下面的这个极度简化的例子，虽然确实是没有什么实际的用途，但能够很好的解释上面的情景：
 <pre name="code" class="ruby">

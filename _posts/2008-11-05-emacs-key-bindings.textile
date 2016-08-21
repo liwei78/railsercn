@@ -2,7 +2,8 @@
 layout: post
 title: TextMate中文教程之使用emacs中常用的快捷键
 post_id: 238
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: 里克
 ---
 
 snapshot

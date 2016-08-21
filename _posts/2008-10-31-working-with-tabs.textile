@@ -2,7 +2,8 @@
 layout: post
 title: TextMate中文教程之使用制表符
 post_id: 219
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: wjp
 ---
 
 snapshot

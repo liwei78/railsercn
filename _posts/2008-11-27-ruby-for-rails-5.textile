@@ -2,10 +2,9 @@
 layout: post
 title: ruby for rails 摘录
 post_id: 300
-categories: ["RailsNote"]
+categories: ["rails"]
+author: wjp
 ---
-
-snapshot
 
 if 关键字
 <pre name="code" class="ruby">

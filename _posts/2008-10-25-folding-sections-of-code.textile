@@ -2,7 +2,8 @@
 layout: post
 title: TextMate中文教程之折叠代码片段
 post_id: 166
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: wjp
 ---
 
 snapshot

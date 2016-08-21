@@ -3,9 +3,8 @@ layout: post
 title: TextMate的HTML快捷键
 post_id: 334
 categories: ["TextMate"]
+author: wjp
 ---
-
-snapshot
 
 <ul>
 	<li>选中文字后按 appli ＋ I 是 em</li>

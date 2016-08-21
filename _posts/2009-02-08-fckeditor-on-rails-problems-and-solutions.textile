@@ -2,7 +2,8 @@
 layout: post
 title: Fckeditor on Rails的问题和临时解决办法
 post_id: 356
-categories: ["fckeditor", "RailsNote"]
+categories: ["fckeditor", "rails"]
+author: 里克
 ---
 
 snapshot

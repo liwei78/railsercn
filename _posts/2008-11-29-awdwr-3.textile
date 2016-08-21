@@ -2,7 +2,8 @@
 layout: post
 title: 重读AWDWR笔记
 post_id: 327
-categories: ["AWDWR", "RailsNote"]
+categories: ["rails"]
+author: wjp
 ---
 
 snapshot

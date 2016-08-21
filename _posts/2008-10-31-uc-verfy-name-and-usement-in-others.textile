@@ -2,10 +2,9 @@
 layout: post
 title: uc实名认证的修改
 post_id: 225
-categories: ["comsenz", "default", "modoer", "php", "uc", "uch"]
+categories: ["php", "uc", "uchome"]
+author: 里克
 ---
-
-snapshot
 
 写在前面：jp加入本站后，博客立刻火了起来。我奥运会后一直在做php的开发，而且是专门研究，hack康盛的uch，uc和supesite，给客户做php的站，一直没有做Rails的开发，有点遗憾。不过jp带着我还算没太落后，碰到好的Rails项目肯定还会继续Railser的开发的。
 
@@ -80,13 +79,5 @@ $user->name = $tmp['name']."(未认证)";
 其实完美的方案应该该是完全放到uc_client中，但是我4里的问题我还没解决。目前的只是按照常规的方法hack相关代码解决的。
 
 modoer是开源的点评程序，非常出色，从代码里学到很多知识，不仅是php，可能对今后开发Rails都有帮助。在此感谢作者的工作！！！
-
-广告下自己的新站：
-
-<a href="http://www.51zoon.com" target="_blank">时尚51区</a>
-
-<a href="http://7ent.cn" target="_blank">7#娱乐圈</a>
-
-<a href="http://7news.cn">7#早新闻</a>
 
 对了，我们现在用的新插件是这个，http://code.google.com/p/syntaxhighlighter，非常强

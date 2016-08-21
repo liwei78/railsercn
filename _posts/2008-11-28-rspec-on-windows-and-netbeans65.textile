@@ -2,10 +2,9 @@
 layout: post
 title: 在windows和netbeans6.5上，准备Rspce开发
 post_id: 308
-categories: ["RailsNote", "rspec"]
+categories: ["rails"]
+author: wjp
 ---
-
-snapshot
 
 一、环境
 

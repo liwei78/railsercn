@@ -2,7 +2,8 @@
 layout: post
 title: 近来jquery的两次应用
 post_id: 245
-categories: ["default", "jquery"]
+categories: ["jquery"]
+author: 里克
 ---
 
 snapshot

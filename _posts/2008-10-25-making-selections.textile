@@ -2,7 +2,8 @@
 layout: post
 title: TextMate中文教程之文本选择器
 post_id: 169
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: wjp
 ---
 
 snapshot

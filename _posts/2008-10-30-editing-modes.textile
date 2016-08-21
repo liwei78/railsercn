@@ -2,7 +2,8 @@
 layout: post
 title: TextMate中文教程之编辑模式
 post_id: 213
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: wjp
 ---
 
 snapshot

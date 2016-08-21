@@ -2,7 +2,8 @@
 layout: post
 title: TextMate中文教程之一次编辑多行
 post_id: 207
-categories: ["default", "TextMate"]
+categories: ["TextMate"]
+author: wjp
 ---
 
 snapshot

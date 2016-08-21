@@ -2,10 +2,9 @@
 layout: post
 title: Rails中基于属性的动态查询
 post_id: 339
-categories: ["rails", "RailsNote"]
+categories: ["rails"]
+author: wjp
 ---
-
-snapshot
 
 这是个很简单的Rails2.1.2的 find 的应用，来自Rdoc ActiveRecord::Base
 

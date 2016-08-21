@@ -2,10 +2,9 @@
 layout: post
 title: 回复一篇关于Ruby开发ucenter项目的帖子
 post_id: 272
-categories: ["RailsNote", "ucenter"]
+categories: ["ucenter", "ruby"]
+author: 里克
 ---
-
-snapshot
 
 写在前面：我忘了我je的密码了，就贴到自己博客吧。
 

@@ -2,7 +2,8 @@
 layout: post
 title: Rails Rdoc笔记：respond_to
 post_id: 345
-categories: ["RailsNote", "rdoc"]
+categories: ["rails"]
+author: 里克
 ---
 
 snapshot
@@ -18,7 +19,7 @@ REST的概念在我心里是来做资源管理的，这个资源管理要简单�
 多态。这次用到了很多多态的方法，使得设计上每个部分都很松耦合，能够复用，比如那个photos，就可以给活动，圈子，论坛去承担不同Model的图片上传，显示，管理功能。积分和信誉积分采用了同样的设计，下面的Account就是多态。（不过自动累加上一个Model的total字段稍微麻烦了点，magic有类似counter_cache的功能吗？对belongs_to那方的total字段进行自动加减？）
 
 好了，看看Rdoc的描述。大意是：Rails是一个很好的web-service框架。
-bq. 
+bq.
 <div class="method-description">
 
 Without web-service support, an action which collects the data for displaying a list of people might look something like this:

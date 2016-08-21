@@ -2,10 +2,9 @@
 layout: post
 title: uchome中的两个字段含义的解释
 post_id: 231
-categories: ["default", "php", "uch"]
+categories: ["php", "uchome"]
+author: 里克
 ---
-
-snapshot
 
 在uchome的spacefield表中，有两个看似明确，实际很别扭的两个字段名，friend和feedfriend。
 
