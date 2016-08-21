@@ -9,12 +9,12 @@ paginate: 10 # pagination based on number of posts
 # paginate_path: "page:num"
 
 title : 里克的自习室
-description: "Ruby和Rails的开发笔记，里克的翻译及原创作品。"
-keywords: "Ruby,Rails,soho,develop,笔记,经验,翻译,原创"
+description: "写给自己的技术笔记"
+keywords: "ruby,rails,soho,翻译,原创"
 blog_url: http://railser.cn
 author :
   name : 里克
-  intro: 'Rails Soho Developer, Blog Writer, focus on OpenERP recently.'
+  intro: 'SOHO developer, blog writer.'
   email : hi@liwei.me
   github : liwei78
   twitter : liwei78
@@ -23,7 +23,6 @@ author :
   qq : '5175486'
   skype : guxing203
 
-
 links:
   - title: 首页
     url: /
@@ -31,7 +30,6 @@ links:
     url: /categories.html
   - title: Tags
     url: /tags.html
-
 
 production_url: http://railser.cn
 assets_url: http://railser.cn
