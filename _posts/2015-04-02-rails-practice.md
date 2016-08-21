@@ -2,8 +2,9 @@
 layout: post
 title: "2015，追逐成绩"
 description: "今年对自己的要求是，拿出成绩。"
-category: ""
+categories: "日记"
 tags: [book]
+author: 里克
 ---
 
 有很多朋友还记得这个微不足道的博客，它的确在 Rails 开发领域满久远的，它诞生的时候是2007年，那时候 Rails 还是1.x 版本。选择 Rails，我觉得它给了我一个发挥自己能力的机会，所以，我一直没有放弃它，即便是我很动摇的时候，我依旧选择了 Rails。

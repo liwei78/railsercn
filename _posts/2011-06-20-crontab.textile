@@ -2,7 +2,8 @@
 layout: post
 title: crontab的写法误解
 post_id: 639
-categories: ["crontab", "RailsNote"]
+categories: ["rails"]
+author: 里克
 ---
 
 snapshot
@@ -33,4 +34,3 @@ crontab的标准写法参照这里，http://www.centos.org/docs/5/html/Deploymen
 
 请各位指正，我也继续验证一下我的写法。
 
-&nbsp;

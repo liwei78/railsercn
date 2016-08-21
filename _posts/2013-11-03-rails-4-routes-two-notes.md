@@ -2,9 +2,10 @@
 layout: post
 title: "Rails Routes中的两件事"
 description: "在看devise的源码过程中，发现Devise在做Routes Mapping时，使用了Rails自己的@constraints。于是查查文档，笔记两件事。"
-category: "Rails"
+categories: "rails"
 tags: ['routes', 'constraints']
 recommend: true
+author: 里克
 ---
 
 写在前面：在看devise的源码过程中，发现Devise在做Routes Mapping时，使用了Rails自己的@constraints。于是查查文档，笔记两件事。

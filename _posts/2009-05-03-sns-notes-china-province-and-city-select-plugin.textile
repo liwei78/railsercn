@@ -2,10 +2,9 @@
 layout: post
 title: sns网站开发经验总结：中国省份城市插件（一）
 post_id: 395
-categories: ["plugin", "RailsNote", "sns"]
+categories: ["plugin", "sns"]
+author: 里克
 ---
-
-snapshot
 
 写在前面：
 
@@ -54,8 +53,6 @@ update:2009-6-30
 <%= state_and_city_select :user_detail, :province, :city, {:state=>{:include_blank => true}, :city=>{:include_blank => true}} %>
 
 <script type="text/javascript">
-
   init_city_select('<%= @user_detail.province %>','<%= @user_detail.city %>');
-
 </script>
 </pre>

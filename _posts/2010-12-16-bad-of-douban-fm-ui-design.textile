@@ -2,10 +2,9 @@
 layout: post
 title: 糟糕之极的豆瓣电台ui设计
 post_id: 561
-categories: ["default"]
+categories: ["ui"]
+author: 里克
 ---
-
-snapshot
 
 我再也忍受不了豆瓣电台的ui设计了，这是一个极其糟糕的设计和用户体验。我刚才又忘记哪个是暂停功能了。（这是一个新功能，之前只能是无奈的关闭播放功能）
 

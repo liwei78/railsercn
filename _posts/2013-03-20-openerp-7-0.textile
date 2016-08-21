@@ -2,9 +2,8 @@
 layout: post
 title: openerp 7.0
 categories: ["openerp"]
+author: 里克
 ---
-
-snapshot
 
 写在前面：
 

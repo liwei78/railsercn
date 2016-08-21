@@ -2,10 +2,9 @@
 layout: post
 title: Rails 中的try方法
 post_id: 489
-categories: ["RailsNote"]
+categories: ["rails"]
+author: 里克
 ---
-
-snapshot
 
 在Rails2.3 等后续版本中可使用try方法，避免 nil 对象调用方法。
 

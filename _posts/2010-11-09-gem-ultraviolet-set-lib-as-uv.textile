@@ -2,14 +2,13 @@
 layout: post
 title: 有了ultraviolet，可是没有uv，怎么办？
 post_id: 527
-categories: ["Advanced Rails"]
+categories: ["rails"]
+author: 里克
 ---
-
-snapshot
 
 问题：
 gem 'ultraviolet', '0.10.2'
-bundle install 
+bundle install
 代码highlight的时候，require 'uv' 失败。
 提示：uninitialized constant PadsHelper::Uv
 

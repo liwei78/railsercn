@@ -2,10 +2,9 @@
 layout: post
 title: Flex build4 和Rails资源笔记
 post_id: 521
-categories: ["flex", "Flexible Rails"]
+categories: ["flex", "rails"]
+author: 里克
 ---
-
-snapshot
 
 从infoq上看到了flex builder4的介绍。07年知道flex的时候就很关注它，也写了一点在这个博客上。那个时候还是测试版。现在已经发展到了4，并且flex的书越来越多。rails的新书貌似不多了。
 

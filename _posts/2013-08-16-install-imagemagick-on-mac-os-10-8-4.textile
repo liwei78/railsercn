@@ -1,7 +1,9 @@
 ---
 layout: post
 title: 在mac os 10.8.4 上安装 imagemagick
+categories: ["rails"]
 tags: ImageMagick
+author: 里克
 ---
 
 写在前面：

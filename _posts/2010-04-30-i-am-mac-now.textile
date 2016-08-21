@@ -2,17 +2,15 @@
 layout: post
 title: 我开始mac啦！！
 post_id: 440
-categories: ["default"]
+categories: ["macmini"]
+author: 里克
 ---
-
-snapshot
 
 上周在淘宝的苹果福利社订购了一台mac mini mc238，发货后第二天就到了。兴奋啊。我终于开始mac了！！
 
-<img class="aligncenter size-medium wp-image-443" title="T1HNBsXlxlXXXBc6_b_094607.jpg_310x310" src="http://railser.cn/wp-content/uploads/T1HNBsXlxlXXXBc6_b_094607.jpg_310x310-300x300.jpg" alt="T1HNBsXlxlXXXBc6_b_094607.jpg_310x310" width="300" height="300" />
+<img src="http://railser.cn/wp-content/uploads/T1HNBsXlxlXXXBc6_b_094607.jpg_310x310-300x300.jpg" width="300" height="300" />
 
 下面分享一下这次的经历，当作日记，也是分享给大家一些经验吧。
-
 
 
 东西拿到了，第一件事是连接上我的显示器。这里介绍两个事情：一是mac mini和自己的显示器连接，用的是dvi线，二是这个线需要自己买，价格在20元左右。线的样子是
@@ -35,6 +33,3 @@ dvi线如果网购的话可以看这里：<a href="http://item.taobao.com/item.h
 
 因为之前用过ubuntu，所以这次上手不算太陌生，不过好些东西还是不适应，比如快捷键。mac的三个键和win的不一样，需要在系统偏好里调整一下，当然不改也可，那就纯正的mac吧。
 
-下一篇分享下折腾了两天的环境配制。
-
-广告下，工作室目前定位在科技公司上，业务在网站制作和美工设计。我也算是带出来两个学员，一个做程序，一个做网络推广。后面会整理出来，看来Railser.cn该增加人员了。

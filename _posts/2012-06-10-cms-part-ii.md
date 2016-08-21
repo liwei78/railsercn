@@ -3,6 +3,7 @@ layout: post
 title: cms系列二：塞下秋来风景异
 categories: ["cms"]
 recommend: true
+author: 里克
 ---
 
 写在前面：

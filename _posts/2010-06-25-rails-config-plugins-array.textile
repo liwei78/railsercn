@@ -2,7 +2,8 @@
 layout: post
 title: Rails如何不加载某插件？
 post_id: 459
-categories: ["Advanced Rails"]
+categories: ["rails"]
+author: 里克
 ---
 
 snapshot

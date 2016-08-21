@@ -2,7 +2,7 @@
 layout: post
 title: 08年2月整理的Flex和Rails消息
 post_id: 35
-categories: ["default"]
+categories: ["rails"]
 author: 里克
 ---
 

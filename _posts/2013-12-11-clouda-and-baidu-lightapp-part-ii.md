@@ -2,9 +2,10 @@
 layout: post
 title: "Clouda和百度轻应用（下篇）"
 description: "在学习nodejs的过程中，发现了clouda框架，并且赶上了百度轻应用3.0公测，再此做以笔记，记录开发中的经验。"
-category: "轻应用"
+categories: "轻应用"
 tags: ["clouda", "nodejs"]
 recommend: true
+author: 里克
 ---
 
 [Clouda和百度轻应用（上篇）]({% post_url 2013-12-11-clouda-and-baidu-lightapp %})

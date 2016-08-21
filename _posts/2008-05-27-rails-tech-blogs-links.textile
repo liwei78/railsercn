@@ -2,7 +2,7 @@
 layout: post
 title: 近期计划及以往技术网站连接整理
 post_id: 48
-categories: ["default"]
+categories: ["日记"]
 author: 里克
 ---
 

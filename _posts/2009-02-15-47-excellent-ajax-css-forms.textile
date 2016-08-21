@@ -2,7 +2,8 @@
 layout: post
 title: 47个漂亮的ajax+css表单
 post_id: 375
-categories: ["ajax", "RailsNote"]
+categories: ["ajax"]
+author: 里克
 ---
 
 snapshot

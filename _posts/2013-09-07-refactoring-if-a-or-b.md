@@ -3,6 +3,7 @@ layout: post
 title: "if a || b 的重构"
 categories: "ruby"
 tags: "重构"
+author: 里克
 ---
 
 当遇到 `if a || b` 的时候，我们要先看一下，a 和 b 到底是不是可以用区间来覆盖。

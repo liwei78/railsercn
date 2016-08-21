@@ -2,10 +2,9 @@
 layout: post
 title: hash.invert的用法
 post_id: 464
-categories: ["RailsNote"]
+categories: ["rails"]
+author: 里克
 ---
-
-snapshot
 
 对于多数的model的select列表，我都会用model属性＋方法的形式，做一个列表，然后在form里显示。
 

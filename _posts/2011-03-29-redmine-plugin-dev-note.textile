@@ -2,7 +2,8 @@
 layout: post
 title: redmine插件开发心得
 post_id: 591
-categories: ["Advanced Rails", "iPhone", "plugin", "redmine"]
+categories: ["rails", "redmine"]
+author: 里克
 ---
 
 上上周经Q友介绍，接了一个redmine插件开发的小项目。我很感兴趣的是可以借此机会把redmine熟悉一下，所以没太考虑价钱就答应了下来。现在想想，这次开发学到的东西很多，也认识了专业的开发团队，很值得。下面把redmine插件开发的经验笔记一下。
@@ -107,15 +108,6 @@ games插件有一个很重要的功能，就是到app store页面去采集app信
 如果你觉得这个代码对你开发redmine插件又帮助，可以在这里下载它：https://github.com/liwei78/redmine-games 。
 
 欢迎和各位交个朋友，我个人的博客：<a href="http://liwei.me" target="_blank">http://liwei.me</a>，目前正在设计新的界面，会把我的介绍，包括工作内容，都整理发布到上面。
-
-# 十：广告一下
-
-
-目前我还运营这另外两个博客，<a href="http://www.echangchun.net" target="_blank">电子长春</a> 和 <a href="http://top360buy.com" target="_blank">京东购物导航 </a>。
-
-前者关注电子商务动态和IT业内新闻，后者为京东商城点评，购物推介点评。
-
-&nbsp;
 
 Update at 2011-6-15
 

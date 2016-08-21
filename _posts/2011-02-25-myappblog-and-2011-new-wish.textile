@@ -2,10 +2,9 @@
 layout: post
 title: 2011，让APP飞一会吧
 post_id: 577
-categories: ["app", "default", "haml", "ipad", "iphone", "sass"]
+categories: ["app", "rails", "haml", "ipad", "iphone", "sass"]
+author: 里克
 ---
-
-snapshot
 
 2011，我有个惊奇的开始，我的iTouch有一天突然可以上网了，原因不明。紧接着几天，接触了一个开发项目，是做一个APP介绍的网站。可以用Rails。这一点实在让我暗地里欢喜：可算有得发挥了。接着，《让子弹飞》上映，那就让APP也跟着飞一会吧。
 
@@ -18,8 +17,7 @@ MyAPPBlog网站是一个iPhone，iPad应用推荐，点评的网站，上面还�
 说说程序，MyAPPBlog用了haml和sass，这极大的提高了页面的可维护性。这不是一点点的改变，而是把页面结构，设定的更加规范，比如div class的设计
 
 .title
-
-= @app.title
+  = @app.title
 
 这样就实现了一个div层的结构。sass我目前用到它三个特性，变量，命名空间和继承。
 

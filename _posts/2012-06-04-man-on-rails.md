@@ -2,6 +2,7 @@
 layout: post
 title: 走铁轨的人
 categories: ["日记"]
+author: 里克
 ---
 
 # Part I

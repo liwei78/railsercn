@@ -2,9 +2,8 @@
 layout: post
 title: 2012，云
 post_id: 657
-categories: ["cloud", "others"]
+categories: ["日记"]
+author: 里克
 ---
-
-snapshot
 
 最近研究各种云平台，Amazon AWS，盛大云，阿里云。5月份设计的appflying.com，看来可以移到云平台上继续它的2012旅程了。在云上，还有好多想法可以去实施，而且价格也都不贵，看来，2012从云开始吧。

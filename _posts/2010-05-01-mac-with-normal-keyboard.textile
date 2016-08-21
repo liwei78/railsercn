@@ -2,10 +2,9 @@
 layout: post
 title: mac使用普通键盘的几个快捷键
 post_id: 451
-categories: ["apple mac"]
+categories: ["macmini"]
+author: 里克
 ---
-
-snapshot
 
 mac的键盘都是专用的，上面有三个功能键，比windows下常见的ctrl和alt，多处一个中国结的键，呵呵，暂且这么叫吧。就是下图上的几个：
 

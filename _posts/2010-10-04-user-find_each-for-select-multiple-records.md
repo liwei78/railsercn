@@ -2,16 +2,14 @@
 layout: post
 title: 使用find_each提升批量发送效率
 post_id: 496
-categories: ["default"]
+categories: ["rails"]
+author: 里克
 ---
-
-snapshot
 
 写在前面：
 
 过去的两年一直从事sns的开发，目前已经正式上限运营了，所以工作也稍微的调整一下。没有了大量的新功能的开发，开始对新版本的Rails进行笔记，并且翻译一些文章。整个十月，如果没有大的变化，会有很多时间更新我的railser.cn了。
 
-认领一下博客：QQREADERFFAB13389FAE8315
 
 在开发的时候会碰到全表检索，逐条发送或根据返回更新状态（当然这里讲的是真的无法用批量操作的时候）。在2。3等后续版本里，提供了find_each方法。默认会逐条操作id升序排列的前1000条。
 

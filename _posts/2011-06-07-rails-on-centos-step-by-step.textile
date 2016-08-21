@@ -2,10 +2,9 @@
 layout: post
 title: 在CentOS5上部署Rails3应用
 post_id: 609
-categories: ["Advanced Rails", "capistrano", "centos", "linux", "nginx", "passenger", "rails", "RailsNote", "rvm", "ssh", "svn", "whenever"]
+categories: ["rails", "centos"]
+author: 里克
 ---
-
-snapshot
 
 1、安装rvm
 

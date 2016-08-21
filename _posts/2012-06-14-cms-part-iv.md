@@ -3,6 +3,7 @@ layout: post
 title: cms系列四：输赢成败，又争由人算
 categories: ["cms"]
 recommend: true
+author: 里克
 ---
 
 写在前面：

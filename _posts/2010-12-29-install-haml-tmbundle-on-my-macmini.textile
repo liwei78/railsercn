@@ -3,9 +3,8 @@ layout: post
 title: 如何安装TextMate的haml.tmbundle
 post_id: 567
 categories: ["TextMate"]
+author: 里克
 ---
-
-snapshot
 
 网上的文章讲的都是在  ~/Library/"Application Support"/TextMate/Bundles/ 目录下，可我的偏偏不是，难道是。。。？
 

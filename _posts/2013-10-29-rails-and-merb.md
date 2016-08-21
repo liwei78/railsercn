@@ -2,8 +2,9 @@
 layout: post
 title: "(转载)Rails 與 Merb 合併背後的故事"
 description: "原文来自Blog.XDite.net"
-category: "转载"
+categories: ["转载"]
 tags: ['merb']
+author: 里克
 ---
 
 

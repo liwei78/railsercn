@@ -2,10 +2,9 @@
 layout: post
 title: 一个带BOM的utf-8文件引来的麻烦
 post_id: 653
-categories: ["others", "php"]
+categories: ["php"]
+author: 里克
 ---
-
-snapshot
 
 很多朋友应该碰到过这句话吧：“Cannot modify header information - headers already sent bygem(php文件)”。
 
@@ -23,10 +22,3 @@ snapshot
 
 简单的说，utf-8不需要BOM，utf-16才需要它。
 
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;

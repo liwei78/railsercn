@@ -2,8 +2,9 @@
 layout: post
 title: "Jekyll，和它的generateors"
 description: "第一次用jekyll来写博客，从wordpress过度到一个完全ruby的系统，是一次学习Ruby的好机会。"
-category: 日记
+category: ["日记"]
 tags: "jekyll"
+author: 里克
 ---
 
 写在前面：在每篇开头写一些文字，是我的习惯。这次翻新我的博客，把全部的博客都导成了.textile格式，然后一篇篇的做了校对（未完成），其间发现我从07年到现在，只写了170多篇，且有朋友贡献的几十篇。自己真正原创的寥寥几篇。倒是一些闲言碎语很让我感动，毕竟，年头久了，有旧情。本来想把非技术的东西删掉，索性还是留着回味当时的心境吧。

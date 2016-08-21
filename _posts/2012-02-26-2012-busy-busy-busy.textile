@@ -2,10 +2,9 @@
 layout: post
 title: 2012，忙，忙，忙
 post_id: 661
-categories: ["others"]
+categories: ["日记"]
+author: 里克
 ---
-
-snapshot
 
 最近问我干嘛呢，我的回答都会是：忙。
 

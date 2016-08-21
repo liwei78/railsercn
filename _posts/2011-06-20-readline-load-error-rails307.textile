@@ -1,7 +1,9 @@
 ---
 layout: post
 title: readline load error的解决办法
+categories: ["rails"]
 tags: "readline"
+author: 里克
 ---
 
 服务器总算都调试完了，今天打算看一下一个app的具体信息，发现 rails c提示错误。

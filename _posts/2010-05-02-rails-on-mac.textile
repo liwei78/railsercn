@@ -2,10 +2,9 @@
 layout: post
 title: 在mac上配制Rails开发环境
 post_id: 457
-categories: ["apple mac", "mac", "rails"]
+categories: ["macmini", "rails"]
+author: 里克
 ---
-
-snapshot
 
 拿到mac后最重要的就是先把Rails开发环境装好。apple介绍上写的是，mac mini装的是server版本，这样开发环境应该是已经装好的。可我的不是，没有Rails环境，只有ruby 1.8.7。这样也好，体验一下配制开发环境的过程。
 

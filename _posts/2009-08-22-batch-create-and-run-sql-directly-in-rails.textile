@@ -2,10 +2,9 @@
 layout: post
 title: 在Rails中使用批量插入和直接运行sql语句
 post_id: 418
-categories: ["RailsNote", "sql"]
+categories: ["rails"]
+author: 里克
 ---
-
-snapshot
 
 向所有加星用户发送消息，批量插入的sql
 
@@ -27,5 +26,3 @@ end
 ActiveRecord::Base.connection.execute("INSERT INTO `messages` (`updated_at`, `title`, `body`, `user_id`, `created_at`) VALUES #{values.join(',')}")
 
 不过这种写法还是欠妥，如何改进期待大家指点。谢谢
-
-最新作品：<a href="http://www.shiguangzhaoxiang.com" target="_blank">长春时光转机摄影，专业拍摄大型团体合影，集体合影，专业转机旋转360度拍摄</a>

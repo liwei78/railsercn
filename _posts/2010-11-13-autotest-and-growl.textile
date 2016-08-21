@@ -2,16 +2,15 @@
 layout: post
 title: Autotest and Growl
 post_id: 533
-categories: ["RailsNote"]
+categories: ["rails"]
+author: 里克
 ---
 
-snapshot
-
-第一步安裝Growl 
+第一步安裝Growl
 http://growl.info/index.php 注意要安裝擴展中的 growlnotify。 growlnotify is a command-line tool to post Growl notifications.
 
-第二步設置Growl 
-Open the Growl Preference Panel (System > Growl) and activate "Listen for incoming notifications" and "Allow remote application registration" options on the Network tab. 
+第二步設置Growl
+Open the Growl Preference Panel (System > Growl) and activate "Listen for incoming notifications" and "Allow remote application registration" options on the Network tab.
 
 第三步安裝相關gem
 1 gem install autotest
@@ -20,7 +19,7 @@ Open the Growl Preference Panel (System > Growl) and activate "Listen for incomi
 autotest 和 ZenTest 缺一不可，下面的gem不用安裝，不過這講了 autotest-rails-pure 的功用。
 https://github.com/svoop/autotest-growl
 
-4 gem install notifier  
+4 gem install notifier
 https://github.com/fnando/notifier
 
 5 gem install test_notifier
