@@ -2,7 +2,7 @@
 layout: post
 title: 2011，让APP飞一会吧
 post_id: 577
-categories: ["app", "rails", "haml", "ipad", "iphone", "sass"]
+categories: ["日记"]
 author: 里克
 ---
 
